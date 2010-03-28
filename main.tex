@@ -1,0 +1,153 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{
+  fancyhdr,lscape,rotating,float,longtable,
+  epsfig,program,tabularx,graphicx,hyperref,url,harvard
+}
+%\usepackage[Sonny]{fncychap}
+
+		%%
+		%% SETUP PDF OPTIONS FOR BOOKMARKS AND URLS
+		%%
+		%
+		%		\usepackage[ps2pdf,                %%% hyper-references for ps2pdf
+		%		bookmarks=true,%                   %%% generate bookmarks ...
+		%		bookmarksnumbered=true,%           %%% ... with numbers
+		%		hypertexnames=false,%              %%% needed for correct links to figures !!!
+		%		breaklinks=true,%                  %%% breaks lines, but links are very small
+		%		linkbordercolor={}, %{0 0 1},%          %%% blue frames around links
+		%		pdfborder={0 0 112.0}]{hyperref}
+		\hypersetup{
+		%
+		% Set up the PDF information fields
+		%
+		pdfauthor = {Md Omar Faruque Sarker},
+		pdftitle = {Decentralized Communication for Multi-robot Task Allocation},
+		pdfsubject = {Ph.D. Thesis presented to the University of Wales, Newport},
+		pdfkeywords = {Robotics, Multi-robot system},
+		pdfcreator = {LaTeX with hyperref package},
+		pdfproducer = {dvips + ps2pdf}}
+
+
+%
+% Some General Shortcut Commands
+%
+
+\newcommand{\sdp}{\setlength{\baselineskip}{16truept}} %double spacing
+\newcommand{\dsp}{\setlength{\baselineskip}{24truept}}  %double spacing
+\newcommand{\ssp}{\setlength{\baselineskip}{13.6truept}} %single spacing
+\newcommand{\al}{\mbox{$\alpha$\,--~}}
+\newcommand{\be}{\mbox{$\beta$\,--~}}
+\newcommand{\albe}{\mbox{$\alpha/\beta$}~}
+\newcommand{\tten}{\mbox{${\rm 3_{10}}$\,--~}}
+\newcommand{\ca}{\mbox{${\rm Ca^{2+}}$}}
+\newcommand{\ea}{\mbox{\em et al.\/}}
+\newcommand{\Cal}{\mbox{${\rm C}{\alpha}$}~}
+
+%
+% Page Setup Commands
+%
+
+\def\singlesidestandardsetup{
+   \textheight 655pt  % results in one more line per page at dsp
+   \topmargin 0.2cm
+   \textwidth 5.5in
+   \oddsidemargin 0.8in  % changed from 0.75 to make lm==1.25in
+   \columnwidth \textwidth
+   \footskip 0.3in
+   \renewcommand{\baselinestretch}{1}
+}
+%\singlesidestandardsetup
+\oddsidemargin 0.8in
+
+% set the font to be sans serif
+%\renewcommand{\familydefault}{cmss}
+
+% apply sectsty to have sansserif headers
+%\allsectionsfont{\sffamily\centering}
+
+% setup the page format
+% sort out the headings - make them fit any width text
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+%\renewcommand{\caption}[1]{\caption{\scriptsize #1}}
+
+\lhead[\fancyplain{}{\sffamily\thepage}]{\fancyplain{}{\sffamily\small\rightmark}}
+\rhead[\fancyplain{}{\rightmark}]{\fancyplain{}{\sffamily\thepage}}
+\cfoot{}
+
+%\setcounter{secnumdepth}{10}
+%\input epsf
+
+\begin{document}
+
+%
+% The titlepage is stored in the file 'title.tex' and includes
+% the title of the thesis
+%
+% Preface, contains general acknowledgements and comments
+
+\include{title}
+%\include{summary}
+%\include{preface}
+
+%
+% Build the Table of Contents, Lists of Tables and Figures
+%
+
+%\newpage
+\tableofcontents
+%\listoftables
+%\listoffigures
+
+%
+% Revert to one and a half line spacing
+%
+
+%\newpage
+\sdp
+
+%
+% Start Page numbering again at 1 and set Roman Numerals
+%
+% Each main chapter of the thesis is included here
+%
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\include{introduction}
+\include{background}
+\include{afm}
+\include{local-comm-model}
+%\include{conclusions}
+
+
+%
+% Begin the Appendices Section here, revert to single spaced text again
+%
+\appendix
+\ssp
+%\include{papers}
+
+%
+% Bibliography Section
+%
+\sdp
+\bibliographystyle{jphysicsB}
+%\bibdata{bib1}
+%\bibliography{bibliography}
+\bibliography{bib1}
+%
+% All done, End the Document
+% 
+
+
+
+\end{document}
+
+
+

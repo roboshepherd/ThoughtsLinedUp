@@ -1,0 +1,11 @@
+*.b*
+*.out
+*.aux
+*.dvi
+*.log
+*.toc
+*.eps
+*.dia~
+*.ps
+*.png
+*.pdf

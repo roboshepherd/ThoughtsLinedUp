@@ -4,8 +4,37 @@
 
 %%%%%%%%%%%%%%%%%%%%%
 \section{General Characteristics of AFM}
-
+AFM provides an abstract framework for self-regulatory DoL in social systems \cite{Elsa}. In terms of networks, the model can be constructed as a bipartite network, meaning that there are two different types of nodes. One set of nodes describes the sources of the attractive fields and the other set describes the agents. The links only take place between different types of nodes, and these encode the flow of information. So even if there is no direct link between two agents, their interaction is taken into account in the information flow. The dependence of the strength of the field on the distance can be represented in terms of networks through weighted links. In addition, there is a permanent filed. It comes from the no-task option of ignoring the information. The model can be mapped to a network as shown in Fig. \ref{fig:afm}. The correspondence is given below:
+\begin{itemize}
+\item Source nodes (o) are tasks that can be divided between a number of agents.
+\item Agent nodes (x) are robots.
+\item The attractive fields correspond to stimuli to perform a task, and these are given by the black links.
+\item When an agent performs a task, the link is of a different sort, and this is denoted in the figure by a red line. Agents linked to a source by a red line are the robots currently doing that task. 
+\item The field of ignoring the information (w) corresponds to the stimulus to random walk, i.e. the no-task option, and this is denoted by the green lines in the graph. 
+\item Each of the links is weighted. The value of this weight describes the strength of the stimulus that the agent experiences. In a spatial representation of the model, it is easy to see that the strength of the field depends on the physical distance of the agent to the source. In addition, the strength can be increased through sensitisation of the agent via experience (learning). This distance is not depicted in the network, it is represented through the weights of the links . In the figure of the network, the nodes have an arbitrary place. Note that even though the distance is physical in this case, the distance in the model applied to other systems, needs not to be physical, it can represent the accessibility to the information, the time the information takes to reach the receiver, etc. 
+\end{itemize}
+In summary, looking at the network, we see that each of the agents is connected with a link to each of the fields. This means that even if an agent is currently involved in a task, the probability that it stops doing it in order to pursue a different task, or to random walk, is always different from zero. So the weighted links express the probability of an agent to be attracted to each of the fields.\\
 %%%%%%%%%%%%%%%%%%%%%
 \section{Interpretation for Multi-robot Systems}
-
+AFM provides us a generic framework for implementing self-regulatory MRTA. Here we briefly describe how this model gives our robots self-regulatory behaviours, particularly task-specialization, concurrency, flexibility and robustness. Interested readers should consult \cite{Elsa} for a general overview and \cite{Sarker} for our robotic implementation of AFM.
+Let us consider a manufacturing shop floor scenario where N number of mobile robots are required to attend to M number of shop tasks spread over a fixed area A. Let these tasks be represented by a set of small rectangular boxes resembling to manufacturing machines. Let each task $j$ has an associated task-urgency $\phi_j$ that indicates its relative importance over time. If a robot attends to a task $j$ in x$^{th}$ time-step, value of $\phi_j$ will decreases by a small amount, $\delta_{\phi 1}$ in (x+1)$^{th}$ time-step. On the other hand, if a task has not been served by any robot in x$^{th}$ time-step, $\phi_j$ will increase by another small amount, $\delta_{\phi 2}$ in (x+1)$^{th}$ time-step. In order to complete a shop task $j$, a robot needs to reach within a fixed boundary of $j$, $D_j$. If a robot completes a task $j$ we say that it learns about it and this will increase robot's likelihood of selecting that task in next step. We call this variable affinity of a robot to that task as its sensitization $k_j$. If a robot does not do a task $j$ for some time, we say that it forgets about $j$ and $k_j$ has been decreased.\\
+According AFM, all robots will establish attractive fields to all tasks due to the presence of a system-wide continuous flow of information. The strength of these attractive fields called stimulus will vary according to the distances between robots and tasks, task-urgencies and corresponding sensitizations of robots. This is encoded in Eq. \ref{eqn1}.
+%\addtolength{\abovedisplayskip}{-15mm} 
+\begin{multicols}{2} 
+\begin{equation}
+\small
+S_{j}^{i} = tanh\{\frac{k_{j}^{i}}{d+\delta } \phi _{j}\}
+\label{eqn1}
+\end{equation}
+\vspace*{0.25cm}
+\begin{equation}
+\small
+P_{j}^{i} = \frac{S_{j}^{i}}{\sum_{j}^{}S_{j}^{i}}
+\label{eqn2}
+\end{equation}
+\end{multicols}
+%\addtolength{\belowdisplayskip}{-1mm} 
+%\vspace{2mm}
+Eq. \ref{eqn1} states that the stimuli of a robot $i$ to a particular task $j$, $S_{j}^{i}$ depends on robot's spatial distance $d$ to $j$, level of sensitization to that task ($k_{j}^{i}$) and perceived urgency of that task ($\phi _{j}$). We use a vary small value $\delta$ in Eq. \ref{eqn1} to prevent division by zero. The probability of selecting each task has been determined by a probabilistic method outlined in Eq. \ref{eqn2} \cite{Elsa}. 
+AFM ensures concurrency of a self-regulatory system by specifying at least two task options: 1) doing a task and 2) doing no task. In robots, the latter can be be treated as random walking. So in any time-step a robot will choose from M+1 tasks. Let $T_a$ be the allocated time to accomplish a task. If a robot can enter inside the task boundary, $r_{task}$ within $T_a$ time it waits there until $T_a$ elapsed. Otherwise it will select a different task. 
 %%%%%%%%%%%%%%%%%%%%%

@@ -1,4 +1,5 @@
 \chapter{Background}
+\label{bg}
 %%%%%%%%%%%%%%%%%%%%%
 \section{Definition of Key Issues and Basic Terms}
 \subsection{Self-regulation}
@@ -25,31 +26,31 @@ It is interesting to note that self-regulation in biological species provides si
 From the above discussion, it has been shown that the term self-regulation carries a  wide range of meaning in different branches of knowledge. In psychology and cognitive neuroscience point of view, self-regulation is discussed in an individual's perspective whereas, in biological and social contexts the SR is discussed in a context of group of individuals or the society as a whole.  From this initial study, it can be said that  to study emergent SR,  the latter context is more appropriate where emergence is evident.  For a better understanding of emergent self-regulation, we need to look into the process of emergence from the view point of interactions of large individuals in a society.  
 % SECTION <> deals with this topic.  
 
-\subsection{Emergence}
-In order to understand emergent self-regulation, it is necessary to find out how emergence and emergent properties are described in the literature. According to Encyclopedia Britannica emergence is the rise of a system that cannot be predicted or explained from antecedent conditions. Emergence occurs when interactions among objects at one level gives rise to different types of objects at another level. More precisely, a phenomenon is emergent if it requires new categories to describe the behavior of the underlying components \cite{Andriani+2004}, \cite{Kppers+1990}. 
+%\subsection{Emergence}
+%In order to understand emergent self-regulation, it is necessary to find out how emergence and emergent properties are described in the literature. According to Encyclopedia Britannica emergence is the rise of a system that cannot be predicted or explained from antecedent conditions. Emergence occurs when interactions among objects at one level gives rise to different types of objects at another level. More precisely, a phenomenon is emergent if it requires new categories to describe the behavior of the underlying components \cite{Andriani+2004}, \cite{Kppers+1990}. 
+%
+%Emergence is the central concept to the theory of complex systems which consists of a large number of elements, non-linear dynamic interactions among elements and their environment, feedback loops etc. Paul Cilliers \cite{Andriani+2004} summarized the properties of  complex systems as follows:
+%Complex systems consist of large number of elements such that a system of differential equation becomes impractical.
+%The elements have to interact and this interactions must be dynamic, changing with time. 
+%The interaction is fairly rich so that elements are influenced by each other. These interactions are non-linear where small causes can have large results and vice versa.
+%The interactions usually have a fairly short range, i.e. Information is received primarily from immediate neighbors. Long range interaction is also possible which can be modulated along the way.
+%There are loops in the interactions. The effect of any activity can feed back onto itself, sometimes directly, sometimes after a number of intervening stages. The feedback can be positive (enhancing, stimulating) or negative (detracting, inhibiting).
+%Complex systems are usually open systems, i.e. they interact with their environment.
+%Complex systems operate under conditions far from equilibrium. There has to be constant flow of  energy to maintain the organization of the system and to ensure its survival.
+%Complex systems have histories. No only do they evolve through time, but also their past is co-responsible for their present behavior.
+%Each element in the system is ignorant of the behavior of the system as a whole, it responds only to the information that is available to it locally. The complexity emerges as resultant of the patterns of interaction between the elements.
 
-Emergence is the central concept to the theory of complex systems which consists of a large number of elements, non-linear dynamic interactions among elements and their environment, feedback loops etc. Paul Cilliers \cite{Andriani+2004} summarized the properties of  complex systems as follows:
-Complex systems consist of large number of elements such that a system of differential equation becomes impractical.
-The elements have to interact and this interactions must be dynamic, changing with time. 
-The interaction is fairly rich so that elements are influenced by each other. These interactions are non-linear where small causes can have large results and vice versa.
-The interactions usually have a fairly short range, i.e. Information is received primarily from immediate neighbors. Long range interaction is also possible which can be modulated along the way.
-There are loops in the interactions. The effect of any activity can feed back onto itself, sometimes directly, sometimes after a number of intervening stages. The feedback can be positive (enhancing, stimulating) or negative (detracting, inhibiting).
-Complex systems are usually open systems, i.e. they interact with their environment.
-Complex systems operate under conditions far from equilibrium. There has to be constant flow of  energy to maintain the organization of the system and to ensure its survival.
-Complex systems have histories. No only do they evolve through time, but also their past is co-responsible for their present behavior.
-Each element in the system is ignorant of the behavior of the system as a whole, it responds only to the information that is available to it locally. The complexity emerges as resultant of the patterns of interaction between the elements.
 
+%The common characteristics of emergence in complex systems \cite{Corning2002} are typically described as follows: 
+%\begin{enumerate}
+%\item radical novelty or features not previously observed in systems; 
+%\item coherence or correlation or meaning integrated wholes that maintain themselves over some period of time; 
+%\item  A global or macro "level" i.e. there is some property of "wholeness"; 
+%\item it is the product of a dynamical process that evolves; and 
+%\item it can be perceived.  
+%\end{enumerate}
 
-The common characteristics of emergence in complex systems \cite{Corning2002} are typically described as follows: 
-\begin{enumerate}
-\item radical novelty or features not previously observed in systems; 
-\item coherence or correlation or meaning integrated wholes that maintain themselves over some period of time; 
-\item  A global or macro "level" i.e. there is some property of "wholeness"; 
-\item it is the product of a dynamical process that evolves; and 
-\item it can be perceived.  
-\end{enumerate}
-
-Therefore, the concepts of emergent SR can be referred to the bottom-up or decentralized control by which large number of individuals perform robust SO through local non-linear interactions that give rise to the novel and coherent structures, patterns and properties during the SO process. 
+%Therefore, the concepts of emergent SR can be referred to the bottom-up or decentralized control by which large number of individuals perform robust SO through local non-linear interactions that give rise to the novel and coherent structures, patterns and properties during the SO process. 
 
 \subsection{Division of Labour}
 Encyclopaedia Britannica serves the definition of division of labour as the separation of a work process into a number of tasks, with each task performed by a separate person or group of persons. Originated from economics and sociology the term division of labour is widely used in many branches of knowledge. As mentioned by Adam Smith (1776).
@@ -63,9 +64,120 @@ In sociology, division of labour usually denotes the work specialization \cite{S
 \item[2)Why dividing it to individuals?] i.e., the underlying social standards for this division, such as task appropriateness based on class, gender, age, skill etc.
 \item[3)How to divide it?] i.e.,the method or process of separating the whole task into small pieces of tasks that can be performed easily. 
 \end{description}
-% 
+%%%%
+\subsection{Communication} 
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Overview of Multi-robot Systems}
+\section{Overview and Key Issues of Multi-robot Systems}
+\label{sec:mrs}
+\subsection*{Historical Overview}
+Historically the concept of multi-robot system comes almost after the introduction of behaviour-based robotics paradigm \cite{Brooks1986,Arkin1990}. In 1967, using the traditional sense-plan-act or hierarchical approach \cite{Murphy2000}, the first Artificially Intelligent (AI) robot, Shakey, was created at the Stanford Research Institute.  In late 80s, Rodney A.  Brooks revolutionized this entire field of mobile robotics who outlined a layered, behaviour based approach that acted significantly differently than the hierarchical approach \cite{Brooks1986}. At the same time, Valentino Braitenberg described a set of experiments where increasingly complex vehicles are built from simple mechanical and electrical components \cite{Braitenberg1984}. Around the same time and with similar principle, Reynolds  developed a distributed behavioural model  for a bird in a flock  that assumed that a flock is simply the result  of the interactions among the individual birds \cite{Reynolds1987}. Early research on multi-robot  systems also include the concept of cellular robotic system \cite{Fukuda+1987}, \cite{Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}.
+
+From the beginning of the behaviour based paradigm, the biological inspirations influenced many cooperative robotics researchers  to examine the social characteristics of insects and animals and  to apply them  to the design multi-robot systems \cite{Arkin1998}. The underlying basic idea is to use the simple local control rules of various social species, such as ants, bees, birds etc.,  to the development of  similar behaviours in multi-robot systems. In multi-robot literature, there are many examples that demonstrate the ability of multi-robot teams to aggregate, flock, forage, follow trails etc. \cite{Bonabeau+1999,Mataric1994}. The dynamics of ecosystem, such as cooperation,  has also been applied in multi-robot systems that has presented the emergent cooperation among team members \cite{Mcfarland1994}, \cite{Martinoli+1996}. On the other hand, the study of competitive behaviours among animal and human societies has also been applied in multi-robot systems, such as that found in multi-robot soccer \cite{Asada+1999}.
+
+\subsection{MRS research paradigms}
+\label{sec:mrs-paradigms}
+As discussed above, there are several research groups who follow different approaches to handle multi-robot research problems. Parker \cite{Parker2008} has summarized most of the recent research approaches  into three paradigms:
+\begin{enumerate}
+\item Bioinspired, emergent swarms paradigm,
+\item Organizational and social paradigm  and
+\item Knowledge-based, ontological and semantic paradigm
+\end{enumerate}
+
+\subsubsection*{Bioinspired, emergent swarms paradigm}
+In bio-inspired, emergent swarms paradigm local sensing and local interaction forms the basis of collective behaviors of swarms of robots. Many researchers addressed the issues of local interaction, local communication (i.e., stigmergy) and other issues of this paradigm \cite{Mataric1995}, \cite{Kube+1993}. Today, this paradigm has been emerged as a sub-field of robotics called swarm robotics \cite{Sahin+2005}. This is a powerful paradigm for those applications that require performing shared common tasks over distributed workspace, redundancy or fault-tolerance without any complex interaction of entities. Some examples include flocking, herding, searching, chaining, formations, harvesting, deployment, coverage etc. 
+
+\subsubsection*{Organizational and social paradigm}
+Organizational and social paradigms are typically based on organization theory derived from human systems that reflects the knowledge from sociology, economics, psychology and other related fields. To solve complex problems this paradigm usually follows the cooperative and collaborative forms of distributed intelligence. In multi-robot systems the example of this  paradigm is found in two major formats: 
+the use of roles and value system and
+market economics.
+
+In multi-robot applications under this paradigm, an easy division of labor is achieved by assigning roles depending on the skills and capabilities in individual team member. For example, in multi-robot soccer \cite{Stone+1999,Asada+1999} positions played by different robots are usually considered as defined roles. On the contrary, in market economics approach \cite{Gerkey+2002,Dias+2006} task allocation among multiple robots are done via market economics theory that enables the selection of robots for specific tasks according to their individual capabilities determined by a bidding process.
+
+\subsubsection*{Knowledge-based, ontological and semantic paradigm}
+The third paradigm, commonly used for developing multi-agent systems, is knowledge-based, ontological and semantic paradigm. Here knowledge is defined as ontology and shared among robots/agents from disparate sources. It reduces the communication overhead by utilizing the shared vocabulary and semantics. Due to low bandwidth, limited power, limited computation and noise and uncertainty in sensing/actuation, the use of this approach is usually restricted in multi-robot systems. 
+
+Although this approximate classification includes most of the research directions it is very hard to specifically categorize all diverse researches on multi-robot systems. However, most of the researchers select  a suitable paradigm to abstract the problem from an specific perspective with a fundamental challenge to determine how best to achieve global coherence  from the interactions of entities at the local level. 
+
+\section*{Common research issues of MRS}
+Whatever the principle characteristics of a MRS, e.g., homogeneity, coupling, communication methods etc., each MRS  must address some basic problems to some degree. For example, usually every MRS adopts a control architecture under a specific paradigm. Similarly every MRS address the issues of communication, localization, interaction in a way specific to the application and underlying design principles (or philosophies).  In the following subsections, we have attempted to summarize the key MRS research issues that would influence the selection and implementation our research. In this initiative we have deliberately omitted the non-central or very specific issues, such as collaborative transport or reconfigurable MRS, that does not directly relate to our research.   
+
+
+\subsection{Architecture and Control}
+In MRS, two high-level control strategies are very common: 1) centralized and 2) decentralized or distributed. Under a specific control strategy, traditionally three basic system architectures are widely adopted: deliberative, reactive and hybrid. Deliberative systems based on central planning are well suited for the centralized control approach. The single controller makes a plan from its Sense-Plan-Act (SPA) loop by gathering the sensory information and each robot performs its part. Reactive systems are widely used in distributed control where each robot executes its own controller maintaining a tight coupling between the system's sensors and actuators, usually through a set of well-designed behaviours. Here, various group behaviour emerges from the interactions of individuals that communicate and cooperate when needed. Hybrid systems are usually the mixture of the two above approaches; where each robot can run its own hybrid controller with the help of a plan with necessary information from all other robots. \cite{Mataric2007} described behaviour-based control architecture as a separate category of distributed control architecture  where each robot behaves according to a behaviour-based controller and can learn, adapt and contribute to improve and optimize the group-level behaviour. 
+
+Although most of the MRS control architectures share some common characteristics (such as distributed and behaviour-based control strategy) based on their difference of underlying design principles we have put them into three groups:
+\begin{enumerate}
+\item Behaviour-based classical architectures
+\item Market-based architectures
+\item Multi-agent based architectures
+\end{enumerate}
+
+Due to the overwhelming amount of literature on MRS architectures it is not possible to include most of them. However, below some representative key architectures strictly designed  for MRS are described. 
+
+\subsubsection*{Behaviour-based classical architectures}
+The ALLIANCE architecture \cite{Parker1998} is one of the earliest behaviour-based fully distributed architectures. This architecture has used the mathematically modelled behaviour sets and motivational system. The primary mechanism for task selection of a robot is to activate the motivational behaviour partly based on the estimates of other robots behaviour. This architecture was designed for heterogeneous teams of robots  performing loosely coupled tasks with fault-tolerance and co-operative control strategy. Broadcast of local eligibility (BLE) \cite{Werger2001} is another behaviour-based architecture that uses port-attributed behaviour technique through broadcast communication method. It was demonstrated to perform coordinated tasks, such as multi-target observation tasks. Major differences between this two behaviour-based systems include the need in ALLIANCE for motivational behaviours to store information about other individual robots, the lack of uniform inter-behaviour communication, and ALLIANCE's monitoring of time other robots have spent performing behaviours rather than BLE's local eligibility estimates. Similar to the above two architectures, many other researchers proposed and implemented many variants of behaviour-based architectures. Some of them used the classic three layer (plan-sequence-execute) approach, e.g., \cite{Simmons+2002} used a Layered Architecture where each layer interact directly to coordinate actions at multiple levels of abstraction. 
+
+\subsubsection*{Market-based architectures}
+Using the theory of marker economics and well-known Contract Net Protocol (CNP) \cite{Davis1988+}, these architectures solve the task-allocation problem by auction or bidding process. Major architectures following market-based approaches include MURDOCH \cite{Gerkey+2002}, M+ system \cite{Botelho+1999}, first-piece auction \cite{Zlot+2002}, dynamic role assignments \cite{Chaimowicz2002} among others. 
+
+\subsubsection*{Multi-agent based architectures}
+Some MRS architectures are influenced by multi-agent systems (MAS). For example, CHARON is a hierarchical behaviour-based architecture that rely on  the notion of agents and modes. Similarly CAMPOUT is another distributed behaviour-based architecture that provide high-level functionality by making use of basic low-level behaviours in downward task decomposition of a multi-agent planner. It is comprised of five different architectural mechanisms including, behaviour representation, behaviour composition, behaviour coordination, group coordination and communication behaviours.
+
+\subsection{Interaction}
+According to the Oxford Dictionary of English the term interaction means reciprocal action or influence. In MRS research, such as in \cite{Mataric1994}, interaction is referred to as mutual influence on behaviour. Following this definition, it is obvious that objects in the world do not interact with agents, although they may affect on their behaviour. The presence of an object affects the agent, but the agent does not affects the object since objects, by definition, do not behave, only agents do. However many other researchers acknowledge that interactions of robots with their environment (as found in stigmergic communication) have a great impact on their behaviours. Therefore, we adopt the broad meaning of interaction that is  reciprocal action or influence among robots and their environment.
+
+From the above review of MRS system architecture, task allocation and communication, it is obvious that interaction among robots and their environment is the core of the dynamics of MRS.
+Without this interaction, it can not be a functioning MRS. 
+
+% Insert Fig
+While analysing the role and application of distributed intelligence on MRS, Parker \cite{Parker2008} presented an excellent classification of interactions of entities of MRS. She viewed the interactions along three different axes:
+\begin{enumerate}
+\item the types of goals of entities (either shared goal such as, cleaning a floor, or, individual goal)
+\item whether entities have awareness of others on the team (either aware such as, in cooperative transport, or, unaware such as, in a typical foraging)
+\item whether the action of one entity advances the goal of others (e.g., one robot's floor cleaning helps other robots not to clean that part of the floor)
+\end{enumerate}
+
+Based on this approximate observation Parker classified interactions into four categories:
+% see Fig
+\paragraph{Collective interaction:}
+Entities are not aware of others on the team, yet do share goals and their actions are beneficial to team-mates. Mostly, swarm-robotic work of many researchers follow this kind of interaction to perform biologically-relevant tasks, such as foraging, swarming, formation keeping and so forth.
+
+\paragraph{Cooperative interaction:}
+Entities are aware of others on the team, they share goals and their actions are beneficial to their team-mates. This type of interaction is used to reason about team-mates capabilities multiple robots works together, usually in shared workspace, such as cleaning a work-site, pushing a box, performing search and rescue, extra-planetary exploration and so forth. 
+
+\paragraph{Collaborative interaction:}
+ Having individual goals (and even individual capabilities), entities aware of their team-mates and their actions are beneficial to their team-mates. One example of this kind of interaction is a team of collaborative robots where each must reach a unique goal position by sharing sensory capabilities to all members such as illustrated as coalition formation in \cite{Parker+2006}.
+
+\paragraph{Coordinative interaction:}
+ Entities are  aware of each other, but they do not share a common goal and their actions are not helpful to other team members. For example, in a common workspace robots try to minimize interference by coordinating their actions as found in multi-robot path planning techniques, traffic control techniques and so on.
+
+Beyond this four most common types of interactions Parker also described another kind of interaction in adversarial domain where  entities effectively work each other such as multi-robot soccer. Here entities have individual goals, they are aware of each other, but their actions have a negative affect on others goal.
+
+\subsection{Localization and Exploration}
+Mobile robot systems highly rely on precise localization for performing their autonomous activities in indoor or outdoor. Localization is the determination of exact pose (position and orientation) with respect to some relative or absolute coordinate system. This can be done by using proprioceptive sensors that monitor motion of a robot or  exteroceptive sensors that provide information of world representation, such as global positioning system (GPS) or indoor navigation system (INS).   Many other methods are also available, such as landmark recognition, cooperative positioning and other visual methods.
+Localization issue of MRS also invites researchers to examine specific areas like exploration and map generation. In exploration problem, robots need to minimize the time needed to explore the given area. Many researchers uses various kinds of exploration algorithms for solving this NP-hard problem, such as line-of-sight constrained exploration algorithm \cite{Arkin+2002}, collaborative multi-robot exploration \cite{Burgard+2000} and so on. In mapping problem, mostly inaccurate localization information from teams of robots are accumulated and combined to generate a map by various techniques, such as probabilistic approaches \cite{Thurn+2000}.
+
+
+\subsection*{Conflict Resolution}
+In MRS,  conflicts occur if a resource is required by or, a unique single task is distributed to, more than one robot at any given time. Several resources such as bandwidth, space etc. may be needed by more than one robot. The space sharing problem was treated as traffic control problem in urban areas, but the robots are never restricted in road networks in case of behaviour-based control application \cite{Cao+1997}. In explicit communication mode in MRS, the sharing of bandwidth among robots is a great problem in case of applications like multi-robot mapping \cite{Konolige+2003}. In large multi-robot team such as in Centibots system \cite{Ortiz+2005},  task interference and high bandwidth communication  between 100s of robots appear as a significant research challenge.
+
+\subsection{Learning}
+A great deal of research on multi-robot learning has been carried out since the inception of MRS \cite{Mataric+2001,Yang+2004,Parker1995}. Learning, identified as the ability to acquire new knowledge or skills and improve one's performance, is useful in MRS due to the necessity of robots to know about itself, its environment and other team-members \cite{Mataric2007}. Learning can improve performance since robot controllers are not perfect by design and robots are required to work in an uncertain environment that all possible states or actions can not be predicted in advance. Besides learning a new skill or piece of knowledge it is also important to forget learned things that are no longer needed or correct as well as, to make room for new things to be learned and stored in a finite memory space of a robot. 
+
+Several learning techniques are available in robotics domain, such as reinforce or unsupervised learning, supervised learning and learning by imitation \cite{Mataric2007}. Although reinforce learning, or learning based on environmental or peer feedback,  is a good option for MRS,  it has been found that  in large teams the ability to lean in this way is restricted due to large continuous state and action space \cite{Yang+2004}. Several other learning techniques are also available to explore in MRS domain including Markov models, Q-learning, fuzzy logic, neural nets, game theory, probabilistic or Bayesian theory among others. 
+
+\subsection{Application specific and other issues}
+MRS systems have been put to numerous application domains that all can not be listed together. Rather than listing all of areas explored by researchers, below we have included few major areas that have received highest attention in the MRS research community.
+
+\subsubsection*{Object Transport}
+Cooperative transport of large objects (that one robot is unable to handle) by multi-robots was investigated by many researchers such as, following a formal model of cooperative transport in ants \cite{Kube+1993}, box-pushing by six-legged robots \cite{Mataric+1995}. Another kind of object transport problem include clustering objects into piles e.g., \cite{Beckers+1994}, collecting waste or trash e.g., \cite{Parker1994}, sorting coloured objects e.g., \cite{Melhuish+1998}, constructing a building site collectively \cite{Wawerla+2002} and so on. 
+
+\subsubsection*{Mining} 
+It has also been observed that multi-robot teams as micro or mini machines are helpful to improve the control and efficiency of mining and its processing operations \cite{Dunbar+2002}.
+
+\subsubsection*{Military and Space Applications}
+Many researchers address MRS research issues under the requirements of a military or space application. Behaviour-based formation control \cite{Balch+1998}, landmine detection \cite{Franklin+1995}, multiple planetary rovers for various missions \cite{Huntsberger2004} and so forth, all are the examples of this areas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Task-Allocation in Multi-robot Systems}
@@ -89,6 +201,7 @@ On the other hand emergent task-allocation approach relies on the emergent group
 MRTA problem can be addressed in many different ways depending upon the paradigm selected to abstract the problem and its relevant constraints and requirements \cite{Parker2008}. Firstly, in emergent task allocation in bioinspired swarms paradigm MRTA homogeneous robots are employed to perform mostly similar tasks only by local sensing and indirect stigmergic ( or no) communication. Secondly, in organizational and social paradigm MRTA can follow one of the two major approaches: 1) task allocation by making use of roles and 2) task allocation through bidding. For example, in multi-robot soccer, each role encompasses several specific tasks and heterogeneous robots select their roles based on their position and capabilities. In market-based approach, robots can negotiate with other team-mates to collectively solve a set of tasks. Finally, in knowledge-based approach, also known as intentional coordination, MRTA is done through the modelling of team-mate capabilities, such as by observing the performance of other team-members performance with or without explicit communication.
 %%%%%%%%%%%%%%%%%%%%%
 \section{Communication in Self-regulated Biological Social Systems}
+\label{bg:comm-biology}
 Communication plays a central role in self-regulated division of labour of biological societies.In this section communication among biological social insects are briefly reviewed within the context of self-regulated  division of labour.
 
 %[Purposes]

@@ -1,7 +1,7 @@
-\chapter{Background}
+\chapter{Background and Related Work}
 \label{bg}
 %%%%%%%%%%%%%%%%%%%%%
-\section{Definition of Key Issues and Basic Terms}
+\section{Definition of key issues and basic terms}
 \subsection{Self-regulation}
 Self-regulation (SR) primarily refers to the exercise of control over oneself to bring the self into line with preferred standards \cite{Baumeister+2007}. One of the most notable self-regulatory process is the human body's homoeostatic process where the human body's inner process seeks to return to its regular temperature when it gets overheated or chilled. Baumeister et al. has referred self-regulation to goal-directed behaviour or feedback loops, whereas self-control may be associated with conscious impulse control. Since regulation carries  the meaning of  control with a hint of regularity.  
 
@@ -52,7 +52,7 @@ From the above discussion, it has been shown that the term self-regulation carri
 
 %Therefore, the concepts of emergent SR can be referred to the bottom-up or decentralized control by which large number of individuals perform robust SO through local non-linear interactions that give rise to the novel and coherent structures, patterns and properties during the SO process. 
 
-\subsection{Division of Labour}
+\subsection{Division of labour or task-allocation}
 Encyclopaedia Britannica serves the definition of division of labour as the separation of a work process into a number of tasks, with each task performed by a separate person or group of persons. Originated from economics and sociology the term division of labour is widely used in many branches of knowledge. As mentioned by Adam Smith (1776).
 The great increase of the quantity of work which, in consequence of the division of labour, the same number of people are capable of performing, is owing to three different circumstances; first, to increase the dexterity in every particular workman; secondly, to the saving of the time which is commonly lost in passing from one species of work to another; and lastly, to the invention of a great number of machines which facilitate and abridge labour, and   enable one man to do the work of many. (Adam Smith (1776) in \cite{Sendova-Franks+1999})
 
@@ -68,7 +68,7 @@ In sociology, division of labour usually denotes the work specialization \cite{S
 \subsection{Communication} 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Overview and Key Issues of Multi-robot Systems (MRS)}
+\section{Overview and key issues of multi-robot systems (MRS)}
 \label{bg:mrs}
 Historically the concept of multi-robot system comes almost after the introduction of behaviour-based robotics paradigm \cite{Brooks1986,Arkin1990}. In 1967, using the traditional sense-plan-act or hierarchical approach \cite{Murphy2000}, the first Artificially Intelligent (AI) robot, Shakey, was created at the Stanford Research Institute. In late 80s, Rodney A. Brooks revolutionized this entire field of mobile robotics who outlined a layered, behaviour based approach that acted significantly differently than the hierarchical approach \cite{Brooks1986}. At the same time, Valentino Braitenberg described a set of experiments where increasingly complex vehicles are built from simple mechanical and electrical components \cite{Braitenberg1984}. Around the same time and with similar principle, Reynolds developed a distributed behavioural model for a bird in a flock that assumed that a flock is simply the result of the interactions among the individual birds \cite{Reynolds1987}. Early research on multi-robot systems also include the concept of cellular robotic system \cite{Fukuda+1987}, \cite{Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}.\\
 %
@@ -125,7 +125,7 @@ Although this approximate classification includes most of the research direction
 %
 Whatever the principle characteristics of a MRS, e.g., homogeneity, coupling, communication methods etc., each MRS must address some basic problems to some degree. For example, usually every MRS adopts a control architecture under a specific paradigm. Similarly every MRS address the issues of communication, localization, interaction in a way specific to the application and underlying design principles (or philosophies). In the following subsections, we have attempted to summarize the key MRS research issues that would influence the selection and implementation our research. In this initiative we have deliberately omitted the non-central or very specific issues, such as collaborative transport or reconfigurable MRS, that does not directly relate to our research.
 %%%
-\subsection{Architecture and Control}
+\subsection{Architecture and control}
 \label{bg:mrs:arch}
 In MRS, two high-level control strategies are very common: 1) centralized and 2) decentralized or distributed. Under a specific control strategy, traditionally three basic system architectures are widely adopted: deliberative, reactive and hybrid. Deliberative systems based on central planning are well suited for the centralized control approach. The single controller makes a plan from its Sense-Plan-Act (SPA) loop by gathering the sensory information and each robot performs its part. Reactive systems are widely used in distributed control where each robot executes its own controller maintaining a tight coupling between the system's sensors and actuators, usually through a set of well-designed behaviours. Here, various group behaviour emerges from the interactions of individuals that communicate and cooperate when needed. Hybrid systems are usually the mixture of the two above approaches; where each robot can run its own hybrid controller with the help of a plan with necessary information from all other robots. \cite{Mataric2007} described behaviour-based control architecture as a separate category of distributed control architecture where each robot behaves according to a behaviour-based controller and can learn, adapt and contribute to improve and optimize the group-level behaviour. 
 Although most of the MRS control architectures share some common characteristics (such as distributed and behaviour-based control strategy) based on their difference of underlying design principles we have put them into three groups:
@@ -142,7 +142,7 @@ Using the theory of marker economics and well-known Contract Net Protocol (CNP) 
 \subsubsection*{Multi-agent based architectures}
 Some MRS architectures are influenced by multi-agent systems (MAS). For example, CHARON is a hierarchical behaviour-based architecture that rely on the notion of agents and modes. Similarly CAMPOUT is another distributed behaviour-based architecture that provide high-level functionality by making use of basic low-level behaviours in downward task decomposition of a multi-agent planner. It is comprised of five different architectural mechanisms including, behaviour representation, behaviour composition, behaviour coordination, group coordination and communication behaviours.
 %%%%%
-\subsection{Interaction and Learning}
+\subsection{Interaction and learning}
 \label{bg:mrs:learn}
 \subsubsection*{Interaction}
 According to the Oxford Dictionary of English the term interaction means reciprocal action or influence. In MRS research, such as in \cite{Mataric1994}, interaction is referred to as mutual influence on behaviour. Following this definition, it is obvious that objects in the world do not interact with agents, although they may affect on their behaviour. The presence of an object affects the agent, but the agent does not affects the object since objects, by definition, do not behave, only agents do. However many other researchers acknowledge that interactions of robots with their environment (as found in stigmergic communication) have a great impact on their behaviours. Therefore, we adopt the broad meaning of interaction that is reciprocal action or influence among robots and their environment.
@@ -174,10 +174,10 @@ Several learning techniques are available in robotics domain, such as reinforce 
 Based on a specific model of swarm behaviours researchers generally adopt similar communication methods to enable interaction of swarms as discussed in Section \ref{subsec:mrs-comm}. In \cite{Balch2005} three kinds of communication including, indirect stigmergic communication, direct robot to robot state communication, and goal communication were performed and it was found that in some tasks communication provided performance improvements while others did not. Since then, researchers emphasize on both the necessity and cost of communication in a swarm robotic system. Indirect communication approaches, e.g. virtual pheromone \cite{Payton+2005,Hamann+2006} by which mobile robots communicated through directional infrared messaging or LEDs, are mainly tried for large teams with the spatially distributed applications such as search and rescue, de-mining etc. More recently, \cite{Cianci2007} reported a IEEE 802.15.4-compatible radio-communication module in e-puck robot for achieving multiple interactions simultaneously, as demonstrated in their collective decision making scenario. 
 Although research on learning in swarm robotic teams was not explored widely, \cite{Balch2005} presented an example of reinforcement-based learning in multi-robot soccer and foraging tasks. He concluded that in a team of homogeneous robots with diverse behaviours, communication, interaction and learning are well interconnected and depending on the selection of global or local learning means, learning can be effectively employed in a swarm robotic system.
 %
-\subsubsection*{Conflict Resolution}
+\subsubsection*{Conflict resolution}
 In MRS, conflicts occur if a resource is required by or, a unique single task is distributed to, more than one robot at any given time. Several resources such as bandwidth, space etc. may be needed by more than one robot. The space sharing problem was treated as traffic control problem in urban areas, but the robots are never restricted in road networks in case of behaviour-based control application \cite{Cao+1997}. In explicit communication mode in MRS, the sharing of bandwidth among robots is a great problem in case of applications like multi-robot mapping \cite{Konolige+2003}. In large multi-robot team such as in Centibots system \cite{Ortiz+2005}, task interference and high bandwidth communication between 100s of robots appear as a significant research challenge.
 
-\subsection{Localization and Exploration}
+\subsection{Localization and exploration}
 \label{bg:mrs:loc}
 Mobile robot systems highly rely on precise localization for performing their autonomous activities in indoor or outdoor. Localization is the determination of exact pose (position and orientation) with respect to some relative or absolute coordinate system. This can be done by using proprioceptive sensors that monitor motion of a robot or exteroceptive sensors that provide information of world representation, such as global positioning system (GPS) or indoor navigation system (INS). Many other methods are also available, such as landmark recognition, cooperative positioning and other visual methods.\\
 Localization issue of MRS also invites researchers to examine specific areas like exploration and map generation. In exploration problem, robots need to minimize the time needed to explore the given area. Many researchers uses various kinds of exploration algorithms for solving this NP-hard problem, such as line-of-sight constrained exploration algorithm \cite{Arkin+2002}, collaborative multi-robot exploration \cite{Burgard+2000} and so on. In mapping problem, mostly inaccurate localization information from teams of robots are accumulated and combined to generate a map by various techniques, such as probabilistic approaches \cite{Thurn+2000}.
@@ -194,7 +194,7 @@ It has also been observed that multi-robot teams as micro or mini machines are h
 \subsubsection*{Military and Space Applications}
 Many researchers address MRS research issues under the requirements of a military or space application. Behaviour-based formation control \cite{Balch+1998}, landmine detection \cite{Franklin+1995}, multiple planetary rovers for various missions \cite{Huntsberger2004} and so forth, all are the examples of this areas.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Task-Allocation in MRS}
+\section{Task-allocation in MRS}
 Since 90s multi-robot task allocation (MRTA) is a common research challenge that tries to define the preferred mapping of robots to tasks in order to optimize some objective functions  \cite{Gerkey+2004}. Many MRS control architectures have been solely designed to address this task-allocation issue. In 2003 Gerkey et al. formally analysed the complexity and optimality of key architectures (e.g., ALLIANCE, BLE, M+, MURDOCH, First piece auctions and Dynamic role assignment) for this MRTA issue and it has been found that MRTA is an instance of the so-called optimal assignment problem \cite{Gerkey+2003} and generally known as NP-hard where optimal solutions can not be found quickly for large problems \cite{Gerkey+2004}. 
 If we look the MRTA problem from multi-agent system's perspective we can find it is broadly divided into two major categories \cite{Shen+2001}: 
 \begin{enumerate}
@@ -214,7 +214,7 @@ On the other hand emergent task-allocation approach relies on the emergent group
 
 MRTA problem can be addressed in many different ways depending upon the paradigm selected to abstract the problem and its relevant constraints and requirements \cite{Parker2008}. Firstly, in emergent task allocation in bioinspired swarms paradigm MRTA homogeneous robots are employed to perform mostly similar tasks only by local sensing and indirect stigmergic ( or no) communication. Secondly, in organizational and social paradigm MRTA can follow one of the two major approaches: 1) task allocation by making use of roles and 2) task allocation through bidding. For example, in multi-robot soccer, each role encompasses several specific tasks and heterogeneous robots select their roles based on their position and capabilities. In market-based approach, robots can negotiate with other team-mates to collectively solve a set of tasks. Finally, in knowledge-based approach, also known as intentional coordination, MRTA is done through the modelling of team-mate capabilities, such as by observing the performance of other team-members performance with or without explicit communication.
 %%%%%%%%%%%%%%%%%%%%%
-\section{Communication in Self-regulated Biological Social Systems}
+\section{Communication in biological social systems}
 \label{bg:comm-biology}
 Communication plays a central role in self-regulated division of labour of biological societies.In this section communication among biological social insects are briefly reviewed within the context of self-regulated  division of labour.
 
@@ -236,7 +236,7 @@ The adjustment of this ratio enables individuals to gain a shorter fade-out time
 
 Active space has strong role in modulating the behaviours of ants. For example, when workers of {\em Acanthomyops claviger} ants produce alarm signal due to an attack by a rival or insect predator, workers sitting a few millimetres away begin to react within seconds. However those ants sitting a few centimetres away take a minute or longer to react. In many cases ants and other social insects exhibit modulatory communication within their active space where many individuals involve in many different tasks. For example, while retrieving the large prey, workers of {\em Aphaeonogerter} ants produce chirping sounds (known as stridulate) along with releasing poison gland pheromones. These sounds attract more workers and keep them within the vicinity of the dead prey  to protect it from their competitors. This communication amplification behaviour can increase the active space to a maximum distance of 2 meters.
 %%%%%%%%%%%%%%%%%%%%%
-\section{Communication in Self-regulated MRS}
+\section{Communication in MRS}
 Communication between robots is an  important issue in MRS \cite{Arkin1998}. This is not a prerequisite for the group to be functioning, but often useful component of MRS \cite{Mataric2007}. Let us now investigate why communication is important, how this is usually archived in MRS and related other issues.
 
 Researchers generally agree that communication in MRS usually provides several major benefits, such as:

@@ -1,19 +1,19 @@
-\chapter{Local Peer-to-Peer Communication Model}
+\chapter{Locality-based Decentralized Communication Model}
 %%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
+%\section{Introduction}
 
 %%%%%%%%%%%%%%%%%%%%%
-\section{Biological Motivation}
+\section{Biological motivations}
 
 %%%%%%%%%%%%%%%%%%%%%
-\section{Geometrical Analysis}
+\section{Geometrical analysis}
 
 %%%%%%%%%%%%%%%%%%%%%
-\section{General Characteristics}
+\section{General characteristics}
 Our communication model relies on the local P2P communications among robots. Here there is no centralized server to disseminate information but each robot can communicate to its nearby peers within a certain communication radius, $r_{comm}$. Here by $r_{comm}$, we assume that within this distance robots can exchange communication signals reliably without any significant loss of information. A robot $R_1$ is a {\em peer} of robot $R_2$, if spatial distance between $R_1$ and $R_2$ is less than its $r_{comm}$. As shown in Fig. \ref{fig:lcm}, local communication can also give robots similar task information as in centralized communication mode. It shows that it is not necessary for each robot to communicate with every other robot to get information on all tasks. Since robots can random walk and explore the environment we assume that for a reasonably high robot to space density, all task will be known to all robots after an initial exploration period. In order to update the urgency of a task, robots can estimate the number of robots working on a task in many ways: such as, by using their sensory perception (e.g., camera), by doing local P2P communication and so on. In Fig. \ref{fig:lcm} we have shown that robots exchange both task information and self status signals to peers.\\
 We characterize our communication model in terms of three fundamental issues: 1) message content ({\em what to communicate}) 2) communication frequency ({\em when to communicate}) and 3) target recipients ({\em with whom to communicate}) \cite{Gerkey}. In a typical MRS, message content can be categorized into two types: 1) state of each individual robot and 2) target task (goal) information \cite{Balch}. The latter can also be subdivided into two types: 1) an individual robot's target task information and 2) information of all available tasks found in the system. Regarding the first issue, our communication model is open. Robots can communicate with their peers with any kind of message. Our model addresses the last two issues very specifically. Robots communicate only when they meet their peers within a certain communication radius ($r_{comm}$). Although in case of an environment where robots move relatively faster the peer relationships can also be changed dynamically. But this can be manipulated by setting the signal frequency and robot to space density to somewhat reasonably higher value. In terms of target recipients, our model differs from a traditional publish/subscribe communication (PSC) model by introducing the concept of dynamic subscription. In a traditional PSC model, subscription of messages happens prior to the actual message transmission. In that case prior knowledge about the subjects of a system is necessary. But in our model this is not necessary as long as all robots uses a common addressing convention for naming their incoming signal channels. In this way, when a robot meets with another robot it can infer the address of this peer robot's channel name by using a shared rule. A robot is thus always listening to its own channel for receiving messages from its potential peers or message publishers. On the other side, upon recognizing a peer a robot sends a message to this particular peer. So here neither it is necessary to create any custom subject namespace (e.g., \cite{Gerkey}) nor we need to hard-code information in each robot controller about the knowledge of their potential peers {\em a priori}. Subscription is done automatically based on their respective $r_{comm}$.
 %%%%%%%%%%%%%%%%%%%%%
-\section{Implementation Algorithm}
+\section{Implementation algorithm}
 Our local communication model has three major aspects: 1) local sensing of peers (and optionally tasks), 2) listening to peer signals and 3) emitting signals for peers. Here we present a typical implementation.
 Let N be the set of robots. At time step q, a robot $i$ that can receive $h_{i,q}$ information by listening to its incoming channel $L_i$. Let M be the set of tasks. Each task $j$ has an associated information $H_j$. It encodes the necessary properties of tasks, such as their locations, urgencies etc. Each task $j$ also has a task perception radius $r_{task}$ such that if a robot comes within this radius at time step q it can perceive current value of $H_{j,q}$. Let at time step q, robot $i$ has its own task information $G_{i, q}$ that has been perceived and listened from its peers. Let $r_{comm}$ be the communication radius of each robot. Let at time step q, $P_{p, q}^{i}$ be a set of peers of $i$ that are within $r_{comm}^{i}$. Let $E_{p, q}^{i}$ be its active signal emission channels. Algorithm 1
 implements our proposed dynamic P2P communication.\\  
@@ -52,3 +52,14 @@ From Algorithm 1, we see that a robot controller is initialized with its specifi
 Initially a robot has no information about tasks. It has neither listened nor transmitted any information yet. Upon initialization, robot determines its current pose and evaluates a function $U(pose,~ r_{task})$ that helps it to perceive information of a nearby task. This is not strictly necessary as this information can be available from alternate sources. In second step, robot senses its nearby peers by evaluating $V(pose,~ r_{comm})$ and start filling the list of peers $P$ by their id. The signal exchange with a peer is denoted by a communication function $W(emitter,~listener)$. So by listening to a peer signal, it receives task information $h$ and aggregates this $h$ with its own task info $G$. In last step, robot emits its task information to its peers stored in $P$. Finally it erases all values of $P$ and repeat this loop. 
 %
 %%%%%%%%%%%%%%%%%%%%%
+\section{AFM under local communication system}
+%%%%%%%%%%%%%%%%%%%%%
+\section{Locality based decentralized communication experiments}
+\subsection{Experiment design}
+\subsection{Robot controller implementation}
+\subsection{Task perception assistant implementation}
+\subsection{Experiment setup: local communication mode}
+\subsection{Results}
+\subsection{Discussions}
+%%%%%%%%%%%%%%%%%%%%%
+\section{Summary and conclusions}

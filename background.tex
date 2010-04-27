@@ -3,54 +3,42 @@
 %%%%%%%%%%%%%%%%%%%%%
 \section{Definition of key issues and basic terms}
 \subsection{Self-regulation}
-Self-regulation (SR) primarily refers to the exercise of control over oneself to bring the self into line with preferred standards \cite{Baumeister+2007}. One of the most notable self-regulatory process is the human body's homoeostatic process where the human body's inner process seeks to return to its regular temperature when it gets overheated or chilled. Baumeister et al. has referred self-regulation to goal-directed behaviour or feedback loops, whereas self-control may be associated with conscious impulse control. Since regulation carries  the meaning of  control with a hint of regularity.  
+Animals and flying beings, living on or above earth, form social communities like human society \cite{SIHQ1995}. In recent years, the biological study of social insects and other animals reveals 
+us that individuals of these self-organized  societies can solve various complex and large everyday-problems with a few simple behavioural rules relying on their minimum sensing and communication abilities \cite{Garnier+2007,Camazine+2001}. Some common tasks of these biological societies include: dynamic foraging, building amazing nest structures, division of labour among workers and so forth. These tasks are done by colonies,  ranging from a few animals to thousands or millions of individuals, that exhibit surprising efficiency in their tasks with both robustness and flexibility. Today these findings have inspired scientists and engineers to use this knowledge of biological self-organization in developing solutions for various problems of our man-made artificial systems, such as traffic routing in telecommunication and vehicle networks, design control algorithms for groups of autonomous robots and so forth.
 
-SR is not only the regulation of the self, but also it carries the meaning of regulation by the self (consciously and/or unconsciously). In psychology, SR denotes the strenuous actions to resist temptation or to overcome anxiety.  SR is also divided into two categories: 1) conscious and 2) unconscious SR.  Conscious SR puts emphasis on conscious, deliberate efforts in self-regulation. On the other hand, unconscious self-regulation refers to the automatic self-regulatory process  that is although not nearly as labour intensive, but operate in harmony with unpredictable, unfolding events in the environment, using and transforming the available informational input in ways that help to attain an activated goal.
+\begin{figure}[htp]
+%\begin{minipage}[t]{0.68\linewidth}
+\centering
+\includegraphics[height=8cm, angle=0]
+{./images/dia-files/self-org-1}
+%figure caption is below the figur
+\caption{ Self-organization viewed from four (A-D) inseparable perspectives}
+\label{fig:self-org-1} % Give a unique label
+%\end{minipage}
+\hspace{0.5cm}
+%\begin{minipage}[t]{0.28\linewidth}
+\centering
+\includegraphics[height=5cm, angle=0]{./images/dia-files/self-org-agent}
+\caption{ Three major axes of a self-regulated agent}
+\label{fig:ccm} % Give a unique label
+%\end{minipage}
+\end{figure}
+Self-organization in biological and  other systems are often characterized in terms of four major ingredients: 1) Positive feedback, 2) Negative feedback, 3) Presence of multiple interactions among individuals and their environment and 4) Amplification of fluctuations  (random walks, errors, random task-switching etc.) \cite{Bonabeau+1999,Camazine+2001}. As illustrated in Fig. \ref{fig:self-org-1} an external observer can recognize a self-organized system by observing the individual interactions of that system from these four perspectives. The first perspective is a positive feedback or amplification that results from the execution of simple behavioural ``rules of thumb''. For example, recruitment to a food source through trail laying and trail following in some ants  is a positive feedback that creates the conditions for the emergence of trail network at the global ( or an outside observer) level. The second perspective is negative feedback that counterbalances positive feedback usually to stabilize a collective patterns, e.g., crowding at the food sources (saturation), competition between paths to food sources etc. The third perspective is the presence of multiple direct peer-to-peer or indirect stigmergic (e.g., pheromone dropping in ants) interactions. The former is the main concern of this thesis and is discussed latter in detail. Finally, the fourth  perspective is the amplification of fluctuations that comes from the stochastic events. For example errors in trail following of some ants may lead some foragers to get lost and later to find new, unexploited food sources and then recruit others. 
+%\begin{figure}
+%\centering
+%\includegraphics[height=6cm]{..images/dia-files/self-org-1}
+%% figure caption is below the figure
+%%\vspace*{0.20cm}
+%\caption{Self-organization viewed from four inseparable perspectives}
+%\label{fig:self-org-1} % Give a unique label
+%\end{figure}
+In a self-organized system an individual agent may have limited cognitive, sensing and communication capabilities, but they are collectively capable of solving complex and large problems.  Since the discovery of these collective behavioural patterns of self-organized  societies scientists observed modulation or adaptation of behaviours in the individual level. For example, in order to prevent a life-threatening humidity-drop in the colony, cockroaches maintain a locally sustainable humidity level by increasing their tendency to aggregate, i.e., by regulating their individual aggregating behaviours \cite{Garnier+2007}. As shown in Fig. \ref{self-org-agent} this  self-regulation (SR) of an individual agent is depicted through a triangle where it's base-arm of simple behavioural rules of thumb (e.g., intense aggregation in low humidity in the previous example) is supported by two side-arms: local communication and local sensing. This local sensing is sometimes also referred to as sensing or information gathering from the work in progress (e.g., stigmergy) and the local communication mentioned here is directly linked with peer-to-peer (P2P) communication with neighbours  \cite{Camazine+2001}.
 
-The concepts of SR is also commonly used in cybernetic theory where SR in inanimate mechanisms shows that they can regulate themselves by making adjustments according to programmed goals or set standards. A common example of this kind can be found in a thermostat that controls a heating  and cooling system to maintain a desired temperature in a room. In that sense, SR covers both aspects of monitoring ones own state in relation to the goal and making adjustments with respect to the changes found. 
+SR has been studied in many other branches of knowledge. In most places of literature, SR refers to the exercise of control over oneself to bring the self into line with preferred standards \cite{Baumeister+2007}. One of the most notable self-regulatory process is the human body's homoeostatic process where the human body's inner process seeks to return to its regular temperature when it gets overheated or chilled. Baumeister et al. has referred self-regulation to goal-directed behaviour or feedback loops, whereas self-control may be associated with conscious impulse control.  In psychology, SR denotes the strenuous actions to resist temptation or to overcome anxiety. SR is also divided into two categories: 1) conscious and 2) unconscious SR. Conscious SR puts emphasis on conscious, deliberate efforts in self-regulation. On the other hand, unconscious self-regulation refers to the automatic self-regulatory process that is although not nearly as labour intensive, but operate in harmony with unpredictable, unfolding events in the environment, using and transforming the available informational input in ways that help to attain an activated goal.
 
-In physics, chemistry, biology and some other branches of natural sciences, the concept of SR is centered around the study of self-organizing individuals. The term self-organization (SO) has a broader and somewhat different meaning in different places of literature. 
-%!!!!
-For example, Bonabeau et al. \cite{Bonabeau+1999} has summarized the ingredients and properties of  self-organization modelling after the social insects. The four ingredients of self-organization are:
-positive feedback or amplification, 
-negative feedback, 
-reliance on amplification of fluctuations ( randomness of  tasks, error etc.) and 
-reliance on multiple interactions. 
-In many cases, the concepts of self-organization and self-regulation share many properties, especially when they are considered in the context of division of labor, formation of emergent structures and behaviours etc. For example,  SO is observed in ant colonies and other similar biological species. In the process of SO, we can find self-regulating properties of the insects that give rise to the spatio-temporal  structures, or nests, existence of multiple stable states and bifurcation with respect to the dynamic changes of the environment. In the process of SO, we can find self-regulating properties of the insects that give rise to the spatio-temporal structures, or nests, existence of multiple stable states and bifurcation with respect to the dynamic changes of the environment.
-%% In SECTION <>, a more closer look on SO has been given to find out interesting phenomena of emergent self-regulation in nature.   
+The concepts of SR is also commonly used in cybernetic theory where SR in inanimate mechanisms shows that they can regulate themselves by making adjustments according to programmed goals or set standards. A common example of this kind can be found in a thermostat that controls a heating and cooling system to maintain a desired temperature in a room. In physics, chemistry, biology and some other branches of natural sciences, the concept of SR is centred around the study of self-organizing individuals. SR has also been studied in the context of human social systems where it originates from the division of social labor that creates SO process that has self-regulating effects \cite{Kppers+1990}. Two types of SR have been reported in many places of literature of sociology: 1) SR from SO and 2) SR from activities of components in a heterarchical organization. It is interesting to note that self-regulation in biological species provides the similar evidences of bottom-up approach of self-regulation of heterarchical organization through interaction of individuals or the absence of strict hierarchy {Beer1981}. 
 
-SR has also been studied in the context of social systems where it originates from the division of social labor that creates SO process that has self-regulating effects \cite{Kppers+1990}. Two types of SR have been reported in many places of literature of sociology: 1) SR from SO and 2) SR from activities of components in a heterarchical organization. It is interesting to note that self-regulation in biological species provides the similar evidences of bottom-up approach of self-regulation of heterarchical organization through interaction of individuals or the absence of strict hierarchy. In the study of sustainable or viable system, self-regulation gets much attention in organizational cybernetics. Many researchers are trying to put Stafford Beer's viable system model \cite{Beer1981} into social organizations for a bottom-up self regulation of an organization.  
-%% SECTION <> focuses on self-regulation in human social systems.
-It is interesting to note that self-regulation in biological species provides similar evidences of bottom-up approach of self-regulation of heterarchical organization through interaction of individuals in the absence of or in parallel with strict hierarchy. 
-
-From the above discussion, it has been shown that the term self-regulation carries a  wide range of meaning in different branches of knowledge. In psychology and cognitive neuroscience point of view, self-regulation is discussed in an individual's perspective whereas, in biological and social contexts the SR is discussed in a context of group of individuals or the society as a whole.  From this initial study, it can be said that  to study emergent SR,  the latter context is more appropriate where emergence is evident.  For a better understanding of emergent self-regulation, we need to look into the process of emergence from the view point of interactions of large individuals in a society.  
-% SECTION <> deals with this topic.  
-
-%\subsection{Emergence}
-%In order to understand emergent self-regulation, it is necessary to find out how emergence and emergent properties are described in the literature. According to Encyclopedia Britannica emergence is the rise of a system that cannot be predicted or explained from antecedent conditions. Emergence occurs when interactions among objects at one level gives rise to different types of objects at another level. More precisely, a phenomenon is emergent if it requires new categories to describe the behavior of the underlying components \cite{Andriani+2004}, \cite{Kppers+1990}. 
-%
-%Emergence is the central concept to the theory of complex systems which consists of a large number of elements, non-linear dynamic interactions among elements and their environment, feedback loops etc. Paul Cilliers \cite{Andriani+2004} summarized the properties of  complex systems as follows:
-%Complex systems consist of large number of elements such that a system of differential equation becomes impractical.
-%The elements have to interact and this interactions must be dynamic, changing with time. 
-%The interaction is fairly rich so that elements are influenced by each other. These interactions are non-linear where small causes can have large results and vice versa.
-%The interactions usually have a fairly short range, i.e. Information is received primarily from immediate neighbors. Long range interaction is also possible which can be modulated along the way.
-%There are loops in the interactions. The effect of any activity can feed back onto itself, sometimes directly, sometimes after a number of intervening stages. The feedback can be positive (enhancing, stimulating) or negative (detracting, inhibiting).
-%Complex systems are usually open systems, i.e. they interact with their environment.
-%Complex systems operate under conditions far from equilibrium. There has to be constant flow of  energy to maintain the organization of the system and to ensure its survival.
-%Complex systems have histories. No only do they evolve through time, but also their past is co-responsible for their present behavior.
-%Each element in the system is ignorant of the behavior of the system as a whole, it responds only to the information that is available to it locally. The complexity emerges as resultant of the patterns of interaction between the elements.
-
-
-%The common characteristics of emergence in complex systems \cite{Corning2002} are typically described as follows: 
-%\begin{enumerate}
-%\item radical novelty or features not previously observed in systems; 
-%\item coherence or correlation or meaning integrated wholes that maintain themselves over some period of time; 
-%\item  A global or macro "level" i.e. there is some property of "wholeness"; 
-%\item it is the product of a dynamical process that evolves; and 
-%\item it can be perceived.  
-%\end{enumerate}
-
-%Therefore, the concepts of emergent SR can be referred to the bottom-up or decentralized control by which large number of individuals perform robust SO through local non-linear interactions that give rise to the novel and coherent structures, patterns and properties during the SO process. 
+From the above discussion, we see that the term {\em self-regulation} carries a wide range of meaning in different branches of knowledge. In psychology and cognitive neuroscience point of view, self-regulation is discussed in an individual's perspective whereas, in biological and social contexts the SR is discussed in a context of a group of individuals or the society as a whole. In  this thesis, the latter context is more appropriate where  SR covers both aspects of monitoring ones own state and environmental changes in relation to the communal goal and thus making adjustments of self behaviours with respect to the changes found. 
 
 \subsection{Division of labour or task-allocation}
 Encyclopaedia Britannica serves the definition of division of labour as the separation of a work process into a number of tasks, with each task performed by a separate person or group of persons. Originated from economics and sociology the term division of labour is widely used in many branches of knowledge. As mentioned by Adam Smith (1776).

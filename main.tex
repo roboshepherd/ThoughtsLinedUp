@@ -1,8 +1,8 @@
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,11pt]{report}
 \usepackage{
   fancyhdr,lscape,rotating,float,longtable,
   epsfig,program,tabularx,graphicx,hyperref,url,harvard,multicol,
-  algorithmicx,algpseudocode
+  algorithmicx,algpseudocode,times
 }
 %\usepackage[Sonny]{fncychap}
 
@@ -10,13 +10,13 @@
 		%% SETUP PDF OPTIONS FOR BOOKMARKS AND URLS
 		%%
 		%
-		%		\usepackage[ps2pdf,                %%% hyper-references for ps2pdf
-		%		bookmarks=true,%                   %%% generate bookmarks ...
-		%		bookmarksnumbered=true,%           %%% ... with numbers
-		%		hypertexnames=false,%              %%% needed for correct links to figures !!!
-		%		breaklinks=true,%                  %%% breaks lines, but links are very small
-		%		linkbordercolor={}, %{0 0 1},%          %%% blue frames around links
-		%		pdfborder={0 0 112.0}]{hyperref}
+%		\usepackage[ps2pdf,                %%% hyper-references for ps2pdf
+%		bookmarks=true,%                   %%% generate bookmarks ...
+%		bookmarksnumbered=true,%           %%% ... with numbers
+%		hypertexnames=false,%              %%% needed for correct links to figures !!!
+%		breaklinks=true,%                  %%% breaks lines, but links are very small
+%		linkbordercolor={}, %{0 0 1},%          %%% blue frames around links
+%		pdfborder={0 0 112.0}]{hyperref}
 		\hypersetup{
 		%
 		% Set up the PDF information fields
@@ -33,7 +33,7 @@
 % Some General Shortcut Commands
 %
 
-\newcommand{\sdp}{\setlength{\baselineskip}{16truept}} %double spacing
+\newcommand{\sdp}{\setlength{\baselineskip}{18truept}} %double spacing
 \newcommand{\dsp}{\setlength{\baselineskip}{24truept}}  %double spacing
 \newcommand{\ssp}{\setlength{\baselineskip}{13.6truept}} %single spacing
 \newcommand{\al}{\mbox{$\alpha$\,--~}}
@@ -108,7 +108,7 @@
 % Revert to one and a half line spacing
 %
 
-%\newpage
+\newpage
 \sdp
 
 %

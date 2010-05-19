@@ -1,36 +1,129 @@
 \chapter{Experimental Tools}
 %%%%%%%%%%%%%%%%%%%%%
+\section{General Methodological Issues}
+\subsection{Design of MRS}
+Before setting up a MRS platform for doing any practical research, one needs to decide the answers of  a few basic questions. 
+Firstly, what  is the target application domain of this MRS ? Some MRS researches may try to implement and verify the performance of an algorithm inspired from biological social systems, while others may not. Some MRS may focus to solve real-life problems like emergency search and rescue in a disaster site, while others may concentrate on increasing productivity of a manufacturing shop-floor.  The selection of this application domain will most likely determine the tasks to be done by individual or group of robots. This will lead to select suitable robots for doing that particular tasks. These tasks and robot group characteristics can be described by using any existing MRS taxonomies, e.g.,  taxonomies provided by   \cite{Gerkey+2004} and \cite{Dudek+1996} are widely used for this purpose. 
+
+Secondly,  what are the organizing principles (i.e., control architecture) of  the robot group in question ? From the task requirements and robot capabilities,  one need to fit the MRS into a suitable paradigm of architecture and control. In Sec. \ref{bg:mrs} we reviewed three most common architectural paradigms of MRSs: classic knowledge-based, traditional market-based/role-based and bio-inspired swarm robotic paradigm. Upon selecting a paradigm, most important characteristics of target MRS: e.g., design of individual robot controller, robot-robot and robot-environment communication and coordination patterns etc. will be revealed.
+
+Thirdly, what enabling tools and technologies (hardware and software) are required to function the whole robot group autonomously ? Whatever is the architectural design of a MRS, we need to ensure that whole group can maintain the necessary level of task performance through the desired interaction and communication strategies. For reducing cost and other practical reasons, individuals robots may not have the capabilities to localize itself without the help of an external GPS or camera etc. The enabling technologies will make-up this individual robot's short-comings. Moreover, based-on a selected communication technology we need to set-up necessary robot-robot and robot-environment inter-networking infrastructure, e.g., network switches, gateways etc.
+
+Finally, what extra hardware and software are necessary to observe and record experiments  and its data for further analysis and improvement ? This extra system becomes an essential part of the target MRS. 
+
+We intend to design our target MRS for emulating multi-robot manufacturing scenario where robots do some shop-tasks in different machines. The notion of tasks has been kept very simple as our robots are not  capable of doing many high-level practical tasks e.g. gripping or recognizing objects, carrying  loads etc. Many researchers use additional hardware modules with their robots (e.g., gripper to collect pucks or any small objects from floors). We have not put any effort for emulating that kind of trivial activities, rather we concentrated on the performance of our algorithm, e.g. in task-allocation, from high-level perspectives. Doing real manufacturing tasks has been kept as a future research issue. Thus by ``doing a task'' our robots usually perform two functions: 1) navigate to a fixed task-location in the experiment arena (hereafter called {\em navigation}), and 2) they do so by avoiding any dynamic obstacle {hereafter called {\em obstacle avoidance}}.  Depending on the time-out value of doing a task, a robot can wait at task-location if it arrives earlier or may switch to a different task and change direction on-the-fly. These symbolic tasks can be mapped to any suitable real task in multi-robot manufacturing domain, such as, material handling or attending a machine for various production or maintenance jobs e.g., welding different machine parts, cleaning or doing maintenance work of a machine etc.
+
+Based on the task-requirements we have selected a simple miniature mobile robot, Epuck, that can do the above navigation tasks  avoiding any dynamic or static obstacle. According to the classification of \cite{Dudek+1996} our system can be described as:\\
+\texttt{SIZE-INF:} The robot team size is larger than  2 robots and the number of the tasks. Actually we have kept the robot team size as multiple times larger than the number of tasks.\\
+\texttt{COM-INF:} Robots can communicate with any other robot.\\
+\texttt{TOP-ADD:} Every robot can communicate with any other robot by name or address (link path). Naming of robot's communication link path is assumed to follow any simple convention, e.g., /robot1, /robot2 etc.\\
+\texttt{BAND-INF:} Every robot can communicate with other robot with as much bandwidth as necessary. Since our robots need to exchange simple messages we ignore this bandwidth issue.\\
+\texttt{ARR-DYN:} Robot can change the arrangement dynamically.\\
+\texttt{CMP-HOM:} Each robot is initially identical in both hardware and software, but they can become different gradually by learning different tasks by different degrees (in software).
+
+We have closely followed the swarm robotic principles for controlling the group. Although we do not impose any necessity for local communication and interaction. The details of our control architecture has been described in Sec. {expt-tools:arch}. Since our robots can not localize themselves by their own hardware we  provided them their instant position and orientation (hereafter called {\em pose}) data information from a multi-robot tracking system (MRTS). Sec. \ref{expt-tools:mrts} describes about our tracking system.  This system also helps us in recording and logging  individual robot's task performance and pose information. We use Bluetooth communication technology, built-in with our E-puck robots, for host PC to robot communication. Robot can also communicate with each-other physically over Bluetooth. However, we do not use that mode of communication. Instead, inter-robot communication is done in host PC's virtual inter-process communication channel. This has been illustrated in Sec. \ref{expt-tools:mrts}.
+%%
+\subsection{Real robot experiments -- No simulation}
+Traditionally robotic researchers use software simulation to validate their model before stepping into real-robot experiments. Simulating a model by software code is easier and much faster compared to real-world experiments. It does not require any sophisticated hardware setup or time-consuming debugging. However, in modern times the abundance of real hardware systems and tools encourage researchers to test their work in real systems from the inception of their models. Here we briefly summarize the reasons why we do not follow the traditional  ``simulation first'' approach. Instead of comparing both approaches extensively, we present our rationale behind doing all our experiments in real hardware.
+ 
+Firstly, contemporary  state-of-the-art agent-based simulation packages are essentially discrete-event simulators that execute models serially in a computer's CPU \cite{Lysenko+2008}. However in real-world systems agents act in parallel and give us the ``what you see is what you act upon''  environment. In simulations that might not be case.
+
+Secondly, the robot-robot and robot-environment interactions are complex and completely unpredictable than their simulations. Unexpected failures and inter-agent interactions will not occur in simulations that can either cause positive or negative effects in experimental results \cite{Krieger+2000}.
+
+Thirdly, it is not easy to faithfully model communication behaviours of agents in simulations. In our case, we use short-range Bluetooth communication system which is subject to dynamic noise and limited bandwidth conditions. 
+
+Fourthly, the dynamic environment conditions, e.g., increased physical interferences of larger team of robots, can also influence the experiment's outcome which is obvious in simulations.
+
+Finally, we believe that the algorithm tested in real-robots can give us strong confidence for implementing in real-systems and later on, this can also be extended or verified in simulations. However, conversely speaking, algorithm implemented in simulation has no warranty that this will work practically with robots.
+%\subsection{Phases of Experimental infrastructure set-up}
+%\subsection{Issues in  Multi-robot Tracking and Localization}
+%%%%%%%%%%%%%%%%%%%%%
 \section{Hardware}
 \subsection{E-puck robots}
+We use E-puck \footnote{www.e-puck.org} robots developed by Swiss Federal Institute of Technology at Lausanne (EPFL) and now produced by Cyberbotics \footnote{http://www.cyberbotics.com} and some other companies. The upside of using E-puck is: it is equipped with most common sensing hardware, relatively simple in design, low cost, desktop-sized and offered under open hardware/software licensing terms. So any further modification in hardware/software is not limited to any proprietary restriction. However, the  downside of using E-puck robot  is:  it's  processor is based on dsPIC micro-controller (lack of standard programming tool-chains), limited amount of memory (lack of on-board camera image processing option) and default  communication module is based-on Bluetooth (limited bandwidth and manual link configuration). So the programming of E-puck can be done through C language and uploaded from PC to robot through wire: $I^{2}C$ and RS232 channel or, through Bluetooth wireless communication channel. This can be tedious and time-consuming if  one needs to change the robot controller frequently. However, we intend to keep the robot's functionalities very simple and limited to two main tasks: avoiding obstacles and navigating from one place to another. Thus the default hardware of E-puck seems enough for our experiments. 
+
+\begin{table}
+\caption{E-puck robot hardware}
+\label{table:epuck}
+\begin{center}
+\begin{tabular}{|l||l|}
+\hline \textbf{Feature} & \textbf{Description}\\
+\hline Diameter & about 7 cm\\
+\hline Motion & max. 15 cm/s speed (2 stepper motors)\\
+\hline Battery power & about 3 hours  (5Wh LiION rechargeable battery)\\
+\hline Processor & 16 bits micro-controller with DSP core,\\ & Microchip dsPIC 30F6014A at 60MHz (about 15 MIPS)\\
+\hline Memory & RAM: 8 KB; FLASH: 144 KB \\
+\hline IR sensors & 8 IR sensors measuring ambient light and \\ &  proximity of obstacles in a range of 4 cm\\
+\hline LEDs & 8 red LEDs on a ring and 1 green LED in the body \\
+\hline Camera & colour camera (max. resolution of 640x480) \\
+\hline Sound & 3 omni-directional microphones and\\  & on-board speaker capable of playing WAV or tone sounds\\
+\hline Bluetooth & for robot-computer and robot-robot wireless communication\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Table \ref{table:epuck} lists the interesting hardware information about an E-puck robot. The 7 cm diameter desktop-sized robot is easy to handle. It's speed and power autonomy is also reasonable compared with similar miniature robots such as Khepera and its peers \cite{Mondada+2009}.  The IR sensors provide an excellent capabilities for obstacle avoidance task. Although we do not make use of the tiny camera of E-puck, the combination of sound and LEDs can be very effective to detect low-battery power or any other interesting event. By default, E-puck is shipped with a basic firmware that is capable of demonstrating a set of it's basic functionalities. Using the supplied Bluetooth serial communication protocol (hereafter {\em BTCom protocol}), it is possible to establish serial communication link between host PC and robot firmware at a maximum possible speed of 115 kbps.  Using this protocol, one can remotely send command to  robot, e.g., set the speed of the motors, turn on/off LEDs and read the sensor values, e.g., read the IR values or capture image of the camera etc.
+
 \subsection{Overhead GigE camera}
-\subsection{Server PC}
-\subsection{Blutooth adapters}
+In order to set-up a multi-robot tracking system (MRTS), we have selected a state-of-the-art GE4900C colour camera from Prosilica \footnote{http://www.prosilica.com}. The Prosilica GE-Series camera,  are very compact, high-performance machine vision cameras with Gigabit Ethernet interface. This has following main features:
+
+Type: Charge-coupled device (CCD) Progressive
+CCD Sensor: Kodak KAI-16000
+Size (L x W x H): 66x66x110  (in mm)
+Resolution: 16 Megapixels (4872x3248) 
+Frame rate:  Max. 3 frames per second  at full resolution
+Interface: Gigabit Ethernet (supports cable lengths up to 100 meters)
+Image output: Bayer 8/12 bit
+
+CCD technology convert light into electric charge and process it into electronic signals. Unlike in a complementary metal oxide semiconductor (CMOS) sensor,  CCD provides a very sophisticated image capturing mechanism that gives high uniformity in image pixels. The high resolution enables us to track a relatively large area e.g., 4m X 3m. In this case, 1 pixel dot in image roughly can represent approximately 1mm X 1mm area. Although the frame rate may seem low initially,  but this small frame-rate gives optimum image processing performance with large image sizes, e.g. 16 MB/frame. Prosilica offers both Windows and Linux SDK for image capture and other necessary operations. Using this SDK, we have converted default Bayer8 format image into RGB format  image and used that in our tracking software.
+%%
+\subsection{Server PC Configuration}
+We use Dell  Precision T5400 server-grade PC with the following main technical specifications:
+Processor: Quad-Core Intel Xeon Processor up to 3.33GHz 
+(1333MHz FSB, 64-bit, 2X 6MB L2 cache)
+RAM: 32GB (4GB ECC DIMMS x 8 slots)
+Graphics Card: NVIDIA Quadro FX 570 (Memory: 256MB)
+HDD:  SATA 3.0Gb/s 7200RPM  2 x 250 GB
+OS: Ubuntu Linux 9.10 64bit
+
+This high performance PC has supported us implementing our algorithms without having any fear of running out of RAM.  Since the maximum supported RAM of a 32 bit PC architecture is limited to 2 GB we select Ubuntu Linux 9.10 64bit OS.  As an open-source OS,  Ubuntu offers excellent reliability, performance and community support. In order to enable Bluetooth communication in our host PC, we have added 8 USB-Bluetooth adapters (Belkin F8T017) through a suitable USB-Bluetooth hub. 
 %%%%%%%%%%%%%%%%%%%%%
+\section{Enabling Software Tools and Frameworks}
+\subsection{SwisTrack: A Multi-robot Tracking System}
+\label{expt-tools:mrts}
+\subsection{D-Bus: An Inter-Process Communication Protocol}
+\label{expt-tools:dbus}
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{BTCom/Myro: E-puck Robot Control Programs}
+\label{expt-tools:epuck-sw}
+%\subsection{E-puck base library} 
+%\subsection{Bluetooth communication (BTCom) interface}
+%\subsection{Myro: Python wrapper for E-puck library}
+%\subsection{E-puck navigation and obstacle avoidance}
+%\subsection{E-puck battery low voltage detection}
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bluez: Linux's Bluetooth Communication Stack}
+\label{expt-tools:bluez}
+%\subsection{Bluez}
+%\subsection{Link configuration and management}
+%%%%%%%%%%%%%%%%%%%%%
+\subsection{Python's Multiprocessing: Multi-Threading Made-easy}
+\label{expt-tools:python}
+%\subsection{Bluez}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multi-robot control architecture}
+\label{expt-tools:arch}
 \subsection{Three-layered event-driven hybrid control}
 \subsection{D-Bus inter-process communication}
 \subsection{Robot controller client}
 \subsection{Task perception assistant}
 \subsection{Integration with Python multiprocessing}
 \subsection{Distributed deployment of software components}
+
 %%%%%%%%%%%%%%%%%%%%%
-\section{Multi-robot tracking platform}
-\subsection{SwisTrack}
-\subsection{D-Bus integration}
-%%%%%%%%%%%%%%%%%%%%%
-\section{E-puck low-level control programs}
-\subsection{E-puck base library} 
-\subsection{Bluetooth communication (BTCom) interface}
-\subsection{Myro: Python wrapper for E-puck library}
-\subsection{E-puck navigation and obstacle avoidance}
-\subsection{E-puck battery low voltage detection}
-%%%%%%%%%%%%%%%%%%%%%
-\section{Bluetooth communication stack}
-\subsection{Bluez}
-\subsection{Link configuration and management}
-%%%%%%%%%%%%%%%%%%%%%
-\section{Other software tools and frameworks}
-\subsection{Player/Stage framework}
-\subsection{Webots simulator}
-\subsection{Boost C++ library}
-\subsection{Microchip MPLAB environment}
+%\section{Other software tools and frameworks}
+%\subsection{Player/Stage framework}
+%\subsection{Webots simulator}
+%\subsection{Boost C++ library}
+%\subsection{Microchip MPLAB environment}

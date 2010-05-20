@@ -68,25 +68,43 @@ Table \ref{table:epuck} lists the interesting hardware information about an E-pu
 \subsection{Overhead GigE camera}
 In order to set-up a multi-robot tracking system (MRTS), we have selected a state-of-the-art GE4900C colour camera from Prosilica \footnote{http://www.prosilica.com}. The Prosilica GE-Series camera,  are very compact, high-performance machine vision cameras with Gigabit Ethernet interface. This has following main features:
 
-Type: Charge-coupled device (CCD) Progressive
-CCD Sensor: Kodak KAI-16000
-Size (L x W x H): 66x66x110  (in mm)
-Resolution: 16 Megapixels (4872x3248) 
-Frame rate:  Max. 3 frames per second  at full resolution
-Interface: Gigabit Ethernet (supports cable lengths up to 100 meters)
-Image output: Bayer 8/12 bit
+\begin{table}
+\caption{Features of Prosilica GigE Camera GE4900C}
+\label{table:ge4900c}
+\begin{center}
+\begin{tabular}{|l||l|}
+\hline \textbf{Feature} & \textbf{Description}\\
+\hline Type & Charge-coupled device (CCD) Progressive\\
+\hline CCD Sensor & Kodak KAI-16000\\
+\hline Size (L x W x H) & 66x66x110  (in mm)\\
+\hline Resolution & 16 Megapixels (4872x3248)\\ 
+\hline Frame rate  & Max. 3 frames per second  at full resolution\\
+\hline Interface & Gigabit Ethernet (cable length up to 100 meters)\\
+\hline Image output & Bayer 8/12 bit\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
 
 CCD technology convert light into electric charge and process it into electronic signals. Unlike in a complementary metal oxide semiconductor (CMOS) sensor,  CCD provides a very sophisticated image capturing mechanism that gives high uniformity in image pixels. The high resolution enables us to track a relatively large area e.g., 4m X 3m. In this case, 1 pixel dot in image roughly can represent approximately 1mm X 1mm area. Although the frame rate may seem low initially,  but this small frame-rate gives optimum image processing performance with large image sizes, e.g. 16 MB/frame. Prosilica offers both Windows and Linux SDK for image capture and other necessary operations. Using this SDK, we have converted default Bayer8 format image into RGB format  image and used that in our tracking software.
 %%
 \subsection{Server PC Configuration}
 We use Dell  Precision T5400 server-grade PC with the following main technical specifications:
-Processor: Quad-Core Intel Xeon Processor up to 3.33GHz 
-(1333MHz FSB, 64-bit, 2X 6MB L2 cache)
-RAM: 32GB (4GB ECC DIMMS x 8 slots)
-Graphics Card: NVIDIA Quadro FX 570 (Memory: 256MB)
-HDD:  SATA 3.0Gb/s 7200RPM  2 x 250 GB
-OS: Ubuntu Linux 9.10 64bit
-
+\begin{table}
+\caption{Server PC Configuration}
+\label{table:server-pc}
+\begin{center}
+\begin{tabular}{|l||l|}
+\hline Processor & Quad-Core Intel Xeon Processor up to 3.33GHz\\ 
+& (1333MHz FSB, 64-bit, 2X 6MB L2 cache)\\
+\hline RAM & 32GB (4GB ECC DIMMS x 8 slots)\\
+\hline Graphics Card & NVIDIA Quadro FX 570 (Memory: 256MB)\\
+\hline Hard-disk &  SATA 3.0Gb/s 7200RPM  2 x 250 GB\\
+\hline OS & Ubuntu Linux 9.10 64bit\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
 This high performance PC has supported us implementing our algorithms without having any fear of running out of RAM.  Since the maximum supported RAM of a 32 bit PC architecture is limited to 2 GB we select Ubuntu Linux 9.10 64bit OS.  As an open-source OS,  Ubuntu offers excellent reliability, performance and community support. In order to enable Bluetooth communication in our host PC, we have added 8 USB-Bluetooth adapters (Belkin F8T017) through a suitable USB-Bluetooth hub. 
 %%%%%%%%%%%%%%%%%%%%%
 \section{Enabling Software Tools and Frameworks}

@@ -1,6 +1,6 @@
 \chapter{Experimental Tools}
 %%%%%%%%%%%%%%%%%%%%%
-\section{General Methodological Issues}
+\section{General methodological issues}
 \subsection{Design of MRS}
 Before setting up a MRS platform for doing any practical research, one needs to decide the answers of  a few basic questions. 
 Firstly, what  is the target application domain of this MRS ? Some MRS researches may try to implement and verify the performance of an algorithm inspired from biological social systems, while others may not. Some MRS may focus to solve real-life problems like emergency search and rescue in a disaster site, while others may concentrate on increasing productivity of a manufacturing shop-floor.  The selection of this application domain will most likely determine the tasks to be done by individual or group of robots. This will lead to select suitable robots for doing that particular tasks. These tasks and robot group characteristics can be described by using any existing MRS taxonomies, e.g.,  taxonomies provided by   \cite{Gerkey+2004} and \cite{Dudek+1996} are widely used for this purpose. 
@@ -23,7 +23,7 @@ Based on the task-requirements we have selected a simple miniature mobile robot,
 
 We have closely followed the swarm robotic principles for controlling the group. Although we do not impose any necessity for local communication and interaction. The details of our control architecture has been described in Sec. {expt-tools:arch}. Since our robots can not localize themselves by their own hardware we  provided them their instant position and orientation (hereafter called {\em pose}) data information from a multi-robot tracking system (MRTS). Sec. \ref{expt-tools:mrts} describes about our tracking system.  This system also helps us in recording and logging  individual robot's task performance and pose information. We use Bluetooth communication technology, built-in with our E-puck robots, for host PC to robot communication. Robot can also communicate with each-other physically over Bluetooth. However, we do not use that mode of communication. Instead, inter-robot communication is done in host PC's virtual inter-process communication channel. This has been illustrated in Sec. \ref{expt-tools:mrts}.
 %%
-\subsection{Real robot experiments -- No simulation}
+\subsection{Real robot experiments vs. simulation}
 Traditionally robotic researchers use software simulation to validate their model before stepping into real-robot experiments. Simulating a model by software code is easier and much faster compared to real-world experiments. It does not require any sophisticated hardware setup or time-consuming debugging. However, in modern times the abundance of real hardware systems and tools encourage researchers to test their work in real systems from the inception of their models. Here we briefly summarize the reasons why we do not follow the traditional  ``simulation first'' approach. Instead of comparing both approaches extensively, we present our rationale behind doing all our experiments in real hardware.
  
 Firstly, contemporary  state-of-the-art agent-based simulation packages are essentially discrete-event simulators that execute models serially in a computer's CPU \cite{Lysenko+2008}. However in real-world systems agents act in parallel and give us the ``what you see is what you act upon''  environment. In simulations that might not be case.
@@ -88,7 +88,7 @@ In order to set-up a multi-robot tracking system (MRTS), we have selected a stat
 
 CCD technology convert light into electric charge and process it into electronic signals. Unlike in a complementary metal oxide semiconductor (CMOS) sensor,  CCD provides a very sophisticated image capturing mechanism that gives high uniformity in image pixels. The high resolution enables us to track a relatively large area e.g., 4m X 3m. In this case, 1 pixel dot in image roughly can represent approximately 1mm X 1mm area. Although the frame rate may seem low initially,  but this small frame-rate gives optimum image processing performance with large image sizes, e.g. 16 MB/frame. Prosilica offers both Windows and Linux SDK for image capture and other necessary operations. Using this SDK, we have converted default Bayer8 format image into RGB format  image and used that in our tracking software.
 %%
-\subsection{Server PC Configuration}
+\subsection{Server PC configuration}
 We use Dell  Precision T5400 server-grade PC with the following main technical specifications:
 \begin{table}
 \caption{Server PC Configuration}
@@ -107,7 +107,7 @@ We use Dell  Precision T5400 server-grade PC with the following main technical s
 \end{table}
 This high performance PC has supported us implementing our algorithms without having any fear of running out of RAM.  Since the maximum supported RAM of a 32 bit PC architecture is limited to 2 GB we select Ubuntu Linux 9.10 64bit OS.  As an open-source OS,  Ubuntu offers excellent reliability, performance and community support. In order to enable Bluetooth communication in our host PC, we have added 8 USB-Bluetooth adapters (Belkin F8T017) through a suitable USB-Bluetooth hub. 
 %%%%%%%%%%%%%%%%%%%%%
-\section{Enabling Software Tools and Frameworks}
+\section{Enabling software tools and frameworks}
 \subsection{SwisTrack: A Multi-robot Tracking System}
 \label{expt-tools:mrts}
 SwisTrack: a multi-agent tracking system
@@ -120,7 +120,7 @@ With the improved version 4 released in February 2008, SwisTrack is now becoming
 We have set-up SwisTrack with our Prosilica GigE camera GE4900C and configured it for tracking about 40 E-puck robots with their on-top markers . These markers are binary-coded numbers (aka {em circular bar-codes}) that have certain binary bits or chip-lengths. We have used 20 bits and 15 bits chip-lengths. In order to uniquely identify the position and orientation of  these markers these numbers are encoded with a fixed hamming distance, i.e. differences in bits of any two numbers. We have used a fixed hamming distance of 6 bits. As seen in Fig. \ref{fig:swistrack-markers} these markers are 8cm diameter and clearly identified and tracked by SwisTarck from a camera image resolution of 4872x3248. SwisTrack has no component for grabbing our Prosilica GigE camera and we have developed  a Prosilica GigE  input component using Prosilica SDK and Open-CV library. The version of SwisTrack that we have used (late May 2008 version, SVN no.) has worked pretty well except a few minor things, such as real-time configuration changing was very unstable due to our large camera image size (16MB/frame).  In order to avoid that we use static configuration files that is loaded by SwisTrack in the beginning of our experiment runs.
 
 Fig. \ref{fig:swistrack-pipeline} shows the components that we have used throughout our experiments. Along with the standard blob detection and   circular bar-code reading components, we use our custom D-Bus server communication component that send pose information to D-Bus IPC channels (see Sec.  \ref{expt-tools:dbus}). These components require a little tuning of few parameters, e.g. blob size, blob counts etc. They can be done once and saved in component configuration files for loading them in next runs. Although SwisTrack provides a wide range of components for object trajectory tracking we have not used them yet. we have not saved grabbed camera images as video  from within SwisTrack due to heavy CPU load and memory usage.  Besides, the video output component of  our version of SwisTrack can not produce smooth video files in our set-up.  So, we occasionally save image frames in files and most of our experiments, we use Ubuntu Linux's standard desktop tool, {\em recordmydesktop} \footnote{http://recordmydesktop.sourceforge.net/}  for capturing screen as video.  The standard fluorescent lightings of our lab seem sufficient for our overhead GigE camera and we have prevented interferences of outside sun-lights by putting black blinds  in the window. Our camera has been configured automatically through standard configuration files while program start-up. 
-\subsection{D-Bus: An Inter-Process Communication Protocol}
+\subsection{D-Bus: an inter-process communication protocol}
 \label{expt-tools:dbus}
 Inter-process communications (IPC) among various desktop software components enable them to talk to each other and exchange data, messages or request of services. Technological advancements in computer and communication systems now allow robotic researchers to set-up and conduct experiments on multi-robot systems (MRS) from desktop PCs. Many compelling reasons, including open licensing model, availability of open-source tools for almost free of cost, community support etc., make Linux as an ideal operating system for MRS research. However the integration of heterogeneous software components in Linux desktop becomes a challenging issue, particularly when each robot-control software needs sensory and other data input from various other software components (e.g. pose data from a tracker server, task information from a task server etc).\\ 
 Traditional IPC solutions in a standard Linux desktop, e.g. pipes, sockets, X atoms, shared memory, temporary files etc. (hereafter called {\em traditional IPCs}), are too static and rigid to meet the demand of a dynamic software system (\cite{wittenburg2005}). On the other hand, complex and heavy IPC like CORBA fails to integrate into a development tool-chain efficiently. They also require a steep learning curve due to their complex implementations. Besides, the failure of Desktop Communication Protocol (DCOP) in system-wide integration and interoperability issues encouraged the development of the D-Bus message bus system, D-Bus for short (\cite{Pennington+2010}). This message bus system provides simple mechanisms for applications to talk to one another (see details in Section 2). In this paper we describe  how we exploit the simplicity and power of D-Bus  for running a large MRS.\\
@@ -168,7 +168,7 @@ This is the structure that holds the error code which occurs by calling a DBus m
 Under D-Bus, there are two basic mechanisms for applications to interact with each other: by calling a remote Object of target application and by emitting a signal for interested applications. To perform a method call on a D-BUS Object, a method call message must be sent to that Object. It will do some processing and return either a method return message or an error message. Signals are different in that they cannot return anything: there is neither a "signal return" message, nor any other type of error message see this \footnote{http://www.ibm.com/developerworks/linux/library/l-dbus.html} for some example use-cases. Thus on D-Bus everything can be done asynchronously without the need of polling.\\ 
 D-Bus provides several language bindings for integrating D-Bus to any native application. The core D-BUS API, written in C, is rather low-level and large. On top of this API, bindings integrate with programming languages and environments, including Glib, Python, Qt and Mono. On top of providing language wrappers, the bindings provide environment-specific features. For example, the Glib bindings treat D-BUS connections as GObjects and allow messaging to integrate into the Glib mainloop. The preferred use of D-BUS is definitely using language and environment-specific bindings, both for ease of use and improved functionality (\cite{Love2005}).
 %%%%%%%%%%%%%%%%%%%%%
-\subsection{BTCom/Myro: E-puck Robot Control Programs}
+\subsection{BTCom/Myro: E-puck robot control programs}
 \label{expt-tools:epuck-sw}
 %\subsection{E-puck base library} 
 %\subsection{Bluetooth communication (BTCom) interface}
@@ -176,12 +176,12 @@ D-Bus provides several language bindings for integrating D-Bus to any native app
 %\subsection{E-puck navigation and obstacle avoidance}
 %\subsection{E-puck battery low voltage detection}
 %%%%%%%%%%%%%%%%%%%%%
-\subsection{Bluez: Linux's Bluetooth Communication Stack}
+\subsection{Bluez: Linux's Bluetooth communication stack}
 \label{expt-tools:bluez}
 %\subsection{Bluez}
 %\subsection{Link configuration and management}
 %%%%%%%%%%%%%%%%%%%%%
-\subsection{Python's Multiprocessing: Multi-Threading Made-easy}
+\subsection{Python's Multiprocessing: painless multi-threading solution}
 \label{expt-tools:python}
 %\subsection{Bluez}
 %%%%%%%%%%%%%%%%%%%%%%%%%%

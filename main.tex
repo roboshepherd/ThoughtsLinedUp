@@ -1,10 +1,16 @@
 \documentclass[a4paper,11pt]{report}
 \usepackage{
   fancyhdr,lscape,rotating,float,longtable,
-  epsfig,program,tabularx,graphicx,hyperref,url,harvard,multicol,
-  algorithmicx,algpseudocode,times
+  epsfig,program,tabularx,graphicx,hyperref,url,multicol,
+  algorithmicx,algpseudocode ,times ,harvard,listings
 }
-%\usepackage[Sonny]{fncychap}
+\usepackage[Sonny]{fncychap}
+
+%\usepackage{natbib}
+
+%\bibpunct{(}{)}{,}{a}{,}{,}
+
+%\newcommand{\BibTeX}{{\sc Bib}\TeX}
 
 		%%
 		%% SETUP PDF OPTIONS FOR BOOKMARKS AND URLS
@@ -124,7 +130,7 @@
 \include{background}
 \include{expt-tools}
 \include{afm}
-\include{scale-free-mrta}
+%\include{scale-free-mrta}
 \include{local-comm-model}
 \include{conclusions}
 
@@ -141,6 +147,7 @@
 %
 \sdp
 \bibliographystyle{jphysicsB}
+%\bibliographystyle{plainnat}
 %\bibdata{bib1}
 %\bibliography{bibliography}
 \bibliography{bib1}

@@ -94,7 +94,7 @@ Finally, by combining the above two points, I define division of labour in MRS a
 \label{bg:bio-comm}
 Communication plays a central role in self-regulated division of labour of biological societies.In this section communication among biological social insects are briefly reviewed within the context of self-regulated  division of labour.
 
-%[Purposes]
+\subsection{Purposes, modalities and ranges}
 Communication in biological societies serves many closely related social purposes. Most peer-to-peer (P2P) communication include: recruitment to a new food source or nest site, exchange of food particles, recognition of individuals, simple attraction, grooming, sexual communication etc. In addition to that colony-level broadcast communication include: alarm signal, territorial and home range signals and nest markers, communication for achieving certain group effect such as, facilitating or inhibiting  a group activity \cite{Holldobler1990}.
 %
 %[Modalities and Ranges]
@@ -103,7 +103,7 @@ In ants and some other social insects chemical communication is dominant. Any ki
 Tactile communication is also widely observed in ants and other species typically by using their body antennae and forelegs. It is observed that in ants touch is primarily used  for receiving information rather than informing something. It is usually found as an invitation behaviour in worker recruitment process. When an ant intends to recruit a nestmate for foraging or other tasks it runs upto a nestmate and beats her body very lightly with  antennae and forelegs. The recruiter then runs to a recently laid pheromone trail or lays a new one. In this form of communication limited amount of information is exchanged. 
 In underwater environment some fishes and other species also communicate through electric signals where there nerves and muscles work as batteries. They use continuous or intermittent pulses with  different frequencies learn about environment and to convey their identity and aggression messages.
 %
-%[Signal Active Space]
+\subsection{Signal active space and locality}
 The concept of active space is widely used to describe the propagation of signals by species. In a network environment of signal emitters and receivers, active space is defined as the area encompassed by the signal  during the course of transmission \cite{Mcgregor2000}. In case of long-range signals, or even in case of short-range signals, this area include several individuals where their social grouping allows them to stay in cohesion. The concept of active space is described somewhat differently in case some social insects. In case of ants, this active space is defined as a zone within which the concentration of pheromone (or any other behaviourally active chemical substances) is  at or above threshold concentration \cite{Holldobler1990}. Mathematically this is denoted by a ratio:
 The amount of pheromone emitted (Q)
 The threshold concentration at which the receiving animal responds (K)
@@ -112,8 +112,15 @@ The adjustment of this ratio enables individuals to gain a shorter fade-out time
 
 Active space has strong role in modulating the behaviours of ants. For example, when workers of {\em Acanthomyops claviger} ants produce alarm signal due to an attack by a rival or insect predator, workers sitting a few millimetres away begin to react within seconds. However those ants sitting a few centimetres away take a minute or longer to react. In many cases ants and other social insects exhibit modulatory communication within their active space where many individuals involve in many different tasks. For example, while retrieving the large prey, workers of {\em Aphaeonogerter} ants produce chirping sounds (known as stridulate) along with releasing poison gland pheromones. These sounds attract more workers and keep them within the vicinity of the dead prey  to protect it from their competitors. This communication amplification behaviour can increase the active space to a maximum distance of 2 meters.
 %%%%%%%%%%%%%%%%%%%%%
+\subsection{Common communication strategies}
+
+\subsection{Roles of communication in task-allocation}
+
+\subsection{Information flow in communication}
+
+\subsection{Group size and communication strategy}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Overview and key issues of multi-robot systems (MRS)}
+\section{Overview of multi-robot systems (MRS)}
 \label{bg:mrs}
 Historically the concept of multi-robot system comes almost after the introduction of behaviour-based robotics paradigm \cite{Brooks1986,Arkin1990}. In 1967, using the traditional sense-plan-act or hierarchical approach \cite{Murphy2000}, the first Artificially Intelligent (AI) robot, Shakey, was created at the Stanford Research Institute. In late 80s, Rodney A. Brooks revolutionized this entire field of mobile robotics who outlined a layered, behaviour based approach that acted significantly differently than the hierarchical approach \cite{Brooks1986}. At the same time, Valentino Braitenberg described a set of experiments where increasingly complex vehicles are built from simple mechanical and electrical components \cite{Braitenberg1984}. Around the same time and with similar principle, Reynolds developed a distributed behavioural model for a bird in a flock that assumed that a flock is simply the result of the interactions among the individual birds \cite{Reynolds1987}. Early research on multi-robot systems also include the concept of cellular robotic system \cite{Fukuda+1987}, \cite{Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}.\\
 %
@@ -170,11 +177,13 @@ Although this approximate classification includes most of the research direction
 %
 Whatever the principle characteristics of a MRS, e.g., homogeneity, coupling, communication methods etc., each MRS must address some basic problems to some degree. For example, usually every MRS adopts a control architecture under a specific paradigm. Similarly every MRS address the issues of communication, localization, interaction in a way specific to the application and underlying design principles (or philosophies). In the following subsections, we have attempted to summarize the key MRS research issues that would influence the selection and implementation our research. In this initiative we have deliberately omitted the non-central or very specific issues, such as collaborative transport or reconfigurable MRS, that does not directly relate to our research.
 %%%
-\subsection{MRS Taxonomies}
+\subsection{MRS taxonomies}
 \label{bg:mrs:taxonomies}
-
+%%%%
+\subsection{Traditional MRS}
+\label{bg:mrs:tmrs}
 %%%
-\subsection{Swarm Robotics}
+\subsection{Swarm robotic systems}
 \label{bg:mrs:sr}
 \subsection*{Architecture and control}
 \label{bg:mrs:arch}
@@ -254,6 +263,7 @@ If we look the MRTA problem from multi-agent system's perspective we can find it
 \item Emergent (real-time) task-allocation. 
 \end{enumerate}
 % (Insert a Fig)
+\subsection{Predefined task-allocation}
 Usually predefined task allocation method uses either centralized coordination or distributed task-allocation approach. Distributed predefined task-allocation approach is again subdivided into three subcategories: 
 \begin{enumerate}
 \item Direct allocation, 
@@ -262,9 +272,12 @@ Usually predefined task allocation method uses either centralized coordination o
 \end{enumerate}
 In MRS domain, early research on predefined distributed task-allocation approach has been dominated mainly by intentional coordination \cite{Gerkey+2004,Parker1998}, the use of dynamic role assignment e.g., \cite{Chaimowicz2002}, and market-based bidding approach \cite{Dias+2006}. In intentional coordination e.g., \cite{Parker1998}, robots uses direct allocation method to communicate and to negotiate for assigning tasks. This is preferred approach among MRS research community since it is easily understood, easier to design, implement and analysis formally. Task allocation through bidding is mainly based on the Contract Net Protocol \cite{Davis1988+}. Predefined Task allocation through other approaches are also present in literature. For example, inspired by the vacancy chain phenomena in nature, \cite{Dahl+2003} proposed a vacancy chain scheduling (VCS) algorithm for a restricted class of MRTA problems in spatially classifiable domains.
 
+\subsection{Emergent task-allocation}
 On the other hand emergent task-allocation approach relies on the emergent group behaviours e.g., \cite{Kube+1993}, such as emergent cooperation \cite{Lerman+2006}, adaptation rules \cite{Liu+2007} etc., that lead to task allocation with local sensing, local interactions. It typically uses little or no explicit communication or negotiations between robots. They are more scalable to large team size and more robust via parallelism and redundancy.
 
 MRTA problem can be addressed in many different ways depending upon the paradigm selected to abstract the problem and its relevant constraints and requirements \cite{Parker2008}. Firstly, in emergent task allocation in bioinspired swarms paradigm MRTA homogeneous robots are employed to perform mostly similar tasks only by local sensing and indirect stigmergic ( or no) communication. Secondly, in organizational and social paradigm MRTA can follow one of the two major approaches: 1) task allocation by making use of roles and 2) task allocation through bidding. For example, in multi-robot soccer, each role encompasses several specific tasks and heterogeneous robots select their roles based on their position and capabilities. In market-based approach, robots can negotiate with other team-mates to collectively solve a set of tasks. Finally, in knowledge-based approach, also known as intentional coordination, MRTA is done through the modelling of team-mate capabilities, such as by observing the performance of other team-members performance with or without explicit communication.
+
+\subsection{Key issues in MRS task-allocation}
 %-----------------------------------------------------------------------
 \section{Communication in MRS}
 \label{bg:mrs-comm}
@@ -286,17 +299,17 @@ Since a MRS  can be comprised of robots of various computation and communication
 %[How]
 Robots communicate in a number of ways available under a specific application. This communication methods can be divided into two major categories:
 
-\paragraph{Explicit communication:}
+\subsection{Explicit or direct communication}
 This is also known as intentional communication. This is done purposefully and usually using wireless radio. Based on the number of recipients of message, the communication process is termed differently. Such as,
 Broadcast communication: where all other robots receive the message.
 Peer-to-peer communication: where only a single robot receive the message.
 Publish-subscribe communication: where only a selected (previously subscribed) number of robots receive the message.
 Because explicit communication is costly in terms of both hardware and software, robotic researchers always put extra attention to design such a system by analysing strict requirements such as communication necessity, range, content, reliability of communication channel (loose of message) etc.
 
-\paragraph{Implicit Communication:} 
+\subsection{Implicit or indirect communication} 
 This is also known as indirect stigmergic communication. This is a powerful way of communication where individuals leave information in the environment. This method was adopted from the social insect behaviour, such as stigmergy of ants (leaving of small amount of pheromone or chemicals behind while moving in a trail). Some researchers also tried to establish communication among robots through vision \cite{Kuniyoshi1994}.
 
-% Issues
+\subsection{Key issues in MRS communication}
 In multi-robot communication researchers have identified several issues. Some of the major issues are discussed here.
 Kin Recognition
 Kin recognition refers to the ability of a robot to recognize immediate family members by implicit or explicit communication or sensing. In case of MRS, this can be as simple as identifying other robots from objects and environment or as finding team-mates in a robotic soccer. This is an useful ability that helps interaction, such as cooperation among team members. 
@@ -317,7 +330,7 @@ Since early 80s researchers have been applying agent technology to manufacturing
 
 Agent based technologies have addressed many of the problems encountered by the traditional centralized method. It can respond to the dynamic changes and disturbances through local decision making. The autonomy of individual resource agents and loosely coupled network architecture provide better fault-tolerance. The inter agent distributed communication and negotiation also eliminate the problem of having a single point of failure of a centralized system. These facilitate a manufacturing enterprise to reduce their response time to market demands in globally competitive market. Despite having so many advantages, agent-based systems are still not widely implemented in the manufacturing industry comparing to the other similar technologies, such as distributed objects and web-based technologies due to the lack of integration of this systems with other existing systems particularly real-time data collection system, e.g., RFID (radio frequency identification), SCADA (supervisory control and data acquisition) etc \cite{Shen+2006}. Another barrier is the increased cost of investment in exchange of some additional flexibility and throughput \cite{Schild+2007}. 
 %
-\subsection{Biology-inspired manufacturing Systems}
+\subsection{Biology-inspired manufacturing systems}
 The insightful findings from biological studies on insects and organisms have directly inspired many researchers to solve problems of manufacturing industries in a biological way. These can be categorized into two groups: one that allocates task with explicit potential fields (PF) and another that allocate tasks without specifying any PF. Below we have discussed both types of BMS.
 \subsubsection*{Explicit potential filed based BMS}
 The biological evidences of the existence of PF between a task and an individual worker such as, a flower and a bee, a food source and an ant,  inspired some researchers to conceptualize the assigning of artificial PF between two manufacturing resources. For example, PF is assumed between a machine that produce a material part and a worker robot (or AGV) that manipulates the raw materials and finished products. \cite{Ueda2006} conceptualized this PF as the attractive and repulsive forces based on machine capabilities and product requirements. Task allocation is carried out based on the local matching between machine capabilities and product requirements. Each machine generates an attractive field based on its capabilities and each robot can sense and matches this attractive filed according to the requirements of a product. PF is a function of distance between entities. Here, self-organization of manufacturing resources occurred by the process of matching the machine capabilities and requirements of moving robots.  Through computer simulations and a prototype implementation of a line-less car chassis welding \cite{Ueda2006} found that this system was providing higher productivity and cost-effectiveness of manufacturing process where frequent reconfiguration of factory layout was a major requirement. This approach, was also extended and implemented in a supply chain network and in a simulated ant system model where individual agents were rational agents who selected tasks based on their imposed limitations on sensing. 

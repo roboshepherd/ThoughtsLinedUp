@@ -1,0 +1,7 @@
+#Time;suger concentration(% of 2M); Collectors (return home) % of 55; Collectors (dancing) % of collectors; % time Avg. dancing #duration (s/bee)  of 23.8s; Numbers of newcomers at feeding place % of 18
+30;9.375;52.73;0;0;0
+35;12.5;70.9;7.7;1.05;0
+35;18.75;89.09;53;44.11;16.67
+35;25;94.54;73;73.95;55.56
+35;50;100;92.7;62.61;83.33
+35;100;87;100;100;100

@@ -1,0 +1,613 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE LabPlotXML>
+<LabPlot version="1.6.0" >
+    <Project>
+        <Title></Title>
+        <Author></Author>
+        <Created>1274898746</Created>
+        <Date>1274901746</Date>
+        <Notes></Notes>
+    </Project>
+    <SpeedMode>0</SpeedMode>
+    <Spreadsheet>
+        <Position x="0" y="0" />
+        <Size cols="6" rows="6" />
+        <Title>/media/Preload/Pub2010/ThoughtsLinedUp/images/ch2/honey-bee-dance-stat.txt</Title>
+        <Notes></Notes>
+        <Datafile></Datafile>
+        <Column nr="0" >Time (minute) {double} [X]</Column>
+        <Column nr="1" >Sugar concentration (%) {double} [Y]</Column>
+        <Column nr="2" >Returning collectors (%) {double} [Y]</Column>
+        <Column nr="3" >Dancing collectors (%) {double} [Y]</Column>
+        <Column nr="4" >Avg. dancing duration/bee (%) {double} [Y]</Column>
+        <Column nr="5" >Recruited new bees (%) {double} [Y]</Column>
+        <Cell row="0" col="0" masked="0" >30</Cell>
+        <Cell row="0" col="1" masked="0" >9.375</Cell>
+        <Cell row="0" col="2" masked="0" >52.73</Cell>
+        <Cell row="0" col="3" masked="0" >0</Cell>
+        <Cell row="0" col="4" masked="0" >0</Cell>
+        <Cell row="0" col="5" masked="0" >0</Cell>
+        <Cell row="1" col="0" masked="0" >65</Cell>
+        <Cell row="1" col="1" masked="0" >12.5</Cell>
+        <Cell row="1" col="2" masked="0" >70.9</Cell>
+        <Cell row="1" col="3" masked="0" >7.7</Cell>
+        <Cell row="1" col="4" masked="0" >1.05</Cell>
+        <Cell row="1" col="5" masked="0" >0</Cell>
+        <Cell row="2" col="0" masked="0" >100</Cell>
+        <Cell row="2" col="1" masked="0" >18.75</Cell>
+        <Cell row="2" col="2" masked="0" >89.09</Cell>
+        <Cell row="2" col="3" masked="0" >53</Cell>
+        <Cell row="2" col="4" masked="0" >44.11</Cell>
+        <Cell row="2" col="5" masked="0" >16.67</Cell>
+        <Cell row="3" col="0" masked="0" >135</Cell>
+        <Cell row="3" col="1" masked="0" >25</Cell>
+        <Cell row="3" col="2" masked="0" >94.54</Cell>
+        <Cell row="3" col="3" masked="0" >73</Cell>
+        <Cell row="3" col="4" masked="0" >73.95</Cell>
+        <Cell row="3" col="5" masked="0" >55.56</Cell>
+        <Cell row="4" col="0" masked="0" >170</Cell>
+        <Cell row="4" col="1" masked="0" >50</Cell>
+        <Cell row="4" col="2" masked="0" >100</Cell>
+        <Cell row="4" col="3" masked="0" >92.7</Cell>
+        <Cell row="4" col="4" masked="0" >62.61</Cell>
+        <Cell row="4" col="5" masked="0" >83.33</Cell>
+        <Cell row="5" col="0" masked="0" >205</Cell>
+        <Cell row="5" col="1" masked="0" >100</Cell>
+        <Cell row="5" col="2" masked="0" >87</Cell>
+        <Cell row="5" col="3" masked="0" >100</Cell>
+        <Cell row="5" col="4" masked="0" >100</Cell>
+        <Cell row="5" col="5" masked="0" >100</Cell>
+    </Spreadsheet>
+    <Worksheet api="0" nr_plots="1" >
+        <Position x="-9" y="-5" />
+        <Size width="850" height="500" />
+        <Title>Worksheet</Title>
+        <TitleEnabled>0</TitleEnabled>
+        <Background>#ffffff</Background>
+        <Brush>1</Brush>
+        <Timestamp>1274899329</Timestamp>
+        <TimestampEnabled>0</TimestampEnabled>
+        <DrawObjectsFirst>0</DrawObjectsFirst>
+        <Plot type="0" >
+            <Background>#ffffff</Background>
+            <BackgroundBrush>1</BackgroundBrush>
+            <GraphBackground>#ffffff</GraphBackground>
+            <GraphBackgroundBrush>1</GraphBackgroundBrush>
+            <Transparent>0</Transparent>
+            <ClipOffset>10</ClipOffset>
+            <XActRange min="30" max="210" />
+            <YActRange min="0" max="100" />
+            <ZActRange min="0" max="0" />
+            <Baseline x_enabled="0" x="0" y_enabled="0" y="0" />
+            <Region min="0" max="0" enabled="0" />
+            <Position x="0" y="0" />
+            <Size x="1" y="1" />
+            <PlotArea ymin="0.15" ymax="0.85" xmin="0.15" xmax="0.95" />
+            <AspectRatio>0</AspectRatio>
+            <Marks ymin="0" ymax="1" xmin="0" xmax="1" enabled="0" />
+            <Fill firstgraph="1" brush="1" secondgraph="2" type="0" color="#ff0000" enabled="0" />
+            <Label>
+                <Title></Title>
+                <Font family="Adobe Times" weight="50" pointsize="22" italic="0" />
+                <Color>#000000</Color>
+                <Position x="0.4" y="0.04" />
+                <Boxed>0</Boxed>
+                <Rotation>0</Rotation>
+                <TeXLabel>0</TeXLabel>
+                <BackgroundColor>#ffffff</BackgroundColor>
+                <Transparent>1</Transparent>
+            </Label>
+            <Legend>
+                <Enabled>1</Enabled>
+                <Border>0</Border>
+                <Orientation>0</Orientation>
+                <Position x="0.623529" y="0.63" />
+                <Font family="Sans Serif" weight="50" pointsize="12" italic="0" />
+                <Color>#ffffff</Color>
+                <Transparent>1</Transparent>
+            </Legend>
+            <Axis id="0" >
+                <Enabled>1</Enabled>
+                <Scale>0</Scale>
+                <Position>0</Position>
+                <Scaling>1</Scaling>
+                <Shift>0</Shift>
+                <Border width="3" color="#000000" enabled="1" />
+                <MajorGrid width="1" style="2" color="#000000" enabled="0" />
+                <MinorGrid width="1" style="3" color="#000000" enabled="0" />
+                <MajorTicks width="1" nr="-1" position="0" length="1.03613e-317" type="0" color="#000000" enabled="1" />
+                <MinorTicks width="1" nr="5" length="5.81005e-309" enabled="1" />
+                <TickLabel enabled="1" >
+                    <Prefix></Prefix>
+                    <Suffix></Suffix>
+                    <Font family="Sans Serif" weight="50" pointsize="12" italic="0" />
+                    <Rotation>0</Rotation>
+                    <Position>15</Position>
+                    <Color>#000000</Color>
+                    <Format>7</Format>
+                    <Precision>10</Precision>
+                    <DatetimeFormat>auto</DatetimeFormat>
+                </TickLabel>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:15pt;font-family:Adobe Times&quot;>
+&lt;p>Time (minute)&lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="15" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0.502994" y="0.9125" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+            </Axis>
+            <Axis id="1" >
+                <Enabled>1</Enabled>
+                <Scale>0</Scale>
+                <Position>0</Position>
+                <Scaling>1</Scaling>
+                <Shift>0</Shift>
+                <Border width="3" color="#000000" enabled="1" />
+                <MajorGrid width="1" style="2" color="#000000" enabled="0" />
+                <MinorGrid width="1" style="3" color="#000000" enabled="0" />
+                <MajorTicks width="1" nr="-1" position="0" length="4.03392e-299" type="1" color="#000000" enabled="1" />
+                <MinorTicks width="1" nr="3" length="0" enabled="1" />
+                <TickLabel enabled="1" >
+                    <Prefix></Prefix>
+                    <Suffix></Suffix>
+                    <Font family="Sans Serif" weight="50" pointsize="12" italic="0" />
+                    <Rotation>0</Rotation>
+                    <Position>15</Position>
+                    <Color>#000000</Color>
+                    <Format>0</Format>
+                    <Precision>3</Precision>
+                    <DatetimeFormat>auto</DatetimeFormat>
+                </TickLabel>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:15pt;font-family:Sans Serif&quot;>
+&lt;p>Observables &lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Sans Serif" weight="50" pointsize="15" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0.0228571" y="0.633333" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+            </Axis>
+            <Axis id="2" >
+                <Enabled>0</Enabled>
+                <Scale>0</Scale>
+                <Position>0</Position>
+                <Scaling>1</Scaling>
+                <Shift>0</Shift>
+                <Border width="1" color="#000000" enabled="0" />
+                <MajorGrid width="1" style="2" color="#000000" enabled="0" />
+                <MinorGrid width="1" style="3" color="#000000" enabled="0" />
+                <MajorTicks width="1" nr="-1" position="0" length="2.22847e-312" type="1" color="#000000" enabled="1" />
+                <MinorTicks width="1" nr="3" length="5.25614e-298" enabled="1" />
+                <TickLabel enabled="1" >
+                    <Prefix></Prefix>
+                    <Suffix></Suffix>
+                    <Font family="Adobe Times" weight="50" pointsize="10" italic="0" />
+                    <Rotation>0</Rotation>
+                    <Position>15</Position>
+                    <Color>#000000</Color>
+                    <Format>0</Format>
+                    <Precision>3</Precision>
+                    <DatetimeFormat>auto</DatetimeFormat>
+                </TickLabel>
+                <Label>
+                    <Title>y2-Axis</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="15" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="1.03167" y="0.4975" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+            </Axis>
+            <Axis id="3" >
+                <Enabled>0</Enabled>
+                <Scale>0</Scale>
+                <Position>0</Position>
+                <Scaling>1</Scaling>
+                <Shift>0</Shift>
+                <Border width="1" color="#000000" enabled="0" />
+                <MajorGrid width="1" style="2" color="#000000" enabled="0" />
+                <MinorGrid width="1" style="3" color="#000000" enabled="0" />
+                <MajorTicks width="1" nr="-1" position="0" length="5.13168e-263" type="1" color="#000000" enabled="1" />
+                <MinorTicks width="1" nr="3" length="1.90343e-311" enabled="1" />
+                <TickLabel enabled="1" >
+                    <Prefix></Prefix>
+                    <Suffix></Suffix>
+                    <Font family="Adobe Times" weight="50" pointsize="10" italic="0" />
+                    <Rotation>0</Rotation>
+                    <Position>15</Position>
+                    <Color>#000000</Color>
+                    <Format>0</Format>
+                    <Precision>3</Precision>
+                    <DatetimeFormat>auto</DatetimeFormat>
+                </TickLabel>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:15pt;font-family:Adobe Times&quot;>
+&lt;p>x2-Axis&lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="15" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0.548333" y="-0.04" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+            </Axis>
+            <Graph type="0" >
+                <Name>/media/Preload/Pub2010/ThoughtsLinedUp/images/ch2/honey-bee-dance-stat.txt</Name>
+                <Number>6</Number>
+                <PlotType>0</PlotType>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:14pt;font-family:Adobe Times&quot;>
+&lt;p>[Y1] Sugar concentration (%)&lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="14" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0" y="0" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+                <Shown>1</Shown>
+                <Source>2</Source>
+                <ReadAs>0</ReadAs>
+                <FitFunction>a*x+b</FitFunction>
+                <Annotate>
+                    <Type>0</Type>
+                    <Position>0</Position>
+                    <Distance>10</Distance>
+                </Annotate>
+                <Style>
+                    <Type>0</Type>
+                    <Color>#ff0901</Color>
+                    <Width>3</Width>
+                    <Fill>0</Fill>
+                    <FillColor>#00ff00</FillColor>
+                    <PenStyle>1</PenStyle>
+                    <Brush>0</Brush>
+                    <BoxWidth>10</BoxWidth>
+                    <AutoBoxWidth>0</AutoBoxWidth>
+                    <SortPoints>1</SortPoints>
+                </Style>
+                <Symbol>
+                    <Type>0</Type>
+                    <Color>#0000ff</Color>
+                    <Size>5</Size>
+                    <Fill>0</Fill>
+                    <FillColor>#ff0000</FillColor>
+                    <Brush>1</Brush>
+                    <Errorbar>
+                        <Color>#0000ff</Color>
+                        <XSize>2</XSize>
+                        <YSize>2</YSize>
+                        <Style>1</Style>
+                        <Width>1</Width>
+                        <XType>0</XType>
+                        <YType>0</YType>
+                        <BaseColor>#0000ff</BaseColor>
+                        <BaseWidth>1</BaseWidth>
+                        <BaseStyle>1</BaseStyle>
+                    </Errorbar>
+                </Symbol>
+                <Range ymin="9.375" ymax="100" xmin="30" xmax="205" />
+                <Data x="30" y="9.375" masked="0" />
+                <Data x="65" y="12.5" masked="0" />
+                <Data x="100" y="18.75" masked="0" />
+                <Data x="135" y="25" masked="0" />
+                <Data x="170" y="50" masked="0" />
+                <Data x="205" y="100" masked="0" />
+            </Graph>
+            <Graph type="0" >
+                <Name>/media/Preload/Pub2010/ThoughtsLinedUp/images/ch2/honey-bee-dance-stat.txt</Name>
+                <Number>6</Number>
+                <PlotType>0</PlotType>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:14pt;font-family:Adobe Times&quot;>
+&lt;p>[Y2] Returning collector bees (%)&lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="14" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0" y="0" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+                <Shown>1</Shown>
+                <Source>2</Source>
+                <ReadAs>0</ReadAs>
+                <FitFunction>a*x+b</FitFunction>
+                <Annotate>
+                    <Type>0</Type>
+                    <Position>0</Position>
+                    <Distance>10</Distance>
+                </Annotate>
+                <Style>
+                    <Type>0</Type>
+                    <Color>#76ff05</Color>
+                    <Width>3</Width>
+                    <Fill>0</Fill>
+                    <FillColor>#00ff00</FillColor>
+                    <PenStyle>2</PenStyle>
+                    <Brush>0</Brush>
+                    <BoxWidth>10</BoxWidth>
+                    <AutoBoxWidth>0</AutoBoxWidth>
+                    <SortPoints>1</SortPoints>
+                </Style>
+                <Symbol>
+                    <Type>0</Type>
+                    <Color>#0000ff</Color>
+                    <Size>5</Size>
+                    <Fill>0</Fill>
+                    <FillColor>#ff0000</FillColor>
+                    <Brush>1</Brush>
+                    <Errorbar>
+                        <Color>#0000ff</Color>
+                        <XSize>2</XSize>
+                        <YSize>2</YSize>
+                        <Style>1</Style>
+                        <Width>1</Width>
+                        <XType>0</XType>
+                        <YType>0</YType>
+                        <BaseColor>#0000ff</BaseColor>
+                        <BaseWidth>1</BaseWidth>
+                        <BaseStyle>1</BaseStyle>
+                    </Errorbar>
+                </Symbol>
+                <Range ymin="52.73" ymax="100" xmin="30" xmax="205" />
+                <Data x="30" y="52.73" masked="0" />
+                <Data x="65" y="70.9" masked="0" />
+                <Data x="100" y="89.09" masked="0" />
+                <Data x="135" y="94.54" masked="0" />
+                <Data x="170" y="100" masked="0" />
+                <Data x="205" y="87" masked="0" />
+            </Graph>
+            <Graph type="0" >
+                <Name>/media/Preload/Pub2010/ThoughtsLinedUp/images/ch2/honey-bee-dance-stat.txt</Name>
+                <Number>6</Number>
+                <PlotType>0</PlotType>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:14pt;font-family:Adobe Times&quot;>
+&lt;p>[Y3] Dancing collector bees (%)&lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="14" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0" y="0" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+                <Shown>1</Shown>
+                <Source>2</Source>
+                <ReadAs>0</ReadAs>
+                <FitFunction>a*x+b</FitFunction>
+                <Annotate>
+                    <Type>0</Type>
+                    <Position>0</Position>
+                    <Distance>10</Distance>
+                </Annotate>
+                <Style>
+                    <Type>0</Type>
+                    <Color>#0000ff</Color>
+                    <Width>3</Width>
+                    <Fill>0</Fill>
+                    <FillColor>#00ff00</FillColor>
+                    <PenStyle>3</PenStyle>
+                    <Brush>0</Brush>
+                    <BoxWidth>10</BoxWidth>
+                    <AutoBoxWidth>0</AutoBoxWidth>
+                    <SortPoints>1</SortPoints>
+                </Style>
+                <Symbol>
+                    <Type>0</Type>
+                    <Color>#0000ff</Color>
+                    <Size>5</Size>
+                    <Fill>0</Fill>
+                    <FillColor>#ff0000</FillColor>
+                    <Brush>1</Brush>
+                    <Errorbar>
+                        <Color>#0000ff</Color>
+                        <XSize>2</XSize>
+                        <YSize>2</YSize>
+                        <Style>1</Style>
+                        <Width>1</Width>
+                        <XType>0</XType>
+                        <YType>0</YType>
+                        <BaseColor>#0000ff</BaseColor>
+                        <BaseWidth>1</BaseWidth>
+                        <BaseStyle>1</BaseStyle>
+                    </Errorbar>
+                </Symbol>
+                <Range ymin="0" ymax="100" xmin="30" xmax="205" />
+                <Data x="30" y="0" masked="0" />
+                <Data x="65" y="7.7" masked="0" />
+                <Data x="100" y="53" masked="0" />
+                <Data x="135" y="73" masked="0" />
+                <Data x="170" y="92.7" masked="0" />
+                <Data x="205" y="100" masked="0" />
+            </Graph>
+            <Graph type="0" >
+                <Name>/media/Preload/Pub2010/ThoughtsLinedUp/images/ch2/honey-bee-dance-stat.txt</Name>
+                <Number>6</Number>
+                <PlotType>0</PlotType>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:14pt;font-family:Adobe Times&quot;>
+&lt;p>[Y4] Avg. dancing duration/bee (%)&lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="14" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0" y="0" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+                <Shown>1</Shown>
+                <Source>2</Source>
+                <ReadAs>0</ReadAs>
+                <FitFunction>a*x+b</FitFunction>
+                <Annotate>
+                    <Type>0</Type>
+                    <Position>0</Position>
+                    <Distance>10</Distance>
+                </Annotate>
+                <Style>
+                    <Type>0</Type>
+                    <Color>#150913</Color>
+                    <Width>3</Width>
+                    <Fill>0</Fill>
+                    <FillColor>#9e387c</FillColor>
+                    <PenStyle>4</PenStyle>
+                    <Brush>0</Brush>
+                    <BoxWidth>10</BoxWidth>
+                    <AutoBoxWidth>1</AutoBoxWidth>
+                    <SortPoints>1</SortPoints>
+                </Style>
+                <Symbol>
+                    <Type>4</Type>
+                    <Color>#0000ff</Color>
+                    <Size>7</Size>
+                    <Fill>0</Fill>
+                    <FillColor>#ff0000</FillColor>
+                    <Brush>1</Brush>
+                    <Errorbar>
+                        <Color>#0000ff</Color>
+                        <XSize>2</XSize>
+                        <YSize>2</YSize>
+                        <Style>1</Style>
+                        <Width>1</Width>
+                        <XType>0</XType>
+                        <YType>0</YType>
+                        <BaseColor>#0000ff</BaseColor>
+                        <BaseWidth>1</BaseWidth>
+                        <BaseStyle>1</BaseStyle>
+                    </Errorbar>
+                </Symbol>
+                <Range ymin="0" ymax="100" xmin="30" xmax="205" />
+                <Data x="30" y="0" masked="0" />
+                <Data x="65" y="1.05" masked="0" />
+                <Data x="100" y="44.11" masked="0" />
+                <Data x="135" y="73.95" masked="0" />
+                <Data x="170" y="62.61" masked="0" />
+                <Data x="205" y="100" masked="0" />
+            </Graph>
+            <Graph type="0" >
+                <Name>/media/Preload/Pub2010/ThoughtsLinedUp/images/ch2/honey-bee-dance-stat.txt</Name>
+                <Number>6</Number>
+                <PlotType>0</PlotType>
+                <Label>
+                    <Title>&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;/head>&lt;body style=&quot;font-size:14pt;font-family:Adobe Times&quot;>
+&lt;p>[Y5] Recruited new bees (%)&lt;/p>
+&lt;/body>&lt;/html>
+</Title>
+                    <Font family="Adobe Times" weight="50" pointsize="14" italic="0" />
+                    <Color>#000000</Color>
+                    <Position x="0" y="0" />
+                    <Boxed>0</Boxed>
+                    <Rotation>0</Rotation>
+                    <TeXLabel>0</TeXLabel>
+                    <BackgroundColor>#ffffff</BackgroundColor>
+                    <Transparent>1</Transparent>
+                </Label>
+                <Shown>1</Shown>
+                <Source>2</Source>
+                <ReadAs>0</ReadAs>
+                <FitFunction>a*x+b</FitFunction>
+                <Annotate>
+                    <Type>0</Type>
+                    <Position>0</Position>
+                    <Distance>10</Distance>
+                </Annotate>
+                <Style>
+                    <Type>0</Type>
+                    <Color>#ff2499</Color>
+                    <Width>3</Width>
+                    <Fill>0</Fill>
+                    <FillColor>#00ff00</FillColor>
+                    <PenStyle>5</PenStyle>
+                    <Brush>0</Brush>
+                    <BoxWidth>10</BoxWidth>
+                    <AutoBoxWidth>0</AutoBoxWidth>
+                    <SortPoints>1</SortPoints>
+                </Style>
+                <Symbol>
+                    <Type>7</Type>
+                    <Color>#0000ff</Color>
+                    <Size>5</Size>
+                    <Fill>0</Fill>
+                    <FillColor>#ff0000</FillColor>
+                    <Brush>1</Brush>
+                    <Errorbar>
+                        <Color>#0000ff</Color>
+                        <XSize>2</XSize>
+                        <YSize>2</YSize>
+                        <Style>1</Style>
+                        <Width>1</Width>
+                        <XType>0</XType>
+                        <YType>0</YType>
+                        <BaseColor>#0000ff</BaseColor>
+                        <BaseWidth>1</BaseWidth>
+                        <BaseStyle>1</BaseStyle>
+                    </Errorbar>
+                </Symbol>
+                <Range ymin="0" ymax="100" xmin="30" xmax="205" />
+                <Data x="30" y="0" masked="0" />
+                <Data x="65" y="0" masked="0" />
+                <Data x="100" y="16.67" masked="0" />
+                <Data x="135" y="55.56" masked="0" />
+                <Data x="170" y="83.33" masked="0" />
+                <Data x="205" y="100" masked="0" />
+            </Graph>
+        </Plot>
+    </Worksheet>
+    <Spreadsheet>
+        <Position x="753" y="0" />
+        <Size cols="2" rows="6" />
+        <Title>Spreadsheet 1</Title>
+        <Notes></Notes>
+        <Datafile></Datafile>
+        <Column nr="0" >A {double} [X]</Column>
+        <Column nr="1" >B {double} [Y]</Column>
+        <Cell row="0" col="0" masked="0" >30</Cell>
+        <Cell row="0" col="1" masked="0" >0</Cell>
+        <Cell row="1" col="0" masked="0" >65</Cell>
+        <Cell row="1" col="1" masked="0" >0</Cell>
+        <Cell row="2" col="0" masked="0" >100</Cell>
+        <Cell row="2" col="1" masked="0" >16.67</Cell>
+        <Cell row="3" col="0" masked="0" >135</Cell>
+        <Cell row="3" col="1" masked="0" >55.56</Cell>
+        <Cell row="4" col="0" masked="0" >170</Cell>
+        <Cell row="4" col="1" masked="0" >83.33</Cell>
+        <Cell row="5" col="0" masked="0" >205</Cell>
+        <Cell row="5" col="1" masked="0" >100</Cell>
+    </Spreadsheet>
+</LabPlot>
+

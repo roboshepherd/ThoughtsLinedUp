@@ -139,33 +139,53 @@ H[X] = - \sum_{x \in \chi } p(x) \cdot  \log_{2} p(x)
 \end{equation}
 where p(x) is the probability that X will take the value of x. H[X] is also called the {\em marginal} entropy of X, since it depends on only the marginal probability of one random variable. The marginal entropy of the random variable X is zero if X always assumes the same value with p(X =x′)= 1, and maximum if X assumes all possible states with equal probability.
 
-For example, in order to measure information flow in an elementary communication system, let {\em bit} be the unit amount of information needed to make a choice between two equiprobable alternates. If {\em n} alternates are present, a choice provides the following quantity of information: $H = log_{2} \hspace{1mm} n $. Thus sending of n equiprobable messages reduces $log_{2} \hspace{1mm} n $ amount of uncertainty and thus the amount of information is  $log_{2} \hspace{1mm} n $ bit.  Similarly, according to Eq. \ref{eq:entropy}, the value of H[X] depends on the discretization of x. For instance, if the value of random variable x is discretized into 4, then p(x) becomes $\frac{1}{4}$  leading to H[X] = - $ 4 \cdot \frac{1}{4} \cdot log_{2} \hspace{2mm} \frac{1}{4}$  = 2.
+For example, in order to measure information flow in an elementary communication system, let {\em bit} be the unit amount of information needed to make a choice between two equiprobable alternates. If {\em n} alternates are present, a choice provides the following quantity of information: $H = log_{2} \hspace{1mm} n $. Thus sending of n equiprobable messages reduces $log_{2} \hspace{1mm} n $ amount of uncertainty and thus the amount of information is  $log_{2} \hspace{1mm} n $ bit.  Similarly, according to Eq. \ref{eq:entropy}, the value of H[X] depends on the discretization of x. For instance, if the value of random variable x is discretized into 4, then p(x) becomes $\frac{1}{4}$  leading to H[X] = - $ 4 \cdot \frac{1}{4} \cdot log_{2} \hspace{2mm} \frac{1}{4}$  = 2.\\
 %% TABLE: COMM-CLASSES
 \begin{table}
-\caption{General characteristics of common communication strategies}
+\caption{General characteristics of common communication modes}
 \label{table:comm-classify}
 \begin{center}
 \begin{tabular}{|l||l|l|}
 \hline \textbf{Type} & \textbf{Indirect or} & \textbf{Direct or }\\
 & \textbf{implicit strategy} & \textbf{explicit strategy}\\
 \hline Centralized & Typically a central entity   & Both global and local broadcast  \\
-& modifies the environment. & communications are commonly\\
-& It facilitates passive forms  &  used. P2P  communication can \\
-  &  of communications, i.e.     & also occur. Here, exchange\\
+Communication & modifies the environment. & communications are commonly\\
+Mode & It facilitates passive forms  &  used. P2P  communication can \\
+(CCM)  &  of communications, i.e.     & also occur. Here, exchange\\
 &  communication without   &    of messages  occurs through a\\
 & specific target recipient. &  central entity.\\
 \hline Decentralized & All individuals are free to & P2P and local-broadcast \\
-& modify the environment &  are  most commonly used forms. \\
-& and convey information &  Global broadcast typically  occurs \\
-& to others. & to handle emergency situations. \\
-& & All communications are local and\\
+or Local & modify the environment &  are  most commonly used forms. \\
+Communication & and convey information &  Global broadcast typically  occurs \\
+Mode & to others. & to handle emergency situations. \\
+(LCM) & & All communications are local and\\
 & & no central entity is required.\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 %%
-In biological and MRS literature two basic forms of communications often are reported: 1) direct or explicit communication and 2) indirect or implicit communication. As defined in \cite{Mataric1998}, {\em direct communication} is an intentional communicative act of message passing that aims at one or more particular receiver(s). It typically exchanges information through physical signals. In contrast, {\em indirect communication}, sometimes termed as {\em stigmergic} in biological literature, happens as a form of modifying the environment (e.g., pheromone dropping by ants) \cite{Bonabeau+1999}. In ordinary sense, this is an observed behaviour and many robotic researchers call it as {\em no communication} \cite{Labella2007}. In order to avoid ambiguity,  in this dissertation, by the term {\em communication}, I always refer to direct communication. Sec. \ref{bg:bio-comm} and \ref{bg:mrs-comm} reviews communication in biological social system and MRS respectively.
+%% [COMM classification]
+\begin{figure}
+\centering
+\includegraphics[width=10cm, angle=0]
+{./dia-files/bio-comm-strategies.eps}
+\caption{\small Common communication strategies observed in social systems}
+\label{fig:comm-strategies} 
+\end{figure}
+%%
+\begin{figure}
+\centering
+\includegraphics[width=10cm, angle=0]
+{./dia-files/bio-comm-strategies-peers.eps}
+%figure caption is below the figure
+\caption{\small Number of recipients involved in various communication strategies}
+\label{fig:comm-strategies-peers}  % Give a unique label
+\end{figure}
+%%
+The communication  structure of a multi-agent system can broadly be classified into two major categories: centralized communication mode (CCM) and decentralized or local communication mode (LCM). A centralized communication system generally has a central entity, e.g. gateway,  that routes all incoming and outgoing communications of the system. Individual nodes of this system often do not communicate each other directly. But they can send and receive messages through this central gateway.  Central gateway can play many roles such as, access control, resource allocation and so on. On the other hand, in LCM there is no central entity and each node can independently route message to each other. \\
+Under both CCM and LCM, nodes can select a certain number of target recipients of their messages. This process specifies {\em to whom} a node intends to communicate. In this thesis, we have denoted this mechanism of target recipient selection as {\em communication strategy}.  Fig. \ref{fig:comm-strategies} shows the most common communication strategies found in a  social system. In biological and MRS literature two basic communication strategies are often are reported: 1) direct or explicit communication and 2) indirect or implicit communication. As defined in \cite{Mataric1998}, {\em direct communication} is an intentional communicative act of message passing that aims at one or more particular receiver(s). It typically exchanges information through physical signals. In contrast, {\em indirect communication}, sometimes termed as {\em stigmergic} in biological literature, happens as a form of modifying the environment (e.g., pheromone dropping by ants) \cite{Bonabeau+1999}. In our ordinary sense, this is an observed behaviour and many robotic researchers call it as {\em no communication} \cite{Labella2007}. In order to avoid ambiguity, in this dissertation, by the term {\em communication}, we always refer to direct communication. Sec. \ref{bg:bio-comm} and \ref{bg:mrs-comm} reviews communication in biological social system and MRS respectively.\\
+Direction or explicit communication can be limited by a communication range and thus by a number of target recipients. In the simplest case, when only two nodes can communicate we call this peer-to-peer (P2P) communication. When nodes can spread information to a limited number of peers of their locality the communication takes the form of local broadcast, i.e. one sender and a few receivers within a certain locality. For example, when honey-bee gives the information of flower sources through various dances it conveys this information to a few peers through a local broadcast. However, giving the sample of nectar through tactile or taste to its peers can be considered as a P2P communication. The global broadcast strategy can be found in almost all social species to handle emergency situations, e.g. alarm signal in danger. Table \ref{table:comm-classify}  shows the relationship between various communication modes and their adoption of different strategies. Certainly, we can see that the presence and absence of a central entity becomes the key characteristics of both modes. Fig. \ref {fig:comm-strategies-peers} shows a typical count of average peers in various communication strategies. The actual number of peers under local broadcast strategy is dependent on a particular social system and it changes over time in different level of interactions of individuals. 
 %%
 \subsection{Division of labour or task-allocation}
 Encyclopaedia Britannica serves the definition of division of labour as the separation of a work process into a number of tasks, with each task performed by a separate person or group of persons. Originated from economics and sociology the term division of labour is widely used in many branches of knowledge. As mentioned by Scottish philosopher Adam Smith, the founder of modern economics :
@@ -180,7 +200,7 @@ In sociology, division of labour usually denotes the work specialization \cite{S
 \item {\em How to divide it?} i.e.,the method or process of separating the whole task into small pieces of tasks that can be performed easily. 
 \end{enumerate}
 %% DoL: termites, skyscrapper
-\begin{figure}[htp]
+\begin{figure}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
@@ -309,24 +329,7 @@ Active space has strong role in modulating the behaviours of ants. For example, 
 %%%%%%%%%%%%%%%%%%%%%
 \subsection{Common communication strategies}
 \label{bg:bio-comm:strategies}
-%%
-\begin{figure}
-\centering
-\includegraphics[width=12cm, angle=0]
-{./dia-files/bio-comm-strategies.eps}
-%figure caption is below the figure
-\caption{\small Common communication strategies observed in biological social systems}
-\label{fig:bio-comm-strategies}  % Give a unique label
-\end{figure}
-%%
-\begin{figure}
-\centering
-\includegraphics[width=12cm, angle=0]
-{./dia-files/bio-comm-strategies-peers.eps}
-%figure caption is below the figure
-\caption{\small Number of recipients involved in various communication strategies}
-\label{fig:bio-comm-strategies-peers}  % Give a unique label
-\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{table}
 \caption{Common communication strategies in biological social systems}

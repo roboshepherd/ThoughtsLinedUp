@@ -140,7 +140,31 @@ H[X] = - \sum_{x \in \chi } p(x) \cdot  \log_{2} p(x)
 where p(x) is the probability that X will take the value of x. H[X] is also called the {\em marginal} entropy of X, since it depends on only the marginal probability of one random variable. The marginal entropy of the random variable X is zero if X always assumes the same value with p(X =x′)= 1, and maximum if X assumes all possible states with equal probability.
 
 For example, in order to measure information flow in an elementary communication system, let {\em bit} be the unit amount of information needed to make a choice between two equiprobable alternates. If {\em n} alternates are present, a choice provides the following quantity of information: $H = log_{2} \hspace{1mm} n $. Thus sending of n equiprobable messages reduces $log_{2} \hspace{1mm} n $ amount of uncertainty and thus the amount of information is  $log_{2} \hspace{1mm} n $ bit.  Similarly, according to Eq. \ref{eq:entropy}, the value of H[X] depends on the discretization of x. For instance, if the value of random variable x is discretized into 4, then p(x) becomes $\frac{1}{4}$  leading to H[X] = - $ 4 \cdot \frac{1}{4} \cdot log_{2} \hspace{2mm} \frac{1}{4}$  = 2.
-
+%% TABLE: COMM-CLASSES
+\begin{table}
+\caption{General characteristics of common communication strategies}
+\label{table:comm-classify}
+\begin{center}
+\begin{tabular}{|l||l|l|}
+\hline \textbf{Type} & \textbf{Indirect or} & \textbf{Direct or }\\
+& \textbf{implicit strategy} & \textbf{explicit strategy}\\
+\hline Centralized & Typically a central entity   & Both global and local broadcast  \\
+& modifies the environment. & communications are commonly\\
+& It facilitates passive forms  &  used. P2P  communication can \\
+  &  of communications, i.e.     & also occur. Here, exchange\\
+&  communication without   &    of messages  occurs through a\\
+& specific target recipient. &  central entity.\\
+\hline Decentralized & All individuals are free to & P2P and local-broadcast \\
+& modify the environment &  are  most commonly used forms. \\
+& and convey information &  Global broadcast typically  occurs \\
+& to others. & to handle emergency situations. \\
+& & All communications are local and\\
+& & no central entity is required.\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+%%
 In biological and MRS literature two basic forms of communications often are reported: 1) direct or explicit communication and 2) indirect or implicit communication. As defined in \cite{Mataric1998}, {\em direct communication} is an intentional communicative act of message passing that aims at one or more particular receiver(s). It typically exchanges information through physical signals. In contrast, {\em indirect communication}, sometimes termed as {\em stigmergic} in biological literature, happens as a form of modifying the environment (e.g., pheromone dropping by ants) \cite{Bonabeau+1999}. In ordinary sense, this is an observed behaviour and many robotic researchers call it as {\em no communication} \cite{Labella2007}. In order to avoid ambiguity,  in this dissertation, by the term {\em communication}, I always refer to direct communication. Sec. \ref{bg:bio-comm} and \ref{bg:mrs-comm} reviews communication in biological social system and MRS respectively.
 %%
 \subsection{Division of labour or task-allocation}
@@ -678,7 +702,7 @@ Since a MRS  can be comprised of robots of various computation and communication
 \subsection{Local and Broadcast communications}
 %[How]
 Robots communicate in a number of ways available under a specific application. This communication methods can be divided into two major categories:
-%% FIG: MRS comm. implicit/explicit
+% FIG: MRS comm. eg.
 \begin{figure}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
@@ -705,22 +729,6 @@ Because explicit communication is costly in terms of both hardware and software,
 
 \subsection*{Implicit or indirect communication} 
 This is also known as indirect stigmergic communication. This is a powerful way of communication where individuals leave information in the environment. This method was adopted from the social insect behaviour, such as stigmergy of ants (leaving of small amount of pheromone or chemicals behind while moving in a trail). Some researchers also tried to establish communication among robots through vision \cite{Kuniyoshi1994}.
-% FIG: Multi-robot indoor and outdoor operations
-\begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/s-bots-comm-evolve-300x214.eps}
-\caption{ Swarmbot communicating by light signals}
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/robots_cs_utk_edu_balajee.eps}
-\caption{Larger robots can have on board communication module}
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
-\end{figure}
 
 \subsection{Key issues in MRS communication}
 In multi-robot communication researchers have identified several issues. Some of the major issues are discussed here.

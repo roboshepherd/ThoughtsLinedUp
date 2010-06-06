@@ -692,9 +692,10 @@ Based on a specific model of swarm behaviours researchers generally adopt simila
 Although research on learning in swarm robotic teams was not explored widely, \cite{Balch2005} presented an example of reinforcement-based learning in multi-robot soccer and foraging tasks. He concluded that in a team of homogeneous robots with diverse behaviours, communication, interaction and learning are well interconnected and depending on the selection of global or local learning means, learning can be effectively employed in a swarm robotic system.
 %% SRS
 Similar to in a MRS, localization is one of the hardest problem in swarm robotics. Without the presence of any centralized localization module, such as GPS or INS, it is not easy to localize precisely and locally the position of a robot with respect to other robots or environment. \cite{Spears+2006} presented a novel technique based on trilateration for localization of swarm robots using ultrasonic and RF transceivers without relying on global information from GPS, beacons, landmarks or maps. This system localize a robot with respect to other nearby robots and this is done using ultrasonic and RF signals. \cite{Schmickl+2006} reported hop-count and bio-inspired strategies for collective perception or how a swarm robot can join multiple instances of individual perception to get a global picture. Distributed mapping is another important application using swarms. \cite{Rothermich+05} presented a collaborative localization algorithm using landmark based localization technique.
-	
-\subsection{Swarm robotic systems}
-\label{bg:mrs:srs}
+
+%% <<<<<<<<<<<<----------- RE_ARRANGE--------------->>>>>>>>>	
+%\subsection{Swarm robotic systems}
+%\label{bg:mrs:srs}
 When traditional MRS has faced its ultimate destiny of scalability failure, the necessity of adopting a  new paradigm becomes obvious. Researchers of traditional MRS approach realized  that  executing their time and processing intensive algorithms in large number of real robots ($\geq 10$) is a nightmare. Adding more robots almost exponentially amplified their inherent  problems e.g. physical and communication interferences with an ever-ending hunger of more CPU powers. Traditional approach became infeasible for some other reasons too. For example, one of the early inspirations for constructing a MRS is to own 10-20 cheaper and simple robots is preferable to manage 1-2 expensive and complex robots. But under traditional approach, when the robot-team size increases,  robots require more sensory and on-board processing power for maintaining large internal and environmental sates. This has contradicted with that early inspiration for MRS. Moreover, many traditional MRS, that relied upon a centralized system for communication, localization and other necessary supports,  often failed under heavy-stress conditions under large MRS.\\ 
 In early and mid-90s many researchers found that applying biological principles of swarm intelligence effectively removed and reduced many bottlenecks of traditional MRS.  In 1995 Maja Mataric published that complex group behaviours could be produced by the appropriate combinations of more simple ``basis behaviours'' \cite{Mataric1995}. The idea of using simple biological behaviours, such as avoidance and following, to create complex flocking and foraging behaviours inspired many other researchers to search solution for controlling large MRS in this direction.  The early research of Reynold (1987) guided many others to apply biological principles of self-organization aka swam intelligence (SI) in MRS.  The term {\em swarm intelligence} was first coined by Gerado Beni \cite{Beni2005} in late 1980s and it represents the effort of designing algorithms or distributed problem solving devices inspired by the collective behaviours of social insect colonies \cite{Bonabeau+1999}. The idea of using simple robots to create complex patterns or structures was also studied under {\em cellular robotics} \cite{Fukuda+1987}. During recent years the term swarm robotics (SR) emerged as an application of swarm intelligence to multi-robot systems with the emphasis on physical embodiment of entities and realistic interactions among the entities and between the entities and their environment. These systems of swarm robotics or minimalist robotics \footnote{although both SR and minimalist robotics follow similar approaches for solving similar problems, the latter does not explicitly relate its origin to SI} can be represented by a common term swarm robotic system (SRS).\\
  The simplicity of SRS approach inspires robotic researches to build MRS with cheap robotic hardware, to equip them with simple controllers and control them through local informations without, creating any explicit model of the environment or using any sophisticated central control. The redundancy of robots, parallelism in their task-executions and an overall distributed control architecture,  support addition or removal (or failure) of any robots in run-time. Moreover the control algorithms are now decoupled from the model of the environment or other robots. Thus this system now becomes more robust, fault-tolerant, scalable and adaptive to unknown and dynamic environment.\\
@@ -761,10 +762,34 @@ The potential applications of SRS include: spatially distributed tasks (e.g., en
 \section{Task-allocation in MRS}
 \label{bg:mrs-ta}
 Since 90s multi-robot task allocation (MRTA) is a common research challenge that tries to define the preferred mapping of robots to tasks in order to optimize some objective functions \cite{Gerkey+2004}. Many control architectures MRS  have been solely designed to address this task-allocation issue from different perspectives . Based-on the high-level design of those solutions, here we have classified researches on MRTA into two major categories: 1) predefined or advance allocation and 2) Bio-emergent emergent dynamic allocation. This classification has been adopted from \citeasnoun{Shen+2001}, but our sub-categories are different since \citename{Shen+2001} proposed the classification for multi-agent system alone. Each of these categories of MRTA there are many inter-connected issues that need to be addressed by the system designer. We have put major issues into three major axes: 1) type of organization, 2) degree of interaction and 3) expressiveness of communication. In the following subsections, we have discussed these two categories and their key issues with some examples and comparisons.
-
+\begin{figure}
+\centering
+\includegraphics[width=9cm, angle=0]
+{./dia-files/ta-categories.eps}
+%figure caption is below the figure
+\caption{\small Common communication strategies found in MRS}
+\label{fig:mrs-comm-strategies} % Give a unique label
+\end{figure}
 \subsection{Predefined task-allocation}
 In most of the traditional MRS, task allocation is done using a well-defined models of tasks and environments. Here it is assumed that the system designer precise knowledge about tasks, robot-capabilities etc. Many flavours of the type can be found in the literature. Below we briefly discussed a few well-acknowledged works. \\
-
+%% FIG: ALLIANCE
+\begin{figure}
+\centering
+\includegraphics[width=9cm, angle=0]
+{./images/ch2/parker-alliance-arch.eps}
+%figure caption is below the figure
+\caption{\small ALLIANCE architecture}
+\label{fig:parker-alliance-arch} % Give a unique label
+\end{figure}
+%%
+\begin{figure}
+\centering
+\includegraphics[width=9cm, angle=0]
+{./images/ch2/parker-motivational-bh.eps}
+%figure caption is below the figure
+\caption{\small Motivational behaviour in ALLIANCE}
+\label{fig:parker-motivational-bh} % Give a unique label
+\end{figure}
 Knowledge-Based and Multi-agent based approaches\\
 In this approach knowledge-based techniques are used to represent task, robot capability etc.
 One of the early well-known MRTA architecture of this category was Parker's ALLIANCE \cite{Parker1998} in which robots model the ability of team-members to perform of the system by observing team-member performance and collecting relevant task quality statistics e.g. time to complete tasks. Robots use these models to select task to perform that benefit  the group as a whole.
@@ -781,7 +806,7 @@ In this type of task-allocation each role assumes several specific tasks and eac
 Control-theoretic approaches:\\
 In this type of task-allocation systems, a model of the system is usually developed that converts the task specification into an objective function to be optimized. This model typically  uses  the rigid  body dynamics of the robots assuming the masses and other parameters well-known. Control laws of individual robots are derived either by analytically or by run-time iterations. Unlike most other approaches where task-allocation problem is taken as discrete, control-theoretic approaches can produce continuous  solution. The formalisms of these systems allow system designer to check the system's controllability, stability and related other properties.  These systems typically use some degree of centralization, e.g. choosing a leader robot.  Example of control-theoretic approach include: multi-robot formation control (\cite{Belta+2004}), multi-robot box-pushing (\cite{Pereira+2003 })  etc.
 
-\subsection{Bio-inspired self-organized approaches}
+\subsection{Bio-inspired self-organized task-allocation}
 Task performance in self-organized approaches relies on the collective behaviours resulted from the local interactions of many simple and mostly homogeneous (or interchangeable) agents. Robots choose their tasks independently and asynchronously using the principles of self-organization, e.g. positive and negative feedback mechanisms, randomness (see Sec. \ref{bg:self-reg} for details). Moreover interaction among individuals and their environment are modulated by the stigmergic, local and broadcast communications (more in Sec. \ref{bg:mrs-comm}).  Among many variants of self-organized task-allocation, most common type is threshold-based task-allocation \cite{Bonabeau+1999}. Here, a robot's decision to select a particular task depends largely on its perception of stimulus or demand for a task and its corresponding response threshold for that task. Below, we describe most three common forms of threshold-based task-allocation: fixed or deterministic response-threshold, adaptive response-threshold and probabilistic response-threshold techniques.\\ 
 \begin{equation}
 \label{eqn:fixed-response-th1}
@@ -801,39 +826,42 @@ Unlike maintaining a fixed response-threshold, adaptive response-threshold model
 p_{e} = \frac{\sigma (r,e)^n}{\sigma (r,e)^n + \theta_{e}^n}
 \end{equation}
 Probabilistic Response-Threshold:
-Unlike deterministic approach, where robots always respond to a task-stimuli that has a largest stimulus above the threshold,  probabilistic approach offers a selection process based-on a probability distribution. For example, in probabilistic response, robots can respond to an event $e$ with probability $p_{e}$ as in Eq. \ref{eqn:probl-response-th} where $\theta_{e}$ is the threshold and $n$ is the nonlinearity of the response. Thus, robots  always have small nonzero probabilities  for all tasks.  In this dissertaion we have closely followed this approach with on-line adaptation mechanisms outlined in Chapter \ref{afm}. 
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-
-\subsection{Key issues in MRS task-allocation}
+Unlike deterministic approach, where robots always respond to a task-stimuli that has a largest stimulus above the threshold,  probabilistic approach offers a selection process based-on a probability distribution. For example, in probabilistic response, robots can respond to an event $e$ with probability $p_{e}$ as in Eq. \ref{eqn:probl-response-th} where $\theta_{e}$ is the threshold and $n$ is the nonlinearity of the response. Thus, robots  always have small nonzero probabilities  for all tasks.  In this dissertaion we have closely followed this approach with on-line adaptation mechanisms outlined in Chapter \ref{afm}.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \subsection{Key issues in MRS task-allocation}
+\begin{figure}
+\centering
+\includegraphics[width=9cm, angle=0]
+{./dia-files/mrs-ta-complexities.eps}
+%figure caption is below the figure
+\caption{\small Common communication strategies found in MRS}
+\label{fig:mrs-comm-strategies} % Give a unique label
+\end{figure}
 %-----------------------------------------------------------------------
 \section{Communication in MRS}
 \label{bg:mrs-comm}
+Communication is extremely important for any high-level interaction (e.g. cooperative, coordinative) among a multi-robot team \cite{Arkin1998}. This is not a prerequisite for the group to be functioning, but often useful component of MRS \cite{Mataric2007}. The characteristics of  communication in MRS can be presented in terms of these issues: rationale of communication ({\em why to communicate}), message content ({\em what to communicate}), communication modalities (how to communicate),  and target recipients ({\em with whom to communicate}) . Below we have described why communication is important, how to design this and usually how this is archived in MRS and related other issues.
+%-----------
 \subsection{Rationale of communication}
-Communication between robots is an  important issue in MRS \cite{Arkin1998}. This is not a prerequisite for the group to be functioning, but often useful component of MRS \cite{Mataric2007}. Let us now investigate why communication is important, how this is usually archived in MRS and related other issues.
-
 Researchers generally agree that communication in MRS usually provides several major benefits, such as:
-
 \begin{description}
-\item[Exchange of information and improving perception:]
-Robots  can exchange potential information (as discussed below) based on their spatial position and knowledge of past events. This, in turn, leads to improve perception over a distributed region without directly sensing it.
+\item[Information exchange improves perception:]
+Robots can exchange potential information (as discussed below) based on their spatial position and knowledge of past events. This, in turn, leads to improve perception over a distributed region without directly sensing it.
 \item[Synchronization of actions:]
-In order to perform (or stop performing) certain tasks simultaneously or in a particular order robots need to communicate, or signal, to each other. 
-\item[Enabling interactions:]
-Communication is not strictly necessary for coordinating team actions. But  communication can help a lot to interact (and hence influence) each-other in a team that, in turn, enables robots to coordinate and negotiate their actions.
+In order to perform (or stop performing) certain tasks simultaneously or in a particular order, robots need to communicate, or signal, to each other. 
+\item[Enabling interactions and negotiations:]
+Communication is not strictly necessary for collective interactons of a robot team. From a set of multi-robot communication experiments \citeasnoun{Arkin1998}  concluded that for certain classes of tasks, explicit communication is not strictly necessary. However,  higher level interaction, such as cooperative task-performance or coordinative actions are almost always designed with communication support built-into the robots (see Sec. \ref{bg:mrs:taxonomies}
+for definition of various kinds of interactions). Thus communication can help a lot to  influence each-other in a team that, in turn, enables robots to interact and negotiate their actions effectively.
 \end{description}
-
-Since a MRS  can be comprised of robots of various computation and communication capabilities, it is also necessary to define the communication content and range \cite{Arkin1998,Mataric2007}. Usually robots can communicate about various states (e.g., task-related, individual, environmental etc.), their individual intentions and goals. 
+%----------------- 
 \subsection{Information content}
-
-\subsection{Common communication strategies}
-% [Organization]
-\subsection*{Centralized and decentralized communications}
-
-% [ To Whom] 
-\subsection*{Local and Broadcast communications}
-%[How]
-Robots communicate in a number of ways available under a specific application. This communication methods can be divided into two major categories:
+Although communication provides several benefits for team-work it is costly to provide communication support in terms of hardware, firmware as well as run-time energy spent in communication. So robotic researchers carefully  minimize the necessary information content in communications by using suitable communication protocols and high-level abstractions. For example in foraging, grazing and consuming experiments  \citeasnoun{Balch+1994} introduced state and goal communications. In state communication, a single bit is transmitted indicating the current state of robot (e.g. 0 transmitted when robot was in {\em Wander} state and 1 transmitted when robot was in {\em Acquire} or {\em Retrieve} states). In case of goal communication, the localition of task was also transmitted. From similar instances of these experiemnts below is a brief summary of information contents.\\
+Individual state: ID number, battery level, task-perfomance statistics, e.g. number of tasks done\\
+Goal: Location of target task or all tasks discovered\\
+Task-related state: The amount of task completed, number of other robots present there etc.\\
+Environmental state: Free and blocked paths, level of interference found, any urgent event or dangerous changes found in the environment.\\
+Intentions: Detail plan for doing a task, sequences of selected actions etc.\\
+Since a MRS can be comprised of robots of various computation and communication capabilities, it communication content can vary greatly based on their individual communication modules and channel capacities.
+%------------------------------------------
+\subsection{Communication modalities}
 % FIG: MRS comm. eg.
 \begin{figure}
 \begin{minipage}[t]{0.48\linewidth}
@@ -851,25 +879,49 @@ Robots communicate in a number of ways available under a specific application. T
 \end{minipage}
 \end{figure}
 %%
+Robotic researchers typically use robot's on-board wireless radio, infrared (IR), vision and sound hardware modules for robot-robot  and robot-host communication.  The reduction in price of wireless radio hardware chips e.g. wifi (ad-hoc WLAN 802.11 network) or bluetooth makes it possible to use wireless widely. In-expensive infrared communication module is also typically built into almost all mobile robots due to its low-cost and suitability for ambient light and obstacle detection.  IR can also be used for  low bandwidth communication in short-range, e.g. keen-recognition. Most robots can also produce basic sound waves and detect it with suitable configuration of on-board microphones. Although spech-recognition is not still commonly found in mobile robots,  detection of pre-recorded sound waves can be feasible.  Most of the mobile robots come with a series of LEDs, and tiny camera that can emit light signals and detect it with camera. Fig. \ref{fig:mrs-comm-LED} shows the robot-robot communication  through the red and green coloured LEDs. Many robots can also detect blobs of colours and can recognize peers of other objects through the use of a color-coded markers.  Fig. \ref{fig:mrs-comm-marker} shows a team of robots with colour-coded markers attached on it that can be detected by other robots. Although a lot of researches have been carried out to design robot skin and tactile communication system, we do not know any instance of tactile communication system in MRS. Similarly \citeasnoun{Lochmatter+2007} showed a limited success in odor-source localization, a form of detetcing chemical signals, we do not know about any full-fledged chemical communication in any MRS. Some researchers also tried to establish communication among robots relying mainly on vision \cite{Kuniyoshi1994}.
+%-----------------------------
+\subsection{Communication strategies}
+\begin{figure}
+\centering
+\includegraphics[width=9cm, angle=0]
+{./dia-files/mrs-comm-strategies.eps}
+%figure caption is below the figure
+\caption{\small Common communication strategies found in MRS}
+\label{fig:mrs-comm-strategies} % Give a unique label
+\end{figure}
+whatever be the communication need or modalities in a MRS, suitable strategies are required to disseminate information in a timely manner to a target audience that will maximize the efffective task-completion minimizing delays and conflicts. In order to discuss the complexities of communication strategies we have selected three independent scales: organization, expressiveness and range of communication, by which we can measure the level of complexities and classify a MRS according to  its communication characteristics. Fig. \ref{fig:mrs-comm-strategies} outlines these scales and they are described in the following paragraphs.
+%[Organization]
+\subsection*{Centralized and decentralized communications}
+Similar to the organization of MRTA,  communication in a MRS can be organized using an external/internal central entity (e.g. a server PC, or a leader robot) or, a few leader robots, or by using decentralized or local schemes where every robot has the option to communicate with every other robot of the team. From a recent study of multi-robot flocking \citeasnoun{Celikkanat+2008} shows that a mobile robot flock can be steered toward a desired direction through externally guiding some of its members, i.e. the flock relies on multiple leaders or information repositories.
+%[How]
+Communication in a MRS can also be characterized its expressiveness or the degree of explicity. In one extreme it can be fully implicit, e.g. stigmergic, or on the other end, it can be fully explicit where communication is done by a rich vocabulary of symbols and meanings. Researchers generally tend to stay in either end based on the  robotic architecture and task-allocation mechasim used.  However, both of these approaches can be tied together under any specific application. Below  these two major categories are described.
 \subsection*{Explicit or direct communication}
-This is also known as intentional communication. This is done purposefully and usually using wireless radio. Based on the number of recipients of message, the communication process is termed differently. Such as,
-Broadcast communication: where all other robots receive the message.
-Peer-to-peer communication: where only a single robot receive the message.
-Publish-subscribe communication: where only a selected (previously subscribed) number of robots receive the message.
-Because explicit communication is costly in terms of both hardware and software, robotic researchers always put extra attention to design such a system by analysing strict requirements such as communication necessity, range, content, reliability of communication channel (loose of message) etc.
-
+This is also known as intentional communication. This is done purposefully by usually using suitable modality e.g. wireless radio, sound, LEDs. Because explicit communication is costly in terms of both hardware and software, robotic researchers always put extra attention to design such a system by analysing strict requirements such as communication necessity, range, content, reliability of communication channel (loose of message) etc.
 \subsection*{Implicit or indirect communication} 
-This is also known as indirect stigmergic communication. This is a powerful way of communication where individuals leave information in the environment. This method was adopted from the social insect behaviour, such as stigmergy of ants (leaving of small amount of pheromone or chemicals behind while moving in a trail). Some researchers also tried to establish communication among robots through vision \cite{Kuniyoshi1994}.
+This is also known as indirect stigmergic communication. This is a powerful way of communication where individuals leave information in the environment. This method was adopted from the social insect behaviour, such as stigmergy of ants (leaving of small amount of pheromone or chemicals behind while moving in a trail). 
+
+\subsection*{Local and Broadcast communications}
+The target recipient selection or determining the communication range (or sometimes called radius of communication) is an interesting issue of research. Researchers generally tries to maximize the information gain by using larger range. However, transmission power and communication interference among robots play a major role to limit this range. In this case, the minimum nummber of peers is 1 (or just the closest neighbor) and it can vary based on the selection of a suitable targeting strategy and available bandwidth. Based on the number of recipients of message, the communication strategy is termed differently. Such as,\\
+Global broadcast communication: where all other robot can receive the message.\\
+Local broadcast communication: where a few robots in local neighborhood can receive the message.\\
+Publish-subscribe communication: where only a selected (previously subscribed) number of robots can receive the message.\\
+Peer-to-peer communication: where only a single peer robot can receive the message.\\
 
 \subsection{Key issues in MRS communication}
 In multi-robot communication researchers have identified several issues. Some of the major issues are discussed here.
-Kin Recognition
-Kin recognition refers to the ability of a robot to recognize immediate family members by implicit or explicit communication or sensing. In case of MRS, this can be as simple as identifying other robots from objects and environment or as finding team-mates in a robotic soccer. This is an useful ability that helps interaction, such as cooperation among team members. 
+Determination of local neighborhood:\\
+Most swarm-robotic researchers, who use algorithms based on local-neighborhood of communication,  face this problem of defining the range of local neighborhood. \citeasnoun{Agah+1995} presented that  larger communication range is not always optimum for some types of tasks e.g. exploration where a large number of recipient robots  decreased the performance of exploration task. \citeasnoun{Yoshida+2000} provided a design of optimal communication range of homogenous robots based on their saptial and temporal analyses of information defusion  within the context of cooperative tasks in a manufacturing shop-floor. Spatial design  tried to minimize the time for information transmission and temporal design tried to minimize the information announcing time to avoid excessive information diffusion. Eq. \ref{egn:yoshida-range} descibes their optimal range $\chi_{optimal}$ as a function of information acquisition capacity of robots ($c$) and the probability of information output of a robot ($p$). Here $c$ is an integer representing the upper-limit of number of robots that can be the target recipents at any time without the loss of information and  $\chi_{optimal}$ gives the average number of robots within the output range.
+\begin{equation}
+\chi_{optimal} = \frac{sqrt [c] {c!}}{}
+\end{equation}
 
-\subsubsection*{Representation of Languages}
-In case of effective communication several researchers also focused on representation of languages and grounding of these languages in physical world.
 
-\subsubsection*{Fault-tolerance, Reliability and Adaptation}  
+Kin Recognition\\
+Kin recognition refers to the ability of a robot to recognize immediate family members by implicit or explicit communication or sensing. In case of MRS, this can be as simple as identifying other robots from objects and environment or as finding team-mates in a robotic soccer. This is an useful ability that helps interaction, such as cooperation among team members. \\
+Representation of Languages\\
+In case of effective communication several researchers also focused on representation of languages and grounding of these languages in physical world.\\
+Fault-tolerance, Reliability and Adaptation\\
 Since every communication channel is not free from noise and corruption of messages significant attention has been also given to manage these no communication situations, such as by setting up and maintaining communication network, managing reliability and adaptation rules when there is no communication link available. In terms of guaranteeing communication, researchers also tried to find ways for a deadlock free communication methods \cite{Arkin1998}, such as signboard communication method \cite{Wang1989}.
 
 %%%%%%%%%%%%%%%%%%%%%

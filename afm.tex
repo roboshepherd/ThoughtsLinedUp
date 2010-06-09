@@ -1,46 +1,30 @@
-\chapter{Attractive Field Model for Self-regulated Task Allocation}
+\chapter{Validation of Attractive Field Model for Self-regulated MRTA}
 \label{afm}
 %%%%%%%%%%%%%%%%%%%%%
 \section{Motivations}
-Scientific studies show that a large number of animal as well as human social systems grow, evolve and generally continue functioning well by the virtue of their individual self-regulatory mechanism of division of labour (DOL)  \cite{Bonabeau+1999}.
-This has been accomplished without any central authority or any explicit planning and coordinating element.
-Indirect communication such as stigmergy is instead used to exchange information among individuals. 
-In robotic systems, \textit{multi-robot task allocation} (MRTA) is a common research challenge \cite{Gerkey+2004}.
-It is generally identified as the problem of assigning tasks to appropriate robots at appropriate times taking into account potential changes in the environment and/or the performance of the robots.
-MRTA is an optimal assignment problem that has been shown to be NP-hard, so optimal solutions can not be expected for large problems \cite{Parker2008}.
-In addition to the inherent complexity of MRTA, the problem is also commonly restricted to avoid central planners or coordinators for task assignments.
-The robots are also commonly limited to local sensing, communication and interaction \cite{Lerman+2006} where no single robot has complete knowledge of the past, present or future actions of other robots or a complete view of the world state.
-For larger teams of robots the bandwidth of local communication channels is also limited.
-In practical implementations the computational and communication bandwidth requirements restrict the quality of the solutions to MRTA problems \cite{Gerkey+2004,Lerman+2006}.\\
-Traditionally MRTA solutions are divided into two major categories: 1) Predefined (off-line) and 2) Emergent (real-time) task-allocation \cite{Shen+2001}. Early research on predefined task-allocation approaches was dominated by intentional coordination, use of dynamic role assignment \cite{Parker2008} and market-based bidding approach \cite{Dias+2006}.
-In the intentional approaches the robots use direct task-allocation method to communicate and to negotiate tasks.
-This approach is intuitive, comparatively straightforward to design and implement and can be analysed formally.
-However, this approach typically works well only when the number of robots is small \cite{Lerman+2006}.The emergent task-allocation approach on the other hand, relies on the emergence of group behaviours, e.g., emergent cooperation \cite{Lerman+2006}, using mechanisms such as {\em adaptation rules} \cite{Liu+2007}. This approach typically handles systems with local sensing, local interactions and typically little or no explicit communication or negotiations between robots.
-Emergent systems are more scalable and robust due to their inherent parallelism and redundancy.
-However in these systems, solutions are unintuitive and thus difficult to design, analyse formally and implement practically \cite{Gerkey+2004,Lerman+2006}.
-The solutions found by these systems are typically sub-optimal and, as the emergence is a result of interactions among robots and their environment, it is also difficult to predict exact behaviours of robots and overall system performance.
-The current challenges in emergent task allocation approaches have lead us to look for a suitable alternative.
-In nature we find that task allocation in animal or insect societies can be governed by non-centralized rules and that they are self-regulating and self-stabilizing \cite{Bonabeau+1999}.  Moreover studies in sociology \cite{Sayer+1992}, strategic management \cite{Kogut2000} and related disciplines show that decentralized self-regulated systems exist and that they can survive and grow over time.\\
-As a part of a collaborative project, we have studied the behaviour of ants, humans and robots and have developed the attractive field model (AFM), a common formal model of division of labour in social systems \cite{Elsa}.
-In this paper, we present an application of AFM in a robotic system.
-Section~\ref{sec:model} presents AFM and an associated communication model that allows us to implement AFM as a MTRA mechanism.
-Section~\ref{sec:impl} introduces our implementation of MRTA including the interactions between the hardware, software and communication modules.
-Section~\ref{sec:expt-design} presents the design of our experiments including specific parameters and observables.
-Section~\ref{sec:results} discusses our experimental results and section~\ref{sec:conc} draws conclusions.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Attractive Field Model}
+In this chapter we have discussed about the attractive field model (AFM) \cite{Arcaute+2008} an interdisciplinary model of self-regulated task-allocation or division of labour (DOL) in social systems. The model has been originated from the EPSRC collaborative project ``Defying the rules – how self-organizing systems work''. Under this project,  we have studied three different social systems: ants, humans and robots in order to identify generic mechanisms that lead sustainability of social systems through self-regulation \footnote{The partners of this project were from University of West of England, University of Hull, University of Wales, Newport and Imperial College London and they researched on ants, humans, robots and mathematical models respectively}. The idea of finding a generic model of DOL, by collaboratively  studying these social systems, has many fascinating advantages.\\
+Firstly, this interdisciplinary study makes it possible to develop a generic model of self-regulatory DOL by combining the strengths of different disciplines overcoming their individual shortcomings. For example, ant colonies are the ideal example for studying the self-regulatory social systems, however it is very difficult to pin-point the exact mechanism leading to a specific behaviour \cite{Arcaute+2008}. Artificial systems e.g.  MRS can be used to explore and verify biological hypotheses using totally controlled experiments. Similarly observational data from human social systems can be combined with the data from the biological experiments to enhance our understanding of social self-regulatory mechanisms.\\ 
+Secondly, synergy of different methods, experimental and observational data from disparate disciplines gives us the ability to construct a more abstract, yet powerful, model which may not be available through independent studies. The higher-level abstraction can be very helpful to increase the usefulness of this model since we can easily separate generic and the domain-specific components of the model. Generic part guides us to design a core-framework that can be used to create basic characteristics of a system, whereas domain-specific part can be implemented independent of other disciplines. For example,different social systems use different communication mechanisms, yet almost all of them share many common aspects in their self-regulatory behaviours (see Sec. \ref{bg:bio-comm} for an example). \\
+Thirdly,  the scope of application of our generic models has been extended in many folds by tackling the common challenges of different disciplines. For example, both human social organizations and multi-robot systems suffer from the scalability issue for large organization. The properties of local sensing and local communication with relatively incapable sensory organs/hardware are present in both ants and swarm robotic systems. Thus, the integration of solutions from three major disciplines gives us a highly flexible and extensible model of DOL.\\
+The construction of AFM has been achieved through a series of collaborative interactions among all project partners. From the biological experiments of ants colonies {\em Temnothorax albipennis} we  inferred the bottom-level rules and roles of feedback in collective performance of ants brood-sorting and nest construction after emigration to a new site. We  also analysed the observational data from the self-organized infrastructural development of an {\em eco-village} by an open community of volunteers resided in Ireland. These helped us to identify the generic rules of DOL in social systems. Later on, we  formalized these generic rules into AFM \cite{Arcaute+2008} and validated them by putting AFM into our robot controllers within the context of a virtual manufacturing shop-floor scenario.  In this chapter, we have described mainly the later part of our study, i.e. robotic validation of AFM, with a brief presentation on interpretations of AFM from different social perspectives.
+\section{The Attractive Field Model (AFM)}
 \label{sec:model}
-\subsection{Generic interpretation}
-AFM provides an abstract framework for self-regulatory DoL in social systems \cite{Elsa}. In terms of networks, the model is a bipartite network, meaning that there are two different types of nodes. One set of nodes describes the sources of the attractive fields and the other set describes the agents. Links only exist between different types of nodes and they encode the flow of information so that, even if there is no direct link between two agents, their interaction is taken into account in the information flow. The strength of the field depends on the distance between the task and the agent.  This relationship is represented using weighted links. In addition, there is a permanent field that represents the no-task option. The model can be mapped to a network as shown in Fig. \ref{fig:afm}. The correspondence is given below:
+\subsection{Generic framework}
+Inspired from the DOL in ants, humans and robots,  we  have proposed the following four rules that are the necessary ingredients to obtain self-regulation in any social system. In this dissertation, these rules are mentioned as {\em generic rules of division of labour}. \\
+Rule 1: Continuous flow of information. Self-regulatory systems need to establish the continuous minimum flow of information over period of time, where self-regulation can be defined, for at least two states of an agent: 1) receiving information about task(s) and 2) ignoring information or doing no task. The updated information will reflect  the changes of the system i.e. it will encode the necessary feedback for the agents. Thus, this property will act as the basis of the smooth switching of states, between these two minimum states or, among multiple states (e.g. in case of multiple tasks or many sub-states of a single task) .\\
+Rule 2: Sensitization. Self-regulatory systems allow the differentiation in use of  or access to information, e.g. through sensitization or learning tasks. This differentiation is regulated by the characteristics of the system, e.g. the ability of the agents to learn tasks that are repeatedly performed.\\
+Rule 3: Concurrence. Self-regulatory systems include concurrent access to information from different spatial positions with certain preferences. This preference is not fixed and can changes with the dynamics of the system. \\
+Rule 4: Forgetting. Self-regulatory systems include forgetting, e.g. the ability of agents to diminish information over time, if not used. The system determines the amount of info being released, and this changes with time. For example, specialists might have to attend an emergency situation and switch tasks that contributes to the forgetting of old task experiences. This is considered as crucial to allow flexibility in the system.\\
+Having this general framework of self-regulation, we can now formalize AFM that will describe the properties of individual  agents and the system as a whole. In terms of networks, the model is a bipartite network, meaning that there are two different types of nodes. One set of nodes describes the sources of the attractive fields and the other set describes the agents. Links only exist between different types of nodes and they encode the flow of information so that, even if there is no direct link between two agents, their interaction is taken into account in the information flow (i.e. existence of {\em weak} interaction). The strength of the field depends on the distance between the task and the agent. This relationship is represented using weighted links. In addition, there is a permanent field that represents the no-task or  option for ignoring information. The model can be mapped to a network as shown in Fig. \ref{fig:afm}. The correspondence is given below:
 \begin{enumerate}
 \item Source nodes (o) are tasks that can be divided between a number of agents.
-\item Agent nodes (x) are robots.
+\item Agent nodes (x) an be ants, human,  robots etc.
 \item The attractive fields correspond to stimuli to perform a task, and these are given by the black solid lines.
-\item When an agent performs a task, the link is of a different sort, and this is denoted in the figure by a dashed line. Agents linked to a source by a red line are the robots currently doing that task. 
+\item When an agent performs a task, the link is of a different sort, and this is denoted in the figure by a dashed line. Agents linked to a source by a red line are the agents currently doing that task. 
 \item The field of ignoring the information (w) corresponds to the stimulus to random walk, i.e. the no-task option, and this is denoted by the dotted lines in the graph. 
 \item Each of the links is weighted. The value of this weight describes the strength of the stimulus that the agent experiences. In a spatial representation of the model, it is easy to see that the strength of the field depends on the physical distance of the agent to the source. In addition, the strength can be increased through sensitisation of the agent via experience (learning). This distance is not depicted in the network, it is represented through the weights of the links . In the figure of the network, the nodes have an arbitrary place. Note that even though the distance is physical in this case, the distance in the model applied to other systems, needs not to be physical, it can represent the accessibility to the information, the time the information takes to reach the receiver, etc. 
 \end{enumerate}
-In summary, looking at the network, we see that each of the agents is connected to each of the fields. This means that even if an agent is currently involved in a task, the probability that it stops doing it in order to pursue a different task, or to random walk, is always non-zero.  The weighted links express the probability of an agent to be attracted to each of the fields.
+In summary, looking at the network, we see that each of the agents is connected to each of the fields. This means that even if an agent is currently involved in a task, the probability that it stops doing it in order to pursue a different task, or to random walk, is always non-zero. The weighted links express the probability of an agent to be attracted to each of the fields.
 %%
 \begin{figure}
 \begin{minipage}[t]{0.48\linewidth}
@@ -59,9 +43,37 @@ In summary, looking at the network, we see that each of the agents is connected 
 \end{minipage}
 \end{figure}
 %%
-\subsection{Robotic interpretation}
-Now let us interpret this model within the context of our MRS. Let us consider a manufacturing shop floor scenario where N number of mobile robots are required to attend to M number of shop tasks spread over a fixed area A.
-Let these tasks be represented by a set of small rectangular boxes resembling to manufacturing machines.
+\subsection{Relationship of AFM with self-organization}
+\begin{figure}
+\centering
+\includegraphics[width=9cm, angle=0]
+{./images/dia-files/self-org-2.eps}
+%figure caption is below the figure
+\caption{\small Four generic rules establish the self-regulated DOL in social systems}
+\label{fig:mrs-comm-strategies} % Give a unique label
+\end{figure}
+
+It is interesting to note that our proposed four generic rules has become the four major corners of the foundation of a self-organized system (Fig.  \ref{fig:self-org-2}). As discussed in Sec. \ref{bg:self-reg},  self-organized systems exhibit four distinct perspectives known as so-called ingredients or properties of self-organization. However, it is not clear how those properties can come into existence. Here, we describe the four underlying mechanisms that explains how self-organization can be realized in different social systems. From our understanding, we can explain it in the following ways.\\ 
+Firstly, multiple interaction becomes meaningful when {\em continuous flow of information} occurs  by exchanging signals or cues among agents or their environment  that regulates their behaviours. This, in turn, contribute to the task-allocation  and switching in the social level.  In the biological and swarm-intelligence (SI) literature, multiple interactions are often described as an essential ingredient of self-organization. However, random interaction without any definite purpose may not contribute to self-organization at all.\\
+Secondly, in SI positive feedback has been attributed as another mechanism of  self-organization. But it is not easy to understand what creates positive feedback in a social system. Possible answers might be the characteristic of the environment (e.g., ants select shorter path since density of pheromones becomes higher and thus more ants becomes attracted in that path), the decrease of response-threshold of individuals (thus increase of probability of selecting a task) etc.  To make the answer more concrete, we have explicitly attributed {\em sensitisation} or learning as a mechanism of positive feedback. There might exist other mechanisms too. But clearly sensitisation will be one of the reliable mechanisms for achieving positive feedback.\\
+Thirdly, similar to positive feedback, we have proposed {\em forgetting} that contributes to provide negative feedback about a task or decreasing the probability to select it. Other negative feedback mechanisms can be implemented by assigning a saturation level to each task which is also present in our model \cite{Arcaute+2008}.\\
+Finally, creating  artificial amplification of fluctuations or stochastic events is not a straight-forward issue. It throws  many open questions. Does a system designer intentionally impose irregularity in task-performance of agents ?  Is random movement  enough for simulating randomness in a system ?
+Since emergencies do not always pop-up on request, we provide the rule of {\em concurrency} that enables agents to  maintain even a small amount of probability of selecting a low-priority or less sensitized or distant task. This concurrency mechanism provides a high-degree of robustness in the system such that all tasks can be attended even if specialization of agents delays them in switching to some tasks.
+%% 
+ \subsection{Interpretation of AFM  in an ant colony}
+The interpretation of AFM in an ant colony almost exactly follows the above generic interpretation. Moreover it also reveals a few additional characteristics of AFM. For example, at the individual level, information is processed differently by each individual, and is certainly not constant nor continuous. In addition, there are lower and upper thresholds on the amount of info necessary for DOL to take place. The time scale at the individual level is very small compared to the system level's time scale, and since it is this latter time scale that we are interested in, we can approximate the propagation of information at this macro time scale to a continuous.  In the model emphasize is given to whether the information is used e.g. stimulation to perform a task, or unused e.g. random walk (RW).
+In case of sensitization or learning, there is no encoding of individual performance, the specialists are more attracted towards the task but do not perform quicker the task. This could be implemented, although it does not appear to be a necessary condition for DOL, since the performance of colony increases as a result of sensitisation. Simultaneity (concurrence) of tasks over period of time of self-regulation is achieved through spatial dependence of strength of stimulus. Flexibility in task switching is achieved through forgetting. A concrete interpretation of AFM in an ant colony, along with simulation results can be found in \cite{Arcaute+2008}.
+%%
+\subsection{Interpretation of AFM in a human society}
+The interpretation of AFM  in a human society can be made using many different approaches. For example the following can be mapped to different nodes and characteristics of AFM in a human society.
+Source nodes (o) can be resources\\
+Agents (x) can be people\\
+The links correspond to the flow of information, resources, etc.\\
+The distance dependence can be introduced here in the same way as with the ants. People working in a certain area are more likely to receive info/resources with respect to that area, than another person doing something else. How the person uses that info/resources, corresponds to the people's ability to contribute towards a given goal, defined by the informal network. \\
+The weight of the link is the amount of info a person gets. The person can use it or dismiss it. Random walking in the ants would correspond to dismiss it. AFM does not differentiate between good and bad info, it is only considered as good. 
+%%
+\subsection{Interpretation of AFM in a MRS}
+The interpretation of AFM in a MRS also follows almost exactly as in generic interpretation. However, in order to make the interpretation more concrete, let us consider a manufacturing shop floor scenario where N number of mobile robots are required to attend to M number of shop tasks spread over a fixed area A. Let these tasks be represented by a set of small rectangular boxes resembling to manufacturing machines.
 Let $R$ be the set of robots ${r_1, r_2,...,r_i}$ and $J$ the set of tasks ${t_1, t_2,...,t_j}$.
 Each task $t_j$ has an associated task-urgency $\phi_j$ indicating its relative importance over time.
 If a robot attends a task $t_j$ in the x$^{th}$ time-step, the value of $\phi_j$ will decrease by an amount $\delta_\phi$ in the (x+1)$^{th}$ time-step.
@@ -217,17 +229,19 @@ These experiments are designed to validate AFM by testing the presence of divisi
 Table \ref{table:params} lists a set of essential parameters of our experiments. We intend to have a setup that is relatively complex, i.e., with a high number of robots and tasks in a large area. The diameter of the marker of our e-puck robot is 0.08m. So, if we put 4 robots in an area of one square meter, this will give us a robot-occupied-space to free-space ratio of about 1:49 per square meter. This ratio reasonable in order to allow the robots to move at a speed of 5 cm/sec  without much interference to each other. We have fixed the number of tasks to 4. Robots also have an additional option for random walking that corresponds to the ignoring task information for ensuring flexibility of our system.\\
 The initial values of task urgencies correspond to 100 units of production work-load without any maintenance work-load as outlined in Eq. \ref{eqn:task-urgency-prod-init}. We choose a limit of 0 and 1, where 0 means no urgency and 1 means maximum urgency. Same applies to sensitisation as well, where 0 means no sensitisation and 1 means maximum sensitisation. This also implies that if sensitization is 0, task has been forgotten completely. On the other hand, if sensitization is 1, the task has been learnt completely. We choose a default sensitization value of 0.1 
 for all tasks. The following relationships are maintained for selecting task-urgency and sensitization parameters.
-\begin{small}
+%\begin{small}
 \begin{equation}
+\small
 \Delta\phi_{INC} =  \frac{\Delta\phi_{DEC} \times N}{2 \times M}
 \label{eqn:task-urgency}
 \end{equation}
 %
 \begin{equation}
+\small
 \Delta k_{DEC} = \frac{\Delta k_{INC}} {M - 1} 
 \label{eqn:sensitization}
 \end{equation}
-\end{small}
+%\end{small}
 %
 Eq. \ref{eqn:task-urgency} establishes the fact that task urgency will increase at a higher rate than that of its decrease. As we do not like to keep a task left unattended for a long time we choose a higher rate of increase of task urgency. This difference is set on the basis of our assumption that at least half of the expected number of robots (ratio of number of robots to tasks) would be available to work on a task. So they would produce similar types of increase and decrease behaviours in task urgencies.
 Eq. \ref{eqn:sensitization} suggests that the learning will happen much faster than the forgetting. The difference in these two rates is based on the fact that faster leaning gives a robot more chances to select  a task in next time-step and thus it becomes more specialized on it.  Task-Server updates task-info messages in the interval of $\Delta TS_u$=5s and robots stick on to a particular task for a maximum of  $\Delta RT_{to}$=10s.

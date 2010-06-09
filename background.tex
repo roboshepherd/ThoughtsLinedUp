@@ -6,112 +6,74 @@
 \label{bg:self-reg}
 Animals and flying beings that live on or above earth form social communities like human society \cite{SIHQ1995}. In recent years, the biological study of social insects and other animals reveals 
 us that individuals of these self-organized  societies can solve various complex and large everyday-problems with a few simple behavioural rules relying on their minimum sensing and communication abilities \cite{Garnier+2007,Camazine+2001}. Some common tasks of these biological societies include: dynamic foraging, building amazing nest structures, division of labour among workers and so forth. These tasks are done by colonies,  ranging from a few animals to thousands or millions of individuals, that exhibit surprising efficiency in their tasks with both robustness and flexibility. Today these findings have inspired scientists and engineers to use this knowledge of biological self-organization in developing solutions for various problems of our man-made artificial systems, such as traffic routing in telecommunication and vehicle networks, design control algorithms for groups of autonomous robots and so forth.
-%%
+%% FIG fig:weaver-green-tree-ants
 \begin{figure}[htp]
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/ants-hy27c.eps}
-\caption{ Ants leaf nest construction}
-\label{fig:ant} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/ants_spacecollective.org_greenTreeAnt.eps}
-\caption{ Ants prey retrieval}
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
+  \centering
+  \subfloat[Weaver ants]{\label{fig:weaver-ants}\includegraphics[width=6cm, height=4cm]{./photos/ants-hy27c.eps}}                
+  \hspace{0.25cm}
+  \subfloat[Green-tree ants]{\label{fig:green-tree-ants}\includegraphics[width=6cm, height=4cm]{./photos/ants_spacecollective.org_greenTreeAnt.eps}}
+  \caption{(a) During nest construction, weaver ants combine two leaves by pulling them from two sides \protect\citeasnoun{Yahya2000}.
+(b) Green-tree ants retrieve a relatively large prey. From http://www.spacecollective.org, last seen on 01/05/2010. }
+  \label{fig:weaver-green-tree-ants}
 \end{figure}
-%
-\begin{figure}[htp]
-%\begin{minipage}[t]{0.68\linewidth}
+% FIG: self-org
+\begin{figure}[htp!]
 \centering
 \includegraphics[height=8cm, angle=0]
 {./images/dia-files/self-org-1}
-%figure caption is below the figur
-\caption{ Self-organization viewed from four (A-D) inseparable perspectives}
+\caption{Self-organization viewed from four (A-D) inseparable perspectives. Adopted from \protect\citeasnoun{Camazine+2001}.}
 \label{fig:self-org-1} % Give a unique label
-%\end{minipage}
-\hspace{0.5cm}
-%\begin{minipage}[t]{0.28\linewidth}
+\vspace*{0.25cm}
 \centering
 \includegraphics[height=5cm, angle=0]{./images/dia-files/self-org-agent}
-\caption{ Three major parts of a self-regulated agent}
+\caption{ Three major interfaces of a self-regulated agent}
 \label{fig:self-org-agent} % Give a unique label
-%\end{minipage}
 \end{figure}
-Self-organization in biological and  other systems are often characterized in terms of four major ingredients: 1) Positive feedback, 2) Negative feedback, 3) Presence of multiple interactions among individuals and their environment and 4) Amplification of fluctuations  (random walks, errors, random task-switching etc.) \cite{Bonabeau+1999,Camazine+2001}. As illustrated in Fig. \ref{fig:self-org-1} an external observer can recognize a self-organized system by observing the individual interactions of that system from these four perspectives. The first perspective is a positive feedback or amplification that results from the execution of simple behavioural ``rules of thumb''. For example, recruitment to a food source through trail laying and trail following in some ants  is a positive feedback that creates the conditions for the emergence of trail network at the global ( or an outside observer) level. The second perspective is negative feedback that counterbalances positive feedback usually to stabilize a collective patterns, e.g., crowding at the food sources (saturation), competition between paths to food sources etc. The third perspective is the presence of multiple direct peer-to-peer or indirect stigmergic (e.g., pheromone dropping in ants) interactions. The former is the main concern of this thesis and is discussed latter in detail. Finally, the fourth  perspective is the amplification of fluctuations that comes from the stochastic events. For example errors in trail following of some ants may lead some foragers to get lost and later to find new, unexploited food sources and then recruit others. 
 %%
-\begin{figure}[htp]
-\begin{minipage}[t]{0.48\linewidth}
+Self-organization in biological and  other systems are often characterized in terms of four major ingredients: 1) Positive feedback, 2) Negative feedback, 3) Presence of multiple interactions among individuals and their environment and 4) Amplification of fluctuations  (random walks, errors, random task-switching etc.) \cite{Bonabeau+1999,Camazine+2001}. As illustrated in Fig. \ref{fig:self-org-1} an external observer can recognize a self-organized system by observing the individual interactions of that system from these four perspectives. The first perspective is a positive feedback or amplification that results from the execution of simple behavioural ``rules of thumb''. For example, recruitment to a food source through trail laying and trail following in some ants  is a positive feedback that creates the conditions for the emergence of trail network at the global ( or an outside observer) level. The second perspective is negative feedback that counterbalances positive feedback usually to stabilize a collective patterns, e.g., crowding at the food sources (saturation), competition between paths to food sources etc. The third perspective is the presence of multiple direct peer-to-peer or indirect stigmergic (e.g., pheromone dropping in ants) interactions. The former is the main concern of this thesis and is discussed latter in detail. Finally, the fourth  perspective is the amplification of fluctuations that comes from the stochastic events. For example errors in trail following of some ants may lead some foragers to get lost and later to find new, unexploited food sources and then recruit others. 
+%% FIG: fig:honey-bee-nest-comb
+\begin{figure}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/honey-bee-nest-hy103.eps}
-\caption{ Honey-bee nest on a tree-branch}
-\label{fig:ant} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/honey-bee-comb-building-knol-google.eps}
-\caption{ Honey bee comb construction}
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
+\subfloat[Honey-bee nest]{\includegraphics[width=6cm, height=4cm]{./photos/honey-bee-nest-hy103.eps}} 
+\hspace{0.25cm}
+\subfloat[Construction of honey-combs]{\includegraphics[width=6cm, height=4cm]{./photos/honey-bee-comb-building-knol-google.eps}}
+\caption{(a) Honey-bee nest on a tree-branch. From http://www.harunyahya.com. (b) Honey-bees are constructing honey combs. From http://knol.google.com. Last seen on 01/05/2010.}
+\label{fig:honey-bee-nest}
 \end{figure}
 %
-In a self-organized system an individual agent may have limited cognitive, sensing and communication capabilities, but they are collectively capable of solving complex and large problems.  Since the discovery of these collective behavioural patterns of self-organized  societies scientists observed modulation or adaptation of behaviours in the individual level. For example, in order to prevent a life-threatening humidity-drop in the colony, cockroaches maintain a locally sustainable humidity level by increasing their tendency to aggregate, i.e., by regulating their individual aggregating behaviours \cite{Garnier+2007}. As shown in Fig. \ref{fig:self-org-agent} this  self-regulation (SR) of an individual agent is depicted through a triangle where it's base-arm of simple behavioural rules of thumb (e.g., intense aggregation in low humidity in the previous example) is supported by two side-arms: local communication and local sensing. This local sensing is sometimes also referred to as sensing or information gathering from the work in progress (e.g., stigmergy) and the local communication mentioned here is directly linked with peer-to-peer (P2P) communication with neighbours  \cite{Camazine+2001}.
-
-%% School of Fish
+In a self-organized system an individual agent may have limited cognitive, sensing and communication capabilities, but they are collectively capable of solving complex and large problems.  Since the discovery of these collective behavioural patterns of self-organized  societies scientists observed modulation or adaptation of behaviours in the individual level. For example, in order to prevent a life-threatening humidity-drop in the colony, cockroaches maintain a locally sustainable humidity level by increasing their tendency to aggregate, i.e., by regulating their individual aggregating behaviours \cite{Garnier+2007}. As shown in Fig. \ref{fig:self-org-agent} this  self-regulation (SR) of an individual agent is depicted through a triangle where it's base-arm of simple behavioural rules of thumb (e.g., intense aggregation in low humidity in the previous example) is supported by two side-arms: local communication and local sensing. This local sensing is sometimes also referred to as sensing or information gathering from the work in progress (e.g., stigmergy) and the local communication mentioned here is directly linked with peer-to-peer (P2P) communication with neighbours  \cite{Camazine+2001}.\\
+%% FIG: School of Fish
 \begin{figure}[htp]
-\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/School_of_Fish_group_cohesion.eps}
-\caption{ School of fish group cohesion}
-\label{fig:ant} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/schoo_of_fish_shark-bigtiger.eps}
-\caption{ School of fish group defence }
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
+\subfloat[A moving school of fish]{\includegraphics[width=6cm, height=4cm]{./photos/adventureaquariumschooloffish.eps}} 
+\hspace{0.25cm}
+\subfloat[A shark attacked a school of fish]{\includegraphics[width=6cm, height=4cm]{./photos/schoo_of_fish_shark-bigtiger.eps}}
+\caption{(a) Group cohesion of a school of fish. (b) When a shark attacks a school of fish, they misguide the attacker by swift random movements. From http://www.travelblog.org last seen on 01/05/2010.}
+\label{fig:school-of-fish}
 \end{figure}
-
-SR has been studied in many other branches of knowledge. In most places of literature, SR refers to the exercise of control over oneself to bring the self into line with preferred standards \cite{Baumeister+2007}. One of the most notable self-regulatory process is the human body's homoeostatic process where the human body's inner process seeks to return to its regular temperature when it gets overheated or chilled. Baumeister et al. has referred self-regulation to goal-directed behaviour or feedback loops, whereas self-control may be associated with conscious impulse control.  In psychology, SR denotes the strenuous actions to resist temptation or to overcome anxiety. SR is also divided into two categories: 1) conscious and 2) unconscious SR. Conscious SR puts emphasis on conscious, deliberate efforts in self-regulation. On the other hand, unconscious self-regulation refers to the automatic self-regulatory process that is although not nearly as labour intensive, but operate in harmony with unpredictable, unfolding events in the environment, using and transforming the available informational input in ways that help to attain an activated goal.
-%% Bats navigation
+%%
+SR has been studied in many other branches of knowledge. In most places of literature, SR refers to the exercise of control over oneself to bring the self into line with preferred standards \cite{Baumeister+2007}. One of the most notable self-regulatory process is the human body's homoeostatic process where the human body's inner process seeks to return to its regular temperature when it gets overheated or chilled. \citeasnoun{Baumeister+2007} has referred self-regulation to goal-directed behaviour or feedback loops, whereas self-control may be associated with conscious impulse control.  In psychology, SR denotes the strenuous actions to resist temptation or to overcome anxiety. SR is also divided into two categories: 1) conscious and 2) unconscious SR. Conscious SR puts emphasis on conscious, deliberate efforts in self-regulation. On the other hand, unconscious self-regulation refers to the automatic self-regulatory process that is although not nearly as labour intensive, but operate in harmony with unpredictable, unfolding events in the environment, using and transforming the available informational input in ways that help to attain an activated goal.
+%% FIG: Bats navigation
 \begin{figure}[htp]
-\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/bats_hy2.eps}
-\caption{ A bat colony with about 50 million bats}
-% Ref: Merlin D. Tuttle, "Saving North America’s Beleaguered Bats", National Geographic, August 1995, p. 40. 
-\label{fig:ant} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/bats_hy3.eps}
-\caption{ Amazing navigation ability of bats: always fly back to nest on a straight route from wherever they are}
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
+\subfloat[A bat colony]{\includegraphics[width=6cm, height=4cm]{./photos/bats_hy2.eps}} 
+\hspace{0.25cm}
+\subfloat[Navigation of bats]{\includegraphics[width=6cm, height=4cm]{./photos/bats_hy3.eps}}
+\caption{(a) One of the largest bat colony with about 50 million bats, (b) These bats can show amazing navigation abilities: they always fly back to their nest on a straight route from wherever they are \protect\citeasnoun{Tuttle1995}.}
+\label{fig:bats-colony}
 \end{figure}
-
-The concepts of SR is also commonly used in cybernetic theory where SR in inanimate mechanisms shows that they can regulate themselves by making adjustments according to programmed goals or set standards. A common example of this kind can be found in a thermostat that controls a heating and cooling system to maintain a desired temperature in a room. In physics, chemistry, biology and some other branches of natural sciences, the concept of SR is centred around the study of self-organizing individuals. SR has also been studied in the context of human social systems where it originates from the division of social labor that creates SO process that has self-regulating effects \cite{Kppers+1990}. Two types of SR have been reported in many places of literature of sociology: 1) SR from SO and 2) SR from activities of components in a heterarchical organization. It is interesting to note that self-regulation in biological species provides the similar evidences of bottom-up approach of self-regulation of heterarchical organization through interaction of individuals or the absence of strict hierarchy {Beer1981}. 
-
-From the above discussion, we see that the term {\em self-regulation} carries a wide range of meaning in different branches of knowledge. In psychology and cognitive neuroscience point of view, self-regulation is discussed in an individual's perspective whereas, in biological and social contexts the SR is discussed in a context of a group of individuals or the society as a whole. In  this thesis, the latter context is more appropriate where  SR covers both aspects of monitoring ones own state and environmental changes in relation to the communal goal and thus making adjustments of self behaviours with respect to the changes found. 
+%%
+The concepts of SR is also commonly used in cybernetic theory where SR in inanimate mechanisms shows that they can regulate themselves by making adjustments according to programmed goals or set standards. A common example of this kind can be found in a thermostat that controls a heating and cooling system to maintain a desired temperature in a room. In physics, chemistry, biology and some other branches of natural sciences, the concept of SR is centred around the study of self-organizing individuals. SR has also been studied in the context of human social systems where it originates from the division of social labour that creates SO process that has self-regulating effects \cite{Kppers+1990}. Two types of SR have been reported in many places of literature of sociology: 1) SR from SO and 2) SR from activities of components in a heterarchical organization. It is interesting to note that self-regulation in biological species provides the similar evidences of bottom-up approach of self-regulation of heterarchical organization through interaction of individuals or the absence of strict hierarchy {Beer1981}.\\ 
+From the above discussion, we see that the term {\em self-regulation} carries a wide range of meaning in different branches of knowledge. In psychology and cognitive neuroscience point of view, self-regulation is discussed in an individual's perspective whereas, in biological and social contexts the SR is discussed in a context of a group of individuals or the society as a whole. In  this thesis, the latter context is more appropriate where  SR covers both aspects of monitoring ones own state and environmental changes in relation to the communal goal and thus making adjustments of self behaviours with respect to the changes found.
 %%%%
 \subsection{Communication} 
 \label{bg:def:comm}
-%% Comm defined
+%%FIG:  Comm defined
 \begin{figure}
 \centering
-\includegraphics[width=10cm, angle=0]
+\includegraphics[width=8.5cm, angle=0]
 {./images/dia-files/comm-defined.eps}
-\caption{ General models of communication}
+\caption{ General models of communication, adopted from \protect\citeasnoun{West+2003}.}
 \label{fig:gen-comm-defined} % Give a unique label
 \end{figure}
 %%
@@ -124,13 +86,14 @@ The elements of communication can give us us the whole picture involved in commu
 Fig. \ref{fig:comm-model-1} combines first two models in a single diagram. In linear model, as introduced by Claude Shanon and Warren Weaver (1949), communication is a one way process where a message is sent from a source to a receiver through a channel. On top of linear view, in interactional model proposed by Wilber Schramm (1954), communication is a two-way process with an additional feedback element  that links both source and receiver. This feedback is a response given to the source by the receiver to confirm how the message is being understood. Here, during message passing, both source and receiver utilize their individual field of experiences that describe the overlap of their common experiences, cultures etc. Unlike separate filed of experiences and discrete sending and receiving of message in interactional model, in transactional model, introduced by Barnlund(1970), the sending and receiving of message is done simultaneously and their  field of experiences also overlaps to some degree. In all of the above three models a common message distorting element, i.e., noise is present. This noise can be occurred from the linguistic influences (message semantics),  physical or bodily influences, cognitive influences or even from biological
 or physiological influences (e.g., anger or shouting voice while talking) and so on.\\
 According to a biological model of communication (Fig. \ref{fig:bio-comm-defined}), communication is a biological process where an  individual (sender) intentionally transmits encoded message though physical signal and that, on being received and decoded by another individual of same species (receiver), influences receiver's behaviour \cite{Frings1997}. Note that, here individuals are of same species and thus they have a  shared message vocabulary and mechanism of message encoding/decoding. Although  this definition has not included the dynamics of a communication process, it is more precise for low-level biological and artificial systems. It accounts for the behavioural changes during communication process. These changes can be tracked though observing states of individuals.\\   
-%% bio-comm defined
+%% FIG bio-comm defined
 \begin{figure}
 \centering
-\includegraphics[width=8cm, angle=0]{./images/dia-files/animal-comm-defined.eps}
-\caption{ A biological model of communication }
+\includegraphics[width=8cm,height=4cm, angle=0]{./images/dia-files/animal-comm-defined.eps}
+\caption{ A biological model of communication, adopted from \protect\citeasnoun{Frings1997}.}
 \label{fig:bio-comm-defined} 
 \end{figure}
+%%
 The above models of communication describe the incremental complexities of message exchanging in a communication process. Surely the transactional model is comparatively the most sophisticated model that prescribes adjusting the sender's message content while receiving an implicit or explicit feedback in real-time. For example, while speaking with her son for advising to read a story book, a mother may alter her verbal message as he simultaneously ``reads'' the non-verbal message of her child. However, in case of MRS, such sophistication may not be required or realizable by the current state of art in communication technology. In this study we follows the simple linear model that gives us the ease of implementation. The feedback is not accounted as we assumed that our artificial robotic system has a same shared vocabulary so that a message is understood as it is sent. Sender never waits for an additional feedback to end sending a message. 
 
 Following the linear model of communication, the amount of communicated information associated with a certain random variable X can be calculated by the concept of {\em Shanon entropy}. Adopting the notation of Feldman \cite{Feldman1997}, and indicating a discrete random variable with the capital letter X, which can take values $x \in \chi$, the information entropy is defined as:
@@ -146,7 +109,7 @@ For example, in order to measure information flow in an elementary communication
 \caption{General characteristics of common communication modes}
 \label{table:comm-classify}
 \begin{center}
-\begin{tabular}{|l||l|l|}
+\begin{tabular}{|l|l|l|}
 \hline \textbf{Type} & \textbf{Indirect or} & \textbf{Direct or }\\
 & \textbf{implicit strategy} & \textbf{explicit strategy}\\
 \hline Centralized & Typically a central entity   & Both global and local broadcast  \\
@@ -157,10 +120,10 @@ Mode & It facilitates passive forms  &  used. P2P  communication can \\
 & specific target recipient. &  central entity.\\
 \hline Decentralized & All individuals are free to & P2P and local-broadcast \\
 or Local & modify the environment &  are  most commonly used forms. \\
-Communication & and convey information &  Global broadcast typically  occurs \\
+Communication & and convey information &  Global broadcast occurs \\
 Mode & to others. & to handle emergency situations. \\
-(LCM) & & All communications are local and\\
-& & no central entity is required.\\
+(LCM) & & All communications are local\\
+& & without requiring a central entity.\\
 \hline
 \end{tabular}
 \end{center}
@@ -171,7 +134,7 @@ Mode & to others. & to handle emergency situations. \\
 \centering
 \includegraphics[width=10cm, angle=0]
 {./dia-files/bio-comm-strategies.eps}
-\caption{\small Common communication strategies observed in social systems}
+\caption{\small Common communication strategies observed in social systems.}
 \label{fig:comm-strategies} 
 \end{figure}
 %%
@@ -180,7 +143,7 @@ Mode & to others. & to handle emergency situations. \\
 \includegraphics[width=10cm, angle=0]
 {./dia-files/bio-comm-strategies-peers.eps}
 %figure caption is below the figure
-\caption{\small Number of recipients involved in various communication strategies}
+\caption{\small Number of recipients involved in various communication strategies.}
 \label{fig:comm-strategies-peers}  % Give a unique label
 \end{figure}
 %%
@@ -201,29 +164,22 @@ In sociology, division of labour usually denotes the work specialization \cite{S
 \item {\em How to divide it?} i.e.,the method or process of separating the whole task into small pieces of tasks that can be performed easily. 
 \end{enumerate}
 %% DoL: termites, skyscrapper
-\begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
+%% FIG: Termite nest
+\begin{figure}[htp]
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/termites_nest.eps}
-\caption{ A termite nest}
-% Ref: Merlin D. Tuttle, "Saving North America’s Beleaguered Bats", National Geographic, August 1995, p. 40. 
-\label{fig:ant} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/skyscraper.eps}
-\caption{ A Skyscraper }
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
+\subfloat[A termite nest]{\includegraphics[width=6cm, height=4cm]{./photos/termites_nest.eps}} 
+\hspace{0.25cm}
+\subfloat[Two Skyscrapers]{\includegraphics[width=6cm, height=4cm]{./photos/skyscraper.eps}}
+\caption{(a) A termite colony constructs their nest through bottom-up approach, i.e. without a central planner. (b) Humans  construct skyscrapers using a top-down plan. From http://www.harunyahya.com, last seen on 01/05/2010.}
+\label{fig:termite-nest}
 \end{figure}
+%%
 From the study of biological social insects, two major metrics of division of labour have been established in literature: 1) task-specialization and 2) plasticity. {\em Task-specialization} is an integral part of division of labour where a worker usually does not perform all tasks, but rather specializes in a set of tasks, according to its morphology, age, or chance \cite{Bonabeau+1999}. This division of labour among nest-mates, whereby different activities are performed simultaneously by groups of specialized individuals, is believed to be more efficient than if tasks were performed sequentially by unspecialised individuals. Division of labour has a great {\em plasticity} where the removal of one class of workers is quickly compensated for by other workers. Thus distribution of workers among different concurrent tasks keep changing according to the external (environmental) and internal conditions of a colony \cite{Garnier+2007}.\\
 In artificial social systems, like multi-agent or MRS, the term ``division of labour'' is often found  synonymous to ``task-allocation'' . However,  some researchers (e.g. \cite{Labella2007}) argued to distinguish these terms due to the origin and particular contextual use of these terms. Particularly,  division of labour adopts the biological notion of collective task  performance with little or no communication. On the other hand, task allocation follows  the meaning of assigning task(s) to particular robot(s) based on individual robot capabilities, typically through explicit communication, such as {\em intentional cooperation} \cite{Parker1998}.  The former is considered under {\em swarm robotics (SR)} paradigm and latter is done under {\em traditional MRS}. Sec. \ref{bg:mrs} covers both of these approaches in more detail. 
 
 In this dissertation, I closely follow the SR approach for the defining division of labour, but I do not put any restriction on the use of communication. In fact, I view division of labour as a group-level phenomenon which occur due to the individual agent's  self-regulatory task selection behaviour. But, unlike  SR approach that view communication as expensive and hence try to find solutions avoiding it, I do not advocate for restricting the  use of communication. Rather, for the following reasons, along with our generic mechanism of division of labour, i.e. AFM (Chapter \ref{afm}), I propose some self-regulatory communication strategies to vary  communication load dynamically (Chapter  \ref{local-comm}). 
 
-Firstly, from our understaning of different kinds of communication strategies of biological social systems (Sec. \ref{bg:bio-comm}), this is obvious that the role of communication can not be ignored for achieving division of labour in MRS. Instead of being too much addicted to communication-less algorithms, perhaps due to the limitation of current communication  technology (such as mimicking biological stigmergy), we need to exploit the existing state of the art  in communication technology for developing functional and robust division of labour mechanisms for future MRS.  By selecting a suitable communication strategy and enabling robots to self-regulate their  certain behaviours,  we can significantly reduce the communication load of a MRS.
+Firstly, from our understanding of different kinds of communication strategies of biological social systems (Sec. \ref{bg:bio-comm}), this is obvious that the role of communication can not be ignored for achieving division of labour in MRS. Instead of being too much addicted to communication-less algorithms, perhaps due to the limitation of current communication  technology (such as mimicking biological stigmergy), we need to exploit the existing state of the art  in communication technology for developing functional and robust division of labour mechanisms for future MRS.  By selecting a suitable communication strategy and enabling robots to self-regulate their  certain behaviours,  we can significantly reduce the communication load of a MRS.
 
 Secondly, Whatever be the objectives of a target MRS under any of the above approaches, e.g., maximizing robustness, scalability and/or task performance, the issue of task-allocation of an individual robot remains same, i.e., what task should it select at a particular time point considering dynamically changing task requirements, choices of peer robots and environmental conditions. In this issue, unlike traditional MRS approach, I emphasize on maintaining the overall group level performance and robustness, not just focusing on the instantaneous maximum benefit (or minimum cost) of a robot by performing a particular task.
 
@@ -262,21 +218,16 @@ Biological social insects use different modalities to establish social communica
 % 
 In ants and some other social insects chemical communication is dominant. Any kind of chemical substance that is used for communication between intra-species or inter-species is termed as semiochemical \cite{Holldobler1990}. A pheromone is a semiochemical, usually a glandular secretion, used for communication within species. One individual releases it as a signal and others responds it after tasting or smelling it. Using pheromones individuals can code quite complicated messages in smells. For example a typical an ant colony operates with somewhere between 10 and 20 kinds of signals \cite{Holldobler1990}. Most of these are chemical in nature. If wind and other conditions are favourable,  this type of signals emitted by such a tiny species can be detected from several kilometres away. Thus chemical signals are extremely economical of their production and transmission. But they are quite slow to diffuse away. But ants and other social insects manage to create sequential and compound messages either by a graded reaction of different concentrations of same substance or by blends of signals.
 Tactile communication is also widely observed in ants and other species typically by using their body antennae and forelegs. It is observed that in ants touch is primarily used  for receiving information rather than informing something. It is usually found as an invitation behaviour in worker recruitment process. When an ant intends to recruit a nest-mate for foraging or other tasks it runs upto a nest-mate and beats her body very lightly with  antennae and forelegs. The recruiter then runs to a recently laid pheromone trail or lays a new one. In this form of communication limited amount of information is exchanged. In underwater environment some fishes and other species also communicate through electric signals where there nerves and muscles work as batteries. They use continuous or intermittent pulses with  different frequencies learn about environment and to convey their identity and aggression messages.
-\begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
+%% FIG. Fireflies
+\begin{figure}[htp]
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/fire-flies.eps}
-\caption{ Fire-flies}
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=4cm,height=4cm, angle=0]{./photos/moth_evil_eye.eps}
-\caption{ Moth evil eye }
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
+\subfloat[Flashing fireflies]{\includegraphics[width=6cm, height=4cm]{./photos/fire-flies.eps}} 
+\hspace{0.25cm}
+\subfloat[A firefly emitting light]{\includegraphics[width=6cm, height=4cm]{./photos/firefly-light-under.eps}}
+\caption{(a) Flashing lights of fireflies displaying their synchronous behaviours (b) A firefly can produce light to signal other fireflies. From http://www.letsjapan.markmode.com, last seen on 01/06/2010.}
+\label{fig:fireflies}
 \end{figure}
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Signal active space and locality}
 %bio-comm-ants-active-space
@@ -293,7 +244,7 @@ The adjustment of this ratio enables individuals to gain a shorter fade-out time
 \includegraphics[width=12cm, angle=0]
 {./dia-files/bio-comm-ants-active-space.eps}
 %figure caption is below the figure
-\caption{\small Pheromone active space observed in ants}
+\caption{\small Pheromone active space observed in ants, reproduced from \protect\citeasnoun{Holldobler1990}.}
 \label{fig:ants-active-space} % Give a unique label
 \end{figure}
 Active space has strong role in modulating the behaviours of ants. For example, when workers of {\em Acanthomyops claviger} ants produce alarm signal due to an attack by a rival or insect predator, workers sitting a few millimetres away begin to react within seconds. However those ants sitting a few centimetres away take a minute or longer to react. In many cases ants and other social insects exhibit modulatory communication within their active space where many individuals involve in many different tasks. For example, while retrieving the large prey, workers of {\em Aphaeonogerter} ants produce chirping sounds (known as stridulate) along with releasing poison gland pheromones. These sounds attract more workers and keep them within the vicinity of the dead prey to protect it from their competitors. This communication amplification behaviour can increase the active space to a maximum distance of 2 meters.
@@ -308,68 +259,58 @@ Direct P2P communication strategy is also very common among most of the biologic
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
 {./photos/ants_group_comm_bioteams_com.eps}
-\caption{ Ant pheromone trail}
+\caption{A group of ants following pheromone-trail. From http://www.bioteams.com, last seen on 01/06/2010.}
 \label{fig:ant-indirect} % Give a unique label
 \end{minipage}
 \hspace{0.5cm}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm,height=4cm, angle=0]{./photos/honey-bee-waggle-dance-knol-google.eps}
-\caption{ Honey bee's local communication }
+\caption{ A dancing honey-bee (\protect{\em centre}) and its followers. From http://knol.google.com, last seen on 01/06/2010.}
 \label{fig:honey-bee-local-bc} % Give a unique label
 \end{minipage}
 \end{figure}
-
-% Honey bee dance language
+%%%%%%%%%%%%%%%%%%%%
+% FIG. Honey bee dance language
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/honey-bee-round-dance.eps}
-\caption{ Honey bee round dance}
-\label{fig:round-dance} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/honey-bee-waggle-dance.eps}
-\caption{ Honey bee waggle dance }
-\label{fig:waggle-dance} % Give a unique label
-\end{minipage}
+\subfloat[Honey-bee's waggle dance]{\includegraphics[width=6cm, height=4cm]{./photos/honey-bee-round-dance.eps}} 
+\hspace{0.25cm}
+\subfloat[Honey-bee's round dance]{\includegraphics[width=6cm, height=4cm]{./photos/honey-bee-waggle-dance.eps}}
+\caption{Examples of local broadcast communication of honey-bees. (a) Honey-bees show waggle-dance (making figure of 8) when food is far and (b) they show round-dance without any waggle when food is closer (within about 75m of hive). From \protect\citeasnoun{Slater1986}.}
+\label{fig:honey-bee-dances}
 \end{figure}
+%%
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{table}
 \caption{Common communication strategies in biological social systems}
 \label{table:bio-comm-strategy}
 \begin{center}
-\begin{tabular}{|l||l|}
-\hline \textbf{Communication strategy} & \textbf{Common modalities used}\\
-\hline Indirect & Chemical and electric \\
-\hline Peer-to-peer (P2P) &  Vision and tactile\\
-\hline Local broadcast &  Sound, chemical and vision\\
-\hline Global broadcast & Sound, chemical and electric\\
+\begin{tabular}{ll}
+\hline 
+\textbf{Communication strategy} & \textbf{Common modalities used}\\
+\hline 
+Indirect & Chemical and electric \\
+%\hline 
+Peer-to-peer (P2P) &  Vision and tactile\\
+%\hline 
+Local broadcast &  Sound, chemical and vision\\
+%\hline 
+Global broadcast & Sound, chemical and electric\\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 %%
-% p2P comm
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/honey-bee-p2p-hy23.eps}
-\caption{ Honey bee P2P comm}
-\label{fig:honey-bee-p2p} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/ants-p2p-hy14.eps}
-\caption{ Ants p2p comm }
-\label{fig:ant-p2p} % Give a unique label
-\end{minipage}
+\subfloat[Two honey-bees]{\includegraphics[width=6cm, height=4cm]{./photos/honey-bee-p2p-hy23.eps}} 
+\hspace{0.25cm}
+\subfloat[Two ants ]{\includegraphics[width=6cm, height=4cm]{./photos/ants-p2p-hy14.eps}}
+\caption{Example of P2P tactile communication (a) Honey-bees exchange nectar samples by close contact (b) ants also exchange food or information via tactile communication  From http://www.harunyahya.com/ last seen 01/05/2010 .}
+\label{fig:bees-ants-p2p-comm}
 \end{figure}
+%%
 %%-----------------------------------------------------
 \subsection{Roles of communication in task-allocation}
 \label{bg:bio-comm:comm-role}
@@ -379,18 +320,18 @@ Communication is an integral part of the DOL process in biological social system
 \caption{Self-regulation of communication behaviours based on task-urgency perception}
 \label{table:bio-comm-task-urgency}
 \begin{center}
-\begin{tabular}{|l||l|l|}
+\begin{tabular}{|l|l|l|}
 \hline \textbf{Example event} & \textbf{Strategy} & \textbf{Modulation of communication}\\
 &  &  \textbf{based-on task-urgency}\\
-\hline Ant's alarm signalling &  Global  & High concentration of pheromones\\
-by pheromones & broadcast &  leads to increased aggressive alarm-behaviours \\                                                                                                                                               
-\hline Honey-bee's  & Local  &  High quality of nectar source increases the duration\\
-round dance & broadcast & of dances and increases the number of foraging bees\\
-\hline Ant's tandem run for    & Peer-to-Peer & High quality of nest decreases the assessment time\\
-new nest selection & &  and increases traffic flow\\
-\hline Ant's pheromone trail-  & Indirect & Food source located at shorter distance\\
-laying to multiple  & &  gets higher priority as less pheromone evaporates\\
-food sources & & and the more ants joins the trail\\
+\hline Ant's alarm signal &  Global  & High concentration of pheromones\\
+by pheromones & broadcast &  increase aggressive alarm-behaviours \\                                                                                                                                               
+\hline Honey-bee's  & Local  &  High quality of nectar source increases \\
+round dance & broadcast & dancing and foraging bees\\
+\hline Ant's tandem run     & P2P & High quality of nest \\
+for nest selection & &   increases traffic flow\\
+\hline Ant's pheromone   & Indirect & Food source located at shorter distance\\
+trail-laying to   & &  gets higher priority as less pheromone \\
+food sources & & evaporates and more ants joins\\
 \hline
 \end{tabular}
 \end{center}
@@ -399,10 +340,10 @@ food sources & & and the more ants joins the trail\\
 Table \ref{table:bio-comm-task-urgency} presents the link between the task-urgency perception and self-regulation of communication behaviours in biological social systems. Here, we can see that communication is modulated based on the perception of  task-urgency irrespective of the communication strategy of a particular species. This dissertation takes this biological evidence as the baseline of our hypothesis that communication behaviours of a self-regulated system must be linked to the task-requirements of the society. Under indirect communication strategy of ants, i.e. pheromone trail-laying, we can see the that principles of self-organization, e.g. positive and negative feedbacks take place due to the presence of different amount of pheromones for different time periods. Initially, food source located at shorter distance gets relatively more ants  as the ants take less time to return nest. So, more pheromone deposits can be found in this path as a result of positive feedback process.  Thus, the density of pheromones or the strength of indirect communication link reinforces ants to follow this particular trail.\\
 \begin{figure}
 \centering
-\includegraphics[width=6.5cm, angle=-90]
+\includegraphics[width=6.4cm, angle=-90]
 {./images/ch2/honey-bee-dance-stat.eps}
 %figure caption is below the figure
-\caption{\small Self-regulation of honey-bee's communication behaviours}
+\caption{Self-regulation in honey-bee's dance communication behaviours, produced after \protect\possessivecite{Von1967} honey-bee round-dance experiment data, collected on 24 August 1962.}
 \label{fig:honey-bee-dance-stat}  % Give a unique label
 \end{figure}
 Similarly, perception of task-urgency influences the P2P and broadcast communication strategies. {\em Leptothorax albipennis} ant take lees time in assessing a relatively better nest site and quickly return home to recruit its nest-mates \cite{Pratt+2002}. Here, the quality of nest directly influences its intent to make more ``tandem-runs'' or to do tactile communication with nest-mates. We have already discussed about the influences of the quality of  flower sources to honey-bee dance.  Fig. \ref{fig:honey-bee-dance-stat} shows this phenomena more vividly. It has been plotted using the data from the honey-bee round-dance experiments of \citeasnoun[p. 45]{Von1967}. In this plot, Y1 line refers to the concentration of sugar solution. This solution was kept in a bowl  to attract honey-bees and the amount of this solution was varied from $\frac{3}{16}$M to 2M (taken as 100\%).  The variation of this control parameter influenced honey-bees communication behaviours and thus they produce varying degree of division of labour. Y2 line in Fig. \ref{fig:honey-bee-dance-stat} represents the number of collector bees that return home. The total number of collectors was 55 (taken as 100\%). Y3 plots the percent of collectors displaying round dances. We can see this dancing collectors is directly proportional to the concentration of sugar solution or task-urgency in this case. Similarly the average duration of dance per bee  is plotted in Y4 line. The maximum dancing period was 23.8s (taken as 100\%). Finally, from Y5 line we can see the outcome of the round-dance communication as the number of newly recruited bees to the feeding place. The maximum number of recruited bees was 18 (taken as 100\%). So, from an overall observation, we can see that bees sense the concentration of food-source  as the task-urgency and they self-regulate their round-dance behaviour according to this task-urgency. Thus, this self-regulated dancing behaviour of honey-bees attracts an optimal number of inactive bees to work.\\ 
@@ -412,50 +353,44 @@ Broadcast communication is one of the classic way to handle dynamic urgent tasks
 \subsection{Effect of group size on communication}
 \label{bg:bio-comm:group-size}
 The performance of cooperative tasks in large group of individuals also depends on communication and information sharing. From the study of social wasps,  \citeasnoun{Jeanne1999} has reported that, depending on the group size, different kinds of information flow occur in two groups of social wasps: 1) independent founders of {\em Polistes} (Fig. \ref {fig:polistes}) 2) swarm founders of {\em Polybia} (Fig. \ref {fig:polybia}). Independent founders (IF) are species in which reproductive females establish colonies alone or in small groups, but independent of any sterile workers and in the range of $10^2$ individuals at maturity. Swarm founders (SF) initiates colonies by swarm of workers and queens. They have a large number of individuals, in the order of $10^6$ and 20\% of them can be queen. The most notable difference in the  organization of work of these two social wasps is IF does not rely on any cooperative task performance while SF interact with each-other locally to accomplish their tasks. The work mode of IF can be considered as {\em global sensing – no communication (GSNC)} where individuals sense the task-urgencies throughout a small colony and do these tasks without communicating with each other. On the other hand, the work mode of SF can be treated as {\em local sensing – local communication (LSLC)} where individuals can only sense locally due to large colony-size and they communicate locally to exchange information, e.g. task-urgency (although their exact mechanism is unknown).\\
-%% social wasps
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/Polybia_occidentalis_I_JP6646_discoverlife.org.eps}
-\caption{Polybia}
-\label{fig:polybia}
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/Wasps_wikimedia.org_Polistes_nest_3_sjh.eps}
-\caption{ Polistes }
-\label{fig:polistes} % Give a unique label
-\end{minipage}
+\subfloat[Polybia wasps]{\includegraphics[width=6cm, height=4cm]{./photos/Polybia_occidentalis_I_JP6646_discoverlife.org.eps}} 
+\hspace{0.25cm}
+\subfloat[Polistes wasps]{\includegraphics[width=6cm, height=4cm]{./photos/Wasps_wikimedia.org_Polistes_nest_3_sjh.eps}}
+\caption{Colony founding in two types of social wasps (a) {\em Polybia occidentalis}  founds colony by swarms (b) {\em Polistes}  founds colony by a few queens independently. From http://www.discoverlife.org, last seen 01/05/2010.}
+\label{fig:social-wasps}
 \end{figure}
 %%
-Fig. \ref{fig:wasps-info-flow} compares the occurrence of information flow among IF and SF. In case of SF information about nest-construction or broods food-demand can not reach to foragers directly. Fig. \ref{figs:sf-wasps-info-flow} shows the path of information flow among SF for nest construction. The works of {\em pulp foragers} and {\em water foragers} depend largely on their communication with {\em builders}. On the other hand, in case of IF there is no such communication present among individuals. This phenomena raises the question of how these individuals can select the best work modes from GSNC and LSLC. \citeasnoun{Garnier+2007} tried to answer this question in terms of task-specialization. In case of large colonies, many individuals repeatedly performs same tasks as this minimizes their interferences, although they still have a little probability to select a different task randomly \cite{Jeanne1999}. But because of the large group size, the queuing delay in inter-task switching keeps this task-switching probability very low. Thus, in SF, task-specialization becomes very high among individuals. On the other hand, in small group of IF, specialization in specific tasks is costly because these prevents individuals not to do other tasks whose task-urgency becomes high. Thus they becomes generalist and do not communicate task-urgency to each other.\\
-\begin{figure}
+Fig. \ref{fig:wasps-info-flow} compares the occurrence of information flow among IF and SF. In case of SF information about nest-construction or broods food-demand can not reach to foragers directly. Fig. \ref{figs:sf-wasps-info-flow} shows the path of information flow among SF for nest construction. The works of {\em pulp foragers} and {\em water foragers} depend largely on their communication with {\em builders}. On the other hand, in case of IF there is no such communication present among individuals. This phenomena raises the question of how these individuals can select the best work modes from GSNC and LSLC.\\
+%%
+\begin{figure}[htp]
 \centering
 \includegraphics[width=9cm, angle=0]
 {./dia-files/jannae-fig10-info-flow-cmp.eps}
 %figure caption is below the figure
-\caption{\small Different Information flow in different kinds of social wasps}
+\caption{\small Different patterns of information flow in two types of social wasps, reproduced from \protect\citeasnoun{Jeanne1999}.}
 \label{fig:wasps-info-flow}  % Give a unique label
 \end{figure}
 %%
-\begin{figure}
+\citeasnoun{Garnier+2007} tried to answer this question in terms of task-specialization. In case of large colonies, many individuals repeatedly performs same tasks as this minimizes their interferences, although they still have a little probability to select a different task randomly \cite{Jeanne1999}. But because of the large group size, the queuing delay in inter-task switching keeps this task-switching probability very low. Thus, in SF, task-specialization becomes very high among individuals. On the other hand, in small group of IF, specialization in specific tasks is costly because these prevents individuals not to do other tasks whose task-urgency becomes high. Thus they becomes generalist and do not communicate task-urgency to each other.\\
+%%
+\begin{figure}[htp]
 \centering
 \includegraphics[width=6cm, angle=0]
 {./images/ch2/jeanne-fig9-info-flow.eps}
 %figure caption is below the figure
-\caption{\small Information flow in social wasps}
+\caption{\small Information flow in polybia social wasps, reproduced from \protect\citeasnoun{Jeanne1999}.}
 \label{figs:sf-wasps-info-flow}  % Give a unique label
 \end{figure}
 The above interesting findings on GSNC and LSLC in social wasps have been linked up with  the group productivity of wasps. Fig. \ref{fig:wasps-group-productivity} illustrates high group productivity in case of LSLC of SF. The per capita productivity was measured as the number of cells built in the nest in (a) and the weight of dry brood in grams in (b). In case of IF this productivity is much lesser (max. 24 cells per queen at the time the first offspring observed) comparing to the thousands of cells produced by SF \cite{Jeanne1999}.  This shows  us the direct link between high productivity of social wasps and their local communication and information strategy.
 %%
-\begin{figure}
+\begin{figure}[htp]
 \centering
 \includegraphics[width=9cm, angle=0]
 {./images/ch2/jeanne-fig6-group-size.eps}
 %figure caption is below the figure
-\caption{\small Productivity of social wasps as a function of group size}
+\caption{ Productivity of social wasps as a function of group size, , reproduced from \protect\citeasnoun{Jeanne1999}.}
 \label{fig:wasps-group-productivity}  % Give a unique label
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -759,8 +694,8 @@ The potential applications of SRS include: spatially distributed tasks (e.g., en
 %%
 %%MRTA problem can be addressed in many different ways depending upon the paradigm selected to abstract the problem and its relevant constraints and requirements \cite{Parker2008}. Firstly, in emergent task allocation in bioinspired swarms paradigm MRTA homogeneous robots are employed to perform mostly similar tasks only by local sensing and indirect stigmergic ( or no) communication. Secondly, in organizational and social paradigm MRTA can follow one of the two major approaches: 1) task allocation by making use of roles and 2) task allocation through bidding. For example, in multi-robot soccer, each role encompasses several specific tasks and heterogeneous robots select their roles based on their position and capabilities. In market-based approach, robots can negotiate with other team-mates to collectively solve a set of tasks. Finally, in knowledge-based approach, also known as intentional coordination, MRTA is done through the modelling of team-mate capabilities, such as by observing the performance of other team-members performance with or without explicit communication.
 
-\section{Task-allocation in MRS}
-\label{bg:mrs-ta}
+\section{Multi-robot task allocation (MRTA)}
+\label{bg:mrta}
 Since 90s multi-robot task allocation (MRTA) is a common research challenge that tries to define the preferred mapping of robots to tasks in order to optimize some objective functions \cite{Gerkey+2004}. Many control architectures MRS  have been solely designed to address this task-allocation issue from different perspectives . Based-on the high-level design of those solutions, here we have classified researches on MRTA into two major categories: 1) predefined or advance allocation and 2) Bio-emergent emergent dynamic allocation. This classification has been adopted from \citeasnoun{Shen+2001}, but our sub-categories are different since \citename{Shen+2001} proposed the classification for multi-agent system alone. Each of these categories of MRTA there are many inter-connected issues that need to be addressed by the system designer. We have put major issues into three major axes: 1) type of organization, 2) degree of interaction and 3) expressiveness of communication. In the following subsections, we have discussed these two categories and their key issues with some examples and comparisons.
 \begin{figure}
 \centering
@@ -826,7 +761,7 @@ Unlike maintaining a fixed response-threshold, adaptive response-threshold model
 p_{e} = \frac{\sigma (r,e)^n}{\sigma (r,e)^n + \theta_{e}^n}
 \end{equation}
 Probabilistic Response-Threshold:
-Unlike deterministic approach, where robots always respond to a task-stimuli that has a largest stimulus above the threshold,  probabilistic approach offers a selection process based-on a probability distribution. For example, in probabilistic response, robots can respond to an event $e$ with probability $p_{e}$ as in Eq. \ref{eqn:probl-response-th} where $\theta_{e}$ is the threshold and $n$ is the nonlinearity of the response. Thus, robots  always have small nonzero probabilities  for all tasks.  In this dissertaion we have closely followed this approach with on-line adaptation mechanisms outlined in Chapter \ref{afm}.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \subsection{Key issues in MRS task-allocation}
+Unlike deterministic approach, where robots always respond to a task-stimuli that has a largest stimulus above the threshold,  probabilistic approach offers a selection process based-on a probability distribution. For example, in probabilistic response, robots can respond to an event $e$ with probability $p_{e}$ as in Eq. \ref{eqn:probl-response-th} where $\theta_{e}$ is the threshold and $n$ is the nonlinearity of the response. Thus, robots  always have small nonzero probabilities  for all tasks.  In this dissertaion we have closely followed this approach with on-line adaptation mechanisms outlined in Chapter \ref{afm}.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \subsection{Key issues in MRTA}
 \begin{figure}
 \centering
 \includegraphics[width=9cm, angle=0]

@@ -402,24 +402,23 @@ The above interesting findings on GSNC and LSLC in social wasps have been linked
 Historically the concept of multi-robot system comes almost after the introduction of behaviour-based robotics paradigm \cite{Brooks1986,Arkin1990}. In 1967, using the traditional sense-plan-act or hierarchical approach \cite{Murphy2000}, the first Artificially Intelligent (AI) robot, Shakey, was created at the Stanford Research Institute. In late 80s, Rodney A. Brooks revolutionized this entire field of mobile robotics who outlined a layered, behaviour based approach that acted significantly differently than the hierarchical approach \cite{Brooks1986}. At the same time, Valentino Braitenberg described a set of experiments where increasingly complex vehicles are built from simple mechanical and electrical components \cite{Braitenberg1984}. Around the same time and with similar principle, Reynolds developed a distributed behavioural model for a bird in a flock that assumed that a flock is simply the result of the interactions among the individual birds \cite{Reynolds1987}. Early research on multi-robot systems also include the concept of cellular robotic system \cite{Fukuda+1987}, \cite{Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}. Fig. and \ref{fig:mrs:nerd-herd} and \ref{fig:mrs:box-pushing} present us the two earliest MRS system developed by pioneers of MRS researches.\\
 %
 From the beginning of the behaviour based paradigm, the biological inspirations influenced many cooperative robotics researchers to examine the social characteristics of insects and animals and to apply them to the design multi-robot systems \cite{Arkin1998}. The underlying basic idea is to use the simple local control rules of various social species, such as ants, bees, birds etc., to the development of similar behaviours in multi-robot systems. In multi-robot literature, there are many examples that demonstrate the ability of multi-robot teams to aggregate, flock, forage, follow trails etc. \cite{Bonabeau+1999,Mataric1994}. The dynamics of ecosystem, such as cooperation, has also been applied in multi-robot systems that has presented the emergent cooperation among team members \cite{Mcfarland1994}, \cite{Martinoli+1996}. On the other hand, the study of competitive behaviours among animal and human societies has also been applied in multi-robot systems, such as that found in multi-robot soccer \cite{Asada+1999}. From Fig. \ref{fig:mrs:disaster-recovery} and \ref{fig:mrs:soccer} show us that the applications of MRS can be ranging from human disaster recovery to games and entertainment.\\
-%%% Earliest MRS: nerd herd
+%%% Earliest MRS
 \begin{figure}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
 {./photos/Nerd_Herd.eps}
-\caption{ Mataric's Nerd Herd}
+\caption{ The Nerd-Herd. From \protect\citeasnoun{Mataric1994}}
 \label{fig:mrs:nerd-herd} % Give a unique label
 \end{minipage}
 \hspace{0.5cm}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm,height=4cm, angle=0]{./photos/kube_box_pushing.eps}
-\caption{ Kube's box pushing experiments }
-\label{fig:mrs:box-pushing} % Give a unique label
+\caption{ A group of 10 box pushing robots. From \protect\citeasnoun{Kube1997} }
+\label{fig:mrs:box-pushing-robots} 
 \end{minipage}
 \end{figure}
-
 As discussed above, there are several research groups who follow different approaches to handle multi-robot research problems. Parker \cite{Parker2008} has summarized most of the recent research approaches into three paradigms:
 \begin{enumerate}
 \item Bioinspired, emergent swarms paradigm,
@@ -428,22 +427,25 @@ As discussed above, there are several research groups who follow different appro
 \end{enumerate}
 \subsubsection*{Bioinspired, emergent swarms paradigm}
 In bio-inspired, emergent swarms paradigm local sensing and local interaction forms the basis of collective behaviors of swarms of robots. Many researchers addressed the issues of local interaction, local communication (i.e., stigmergy) and other issues of this paradigm \cite{Mataric1995}, \cite{Kube+1993}. Today, this paradigm has been emerged as a sub-field of robotics called swarm robotics \cite{Sahin+2005}. This is a powerful paradigm for those applications that require performing shared common tasks over distributed workspace, redundancy or fault-tolerance without any complex interaction of entities. Some examples include flocking, herding, searching, chaining, formations, harvesting, deployment, coverage etc. \\
-% FIG: Multi-robot in emergency entertainment
+% FIG: Multi-robot in emergency
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/burning-oil-rig-explosion-fire-photo11.eps}
-\caption{ Multi-robot emergency disaster recovery}
-\label{fig:mrs:disaster-recovery} % Give a unique labe
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
+\subfloat[A disaster site: buring oil rig]{\includegraphics[width=6cm, height=4cm]{./photos/burning-oil-rig-explosion-fire-photo11.eps}} 
+\hspace{0.25cm}
+\subfloat[An array of Seaglider underwater robots]{\includegraphics[width=6cm, height=4cm]{./photos/Wasps_wikimedia.org_Polistes_nest_3_sjh.eps}}
+\caption{Example of MRS working at a disaster site (a) British Petroleum's oil rig sinks in the Gulf of Mexico after explosion. From http:///news.bbc.co.uk, reported on 22/04/2010. 
+ (b) IRobot's Seaglider fleet that was surveying oil spill in the Gulf of Mexico at depths of up to 1,000 meters. From http:///www.irobot.com, reported on 25/05/2010.}
+\label{fig:bp-oil-spill}
+\end{figure}
+%% FIG: Robocup
+\begin{figure}
 \centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/robocup_bbc_41132545_robotbody2.eps}
-\caption{ Multi-robot soccer: challenge and fun }
-\label{fig:mrs:soccer} % Give a unique label
-\end{minipage}
+\subfloat[Robot teams at Robocup soccer]{\includegraphics[width=6cm, height=4cm]{./photos/burning-oil-rig-explosion-fire-photo11.eps}} 
+\hspace{0.25cm}
+\subfloat[Robot team at  Robocup rescue]{\includegraphics[width=6cm, height=4cm]{./photos/rugbot_robocup_rescue_osaka.eps}}
+\caption{Example of MRS at sports and rescue (a) Robot dogs playing at Robocup soccer. From http:///news.bbc.co.uk, reported on 11/05/2005. 
+ (b)Rugbot robot  team was competing at Osaka's Robocup rescue leage from \protect\citeasnoun{Birk+2006}.}
+\label{fig:robocup}
 \end{figure}
 %%
 % FIG: Multi-robot indoor and outdoor operations
@@ -452,13 +454,13 @@ In bio-inspired, emergent swarms paradigm local sensing and local interaction fo
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
 {./photos/centibot_demo3-11.eps}
-\caption{ Centibots indoor}
+\caption{ Hundreds of Centibots robots worked at indoor search, navigation and mapping tasks. From \protect\citeasnoun{Ortiz+2005}. }
 \end{minipage}
 \hspace{0.5cm}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm,height=4cm, angle=0]{./photos/pioneer_robots_610x455.eps}
-\caption{ Pioneer in outdoor }
+\caption{Georgia Tech. Mobile Robot Lab's Pioneer robots operating at outdoor uncertain environment. From http://news.cnet.com, reported on 05/04/2010.}
 \label{fig:self-org-agent} % Give a unique label
 \end{minipage}
 \end{figure}
@@ -466,7 +468,7 @@ In bio-inspired, emergent swarms paradigm local sensing and local interaction fo
 Organizational and social paradigms are typically based on organization theory derived from human systems that reflects the knowledge from sociology, economics, psychology and other related fields. To solve complex problems this paradigm usually follows the cooperative and collaborative forms of distributed intelligence. In multi-robot systems the example of this paradigm is found in two major formats: 
 the use of roles and value system and
 market economics.
-In multi-robot applications under this paradigm, an easy division of labor is achieved by assigning roles depending on the skills and capabilities in individual team member. For example, in multi-robot soccer \cite{Stone+1999,Asada+1999} positions played by different robots are usually considered as defined roles. On the contrary, in market economics approach \cite{Gerkey+2002,Dias+2006} task allocation among multiple robots are done via market economics theory that enables the selection of robots for specific tasks according to their individual capabilities determined by a bidding process.
+In multi-robot applications under this paradigm, an easy division of labour is achieved by assigning roles depending on the skills and capabilities in individual team member. For example, in multi-robot soccer \cite{Stone+1999,Asada+1999} positions played by different robots are usually considered as defined roles. On the contrary, in market economics approach \cite{Gerkey+2002,Dias+2006} task allocation among multiple robots are done via market economics theory that enables the selection of robots for specific tasks according to their individual capabilities determined by a bidding process.
 \subsubsection*{Knowledge-based, ontological and semantic paradigm}
 The third paradigm, commonly used for developing multi-agent systems, is knowledge-based, ontological and semantic paradigm. Here knowledge is defined as ontology and shared among robots/agents from disparate sources. It reduces the communication overhead by utilizing the shared vocabulary and semantics. Due to low bandwidth, limited power, limited computation and noise and uncertainty in sensing/actuation, the use of this approach is usually restricted in multi-robot systems. \\
 Although this approximate classification includes most of the research directions it is very hard to specifically categorize all diverse researches on multi-robot systems. However, most of the researchers select a suitable paradigm to abstract the problem from an specific perspective with a fundamental challenge to determine how best to achieve global coherence from the interactions of entities at the local level.
@@ -493,7 +495,7 @@ Finally, we present here \possessivecite{Parker2008} notion of {\em interaction}
 \includegraphics[width=9cm, angle=0]
 {./images/ch2/parker-interaction-classification.eps}
 %figure caption is below the figure
-\caption{\small Categorization of types of interactions in MRS}
+\caption{\small Categorization of types of interactions in MRS, reproduced from \protect\citeasnoun{Parker2008}.}
 \label{fig:parker-interactio}  % Give a unique label
 \end{figure}
 While analysing the role and application of distributed intelligence on MRS,  \citename{Parker2008} presented an excellent classification of interactions of entities of MRS. As seen in Fig. \ref{fig:parker-interaction} She viewed the interactions along three different axes:
@@ -541,6 +543,15 @@ Whatever the principle characteristics of a MRS, e.g., homogeneity, coupling, co
 %%%
 \subsection*{Architecture and control}
 \label{bg:mrs:arch}
+%% FIG: three layer arch
+\begin{figure}
+\begin{center}
+\includegraphics[width=5cm,height=4cm]{./images/ch2/three-layered.eps} % The printed column width is 8.4 cm.
+\caption{A typical hybrid robot control architecture, adopted from \protect\citeasnoun{Mataric2007}.} 
+\label{fig:three-layer-arch}
+\end{center}
+\end{figure}
+%%
 In MRS, two high-level control strategies are very common: 1) centralized and 2) decentralized or distributed. Under a specific control strategy, traditionally three basic system architectures are widely adopted: deliberative, reactive and hybrid \cite{Mataric2007,Arkin1998}. Deliberative systems based on central planning are well suited for the centralized control approach. The single controller makes a plan from its Sense-Plan-Act (SPA) loop by gathering the sensory information and each robot performs its part. Reactive systems are widely used in distributed control where each robot executes its own controller maintaining a tight coupling between the system's sensors and actuators, usually through a set of well-designed behaviours. Here, various group behaviour emerges from the interactions of individuals that communicate and cooperate when needed. Hybrid systems are usually the mixture of the two above approaches; where each robot can run its own hybrid controller with the help of a plan with necessary information from all other robots. \citeasnoun{Mataric2007} described behaviour-based control architecture as a separate category of distributed control architecture where each robot behaves according to a behaviour-based controller and can learn, adapt and contribute to improve and optimize the group-level behaviour. 
 Although most of the MRS control architectures share some common characteristics (such as distributed and behaviour-based control strategy) based on their difference of underlying design principles we have put them into three groups:
 \begin{enumerate}
@@ -549,6 +560,15 @@ Although most of the MRS control architectures share some common characteristics
 \item Multi-agent based architectures
 \end{enumerate}
 Due to the overwhelming amount of literature on MRS architectures it is not possible to include all of them. However, below some representative key architectures, strictly designed for MRS, are described. 
+%% FIG: foraging fsa
+\begin{figure}
+\begin{center}
+\includegraphics[width=6cm,height=4cm]{./images/ch2/foraging-fsa.eps} % The printed column width is 8.4 cm.
+\caption{Finite state machine for foraging task, reproduced from \protect\citeasnoun{Arkin1998}.} 
+\label{fig:foraging-fsa}
+\end{center}
+\end{figure}
+%%
 \subsubsection*{Behaviour-based classical architectures}
 The ALLIANCE architecture \cite{Parker1998} is one of the earliest behaviour-based fully distributed architectures. This architecture has used the mathematically modelled behaviour sets and motivational system. The primary mechanism for task selection of a robot is to activate the motivational behaviour partly based on the estimates of other robots behaviour. This architecture was designed for heterogeneous teams of robots performing loosely coupled tasks with fault-tolerance and co-operative control strategy. Broadcast of local eligibility (BLE) \cite{Werger2001} is another behaviour-based architecture that uses port-attributed behaviour technique through broadcast communication method. It was demonstrated to perform coordinated tasks, such as multi-target observation tasks. Major differences between this two behaviour-based systems include the need in ALLIANCE for motivational behaviours to store information about other individual robots, the lack of uniform inter-behaviour communication, and ALLIANCE's monitoring of time other robots have spent performing behaviours rather than BLE's local eligibility estimates. Similar to the above two architectures, many other researchers proposed and implemented many variants of behaviour-based architectures. Some of them used the classic three layer (plan-sequence-execute) approach, \citeaffixed{Simmons+2002,Gat1997} {e.g.} used a {\em layered architecture} where each layer interact directly to coordinate actions at multiple levels of abstraction. 
 \subsubsection*{Market-based architectures}
@@ -570,20 +590,16 @@ Mobile robot systems highly rely on precise localization for performing their au
 Localization issue of MRS also invites researchers to examine specific areas like exploration and map generation. In exploration problem, robots need to minimize the time needed to explore the given area. Many researchers uses various kinds of exploration algorithms for solving this NP-hard problem, such as line-of-sight constrained exploration algorithm , collaborative multi-robot exploration \cite{Burgard+2000}. In mapping problem, mostly inaccurate localization information from teams of robots are accumulated and combined to generate a map by various techniques, such as probabilistic approaches \cite{Thurn+2000}.
 % FIG: Multi-robot indoor and outdoor operations
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/jamesMcLurkin_SwarmbotAndSwarm.eps}
-\caption{ Swarmbot}
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm,height=4cm, angle=0]{./photos/james_fig-BoundaryDetection-Robots.eps}
-\caption{ Swarmbot boundary detection }
-\label{fig:self-org-agent} % Give a unique label
-\end{minipage}
+\subfloat[Swarmbot SRS]{\includegraphics[width=6cm, height=4cm]{./photos/jamesMcLurkin_SwarmbotAndSwarm.eps}} 
+\hspace{0.25cm}
+\subfloat[Robots detecting boundary]{\includegraphics[width=6cm, height=4cm]{./photos/james_fig-BoundaryDetection-Robots.eps}}
+\caption{ (a) A Swarmbot and the Swarms 
+ (b) Swarmbots detecting boundary using distributed algorithms, from \protect\citeasnoun{Mclurkin+2009}.}
+\label{fig:swarmbot-boundary-detection}
 \end{figure}
+%%
+%%
 \subsection*{Example areas of MRS research}
 \label{bg:mrs:eg}
 Researches on MRS have been targeted for numerous application domains that all can not be listed here altogether. Rather than listing all of areas explored by researchers, here we have included a few major areas that have received highest attention in the MRS research community. 
@@ -593,10 +609,39 @@ Although research on MRS has been becoming more mature since last decades, it is
 %%-----------------------------------------------
 \subsection{Swarm robotic systems}
 \label{bg:mrs:sr}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         %% modelling swarm: TODO: to be summarized	
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              %% \begin{figure}
+\centering
+\subfloat[Separation]{\includegraphics[width=4cm, height=4cm]{./photos/boid-separation.eps}} 
+\hspace{0.25cm}
+\subfloat[Alignment]{\includegraphics[width=4cm, height=4cm]{./photos/boid-alignment.eps}}
+\hspace{0.25cm}
+\subfloat[Cohesion]{\includegraphics[width=4cm, height=4cm]{./photos/boid-cohesion.eps}}
+\caption{ Reynold's simulated flocking of boids \protect\citeasnoun{Reynolds1987}. (a) Separation: steer to avoid crowding local flockmates,  (b) Alignment: steer towards the average heading of local flockmates and (c) Cohesion: steer to move toward the average position of local flockmates,  from http://www.red3d.com/cwr/boids/, last seen on 01/06/2010.}
+\label{fig:boid-rules}
+\end{figure}
+%%
+\begin{figure}
+\centering
+\subfloat[A flock of birds]{\includegraphics[width=4cm, height=4cm]{./photos/bird-flocking.eps}} 
+\hspace{0.25cm}
+\subfloat[Simulated boids]{\includegraphics[width=4cm, height=4cm]{./photos/boid-flocking.eps}}
+\caption{  (a) Real flocks of birds,  from http://www.travelblog.org, and  (b) simulated flock of birds, from http://www.red3d.com/cwr/boids, last seen on 01/06/2010.}
+\label{fig:birds-flocking}
+\end{figure}
+%%
+%% modelling swarm: TODO: to be summarized	
 Modelling both the behaviour  of an individual robot controllers and system-level collective behaviours have become an interesting issue in SRS. This is due to the fact that, in this kind of system, collective behaviours, e.g. flocking or aggregation, can significantly be changed by of just changing one or few parameters of individual robot controllers. Thus modelling SRS can give us an early insight about a target system before its implementation before doing any time-consuming simulation or expensive real-experiment. This is very important since in real-experiments or in simulations the parameter space usually becomes huge and it could be infeasible to run significant number of  iterations of these real or simulated trials. From mathematical models, it can be easy to find out which parameters of interest dominate the system performance or which resources are more important to do a particular type of tasks. In some cases, it can also predict the system performance to some degree. 
-A plenty of approaches for modelling SRS exists in MRS literature \cite{Gazi+2006}. Most common modelling approaches include: behaviour-based approach, probabilistic models, potential-function based approach, asynchronous swarm models, multi-agent based swarm models. Behaviour-based approach can be found in the study of \citeasnoun{Reynolds1987}  who has simulated the flocking behaviours of birds. Fig. \ref{} illustrates how three simple rules (on left) can produce a coordinated flocking motion (on right). From  biological observation of flocking birds (e.g. see Fig. \ref{}) it is obvious that collective  behaviours can be generated through a local control and interaction rules. Similar to this study, many other researchers tries to apply behaviours based local strategy for  formation control (e.g. \cite{Balch+1998}),  aggregation \citeaffixed{Mataric1995}{e.g. }, sorting (e.g. \cite{Melhuish+1998}), foraging (e.g.Liu+2007 ), cooperative transport (e.g. \cite{Kube1997}) etc.
-
+A plenty of approaches for modelling SRS exists in MRS literature \cite{Gazi+2006}. Most common modelling approaches include: behaviour-based approach, probabilistic models, potential-function based approach, asynchronous swarm models, multi-agent based swarm models. Behaviour-based approach can be found in the study of \citeasnoun{Reynolds1987}  who has simulated the flocking behaviours of birds. Fig. \ref{} illustrates how three simple rules (on left) can produce a coordinated flocking motion (on right). From  biological observation of flocking birds (e.g. see Fig. \ref{}) it is obvious that collective  behaviours can be generated through a local control and interaction rules. Similar to this study, many other researchers tries to apply behaviours based local strategy for  formation control (e.g. \cite{Balch+1998}),  aggregation \citeaffixed{Mataric1995}{e.g. }, sorting (e.g. \cite{Melhuish+1998}), foraging (e.g.Liu+2007 ), cooperative transport (e.g. \cite{Kube1997}) etc.\\
+%%
+\begin{figure}
+\centering
+\subfloat[Robots pulling sticks]{\includegraphics[width=4cm, height=4cm]{./photos/AGASSONOUN_S_SV.eps}} 
+\hspace{0.25cm}
+\subfloat[Probabilistic FSM]{\includegraphics[width=4cm, height=4cm]{./photos/agassonoun-pfsm.eps}}
+\caption{ (a) Stick-pulling experiments by a group of  Khephera robots equipped with gripper turrets and (b) Probabilistic finite state machie (PFSM) of robot controllers. From \protect\citeasnoun{Agassounon+2004}.}
+\label{fig:stick-pulling-expt}
+\end{figure}
+%%
 In 1999,  \citeasnoun{Martinoli1999} proposed  probabilistic modelling of SRS.  This probabilistic approach often has two major aspects: controller design through probabilistic finite state machine (PFSM) and automated parameter adaptation through genetic algorithm. This approach has  been adopted by many recent SRS research \citeaffixed{Agassounon+2004, Lerman+2005, Liu+2007b}{e.g.}. \\
 SRS models can be classified into many distinct classes. Firstly, they can be classified into: spatial and non-spatial models. Spatial models keep track of the agent's trajectories and perhaps use that spatial distribution. However, in non-spatial models it is assumed that agents occupy independent, random positions at consecutive time-steps. SRS models can also be classified into embodied and non-embodied models. Here in non-embodied models agents are considers as points and their physical characteristics are ignored, whereas embodied models take the physical characteristics or interferences of agents into account. Thus spatial models with embodied agents are chosen in typical simulations. As another distinct classification, SRS models can be classified into two major groups: 1) microscopic models and 2) macroscopic models. Macroscopic models focus on individual robots and state transitions of each robot controller are updated based on the stochastically approximated robot-robot and robot-environment interactions. The probabilities of state transitions are calculated from  simple geometric configurations and with few trial experiments. Here, no group-level sensing or actuation is taken into account. On the other hand, macroscopic models captures the snapshot-by-snapshot pictures of whole SRS. Each snapshot presents the  total number of robots in a given state. Fig. \ref{} shows the probabilistic macroscopic model where $S_{x}$ denotes a particular state $x$ and $N_{s}$ denotes the number of robots under state $S_{x}$.  Here $\tau$ represents the corresponding probability density function derived from a set of Master-Equations \cite{Agassounon+2004}.
 
@@ -660,14 +705,14 @@ The potential applications of SRS include: spatially distributed tasks (e.g., en
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
 {./photos/swarm-bots-crossing-canal.eps}
-\caption{ Swarmbot crossing rough terrain}
+\caption{ A group of Swarmbots are crossing rough terrain, from \protect\citeasnoun{Mondada+2004}.}
 \label{fig:srs:rough-terrain} % Give a unique label
 \end{minipage}
 \hspace{0.5cm}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm,height=4cm, angle=0]{./photos/swarmbots-pulling-child-725972.eps}
-\caption{ Swarmbot pulling a child }
+\caption{ A Swarmbot of 18 s-bots pulls a child to a safe location from \protect\citeasnoun{Mondada+2004}.  }
 \label{fig:srs:pulling-child} % Give a unique label
 \end{minipage}
 \end{figure} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

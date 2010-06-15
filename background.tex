@@ -445,13 +445,14 @@ As discussed above, there are several research groups who follow different appro
 \includegraphics[width=6cm, height=4cm, angle=0]
 {./photos/centibot_demo3-11.eps}
 \caption{ Hundreds of Centibots robots worked at indoor search, navigation and mapping tasks. From \protect\citeasnoun{Ortiz+2005}. }
+\label{fig:centibots-indoor}
 \end{minipage}
 \hspace{0.5cm}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm,height=4cm, angle=0]{./photos/pioneer_robots_610x455.eps}
 \caption{Pioneer robots operating at outdoor uncertain environment of Georgia Tech. Mobile Robot Lab. From http://news.cnet.com, reported on 05/04/2010.}
-\label{fig:self-org-agent} % Give a unique label
+\label{fig:pioneers-outdoor} % Give a unique label
 \end{minipage}
 \end{figure}
 \subsubsection*{1. Traditional MRS paradigm}
@@ -520,28 +521,31 @@ In this dissertation, we use the taxonomy of \citeasnoun{Dudek+2002} for specify
 \label{bg:mrs:mrs}
 %%
 %Challenges of MRS
-MRS not only shares the problem of controlling a single robot but also it amplifies the problem to several orders or magnitude. Below we list a few major challenges of a MRS:\\
-Increased uncertainty about environment:\\
-When multiple robots work in a partially observable world, the  environmental view becomes severely restricted due to both in terms of noisy sensor readings and frequent obstacle detections. Thus, in MRS, the uncertainty about the environment increased in may folds.\\
-Increased dynamic changes of the environment:\\
+MRS not only shares the problem of controlling a single robot but also it amplifies the problem to several orders or magnitude. Below we list a few major challenges of any MRS:\\
+\textbf{Increased uncertainty about environment:}
+When multiple robots work in a partially observable world, the environmental view becomes severely restricted due to both in terms of noisy sensor readings and frequent obstacle detections. Thus, in MRS, the uncertainty about the environment increased in may folds.\\
+\textbf{Increased dynamic changes of the environment:}
 Since many robots work in a shared environment, the dynamic movements and physical interferences among the robots becomes more frequent and robots are required to change their course of action more frequently.\\
-Decreased communication throughput:\\
-Interference in communication is inescapable for a team of robots. Since the typical bandwidth of a communication channel is fixed, adding  more robots reduces the effective communication throughout and thus increased latency in robot-robot or robot-computer communications. If the robots are required to coordinate their  action then the saturation of the communication channel affects the overall team-performance.
-Decreased real-time performance:\\
-In a functional MRS,  autonomous mobile robots need to do some tasks in real-time, e.g. identifying their current poses ({\em localization}) to determine next motions,  avoiding obstacles etc. However, when the number of robots increases the real-time performance can be poor due to the above factors.
-Increased sensor failures and break-downs:\\
-This is also common in a MRS that the real-time interaction of large number robots can decrease the life of their hardware as they become subject to more collisions and interferences. Thus overall reliability of the MRS can be decreased gradually.
-
-Despite the above big challenges, robotic researchers design and operate MRS successfully using a number of intelligent solutions since the last few decades. In the previous subsections we have seen how the researches are classified into distinctive paradigms and can be specified by precise taxonomies. Here we list a number of typical issues that any MRS may encounter from its inception to implementation.\\
-How to use sensor values to produce real-time motions avoiding obstacles ({\em motion control});\\
-How to find out the self-position in the world so that reaching to a specified target becomes possible ({\em localization});\\
-How to integrate sensor values to build maps or representation of the environment for further exploration ({\em navigation/map-building});\\
-How to plan/predict and select a particular high-level task (e.g. find a red object or picking up a stick) provided that a number of tasks present in the environment (\em task-selection);\\
-How to interact or communicate with other robots for cooperating, collaborating or coordination in doing tasks (\em communication);
-How to remember things so that future robot actions or behaviours become improved ({\em adaptation/learning}).\\
-Not all of the above issues are present in all MRS. Many MRSes do not use any form of navigation, communication or learning and yet they do some useful tasks. However it is important to understand how these issues can be solved in a structured, modular and timely manner.  Integrating the solutions of these issues and resolving the conflicts among them also appear to be the major functions of multi-robot control architectures. For example, conflicts occur if a resource is required by or, a unique single task is distributed to, more than one robot at any given time. Several resources such as bandwidth, space etc. may be needed by more than one robot. The space sharing problem was treated as traffic control problem in urban areas, but the robots are never restricted in road networks \cite{Cao+1997}. The sharing of bandwidth among robots is a great problem in case of applications like multi-robot mapping \cite{Konolige+2003}. In large multi-robot team such as in Centibots system \cite{Ortiz+2005}, task interference and high bandwidth communication between 100s of robots appear as a significant research challenge.
+\textbf{Decreased communication throughput:}
+Interference in communication is inescapable for a team of robots. Since the typical bandwidth of a communication channel is fixed, adding more robots reduces the effective communication throughout and thus increased latency in robot-robot or robot-computer communications. If the robots are required to coordinate their action then the saturation of the communication channel affects the overall team-performance.\\
+\textbf{Decreased real-time performance:}
+In a functional MRS, autonomous mobile robots need to do some tasks in real-time, e.g. identifying their current poses ({\em localization}) to determine next motions, avoiding obstacles etc. However, when the number of robots increases the real-time performance can be poor due to the above factors.\\
+\textbf{Increased sensor failures and break-downs:}
+This is also common in a MRS that the real-time interaction of large number robots can decrease the life of their hardware as they become subject to more collisions and interferences. Thus overall reliability of the MRS can be decreased gradually.\\
+%%
+Despite the above big challenges, robotic researchers design and operate MRS successfully using a number of intelligent solutions since the last few decades. In the previous subsections we have seen how the researches are classified into distinctive paradigms and can be specified by precise taxonomies. Here we list a number of typical issues that any MRS may encounter from its inception to implementation.
+\begin{itemize}
+\item {\em Motion control}. How to use sensor values to produce real-time motions avoiding obstacles ?
+\item {\em Localization}. How to find out the self-position in the world so that reaching to a specified target becomes possible ?
+\item {\em Navigation/map-building}. How to integrate sensor values to build maps or representation of the environment for further exploration ?
+\item {\em Task-selection}. How to plan/predict and select a particular high-level task (e.g. find a red object or picking up a stick) provided that a number of tasks present in the environment ? 
+\item {\em Interaction and communication}.How to interact or communicate with other robots for cooperating, collaborating or coordination in doing tasks ?
+\item {\em Adaptation/learning} How to remember things so that future robot actions or behaviours become improved ?
+\end{itemize}
+%%
+Not all of the above issues are present in all MRS. Many MRSes do not use any form of navigation, or communication or learning and yet they do some useful tasks. However it is important to understand how these issues can be solved in a structured, modular and timely manner. Integrating the solutions of these issues and resolving the conflicts among them also appear to be the major functions of multi-robot control architectures. For example, conflicts occur if a resource is required by or, a unique single task is distributed to, more than one robot at any given time. Several resources such as bandwidth, space etc. may be needed by more than one robot \cite{Cao+1997}. The sharing of bandwidth among robots is a great problem in case of applications like multi-robot mapping \cite{Konolige+2003}. As shown in Fig. \ref{{fig:centibots-indoor}}, in large multi-robot team such as in Centibots system \cite{Ortiz+2005}, task interference and high bandwidth communication between 100s of robots appear as a significant research challenge.\\
+%%
 Whatever the principle characteristics of a MRS, e.g., homogeneity, coupling, communication methods etc., each MRS must address some degree to those problems. For example, usually every MRS adopts a control architecture under a specific paradigm to organize its hardware, software and communication system. Similarly every MRS address the issues of communication, localization, interaction in a way specific to the application and underlying design principles (or philosophies). In the following subsections, we have attempted to summarize the key MRS research issues that would influence the selection and implementation our research. In this initiative we have deliberately omitted the non-central or very specific issues, such as collaborative transport or reconfigurable MRS, that does not directly relate to our research.
-%%%
 \subsection*{Architecture and control}
 \label{bg:mrs:arch}
 %% FIG: three layer arch
@@ -553,7 +557,7 @@ Whatever the principle characteristics of a MRS, e.g., homogeneity, coupling, co
 \end{center}
 \end{figure}
 %%
-In MRS, two high-level control strategies are very common: 1) centralized and 2) decentralized or distributed. Under a specific control strategy, traditionally three basic system architectures are widely adopted: deliberative, reactive and hybrid \cite{Mataric2007,Arkin1998}. Deliberative systems based on central planning are well suited for the centralized control approach. The single controller makes a plan from its Sense-Plan-Act (SPA) loop by gathering the sensory information and each robot performs its part. Reactive systems are widely used in distributed control where each robot executes its own controller maintaining a tight coupling between the system's sensors and actuators, usually through a set of well-designed behaviours. Here, various group behaviour emerges from the interactions of individuals that communicate and cooperate when needed. Hybrid systems are usually the mixture of the two above approaches; where each robot can run its own hybrid controller with the help of a plan with necessary information from all other robots. \citeasnoun{Mataric2007} described behaviour-based control architecture as a separate category of distributed control architecture where each robot behaves according to a behaviour-based controller and can learn, adapt and contribute to improve and optimize the group-level behaviour. 
+In MRS, two high-level control strategies are very common: 1) centralized and 2) decentralized or distributed. Under a specific control strategy, traditionally three basic system architectures are widely adopted: deliberative, reactive and hybrid \cite{Mataric2007,Arkin1998}. Deliberative systems based on central planning are well suited for the centralized control approach. The single controller makes a plan from its Sense-Plan-Act (SPA) loop by gathering the sensory information and each robot performs its part. Reactive systems are widely used in distributed control where each robot executes its own controller maintaining a tight coupling between the system's sensors and actuators, usually through a set of well-designed behaviours. Here, various group behaviour emerges from the interactions of individuals that communicate and cooperate when needed. Hybrid systems are usually the mixture of the two above approaches; where each robot can run its own hybrid controller with the help of a plan with necessary information from all other robots. Behaviour-based control architecture can also be considered as a separate category of distributed control architecture \cite{Mataric2007}, where each robot behaves according to a behaviour-based controller and can learn, adapt and contribute to improve and optimize the group-level behaviour.\\ 
 Although most of the MRS control architectures share some common characteristics (such as distributed and behaviour-based control strategy) based on their difference of underlying design principles we have put them into three groups:
 \begin{enumerate}
 \item Behaviour-based classical architectures
@@ -561,29 +565,53 @@ Although most of the MRS control architectures share some common characteristics
 \item Multi-agent based architectures
 \end{enumerate}
 Due to the overwhelming amount of literature on MRS architectures it is not possible to include all of them. However, below some representative key architectures, strictly designed for MRS, are described. 
+%% FIG: ALLIANCE
+\begin{figure}
+\centering
+\includegraphics[width=12cm, angle=0]
+{./images/ch2/parker-alliance-arch.eps}
+%figure caption is below the figure
+\caption{ALLIANCE architecture. From \protect\citeasnoun{Parker1998}.}
+\label{fig:parker-alliance-arch} % Give a unique label
+\end{figure}
+%% MOTIVATIONAL BH
+\begin{figure}
+\centering
+\includegraphics[width=10cm, angle=0]
+{./images/ch2/parker-motivational-bh.eps}
+%figure caption is below the figure
+\caption{Motivational behaviour in ALLIANCE. From \protect\citeasnoun{Parker1998}.}
+\label{fig:parker-motivational-bh} % Give a unique label
+\end{figure}
+%%
+\subsubsection*{Behaviour-based classical architectures}
+The ALLIANCE architecture \cite{Parker1998} is one of the earliest behaviour-based fully distributed architectures (Fig. \ref{fig:alliance-arch}). This architecture has used the mathematically modelled behaviour sets and motivational system (Fig. \ref{fig:parker-motivational-bh}). The primary mechanism for task selection of a robot is to activate the motivational behaviour partly based on the estimates of other robots behaviour. This architecture was designed for heterogeneous teams of robots performing loosely coupled tasks with fault-tolerance and co-operative control strategy. Broadcast of local eligibility (BLE) \cite{Werger2001} is another behaviour-based architecture that uses port-attributed behaviour technique through broadcast communication method. It was demonstrated to perform coordinated tasks, such as multi-target observation tasks. Major differences between this two behaviour-based systems include the need in ALLIANCE for motivational behaviours to store information about other individual robots, the lack of uniform inter-behaviour communication, and ALLIANCE's monitoring of time other robots have spent performing behaviours rather than BLE's local eligibility estimates. Similar to the above two architectures, many other researchers proposed and implemented many variants of behaviour-based architectures. Some of them used the classic three layer (plan-sequence-execute) approach, \citeaffixed{Simmons+2002,Gat1997} {e.g.} used a {\em layered architecture} where each layer interact directly to coordinate actions at multiple levels of abstraction. 
 %% FIG: foraging fsa
 \begin{figure}
 \begin{center}
-\includegraphics[width=6cm,height=4cm]{./images/ch2/foraging-fsa.eps} % The printed column width is 8.4 cm.
+\includegraphics[width=6cm,height=4cm]{./dia-files/foraging-fsa.eps} % The printed column width is 8.4 cm.
 \caption{Finite state machine for foraging task, reproduced from \protect\citeasnoun{Arkin1998}.} 
 \label{fig:foraging-fsa}
 \end{center}
 \end{figure}
 %%
-\subsubsection*{Behaviour-based classical architectures}
-The ALLIANCE architecture \cite{Parker1998} is one of the earliest behaviour-based fully distributed architectures. This architecture has used the mathematically modelled behaviour sets and motivational system. The primary mechanism for task selection of a robot is to activate the motivational behaviour partly based on the estimates of other robots behaviour. This architecture was designed for heterogeneous teams of robots performing loosely coupled tasks with fault-tolerance and co-operative control strategy. Broadcast of local eligibility (BLE) \cite{Werger2001} is another behaviour-based architecture that uses port-attributed behaviour technique through broadcast communication method. It was demonstrated to perform coordinated tasks, such as multi-target observation tasks. Major differences between this two behaviour-based systems include the need in ALLIANCE for motivational behaviours to store information about other individual robots, the lack of uniform inter-behaviour communication, and ALLIANCE's monitoring of time other robots have spent performing behaviours rather than BLE's local eligibility estimates. Similar to the above two architectures, many other researchers proposed and implemented many variants of behaviour-based architectures. Some of them used the classic three layer (plan-sequence-execute) approach, \citeaffixed{Simmons+2002,Gat1997} {e.g.} used a {\em layered architecture} where each layer interact directly to coordinate actions at multiple levels of abstraction. 
 \subsubsection*{Market-based architectures}
-Using the theory of marker economics and well-known Contract Net Protocol (CNP) \cite{Davis1988+}, these architectures solve the task-allocation problem by auction or bidding process. Major architectures following market-based approaches include MURDOCH \cite{Gerkey+2002}, M+ system \cite{Botelho+1999}, first-piece auction \cite{Zlot+2002}, dynamic role assignments \cite{Chaimowicz2002} among others. 
+Using the theory of marker economics and well-known Contract Net Protocol (CNP) \cite{Davis1988+}, these architectures solve the task-allocation problem by auction or bidding process. Major architectures following market-based approaches include MURDOCH \cite{Gerkey+2002}, M+ system \cite{Botelho+1999}, first-piece auction \cite{Zlot+2002}, dynamic role assignments \cite{Chaimowicz2002} among others.
+%% 
 \subsubsection*{Multi-agent based architectures}
-Some MRS architectures are influenced by multi-agent systems (MAS). For example, CHARON is a hierarchical behaviour-based architecture that rely on the notion of agents and modes. Similarly CAMPOUT is another distributed behaviour-based architecture that provide high-level functionality by making use of basic low-level behaviours in downward task decomposition of a multi-agent planner. It is comprised of five different architectural mechanisms including, behaviour representation, behaviour composition, behaviour coordination, group coordination and communication behaviours.
-%%%%%
+Some MRS architectures are influenced by multi-agent systems (MAS). For example, CHARON is a hierarchical behaviour-based architecture that rely on the notion of agents and modes. Similarly CAMPOUT is another distributed behaviour-based architecture that provide high-level functionality by making use of basic low-level behaviours in downward task decomposition of a multi-agent planner. It is comprised of five different architectural mechanisms including, behaviour representation, behaviour composition, behaviour coordination, group coordination and communication behaviours.\\
+%% Our approach
+In this dissertation, we closely follow the behaviour-based hybrid architecture with an event-driven mechanism for activating behaviours. Our architecture and robot controllers are illustrated in Sec. \ref{expt-tools:arch}.
+%%%%%---------------------------------------
 \subsection*{Interaction and learning}
 \label{bg:mrs:learn}
 According to the Oxford Dictionary of English the term interaction means reciprocal action or influence. In MRS research, such as in \cite{Mataric1994}, interaction is referred to as mutual influence on behaviour. Following this definition, it is obvious that objects in the world do not interact with agents, although they may affect on their behaviour. The presence of an object affects the agent, but the agent does not affects the object since objects, by definition, do not behave, only agents do. However many other researchers acknowledge that interactions of robots with their environment (as found in stigmergic communication) have a great impact on their behaviours. Therefore, we adopt the broad meaning of interaction that is reciprocal action or influence among robots and their environment. From the above review of MRS system architecture, task allocation and communication, it is obvious that interaction among robots and their environment is the core of the dynamics of MRS. Without this interaction, it can not be a functioning MRS. We have split our discussions of MRS interaction into multi-robot learning and communication. Multi-robot learning is described here and communication in MRS is discussed in Sec. \ref{bg:mrs-comm}.
-%%
+%%---------------------------------------------
 %\subsubsection*{Learning}
 A great deal of research on multi-robot learning has been carried out since the inception of MRS \cite{Mataric+2001,Yang+2004,Parker1995}. Learning, identified as the ability to acquire new knowledge or skills and improve one's performance, is useful in MRS due to the necessity of robots to know about itself, its environment and other team-members \cite{Mataric2007}. Learning can improve performance since robot controllers are not perfect by design and robots are required to work in an uncertain environment that all possible states or actions can not be predicted in advance. Besides learning a new skill or piece of knowledge it is also important to forget learned things that are no longer needed or correct as well as, to make room for new things to be learned and stored in a finite memory space of a robot. \\
-Several learning techniques are available in robotics domain, such as reinforce or unsupervised learning, supervised learning and learning by imitation. Although reinforce learning, or learning based on environmental or peer feedback, is a good option for MRS, it has been found that in large teams the ability to lean in this way is restricted due to large continuous state and action space \cite{Yang+2004}. Several other learning techniques are also available to explore in MRS domain including Markov models, Q-learning, fuzzy logic, neural nets, game theory, probabilistic or Bayesian theory among others \cite{Mataric2007}. \\
+%%
+Several learning techniques are available in robotics domain, such as reinforce or unsupervised learning, supervised learning and learning by imitation. Although reinforce learning, or learning based on environmental or peer feedback, is a good option for MRS, it has been found that in large teams the ability to lean in this way is restricted due to large continuous state and action space \cite{Yang+2004}. Several other learning techniques are also available to explore in MRS domain including Markov models, Q-learning, fuzzy logic, neural nets, game theory, probabilistic or Bayesian theory among others \cite{Mataric2007}. 
+%%
 
 \subsection*{Localization and exploration}
 \label{bg:mrs:loc}

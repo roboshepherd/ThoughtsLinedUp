@@ -1,13 +1,10 @@
-\chapter{Experimental Tools}
+\chapter{Experimental Tools \& Technologies}
 %%%%%%%%%%%%%%%%%%%%%
 \section{General methodological issues}
 \subsection{MRS research roadmap}
 \label{expt-tools:mrs-design}
 Most of the researches on MRS are empirical in nature. In Sec. \ref{bg:mrs} we have discussed various  trends and paradigms of MRS research. Here we have discussed briefly a general research roadmap using real-robotic hardware.  As shown in Fig. \ref{fig:res-roadmap}, this roadmap illustrates the details of MRS research process by answering a few basic questions.\\
-%% 
-\textbf{Firstly, what is the target application domain of this MRS ?} This precisely formulates the target problem to be tackled within this application domain (Fig. \ref{fig:res-roadmap}: step 1). Some MRS researches may try to implement and verify the performance of an algorithm inspired from biological social systems, while others may not. Some MRS may focus to solve real-life problems like emergency search and rescue in a disaster site, while others may concentrate on increasing productivity of a manufacturing shop-floor. The selection of this application domain will most likely determine the tasks to be done by individual or group of robots. This will lead to select suitable MRS paradigm that can provide suitable solutions to the problem, and this selected paradigm will indicate whether we need powerful  robots with rich sensors/processors or relatively incapable cheap robots for doing some particular tasks (Fig. \ref{fig:res-roadmap}: step 2). These tasks and robot group characteristics can be described by using any existing MRS taxonomies, e.g., taxonomies provided by \cite{Gerkey+2004} and \cite{Dudek+1996} (see Sec. \ref{bg:mrs:taxonomies}) .\\ 
 %%
-\textbf{Secondly, what are the working models or overall organizing principles (i.e., control architecture) of the robot group and individual robots ?} From the task requirements and selected robot's capabilities, one need to fit the MRS into a suitable models of control and architecture (Fig. \ref{fig:res-roadmap}: step 3). In Sec. \ref{bg:mrs} we reviewed  most common modelling techniques of MRS, i.e. behaviour-based or probabilistic modelling approaches with three kinds of architectures of control: classic knowledge-based, traditional market-based/role-based and bio-inspired swarm robotic paradigm. Upon selecting a model, most important characteristics of target MRS: e.g., design of individual robot controller, robot-robot and robot-environment communication and coordination patterns etc. will be revealed . This can be achieved by following a top-down or bottom-up design methodology \cite{Crespi+2008}. For example, one can identify the group behaviours first and then devise individual robot controllers from it. Alternately, robot controllers can be designed first then some formal methodologies can be applied to find the group behaviours (Fig. \ref{fig:res-roadmap}: step 4).\\
 %%
 \begin{figure}
 \centering
@@ -17,6 +14,10 @@ Most of the researches on MRS are empirical in nature. In Sec. \ref{bg:mrs} we h
 \caption{Stages of MRS research using real-robotic hardware}
 \label{fig:res-roadmap} % Give a unique label
 \end{figure}
+%% 
+\textbf{Firstly, what is the target application domain of this MRS ?} This precisely formulates the target problem to be tackled within this application domain (Fig. \ref{fig:res-roadmap}: step 1). Some MRS researches may try to implement and verify the performance of an algorithm inspired from biological social systems, while others may not. Some MRS may focus to solve real-life problems like emergency search and rescue in a disaster site, while others may concentrate on increasing productivity of a manufacturing shop-floor. The selection of this application domain will most likely determine the tasks to be done by individual or group of robots. This will lead to select suitable MRS paradigm that can provide suitable solutions to the problem, and this selected paradigm will indicate whether we need powerful  robots with rich sensors/processors or relatively incapable cheap robots for doing some particular tasks (Fig. \ref{fig:res-roadmap}: step 2). These tasks and robot group characteristics can be described by using any existing MRS taxonomies, e.g., taxonomies provided by \cite{Gerkey+2004} and \cite{Dudek+1996} (see Sec. \ref{bg:mrs:taxonomies}) .\\ 
+%%
+\textbf{Secondly, what are the working models or overall organizing principles (i.e., control architecture) of the robot group and individual robots ?} From the task requirements and selected robot's capabilities, one need to fit the MRS into a suitable models of control and architecture (Fig. \ref{fig:res-roadmap}: step 3). In Sec. \ref{bg:mrs} we reviewed  most common modelling techniques of MRS, i.e. behaviour-based or probabilistic modelling approaches with three kinds of architectures of control: classic knowledge-based, traditional market-based/role-based and bio-inspired swarm robotic paradigm. Upon selecting a model, most important characteristics of target MRS: e.g., design of individual robot controller, robot-robot and robot-environment communication and coordination patterns etc. will be revealed . This can be achieved by following a top-down or bottom-up design methodology \cite{Crespi+2008}. For example, one can identify the group behaviours first and then devise individual robot controllers from it. Alternately, robot controllers can be designed first then some formal methodologies can be applied to find the group behaviours (Fig. \ref{fig:res-roadmap}: step 4).\\
 %%
 \textbf{Thirdly, what enabling tools and technologies (hardware and software) are required to function the whole robot group autonomously ?} Whatever be the architectural design of a MRS, we need to ensure that whole group can maintain the necessary level of task performance through the desired interaction and communication strategies. For reducing cost and other practical reasons, individuals robots may not have the capabilities to localize itself without the help of an external GPS or camera etc. The enabling hardware/software technologies will make-up this individual robot's short-comings (Fig. \ref{fig:res-roadmap}: step 5). Moreover, based-on a selected communication technology we need to set-up necessary robot-robot and robot-environment inter-networking infrastructure, e.g., network switches, gateways etc. In order to observe and record experiments and its data for further analysis and improvement, researchers may also employ  extra hardware and software logging tools.\\
 %%
@@ -299,7 +300,7 @@ As defined by \cite{Mataric2007}, a robot control architecture is ``a set of gui
 %%
 %%%%%%%%%%%%%%%%%%
 \subsection{Hybrid event-driven architecture on D-Bus ({\em HEAD})}
-As we have discussed in Sec. \ref{bg:mrs:overview} robotic researchers have spent a lot of efforts for finding suitable robot control architecture.  Since last few decades, robot control architectures has been evolving from deliberative to reactive and hybrid (combination of deliberative and reactive), behaviour-based and to some other forms. It has been well established that hybrid control can bring together the best aspects of both reactive and deliberative control by combining the real-time low-level device control and high-level deliberative action control. Only reactive (or deliberative) control approach is not enough for enabling robots to do complex tasks in a dynamic environments \cite{Gat1997}.\\
+As we have discussed in Sec. \ref{bg:mrs:overview} robotic researchers have spent a lot of efforts for finding suitable robot control architecture. Since last few decades, robot control architectures has been evolving from deliberative to reactive and hybrid (combination of deliberative and reactive), behaviour-based and to some other forms. It has been well established that hybrid control can bring together the best aspects of both reactive and deliberative control by combining the real-time low-level device control and high-level deliberative action control. Only reactive (or deliberative) control approach is not enough for enabling robots to do complex tasks in a dynamic environments \cite{Gat1997}.\\
 %%
 As shown in Fig. \ref{fig:three-layer-arch}(a), hybrid control is usually achieved by a three-layer architecture composed of deliberator, sequencer and controller . {\em Controller} usually works under real-time reactive feedback control loops to do simple tasks by producing primitive robot behaviours, e.g. obstacle avoidance, wall following etc. {\em Deliberator} performs time-consuming computations, e.g. running exponential search or computer vision algorithm processing. In order to achieve specific task goals, the middle component, {\em sequencer}, typically integrates both deliberator and controller maintaining consistent, robust and timely robot behaviours.\\
 %%%
@@ -313,53 +314,90 @@ As shown in Fig. \ref{fig:three-layer-arch}(a), hybrid control is usually achiev
 \label{fig:three-layer-arch}
 \end{figure}
 %%
-We have organized our multi-robot control architecture, HEAD into three layers as shown in Fig. \ref{fig:three-layer-arch}(b). Although HEAD has been designed by adopting the principles of hybrid architecture it has many distinct features that are absent or overlooked in a classical hybrid architecture. Firstly, with respect to controller layer, HEAD broadly views sensing and control as communication with external entities. Communication as sensing is not new, e.g. it has been reported in multi-agent learning \cite{Mataric1998}. When robots' on-board computing resources are limited communication can effectively make up their required sensing capabilities. On the other hand, low-level device control is also a series of communication act where actuator commands are typically transmitted over a radio or physical link. Thus, all external communication takes place at the {\em communication layer}. Components sitting in this layer either act as sensors that can receive environmental state, task information, self pose data etc. via suitable communication link or do the real-time control of devices by sending actuator commands over a target communication channel. \\
+\subsubsection*{Three layers of HEAD}
+We have organized our multi-robot control architecture, HEAD into three layers as shown in Fig. \ref{fig:three-layer-arch}(b). Although HEAD has been designed by adopting the principles of hybrid architecture it has many distinct features that are absent or overlooked in a classical hybrid architecture. Firstly, with respect to controller layer, HEAD broadly views sensing and control as communication with external entities. Communication as sensing is not new, e.g. it has been reported in multi-agent learning \cite{Mataric1998}. When robots' on-board computing resources are limited communication can effectively make up their required sensing capabilities. On the other hand, low-level device control is also a series of communication act where actuator commands are typically transmitted over a radio or physical link. Thus, all external communication takes place at the {\em communication layer}. Components sitting in this layer either act as sensors that can receive environmental state, task information, self pose data etc. via suitable communication link or do the real-time control of devices by sending actuator commands over a target communication channel. For example, in this study robot controller clients receive pose data from multi-robot tracking system through this communication layer.  Similarly, from a host-PC, robot controller clients send E-puck robots' actuator commands over Bluetooth wireless radio to physical robots.\\
 %%
-Secondly, the apparent tight coupling with sensors to actuators has been reduced by introducing a {\em data and event management (DEM) layer}. DEM acts as a short-term storage of sensed data and various events posted by both controller and deliberator components. Task sequencing has been simplified by automated event triggering mechanism. DEM simply creates new event channels and components subscribe to their interested event channels for reading or writing. If one components updates an event, DEM notifies subscribed components about this event. Controller and deliberator components synchronize their tasks based on this event signals. DEM efficiently serves newly arrived data to the controller and deliberator components by this event sharing mechanism. Thus neither specialized languages are needed to program a sequencer nor cumbersome if/else checks are present in this layer.\\
+Secondly, the apparent tight coupling with sensors to actuators has been reduced by introducing a {\em data and event management (DEM) layer}. DEM layer acts as a short-term storage of sensor data and various events posted by both controller and deliberator components. Task sequencing has been simplified by automated event triggering mechanism. DEM simply creates new event channels and components subscribe to their interested event channels for reading or writing. If one components updates an event, DEM notifies subscribed components about this event. Controller and deliberator components synchronize their tasks based on this event signals. DEM efficiently serves newly arrived data to the controller and deliberator components by this event sharing mechanism. For example, upon receiving robot pose data, our robot controller clients save this data and notifies to other components about the availability of pose data so that they can do their work using this updated pose data. Thus unlike traditional hybrid architecture, neither specialized languages are needed to program a sequencer nor cumbersome if/else checks are present in this layer.\\
 %%
-Finally, deliberator layer of HEAD has been described as an {\em application layer} that runs real-application code based on high-level user algorithms as well as low-level sensor data and device states. In classic hybrid architecture the role of this layer has been described mainly in two folds: 1) producing task plan and sending it to sequencer and 2) answering queries made by sequencer. Application layer of HEAD follows the former one by generating plan and queuing it to DEM layer, but it does not support the latter one. DEM layer never makes a query to an application since it acts only as a passive information gateway. Thus this reduced coupling between DEM and application layer has enhanced HEAD with additional robustness and scalability. Additional applications can be added with DEM layer's existing or new event interfaces. Any malfunction or failure in application layer or even in communication layer can be isolated without affecting others. 
+Finally, deliberator layer of HEAD has been described as an {\em application layer} that runs real-application code based on high-level user algorithms as well as low-level sensor data and device states. For example, our self-regulated MRTA algorithms have been fitted in this layer. In classic hybrid architecture the role of this layer has been described mainly in two folds: 1) producing task plan and sending it to sequencer and 2) answering queries made by sequencer. Application layer of HEAD follows the former one by generating plan and queuing it to DEM layer, but it does not support the latter one. DEM layer never makes a query to an application since it acts only as a passive information gateway. Thus this reduced coupling between DEM and application layer has enhanced HEAD with additional robustness and scalability. Additional applications can be added with DEM layer's existing or new event interfaces. Any malfunction or failure in application layer or even in communication layer can be isolated without affecting others. 
 %%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=12cm,height=8cm]{./dia-files/concrete-arch} % The printed column width is 8.4 cm.
+\includegraphics[width=12cm,height=8cm]{./dia-files/concrete-arch} 
 %\centering
 \caption{General outline of {\em HEAD}. A RCC application has been split into two parts: one runs locally in server PC and another runs remotely, e.g., in an embedded PC.} 
 \label{fig:concrete-arch}
 \end{center}
 \end{figure*}
-%%%%%%%%%%%%%%%%%%
-\subsection{Robot controller clients}
-%%%%
-\subsection{D-Bus signal interfaces}
-D-Bus IPC allows us to completely decouple the interaction of different parts of software components of HEAD. Here we use the term {\em software component} or application to denote the logical groupings of several sub-processes or threads that works under a mother process or main thread (here we use the term thread and process interchangeably). Software components that follows our three-layer architecture for grouping its processes are called {\em native component} whereas existing software applications are called {\em external component}. As shown in Fig. \ref{fig:concrete-arch}, RCC and TPA are native software components of HEAD whereas SwisTrack, a multi-robot tracking tool (\cite{Lochmatter+2008}) used with HEAD, is called an external component.
-\subsection{Software integrations}
-In order to integrate both native and external components with HEAD. We have designed two separate communication process: a D-Bus signal reception process, SignalListener, and a D-Bus signal emission process, SignalEmitter. Inside a native component both of this process can communicate with data and event management process, DataManager, by using any suitable mechanisms, such as, multi-threading, multi-processing (offered in Python multiprocessing \footnotetext{http://docs.python.org/library/multiprocessing.html}), TCP or any other networking protocol.\\
-Any external component that intend to act as a sensing (actuating) element of HEAD need to implement a SignalEmitter (SignalListener). For example, we extend SwisTrack with D-Bus signal emitting code (aka SignalEmitter) so that it can emit robot pose messages to individual robots D-Bus path under a common interface (uk.ac.newport.SwisTrack). This emitted signal is then caught by SignalListener of individual robot's RCC. Thus the tight-coupling between SwisTrack and RCC has been removed. During run-time SwisTrack can flexibly track variable number of robots and broadcast their corresponding pose messages without any re-compilation of code. Moreover, in worse cases, if SwisTrack or RCC crashes it does not affect any other component at run-time.\\
-Expanding SignalEmitter and SignalListener for more D-Bus signals does not require to make any change the IPC implementation code. Let us first look at how to setup a signal emission process.
-
-\textbf{Steps for setting up signal emission:}\\
-\textbf{Step 1:} Connect to a D-Bus daemon. Sample C code:
+%%-----------------------------------------------------------
+\subsection{Software component integrations}
+Fig. \ref{fig:concrete-arch} outlines the placements of various software components based on their functional characteristics and processing requirements. Here we have discussed how these  software components can be integrated in the communication layer of HEAD using D-Bus IPC. The exact implementation of each of these components are left to be discussed in the following chapters within our specific context of MRTA applications. Note that, here we use the term {\em software component} or {\em application} to denote the logical groupings of several sub-processes or threads that works under a mother process or main thread (here we use the term thread and process interchangeably). Software components that follows our three-layer architecture for grouping its processes are called {\em native component} whereas existing software applications are called {\em external component}. As shown in Fig. \ref{fig:concrete-arch}, robot-controller client (RCC) and task-information provider, task perception server (TPS) are native software components of HEAD, whereas SwisTrack \cite{Lochmatter+2008}, an external tool used with HEAD, is called an external component.\\
+%%
+In order to integrate both native and external components with HEAD. We have designed two separate communication process: a D-Bus signal reception process, {\em SignalListener}, and a D-Bus signal emission process, {\em SignalEmitter}. Inside a native component both of this process can communicate with data and event management process, DataManager, by using any suitable mechanisms, such as, multi-threading, multi-processing (offered in Python multiprocessing as discussed in Sec. \ref{expt-tools:python}), TCP or any other networking protocol.\\
+%%
+Any external component that intend to act as a sensing (actuating) element of HEAD need to implement a SignalEmitter (SignalListener). For example, we extend SwisTrack with D-Bus signal emitting code (aka SignalEmitter) so that it can emit robot pose messages to individual robots D-Bus path under a common interface.  This emitted signal is then caught by SignalListener of individual robot's RCC. Thus the tight-coupling between SwisTrack and RCC has been removed. During run-time SwisTrack can flexibly track variable number of robots and broadcast their corresponding pose messages without any re-compilation of code. Moreover, in worse cases, if SwisTrack or RCC crashes it does not affect any other component at run-time.\\
+%%
+Expanding SignalEmitter and SignalListener for more D-Bus signals does not require to make any change the IPC implementation code. Steps for setting up a SignalEmitter is listed below.\\
+%%
+\textbf{Step 1:} Connect to a D-Bus daemon. \\
+Sample C code:
 \lstset{language=C,basicstyle=\small}
 \begin{lstlisting}
 DBusError error;
 DBusConnection *conn;
 dbus_error_init (&error);
+/* Get a connection to the session bus */
 conn = dbus_bus_get (DBUS_BUS_SESSION, &error);
 \end{lstlisting}
-\textbf{Step 2:} Optionally reserve a D-Bus path or service name (this is not required if the same path is not used by any other process).\\
-\textbf{Step 3:} Send signal to a specified path. Sample C code:
+\textbf{Step 2:} Optionally, reserve a D-Bus path or service name (this is not required if the same B-Bus path is not used by any other process).\\
+\textbf{Step 3:} Send a signal to a specified path.\\
+Sample C code:
 \begin{lstlisting} 
 DBusMessage *message;
-message = dbus_message_new_signal (
-``/target/dbus/path",``target.dbus.interface",
-``Config");
+message = dbus_message_new_signal("/target/dbus/path",
+"target.dbus.interface","SignalData");
 /* Send the signal */
 dbus_connection_send (connection, message, NULL);
 dbus_message_unref (message);
 \end{lstlisting}
 %%
-In order to add more signals we just need to repeat step 3 as many times as we need. On the other hand, signal listening can be done by setting up a suitable event loop under any supported language bindings. A basic implementation of both of these processes in Python language can be found in this tutorial \footnote{http://dbus.freedesktop.org/doc/dbus-python/doc/tutorial.html}. 
-
+\textbf{Steps for setting up signal reception:}\\ 
+A signal can be received by setting up a suitable event loop under any supported language bindings. This event loop include a special callback function that become activated when this signal received properly. For example, the callback function of a robot-pose signal can save the pose data into memory or files upon receiving it. This event loop often includes another error handling function that become activated when an error is occurred while receiving the signal. Using a Glib {\em mainloop} interface \footnote{http://library.gnome.org/devel/glib/}, the simplified steps of a typical SignalListener is listed below.\\
+%%
+\textbf{Step 1:} Set-up a Glib event-loop.\\
+Sample C Code:
+\begin{lstlisting} 
+/* glib main loop */
+GMainLoop *loop;
+loop = g_main_loop_new(NULL,FALSE);
+\end{lstlisting} 
+%%
+\textbf{Step 2:} Connect to a D-Bus daemon (same as above).\\
+\textbf{Step 3:} Add a match for the target D-Bus signal\\
+Sample C Code:
+\begin{lstlisting} 
+/* D-bus signal match */
+dbus_bus_add_match (connection,
+"type='signal',interface='target.dbus.interface'",NULL);
+dbus_connection_add_filter (connection, 
+ dbus_signal_callback, loop, NULL);
+\end{lstlisting} 
+%%
+\textbf{Step 4:} Set-up DBus-Glib call.\\
+Sample C Code:
+\begin{lstlisting} 
+/* dbus-glib call */
+dbus_connection_setup_with_g_main(connection,NUL);
+\end{lstlisting} 
+%%
+\textbf{Step 5:} Run Glib event-loop.\\
+Sample C Code:
+\begin{lstlisting} 
+/* run glib main loop */
+g_main_loop_run(loop);
+\end{lstlisting} 
+%%
+In the above listing \texttt{dbus\_signal\_callback} function contains the specific application code that determines what to do with the received signal (which is not shown here). \texttt{ dbus\_connection\_add\_filter} function can take error handing function as its last argument (or can be NULL as shown here). D-Bus signal match rules are specified in D-Bus specification \cite{Pennington+2010}. In both of the above cases, i.e. signal listening and receiving, in order to add more signals we just need to repeat step 3  as many times as we need. A basic implementation of both of signal emission and listening processes in Python language can be found in this here \footnote{http://dbus.freedesktop.org/doc/dbus-python/doc/tutorial.html}. In Chapter \ref{afm} Chapter \ref{local-comm}, we have discussed these Pythonic way of D-Bus signal handing within the context of our MRTA applications.
 %%%%%%%%%%%%%%%%%%%%%
 %\section{Other software tools and frameworks}
 %\subsection{Player/Stage framework}

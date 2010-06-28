@@ -287,42 +287,191 @@ Eq. \ref{eqn:sensitization} suggests that the learning will happen much faster t
 %%======================================================================
 \section{Implementation}
 \label{afm:impl}
+%%
 \begin{figure}
 \centering
 \includegraphics[height=5cm, angle=0]
 {./images/RIL-Expt-Setup1.eps}
 %figure caption is below the figure
-\caption{\small Hardware and software setup}
+\caption{Hardware and software setup}
 \label{fig:setup} % Give a unique label
 \end{figure}
-We have developed a system a multi-robot tracking system can track at least 40 E-puck robots \footnote{www.e-puck.org} and these robots can operate together according to the generic rules of the AFM.
-As shown in Fig. \ref{fig:setup}, our software system consists of a multi-robot tracking system, a centralized task server and robot controller clients. Here at first we have presented the design of our communication system. Then we have discussed about our specific implementation. 
-%%-----------------------------------------------------------
-\subsection{Centralized communication system}
-In order to establish a system-wide continuous flow of information, we need to implement a suitable communication system for our robots. Here we have presented a centralized communication system for our manufacturing shop-floor scenario.
+%%
+Ideally, AFM can be implementation as a complete distributed task-allocation system where each agent selects its own task based on its own external perception about task-urgencies (i.e. attractive fields),  distances from tasks and internal task-sensitisation records. Such an implementation requires powerful robots with sophisticated sensors (camera, laser etc.) and sufficient computation and communication  capabilities. In such cases, robots can keep  task-urgency information up-to-date  through suitable local communication  schemes with their peers who can monitor the tasks. By using suitable navigation and mapping modules, they can also accurately calculate the distances from tasks and navigate to tasks autonomously. Moreover, they also require necessary hardware to do the actual task, e.g. gripper for pick-up tasks.\\
+%%
+However, in this study, we are particularly interested to find the suitable communication schemes that can effectively spread the attractive fields (task-urgencies) among robots. So we have simplified the complexities of a full-fledged implementation by using a centralized communication system (CCM) that effectively makes up the limitations of our robots.  For example, our robots are not  capable of sensing a task to estimate its urgencies, instead our centralized {\em task-perception server (TPS)} broadcast task information, e.g. task-urgencies, locations etc. to robots in certain time intervals. Within this interval, if some robots work on a task, they independently send their status, i.e. which task they are currently doing. From this status message,  TPS can re-calculate the task-urgencies and send them in next broadcast. Fig. \ref{fig:ccm} illustrates this by showing three robots attracted to two different tasks and their communications with TPS. Here although the robots are selecting task independently based-on the strength of their attractive fields to different tasks, they are depended on the TPS for task-information.\\
+%%
+Certainly, this centralized communication system can be converted into a decentralized one where robots can use local observation and communication with peers about tasks to estimate task-urgencies. In Chapter \ref{local-comm}, we present an emulation of this scenario where robots do not depend entirely on TPS for estimating task-urgencies, instead they get task information from TPS when they are very close to a task (inside a predefined task-boundary) or from local peers who know about a task via TPS.\\
+%%
+In our current implementation, instead of doing any real work with powerful robots, we emulate a mock manufacturing shop-floor scenario that requires the robot only to travel among tasks. As discussed in Sec. \ref{expt-tools:btcom}, our robots do not have on-board CPU, they need a host PC to  control them using BTCom communication protocol. Thus our host PC  runs one robot-controller client (RCC) per robot. These RCCs also rely upon SwisTrack multi-robot tracking system for updating their real-time pose. So although our MRTA solution is distributed by design, we primarily used a centralized approach to implement it due to the limitations of our robots and the convenience of our implementation. Below we describe the actual implementations of these components, i.e. D-Bus communication interfaces and detail implementations of TPS and RCC.
+%%---------------------------------------------------------------
+\subsection{D-Bus communication interfaces}
+Our centralized communication system  interfaces among SwisTrack, TPS and RCCs as shown in Fig. \ref{fig:RIL-Expt-Setup1}. The communication protocol is based on D-Bus IPC. As we have discussed in Sec. \ref{expt-tools:dbus}, each message is a D-Bus signal (similar to Fig. \ref{fig:dbus-signal-protocol}). The characteristics of these messages are discussed below.\\
+%%
+\textbf{RobotPose:} SwisTrack emits this D-Bus signal and its payload contains individual robot's pose data: robot-pose x-coordinate,  y-coordinate and robot orientation (theta). The type of each data is \texttt{DBUS\_TYPE\_DOUBLE}(IEEE 754 double). We have extended SwisTrack  by adding a D-Bus signal emitter module which emits this signal in every image-processing cycle. The typical duration of each cycle varies from 1 to 2 seconds.  Swistrack extracts robot-pose from the image frame considering top-left corner of image as origin and it derives  theta from the relative position of the monochrome robot-marker from the image. SwisTrack's id-pose detection algorithms handles the complexities of finding the accurate robot-pose. RobotPose signal is sent to RCC using robot-id based separate D-Bus paths. e.g. /robot1, /robot2 etc.  But all RobotPose signals are emitted in same D-Bus interface "uk.ac.newport.ril.SwisTrack". In order to get pose data, each RCC filters this D-Bus signal using this interface and self-id based path.\\
 %% 
-As shown in Fig. \ref{fig:ccm}, in this model there exists a centralized \textit{
-TaskServer} that is responsible for disseminating task information to robots. The contents of task information can be physical locations of tasks, their urgencies and so on. TaskServer delivers this information by emitting \textit{TaskInfo} signals periodically. The method of signal emission depends on a particular communication technology. For example, in a wireless network it can be a message broadcast.
-Task-Server has another interface for catching feedback signals from robots. The \textit{RobotStatus} signal can be used to inform TaskServer about a robot's current task id, its device status and so on. TaskServer uses this information to update relevant part of task information such as, task-urgency. This up-to-date information is sent in next TaskInfo signal.\\
-In Fig. \ref{fig:ccm} an initial configuration of this model has been presented. Upon receiving an initial TaskInfo signal robot $R_1$ has shown strong attraction towards $Task1$ and robot $R_3$ has shown strong attraction toward $Task2$. This can be inferred from Eq. \ref{eqn1} that says if the initial task urgencies and sensitizations for all tasks are same, a robot will strongly be attracted towards a task that is relatively closer to it.
-%--------------------------------------------------------------------
-\subsection{MRS implementation}
-The major components of our implementation are a multi-robot tracking system, robot controller clients and a centralized task-server. In order to track all robots real-time we have used SwisTrack \cite{SwisTrack}, a state of the art open-source, multi-agent tracking system, with a16-megapixel overhead GigE camera. This set-up gives us the position, heading and id of each of the robots at a frequency of 1. The interaction of the hardware and software of our system is illustrated in Fig. \ref{fig:setup}. \\
-For inter-process communication (IPC), we have used D-Bus technology \footnote{http://dbus.freedesktop.org/doc/dbus-specification.html}. We have developed an IPC component for SwisTrack (hereafter called as \textit{SwisTrack D-Bus Server}) that can broadcast id and pose of all robots in real-time over our server's D-Bus interface.\\
-Apart from SwisTrack, we have implemented two major software modules: {\em TaskServer} and {\em Robot Controller Client (RCC)}. They are developed in Python with its state of the art \textit{Multiprocessing} \footnote{http://docs.python.org/library/multiprocessing.html} module. This python module simplifies our need to manage data sharing and synchronization among different sub-processes. As shown in Fig. \ref{fig:setup}, RCC consists of four sub-processes. {\em SignalListener} and {\em SignalEmitter}, interface with SwisTrack D-Bus Server and TaskServer respectively. {\em TaskSelector} implements AFM guidelines for task selection . {\em DeviceController} moves a robot to a target task. Bluetooth radio link is used as a communication medium between a RCC and a corresponding E-puck robot. 
-%---------------------------------------------------------
-\subsection{Robot controller client}
+\textbf{TaskInfo:} TPS emits this signal after a fixed time intervals. The payload of this message contains an array of all task's information. Each element of the array contains a task's: task-id, Time-stamp, pose x, pose y, task-urgency ($\phi$). Task-id data is integer type and  all others are double. Time-stamp in data ensures using up-to-date task information since RCCs receive TaskInfo from TPS asynchronously. If the tasks are dynamic their pose can be obtained from SwisTrack as well. In our current implementation, we have provided static pose data for all task as an argument to TPS module. So the dynamic part, i.e. the time-stamp and up-to-date task-urgency is determined by the task-information-updater module of TPS, according to Algorithm \ref{alg:taskinfo-update}. This D-Bus signal is sent in a common D-Bus interface, "uk.ac.newport.ril.TaskServer", under path, "/taskserver".  Each RCC receives this message by listening to this interface and path.\\
+%%
+\textbf{RobotStatus:} Each RCC emits this D-Bus signal and the payload contains: individual robot's id and its currently executing task's id. This message is sent to a common D-Bus interface "uk.ac.newport.ril.Epuck" and path "/robot".  But TPS identifies the sender from the message pay-load, i.e. robot-id. A RCC emits this signal only when it starts working on a particular task. 
+%------------------------------------------------------------
+\subsection{Robot Controller Client (RCC)}
+As shown in Fig. \ref{fig:setup}, each e-puck robot is controlled by a corresponding RCC. A RCC sends commands to the robot's firmware using BTCom protocol  (Sec. \ref{expt-tools:btcom}).
+A RCC consists of several Python modules. Each module represents a sub-process under a main process that ties all of them together by using Python's Multiprocessing module. Below we have described the detail design and implementation of these Python modules. All code are publicly accessible through GitHub repository\footnote{git://@github.com/roboshepherd/EpuckCentralizedClient.git,    
+\textit{hash:}7e3af8902e64db3fa59e}.
+%%
+\subsubsection*{DataManager}
+As we have discussed in Sec. \ref{expt-tools:python}, under a process-based design of IPC among multiple processes, a programmer needs to specify explicitly which data and states should be shared among sub-processes. According to the design of our multi-robot control architecture, HEAD (Sec. \ref{expt-tools:arch}), we have employed a data and event management process called {\em DataManager} that acts as a data warehouse and event management centre for RCC.\\
+%%
+\begin{table}
+\caption{Data structures and events used by the RCC}
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline \textbf{Data structure} & \textbf{Related event(s)}\\ 
+\hline mRobotID & - \\ 
+\hline mRobotPose & mRobotPoseAvailable\\ 
+\hline mTaskInfo & mTaskInfoAvailable\\ 
+\hline mSelectedTask & mSelectedTaskAvailable\\
+ &  mSelectedTaskStarted\\
+ &  mTaskTimedOut\\
+ \hline 
+\end{tabular}
+\end{center}
+\label{table:data-mgr}
+\end{table} 
+%%
+Table \ref{table:data-mgr} list DataManager's major data structures and corresponding event channels. Here mRobotID, an integer type data,  represents the e-puck robot's marker ID (converted to decimal number from the binary code) which uniquely identifies a robot from others. This is given as a command-line argument during RCC start-up. We have used Python {\em dictionary} type data structure for all other data structures that are managed by the Python Multiprocessing's {\em Manager()} object. Any other process e.g. TaskSelector, can access all of the DataManger's data structures and event channels locally  by taking a reference of this DataManager object from the Multiprocessing's parent process. DataManager object also runs a tiny TCP/IP server process powered by the Multiprocessing's {\em RemoteManager()} interface. So, if necessary,  any other process e.g. DeviceController, can access all of the DataManger's data structures and event channels remotely by instantiating a proxy client  that connects to this embedded TCP/IP server of DataManager and  fetch data from it. In the following paragraphs, under the discussion of other RCC processes, the update process of rest of the data structures and event channels are explained.
+%%
+\subsubsection*{SignalListener}
+As mentioned in Sec. \ref{expt-tools:arch:integration}, we have employed two D-Bus communication modules in RCC: SignalListener and SignalEmitter, that are responsible for listening and emitting D-Bus signals respectively. SignalListener, has subscribed to D-Bus session bus for listening  to D-Bus RobotPose and TaskInfo signals that are discussed above. SignalListener uses two call-back functions that handles both of these signal reception events. For example when SwisTrack emits RobotPose signal  the corresponding handler function becomes activated and receive this RobotPose siganl's payload data (i.e. x, y , theta). It then makes a copy of these data  to DataManager's mRobotPose data structure and label them as dictionary key/value pairs, where x, y, theta etc. becomes the dictionary keys. In addition to copying the data, SignalListener also set the DataMager's   mRobotPoseAvailable event to {\em True}. In consequence, those processes that are waiting for mRobotPose data, e.g. TaskSelector, finishes their waiting and try to access this newly arrived mRobotPose data. After reading to this data they marks this mRobotPoseAvailable event as  {\em False} so that this pose data can be treated as outdated and waiting processes can wait for new pose update. This strategy ensures the consistent and real-time data read/write by all subscribing processes.
+%%
+\subsubsection*{SignalEmitter}
+Similar to the SignalListener, SignalEmitter makes use of Python {\em sched} module that enables it to check periodically mSelectedTaskStarted event and emit a robot's task status containing signal, RobotStatus.  This is done by subscribing to the  mSelectedTaskStarted event channel. When a robot starts executing a task, this event channel becomes  activated by the  DeviceController (discussed below). At a very close time, SignalEmitter gets this event update and finishes waiting for this event. It then picks up the mSelectedTask data from DataManager and prepare the RobotStatus signal and emits it to the session bus. Upon a successful emission event, it clears  mSelectedTaskStarted event so that only one RobotStatus  signal is emitted per task-cycle.
+%%
+\subsubsection*{TaskSelector}
+TaskSelector works in the application layer of our multi-robot control architecture, HEAD. It plugs the AFM algorithms into RCC to select task based-on DataManger's event notifications , i.e. mRobotPoseAvailable and mTaskInfoAvailable and upon running task-allocation algorithm it updates  mSelectedTask (and mSelectedTaskAvailable) with selected task information.
+%% ALG
+\textbf{Algorithm: Self-regulated task-allocation based on AFM}
+\begin{small}
+\begin{algorithmic}[1]
+\label{alg:task-selector}
+\State $\textbf{Input: } AllTaskInfo, RobotPose, TaskRecords, DeltaDistance$
+\State $\textbf{Output: } SelectedTaskID$
+\State \COMMENT {Stage 1: Get each task's individual stimuli and sum  all stimulus}
+\State $TotalTasks \gets$  Total number of tasks $\in AllTaskInfo$  
+\State $ TaskStimuliSum \gets 0 $
+\ForAll {$ Task \in AllTaskInfo $} 
+\State $ TaskPose \gets  $ Task-position  $ \in Task$
+\State $ TaskUrgency \gets $ Task-urgency $ \in Task$
+\State $ TaskSensitization \gets $ Task-sensitization $\in Task$
+\State $ DistanceToTask \gets  $\textbf{CalculateTaskDistance(}$RobotPose$, $TaskPose$\textbf{)}
+\State $ TaskStimuli \gets  $ \textbf{CalculateTaskStimuli(}$DistanceToTask,$\\ \hspace*{3.5cm} $TaskSensitization, 	        TaskUrgency, DeltaDistance\textbf{)}$
+\State $ TaskStimuliSum \gets$  $TaskStimuliSum + TaskStimuli$
+\State $ TaskRecords \gets $ \textbf{UpdateTaskRecords(}$TaskStimuli,$\\ \hspace*{3.5cm}$DistanceToTask, TaskUrgency, TaskSensitization\textbf{)}$
+\EndFor
+%%
+\State $RandomWalkStimuli \gets $ \textbf{CalculateRandomWalkStimuli(}$TotalTasks,$\\ \hspace*{4.5cm} $TaskStimuliSum$\textbf{)}
+\State $ AllStimuliSum \gets TaskStimuliSum + RandomWalkStimuli $
+%%
+\State \COMMENT {Stage 2: Find probability of each task based on its stimuli}
+\State $ TaskID \gets 0 $ 
+\While {$ TaskID \leq TotalTasks $} 
+\State $ TaskStimuli \gets $ Task-stimuli $\in TaskRecords(TaskID)$
+\State $ TaskProbability \gets  $ \textbf{GetTaskProbability(}$TaskStimuli, AllStimuliSum$\textbf{)}
+\State $ TaskProbabilityRange \gets $ \textbf{ConvertTaskProbabilityIntoRange(}\\ \hspace*{6cm}$TaskProbability$\textbf{)}
+\State $ TaskRecords \gets  $ \textbf{UpdateTaskRecords(}$TaskProbability$\textbf{)}
+\EndWhile
+%%
+\State \COMMENT {Stage 3: Draw a random-number to match with TaskID}
+\State $ RandomNum \gets  $ \textbf{GetRandomNumber(}$0,$ \textbf{Max(}$TaskProbabilityRange$\textbf{))}
+\While {$ TaskID \leq TotalTasks $} 
+\State $ RangeStart \gets  $ \textbf{Min(}$TaskProbabilityRange (TaskID)$\textbf{)}
+\State $ RangeEnd \gets  $ \textbf{Max(}$TaskProbabilityRange (TaskID)$\textbf{)}
+\If {$  RandomNum \geq RangeStart \hspace*{.25cm}\&\& \hspace*{.25cm} RandomNum \leq  RangeEnd $}
+\State $ SelectedTaskID \gets TaskID $ 
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{small}
+%%
+TaskSelector  allocates a robot with a shop-task or random-walk task from several inputs: as shown in Algorithm \ref{alg:task-selector}.Here  AllTaskInfo and RobotPose correspond to the mTaskInfo and mRobotPose of DataManager. TaskRecords is a dictionary type data structure that keep tracks of related calculations, e.g. stimulus, of all tasks. This is internally maintained by the TaskSelector process.  DeltaDistance is a very small constant number to avoid division by zero in calculating task stimuli, as mentioned in Eq. \ref{eqn:afm1}.\\
+%%
+\textbf{Task-allocation algorithm:}\\
+\textbf{Stage 1.} In the beginning of our task-allocation algorithm, we count the total number of tasks and initialize the sum of the stimuli all tasks to zero. Then for each task, we extract its pose, urgency, sensitisation from input data.  CalculateTaskDistance() function calculates the Euclidian distance between a task and a the robot by taking the current robot-pose and static task-pose as the input. These values are enough to get a task's stimuli based on Eq. \ref{eqn:afm1}. In this loop finally we update TaskRecords for using it in next task-allocation cycle. We get the random-walk task's stimuli from Eq. \ref{eqn:afm2}. It requires total number of shop-tasks and sum of their stimulus.\\ 
+%%
+\textbf{Stage 2.} In the second stage of our task-allocation algorithm, we  find the probability of each task (including random-walk) based on Eq. \ref{eqn:afm3}. Then this probability value of each task, between 0 and 1, is rounded to the closest two-digit fractions and multiplied by 100 and put into a linear scale. For example, if two tasks probability values are: 0.15 and  0.25, the probability range of first  task becomes 0 to 15 and for second task, it becomes 16 to 40.\\
+%% 
+\textbf{Stage 3.} After converting each task's probability values into a linear range, we use a random-number generator that draws a random-number between 0 and the highest value of task-probability range, say 40 for the previous example. Then this random number is compared against the task probability range of each task. For example, if the random-number becomes 37, our task-probabiliy range checking selects task2 as 37 falls between 16 to 40. Under this probabilistic method, the task with larger probability range has a  higher chance to be selected, but low probability tasks are also got selected time-to-time.\\
+%%ALG
+\textbf{Algorithm: Robot's learning and forgetting of tasks based on AFM}
+\begin{small}
+\begin{algorithmic}[1]
+\label{alg:update-sz}
+\State $\textbf{Input: }  TaskRecords, LeranRate, ForgetRate, SelectedTaskID$
+\State $\textbf{Output: }$ Updated $TaskSensitisation \in TaskRecords$
+\ForAll {$ Task \in TaskRecords $} 
+\State $ TaskID \gets  $ ID $\in Task$
+\State $ TaskSensitization \gets  $   Sensitisation $ \in Task$
+\If {$  TaskID \equiv SelectedTaskID $}
+\State $ TaskSensitization \gets $ \textbf{Max(}$1, (TaskSensitization + LeanRate)$\textbf{)}
+\Else
+\State $ TaskSensitization \gets $ \textbf{Min(}$0, (TaskSensitization - ForgetRate)$\textbf{)}
+\EndIf
+\EndFor
+\end{algorithmic}
+\end{small}
+%%
+\textbf{Robot learning and forgetting algorithm:}\\
+Algorithm \ref{alg:update-sz} lists the pseudo-code for updating the robot's task-sensitization values. Along with previously mentioned TaskRecords, and  SelectedTaskID, it takes two other inputs: LeranRate ($\Delta k_{INC} $) and ForgetRate ($\Delta k_{INC} $) as outlined in Eq. {eqn:k-inc} and {eqn:k-dec} respectively.  In addition to that it also keep the value of task-sensitization between the fixed limit of 0 and 1.
+%%
+\subsubsection*{DeviceController:}
 \begin{figure}
 \centering
 \includegraphics[width=12cm,height=5cm, angle=0]
 {./dia-files/rcc-device-controller-state.eps}
 %figure caption is below the figure
-\caption{\small Hardware and software setup}
-\label{fig:setup} % Give a unique label
+\caption{\small State diagram of DeviceController module}
+\label{fig:dc-states} % Give a unique label
 \end{figure}
-%---------------------------------------------------------
-\subsection{Task perception server}
-
+The final code that moves a robot to desired task location or make random-walk resides in DeviceController module. This is also a separate sub-process of our Python Multiprocessing based mother process. It waits for the DataManager's mRobotPoseAvailable and mSelectedTaskAvailable events. When TaskSelector sets  mSelectedTaskAvailable event, DeviceController sub-process checks the Bluetooth link-connectivity with physical robot. In case of successful task start-up it sets mSelectedTaskStarted event that, in turn, triggers SignalEmitter to emit a D-Bus signal publishing the robot's currently engaged task. The full state switching policies of DeviceController is illustared in Fig. \ref{fig:dc-states}. Externally we can observe two distinct physical state of a robot: it is either idle or in motion (separtated by dotten line). These two physical states are mapped into several logical steps:\\
+%%
+\textbf{DeviceUnavailable: }
+Initially, DeviceController sets it state as DeviceUnavailable (e.g. not connected with Bluetooth link) and after a fixed short-time intervals it checks whether the device has connected to host-PC, i.e. after the  wireless link becomes up. In that case, DeviceController switches its state to DeviceAvailable ({\em Device connected}). We can see that from every other state, device can come to this unavailable state (shown by dotted arrow) when the  link is lost e.g. in case of robot's low battery or any other disconnection event ({\em Device disconnected}).\\
+%%
+\textbf{DeviceAvailable: }
+DeviceController stays in this state until DataManager's mSelectedTaskAvailable event fires ({\em Device connected, no task selected}). Then it switches to either MoveToTask or RandomWalk state depending on the selected task.  DeviceController  returns to this state from RandomWalk, MoveToTask or AtTask states after a pre-set task time-out period has elapsed.  In that case it triggers the DataManager's mTaskTimedOut event.\\
+%%
+\textbf{RandomWalk: }
+Robot can random walk in two cases: 1) when TaskSelector selects this random-walk task or 2) when the robot can not get its pose information for a moment. The latter helps the pose tracker to recover the robot-pose from a crowd of robots. Robot continues to do random-walk until it's task time-out period elapses or it regains it pose remains unavailable from the pose tracker ({\em random-walk pending}).\\
+%%
+\textbf{MoveToTask: }
+In this state, robot takes step-by-step navigation approach to reach a task boundary. Until the robot reaches the task boundary ({\em Away from task}), in every navigation-step it adjusts its heading to task based on both  robot and task pose information and then makes a fixed-time translation movement. In worse cases when time-out happens early before reaching a task DeviceController switches from this state to DeviceAvailable state. However, if the same task is selected immediately, it is more likely that it will go to next AtTask step.
+%%
+\textbf{AtTask: }
+In this state  DeviceController discovers itself neat the task and normally until task time-out happens ({\em Task pending}) it stays at this state.
+%-------------------------------------------------------------------
+\subsection{Task perception server (TPS)}
+%%
+Similar to RCC,  TPS has two D-Bus communication components: SignalListener and SignalEmitter, and a data and event management component DataManager (Fig. \ref{fig:concrete-arch}). This instance of DataManager stores statistics about task performance of robots in a dictionary a type data structure (mTaskWorkers). This data structure is updated every time a RobotStatus signal is received from a RCC. It is a dictionary type data structure where ID of tasks are keys and ID of robots are the values of this dictionary. Based on this data structure, an application layer component, TaskInfoUpdater, updates the task-urgencies after every short time intervals. This update algorithm in presented in Algorithm \ref{alg:tps}.  Along with the static task-pose information, all task-urgencies are stored in the mTaskInfo data structure of  DataManager of TPS. This TPS's SignalEmitter waits for the update of mTaskInfo and after every certain intervals it emits this up-to-date TaskInfo signal.\\
+%% ALG
+\textbf{Algorithm: Task-urgency update rules  based on AFM}
+\begin{small}
+\begin{algorithmic}[1]
+\label{alg:tps}
+\State $\textbf{Input: } AllTaskInfo, AllTaskWorkers, ThresholdWorkers,$\\ \hspace*{1cm}$DeltaUrgencyINC, DeltaUrgencyDEC$
+\State $\textbf{Output: }$ Updated $TaskUrgencies \in AllTaskInfo$
+\ForAll {$ (Task, Workers) \in (AllTaskInfo, AllTaskWorkers) $} 
+\State $ TaskUrgency \gets  $ Task-urgency $\in Task$
+\State $ TaskWorkers \gets  $   Number of workers $ \in Workers$
+\If {$  TaskWorkers < ThresholdWorkers $}
+\State $ TaskUrgency \gets $ \textbf{Max(}$1, (TaskUgerncy + DeltaUrgencyINC)$\textbf{)}
+\Else
+\State $ TaskUrgency \gets $ \textbf{Min(}$0, (TaskUgerncy - $\\ \hspace*{5.3cm}$ TaskWorkers  \times DeltaUrgencyDEC)$\textbf{)}
+\EndIf
+\EndFor
+\end{algorithmic}
+\end{small}
+%%
+This algorithm acts upon the task-urgency data of each task and updates it based on the active number of robots currently working on that task (Eq. \ref{eqn:delta-phi1} and \ref{eqn:delta-phi2}). Here AllTaskInfo and AllTaskWorkers  correspond to  mTaskInfo and mTaskWorkers of TPS DataManager respectively.  ThresholdWorkers are the minimum number of robots required to work on this task ($\mu$). DeltaTaskUrgencyINC and DeltaTaskUrgencyDEC are the task-urgency increase and decrease rate which correspond to the small increase and decrease of work-load in every-step. This algorithm also keeps the values of task-urgencies within 0 and 1 limit by using generic Min() and Max() functions. Source-code of a Python implementation of TPS is publicly accessible through GitHub repository\footnote{git://github.com/roboshepherd/CentralizedTaskServer.git,  \textit{hash:} 09187e28292d1cdc179c}.
 %%====================================================================
 \section{Results and discussions}
 \label{afm:results}

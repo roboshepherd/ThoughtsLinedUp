@@ -150,9 +150,9 @@ to keep the values between 0 and 1. Eq. \ref{eqn:afm2} suggests us how we can es
 \label{fig:vsp}  % Give a unique label
 \end{figure}
 %%--------------------------------------------------------------------
-\section{A case study: virtual manufacturing shop-floor (VMS)}
+\section{A mock manufacturing shop-floor (MMS)}
 \label{afm:vms}
-By extending our interpretation of AFM for MRS from Sec. \ref{afm:model}, we can set-up a virtual manufacturing shop-floor (VMS) scenario. Here, each task represents a manufacturing machine that is  capable of producing goods from raw materials, but they also require constant maintenance works for stable operations. Let $W_{j}$ be a finite number of material parts that can be loaded into a machine $j$ in the beginning of its production process and in each time-step, $\omega_{j}$ units of material parts can be processed  ($\omega_{j} \ll W_{j} $). So let $\Omega_{j}^{p}$ be the initial production workload of $j$ which is simply: $W_{j} / \omega_{j}$ unit. We assume that all machines are identical. In each time step, each machine always requires a minimum threshold number of robots, called hereafter as {\em minimum robots per machine ($\mu$)}, to meet its constant maintenance work-load, $\Omega_{j}^{m}$ unit. However, if $\mu$ or more robots are present in a machine for production purpose, we assume that, no extra robot is required to do its maintenance work separately. These robots, along with their production jobs, can do necessary maintenance works concurrently. For the sake of simplicity, here we consider $\mu$ = 1.\\
+By extending our interpretation of AFM for MRS from Sec. \ref{afm:model}, we can set-up a mock manufacturing shop-floor (MMS) scenario. Here, each task represents a manufacturing machine that is  capable of producing goods from raw materials, but they also require constant maintenance works for stable operations. Let $W_{j}$ be a finite number of material parts that can be loaded into a machine $j$ in the beginning of its production process and in each time-step, $\omega_{j}$ units of material parts can be processed  ($\omega_{j} \ll W_{j} $). So let $\Omega_{j}^{p}$ be the initial production workload of $j$ which is simply: $W_{j} / \omega_{j}$ unit. We assume that all machines are identical. In each time step, each machine always requires a minimum threshold number of robots, called hereafter as {\em minimum robots per machine ($\mu$)}, to meet its constant maintenance work-load, $\Omega_{j}^{m}$ unit. However, if $\mu$ or more robots are present in a machine for production purpose, we assume that, no extra robot is required to do its maintenance work separately. These robots, along with their production jobs, can do necessary maintenance works concurrently. For the sake of simplicity, here we consider $\mu$ = 1.\\
 %%
 Now let us fit the above production and maintenance work-loads and task performance of robots into a unit task-urgency scale. Let us divide our manufacturing operation into two subsequent stages: 1) {\em production and maintenance mode (PMM)}, and 2) {\em maintenance only mode (MOM)}. Initially a machine starts working in PMM and does production and maintenance works concurrently. When there is no production work left, it then enters into MOM. Fig. \ref{fig:vsp} illustrates this scenario for a single machine.
 Under both modes, let $\alpha_{j}$ be the amount of workload occurs in a unit time-step if no robot serves a task and it corresponds to a fixed task-urgency $\Delta \phi_{INC}$. On the other hand, let us assume that in each time-step, a robot, $i$, can decrease a constant workload $\beta_{i}$ by doing some maintenance work along with doing any available production work. This  corresponds to a negative task urgency: $- \Delta \phi_{DEC}$. 
@@ -215,16 +215,16 @@ By considering $\mu = 1$, Eq. \ref{eqn:task-urgency-maint-case} will reduces to 
 %%%%%%==================================================================
 \section{Experiment design}
 \label{afm:expt-design}
-We have designed a set of virtual manufacturing shop-floor (VMS) experiments for validating the effectiveness of our attractive field model (AFM)  in producing self-regulated multi-robot task allocation (MRTA).  The overall aim of this design is to analyse the various properties of task-allocation and related other issues. In this section, we have described the design of the observables and parameters of our experiments within the context of our VMS scenario. 
+We have designed a set of virtual manufacturing shop-floor (MMS) experiments for validating the effectiveness of our attractive field model (AFM)  in producing self-regulated multi-robot task allocation (MRTA).  The overall aim of this design is to analyse the various properties of task-allocation and related other issues. In this section, we have described the design of the observables and parameters of our experiments within the context of our MMS scenario. 
 %----------------------------------------------------------
 \subsection{Observables}
-\textbf{Plasticity:} As we have discussed in Sec. \ref{bg:def:dol},  self-regulated division of labour or task-allocation can be characterised by plasticity and task-specialization, in both macroscopic and microscopic levels. Within VMS context, plasticity refers to the collective ability of the robots to switch from doing no-task option (random-walking) to doing a task (or vice-versa) depending on the work-load present in the system. Here we expect to see that most of the robots would be able to engage in tasks when there would be high workloads (or task-urgencies) during production and maintenance mode (PMM). Similarity, when there would be low workload in case of maintenance-only mode (MOM) only a few robots would do the task, rest of them would either be idle (not doing any task) or perform a random-walk.  The changes of task-urgencies and the ratio of robots engaged in tasks can be good metrics to observe plasticity in MRTA.\\
+\textbf{Plasticity:} As we have discussed in Sec. \ref{bg:def:dol},  self-regulated division of labour or task-allocation can be characterised by plasticity and task-specialization, in both macroscopic and microscopic levels. Within MMS context, plasticity refers to the collective ability of the robots to switch from doing no-task option (random-walking) to doing a task (or vice-versa) depending on the work-load present in the system. Here we expect to see that most of the robots would be able to engage in tasks when there would be high workloads (or task-urgencies) during production and maintenance mode (PMM). Similarity, when there would be low workload in case of maintenance-only mode (MOM) only a few robots would do the task, rest of them would either be idle (not doing any task) or perform a random-walk.  The changes of task-urgencies and the ratio of robots engaged in tasks can be good metrics to observe plasticity in MRTA.\\
 %%
-\textbf{Task-specialization:} Under heavy work-load most of the robots should attend to tasks. But self-regulated division of labour is always accompanied with task-specializations of agents. That means, few robots will be more active than others. From AFM, we can see that after doing a task a few times, a robot will soon be sensitized to it. Therefore, from the raw log of task-sensitization of robots, we can find the pattern of task-sensitization of robots per task basis. If a few robots specializes on a particular task that will help to reduce traffic near the task and improves overall efficiency of the system. Thus, at the end of our production cycle in VMS scenario, we can count the percentage of robots specializes on each task in our experiments.\\
+\textbf{Task-specialization:} Under heavy work-load most of the robots should attend to tasks. But self-regulated division of labour is always accompanied with task-specializations of agents. That means, few robots will be more active than others. From AFM, we can see that after doing a task a few times, a robot will soon be sensitized to it. Therefore, from the raw log of task-sensitization of robots, we can find the pattern of task-sensitization of robots per task basis. If a few robots specializes on a particular task that will help to reduce traffic near the task and improves overall efficiency of the system. Thus, at the end of our production cycle in MMS scenario, we can count the percentage of robots specializes on each task in our experiments.\\
 %%
 \textbf{Quality of task-performance:} As discussed in Sec. \ref{afm:vms} we can measure the quality of MRTA from the average production completion delay (APCD). APCD first calculate the ideal minimum production time and then find the delay in production process from the actual production completion data. Thus this will indicate how much more time is  spent in the production process due to the self-regulation of robots in this distributed task-allocation scheme.  In order to calculate APCD, we can find the production completion time for each task from the raw log of task-urgency and make an average from them.\\
 %%
-\textbf{Robustness:} In order to see if our system can respond to the gradually increasing workloads,  we have measured average pending maintenance work (APMW) within the context of our VMS scenario. This can prove the robustness of our system where a task can be  unattended for long time. When a task is not being served by any robot for some time we can see that its urgencies will rise and robots will respond to this dynamic demand. For measuring APMW we need only the task-urgency data.\\
+\textbf{Robustness:} In order to see if our system can respond to the gradually increasing workloads,  we have measured average pending maintenance work (APMW) within the context of our MMS scenario. This can prove the robustness of our system where a task can be  unattended for long time. When a task is not being served by any robot for some time we can see that its urgencies will rise and robots will respond to this dynamic demand. For measuring APMW we need only the task-urgency data.\\
 %%
 \textbf{Flexibility:} From the design of AFM, we know that robots that are not doing a task will be de-sensitized to it or forget that task. So at an overall low work-load (or task urgency), less robots will do the tasks and hence less robots will have the opportunity to learn tasks. From the robot sensitization data, we can confirm the presence of flexibility in MRTA.\\
 %%
@@ -473,86 +473,57 @@ Similar to RCC,  TPS has two D-Bus communication components: SignalListener and 
 %%
 This algorithm acts upon the task-urgency data of each task and updates it based on the active number of robots currently working on that task (Eq. \ref{eqn:delta-phi1} and \ref{eqn:delta-phi2}). Here AllTaskInfo and AllTaskWorkers  correspond to  mTaskInfo and mTaskWorkers of TPS DataManager respectively.  ThresholdWorkers are the minimum number of robots required to work on this task ($\mu$). DeltaTaskUrgencyINC and DeltaTaskUrgencyDEC are the task-urgency increase and decrease rate which correspond to the small increase and decrease of work-load in every-step. This algorithm also keeps the values of task-urgencies within 0 and 1 limit by using generic Min() and Max() functions. Source-code of a Python implementation of TPS is publicly accessible through GitHub repository\footnote{git://github.com/roboshepherd/CentralizedTaskServer.git,  \textit{hash:} 09187e28292d1cdc179c}.
 %%====================================================================
-\section{Results and discussions}
+\section{Results}
 \label{afm:results}
+In this section we have presented our experimental results. We ran those experiments for about 40 minutes and averaged them over five iterations for both Series A and B.
+%%-------------------------------------------------
+\subsection*{Shop-floor work-load history}
+
+%%-------------------------------------------------
+\subsection*{Ratio of active workers}
+
+%%-------------------------------------------------
+\subsection*{Shop-task performance}
+
+%%-------------------------------------------------
+\subsection*{Task specializations}
+
+%%-------------------------------------------------
+\subsection*{Robot motions}
+
+%%-------------------------------------------------
+\subsection*{Communication load}
+
+%=============================================
+
+%=============================================
+\section{Discussions}
+\label{afm:discuss}
+%%-------------------------------------------------
+\subsection*{Division of labour}
 %%
-In this section we have presented our experimental results. We ran those experiments for about 40 minutes and averaged them over five iterations.
-Fig. \ref{fig:raw-urgencies} shows the dynamic changes in task urgencies.  In order to describe our system's dynamic behaviour holistically we analyse the changes in task urgencies over time. Let $ \phi_{j, q}$ be the urgency of a task $j$ at $q^{th}$ step and $\phi_{j, q+1}$ be the task urgency of $(q+1)^{th}$ step. We can calculate the sum of changes in urgencies of all tasks at $(q+1)^{th}$ step:
-\begin{equation} 
-\small
-\Delta \Phi_{j, q+1} = \sum_{j=1}^{M} (\phi_{j, q+1} - \phi_{j, q})
-\label{eqn:Delta-Phi}
-\end{equation}
-From Fig. \ref{fig:urgency-stat} we can see that initially the sum of changes of task urgencies are towards negative direction. This implies that tasks are being served by a high number of robots. Fig. \ref{fig:worker-stat} shows that in production stage, when  work-load is high, many robots are active in tasks and this ratio varies according to task urgency changes.\\ 
-Fig. \ref{fig:single-robot-sensitizations} gives us the task specialization of five robots on Task3 in a particular run of our experiment. This shows us how our robots can specialize and de-specialize on tasks over time. The de-specialization or forgetting of tasks is calculated similar to Eq. \ref{eqn:Delta-Phi}. we have calculated the absolute sum of changes in sensitizations by all robots in the following equation.
-% 
-\begin{equation}
-\small 
-\Delta K_{j, q+1} = \sum_{j=1}^{M} \mid (k_{j, q+1} - k_{j, q}) \mid
-\label{eqn:Delta-K}
-\end{equation}
-This values of $\Delta K$ are plotted in Fig. \ref{fig:sensitization-stat}. It shows that the overall rate of learning decreases and forgetting increases over time. It is a consequence of the gradually increased task specialization of robots and reduced task-urgencies over time.
+\subsubsection*{Plasticity}
+
 %%
-%%% Communication load %%%
-Fig. \ref{fig:signal-frequency-stat} presents the frequency of signalling task information by TaskServer. Since the duration of each time step is 50s long and TaskServer emits signal in every 2.5s, there should be an average of 20 signals in each time-step.\\
-Within VMS scenario, we have got average production completion time 165 time-steps (825s) where sample size is (5 x 4) =  20 tasks, SD = 72 time-steps (360s). According to Eq. \ref{eqn:min-pmm}, our theoretical minimum  production completion time is 50 time-steps (250s) assuming the non-stop task performance of all 16 robots with an initial task urgency of 0.5 for all 4 tasks and  task urgency decrease rate $\Delta \Phi_{DEC	}$ = 0.0025 per robot per time-step. Hence, Eq. \ref{eqn:appd} gives us APCD, $\zeta$ = 2.3 which means that our system has taken 2.3 times more time (575s) than the minimum estimated time.\\
-Besides,  from the average 315 time-steps (1575s) maintenance activity of our robots per experiment run, we have got  APMW, $\chi$ = 0.012756  which corresponds to the pending work of 3 time-steps (15s) with sample-size = 20 tasks, SD = 13 time-steps (65s), $\Delta \Phi_{INC}$ = 0.005 per task per time-step. This tells us the robust task performance of our robots which can return to an abandoned task within a minute or so.
+\subsubsection*{Task-specialization}
+
 %%
-\begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=4.5cm, angle=0]
-{images/PlotUrgencyLog-2010May10-115549.eps}
-%figure caption is below the figure
-\caption{\small Task urgencies observed at TaskServer}
-\label{fig:raw-urgencies} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=4.5cm, angle=0]{images/TaskUrgencyStat.eps}
-\caption{\small Shop-floor workload change history} % measured in terms of task urgencies
-\label{fig:urgency-stat} % Give a unique label
-\end{minipage}
-\end{figure}
+\subsubsection*{Flexibility}
+
 %%
-%%% Sensitization and Translation %%%
-\begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=4.5cm, angle=0]
-{images/Global-SignalingFreqStat.eps}
-%figure caption is below the figure
-\caption{\small Task server's frequency of task information signalling}
-\label{fig:signal-frequency-stat}
-%
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=4.5cm, angle=0]{images/WorkerRatio.eps}
-\caption{\small Self-organized allocation of workers }
-\label{fig:worker-stat} % Give a unique label
-\end{minipage}
-\end{figure}
+\subsubsection*{Concurrency}
+
 %%
-\begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=4cm, angle=0]{images/TaskSpecialization-task3-10may-1.eps}
-\caption{\small Task specialization on Task3}
-\label{fig:single-robot-sensitizations} % Give a unique label
-\end{minipage} 
-%%%
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=4.2cm, angle=0]
-{images/RobotSensitizationStat-Total-50steps.eps}
-\caption{\small Changes in sensitizations of all robots}
-\label{fig:sensitization-stat} % Give a unique label
-\end{minipage}
-\end{figure}
+\subsubsection*{Robustness}
+
+%%-------------------------------------------------
+\subsection*{Shop-floor task performance}
+
+%%-------------------------------------------------
+\subsection*{Information flow}
+
+%%-------------------------------------------------
+\subsection*{Scaling-up}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and conclusion}
 \label{afm:conc}

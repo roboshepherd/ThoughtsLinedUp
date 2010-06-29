@@ -1,4 +1,4 @@
-\chapter{Locality-based Peer-to-Peer Communication Model (LPCM)}
+\chapter{Local Communication for Self-regulated MRTA}
 \label{local-comm}
 %%%%%%%%%%%%%%%%%%%%%
 %\section{Introduction}
@@ -23,7 +23,7 @@ Finally, by combining the above two points, we propose to achieve division of la
 %\section{Geometrical analysis}
 
 %%%%%%%%%%%%%%%%%%%%%
-\section{General characteristics of LPCM}
+\section{A locality-based peer-to-peer communication model (LPCM)}
 Our communication model relies on the local P2P communications among robots. Here there is no centralized server to disseminate information but each robot can communicate to its nearby peers within a certain communication radius, $r_{comm}$. Here by $r_{comm}$, we assume that within this distance robots can exchange communication signals reliably without any significant loss of information. A robot $R_1$ is a {\em peer} of robot $R_2$, if spatial distance between $R_1$ and $R_2$ is less than its $r_{comm}$. As shown in Fig. \ref{fig:lcm}, local communication can also give robots similar task information as in centralized communication mode. It shows that it is not necessary for each robot to communicate with every other robot to get information on all tasks. Since robots can random walk and explore the environment we assume that for a reasonably high robot to space density, all task will be known to all robots after an initial exploration period. In order to update the urgency of a task, robots can estimate the number of robots working on a task in many ways: such as, by using their sensory perception (e.g., camera), by doing local P2P communication and so on. In Fig. \ref{fig:lcm} we have shown that robots exchange both task information and self status signals to peers.\\
 We characterize our communication model in terms of three fundamental issues: 1) message content ({\em what to communicate}) 2) communication frequency ({\em when to communicate}) and 3) target recipients ({\em with whom to communicate}) \cite{Gerkey}. In a typical MRS, message content can be categorized into two types: 1) state of each individual robot and 2) target task (goal) information \cite{Balch}. The latter can also be subdivided into two types: 1) an individual robot's target task information and 2) information of all available tasks found in the system. Regarding the first issue, our communication model is open. Robots can communicate with their peers with any kind of message. Our model addresses the last two issues very specifically. Robots communicate only when they meet their peers within a certain communication radius ($r_{comm}$). Although in case of an environment where robots move relatively faster the peer relationships can also be changed dynamically. But this can be manipulated by setting the signal frequency and robot to space density to somewhat reasonably higher value. In terms of target recipients, our model differs from a traditional publish/subscribe communication (PSC) model by introducing the concept of dynamic subscription. In a traditional PSC model, subscription of messages happens prior to the actual message transmission. In that case prior knowledge about the subjects of a system is necessary. But in our model this is not necessary as long as all robots uses a common addressing convention for naming their incoming signal channels. In this way, when a robot meets with another robot it can infer the address of this peer robot's channel name by using a shared rule. A robot is thus always listening to its own channel for receiving messages from its potential peers or message publishers. On the other side, upon recognizing a peer a robot sends a message to this particular peer. So here neither it is necessary to create any custom subject namespace (e.g., \cite{Gerkey}) nor we need to hard-code information in each robot controller about the knowledge of their potential peers {\em a priori}. Subscription is done automatically based on their respective $r_{comm}$.
 %%%%%%%%%%%%%%%%%%%%%
@@ -65,29 +65,7 @@ implements our proposed dynamic P2P communication.\\
 From Algorithm 1, we see that a robot controller is initialized with its specific robot-id and default values of $r_{comm}$ and $r_{task}$. We assumed that these values are same for all robots and for all tasks respectively.
 Initially a robot has no information about tasks. It has neither listened nor transmitted any information yet. Upon initialization, robot determines its current pose and evaluates a function $U(pose,~ r_{task})$ that helps it to perceive information of a nearby task. This is not strictly necessary as this information can be available from alternate sources. In second step, robot senses its nearby peers by evaluating $V(pose,~ r_{comm})$ and start filling the list of peers $P$ by their id. The signal exchange with a peer is denoted by a communication function $W(emitter,~listener)$. So by listening to a peer signal, it receives task information $h$ and aggregates this $h$ with its own task info $G$. In last step, robot emits its task information to its peers stored in $P$. Finally it erases all values of $P$ and repeat this loop. 
 %
-%%%%%%%%%%%%%%%%%%%%%
-\section{Implementation}
-\label{sec:impl}
-\begin{figure}
-\centering
-\includegraphics[width=9cm, angle=0]
-{./dia-files/RIL-Expt-Setup2.eps}
-%figure caption is below the figure
-\caption{\small Hardware and software setup}
-\label{fig:setup} % Give a unique label
-\end{figure}
-We have developed a system where up to 40 E-puck robots \cite{Epuck} can operate together according to the generic rules of the AFM. As shown in Fig. \ref{fig:setup} (right), our software system consists of a multi-robot tracking system, a task perception assistant (TPA) and robot controller clients (RCC). Here at first we have presented the design of our communication system. Then we have discussed about our specific MRS implementation. 
-%%%
-\subsection{Communication system under LPCM}
-As shown in Fig. \ref{fig:setup}, RCCs disseminate task information to each other by \textit{TaskInfo} D-Bus signal. The contents of task information are physical locations of tasks and their urgencies. However as our robots are incapable of sensing task directly. So it relies on TPA for actual task location and urgency. When a robot $i$ comes within $r_{task}$ of a task $j$, SwisTrack reports it to TPA (by {\em TaskNeighbors} signal) and TPA then gives it current task information $H_j$ to $i$ (by {\em TaskInfo} signal).
-TPA has another interface for catching feedback signals from robots. The \textit{RobotStatus} signal can be used to inform TPA about a robot's current task id, its device status and so on. TPA uses this information to update relevant part of task information such as, task-urgency. This up-to-date information is encoded in next TaskInfo signal.\\
-%In Fig. \ref{fig:lcm} an initial configuration of our communication system has been presented. Upon receiving an initial TaskInfo signal from TPA, robot $R_3$ has shown strong attraction towards $Task1$ and robot $R_2$ has shown strong attraction toward $Task2$. However $R_1$ receives information about both tasks through its peer $R_3$ and shows strong attraction towrads Task1. These can be inferred from Eq. \ref{eqn1} that says if the initial task urgencies and sensitizations for all tasks are same, a robot will strongly be attracted towards a task that is relatively closer to it.
-\subsection{MRS implementation}
-In order to track all robots real-time we have used SwisTrack \cite{SwisTrack}, a state of the art open-source, multi-agent tracking system, with a16-megapixel overhead GigE camera. This set-up gives us the position, heading and id of each of the robots at a frequency of 1. The interaction of the hardware and software of our system is illustrated in Fig. \ref{fig:setup}. \\
-For IPC, we have used D-Bus technology. %\footnote{http://dbus.freedesktop.org/doc/dbus-specification.html}. 
-We have developed an IPC component for SwisTrack (hereafter called as \textit{SwisTrack D-Bus Server}) that can broadcast id and pose of all robots in real-time over our server's D-Bus interface.\\
-Apart from SwisTrack, we have implemented two major software modules: {\em Task Perception Assistant (TPA)} and {\em Robot Controller Client (RCC)}. They are developed in Python with its state of the art \textit{Multiprocessing} \footnote{http://docs.python.org/library/multiprocessing.html} module. This python module simplifies our need to manage data sharing and synchronization among different sub-processes. As shown in Fig. \ref{fig:setup}, RCC consists of four sub-processes. {\em SignalListener} and {\em SignalEmitter}, interface with SwisTrack D-Bus Server and TPA. {\em TaskSelector} implements AFM guidelines for task selection . {\em DeviceController} moves a robot to a target task. Bluetooth radio link is used as a communication medium between a RCC and a corresponding E-puck robot. 
-%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experiment Design}
 \label{sec:expt-design}
@@ -154,6 +132,30 @@ According AFM, as robots will do tasks they will specialize on each task by incr
 As we might guess that initially the task urgencies will be relatively higher for all tasks so robots will need to do a lot of movements by switching from one task to another. But as the system approaches to converge overall robot motions will be decreased. In order to observe this phenomena we log the pose of robots in every time step.\\
 \textbf{D-Bus Signals emitted by Task server ($S_f$):} 
 In order to measure the communication load on our communication system we are also interested to log P2P TaskInfo D-Bus signals. Since the emission of signals happens asynchronously it is more likely that the overall communication load on the system will vary over time. This is contrary to the centralized communication where communication load is almost constant over time.
+%%========================================================================
+\section{Implementation}
+\label{sec:impl}
+\begin{figure}
+\centering
+\includegraphics[width=9cm, angle=0]
+{./dia-files/RIL-Expt-Setup2.eps}
+%figure caption is below the figure
+\caption{\small Hardware and software setup}
+\label{fig:setup} % Give a unique label
+\end{figure}
+We have developed a system where up to 40 E-puck robots \cite{Epuck} can operate together according to the generic rules of the AFM. As shown in Fig. \ref{fig:setup} (right), our software system consists of a multi-robot tracking system, a task perception assistant (TPA) and robot controller clients (RCC). Here at first we have presented the design of our communication system. Then we have discussed about our specific MRS implementation. 
+%%%
+\subsection{Communication system under LPCM}
+As shown in Fig. \ref{fig:setup}, RCCs disseminate task information to each other by \textit{TaskInfo} D-Bus signal. The contents of task information are physical locations of tasks and their urgencies. However as our robots are incapable of sensing task directly. So it relies on TPA for actual task location and urgency. When a robot $i$ comes within $r_{task}$ of a task $j$, SwisTrack reports it to TPA (by {\em TaskNeighbors} signal) and TPA then gives it current task information $H_j$ to $i$ (by {\em TaskInfo} signal).
+TPA has another interface for catching feedback signals from robots. The \textit{RobotStatus} signal can be used to inform TPA about a robot's current task id, its device status and so on. TPA uses this information to update relevant part of task information such as, task-urgency. This up-to-date information is encoded in next TaskInfo signal.\\
+%In Fig. \ref{fig:lcm} an initial configuration of our communication system has been presented. Upon receiving an initial TaskInfo signal from TPA, robot $R_3$ has shown strong attraction towards $Task1$ and robot $R_2$ has shown strong attraction toward $Task2$. However $R_1$ receives information about both tasks through its peer $R_3$ and shows strong attraction towrads Task1. These can be inferred from Eq. \ref{eqn1} that says if the initial task urgencies and sensitizations for all tasks are same, a robot will strongly be attracted towards a task that is relatively closer to it.
+\subsection{MRS implementation}
+In order to track all robots real-time we have used SwisTrack \cite{SwisTrack}, a state of the art open-source, multi-agent tracking system, with a16-megapixel overhead GigE camera. This set-up gives us the position, heading and id of each of the robots at a frequency of 1. The interaction of the hardware and software of our system is illustrated in Fig. \ref{fig:setup}. \\
+For IPC, we have used D-Bus technology. %\footnote{http://dbus.freedesktop.org/doc/dbus-specification.html}. 
+We have developed an IPC component for SwisTrack (hereafter called as \textit{SwisTrack D-Bus Server}) that can broadcast id and pose of all robots in real-time over our server's D-Bus interface.\\
+Apart from SwisTrack, we have implemented two major software modules: {\em Task Perception Assistant (TPA)} and {\em Robot Controller Client (RCC)}. They are developed in Python with its state of the art \textit{Multiprocessing} \footnote{http://docs.python.org/library/multiprocessing.html} module. This python module simplifies our need to manage data sharing and synchronization among different sub-processes. As shown in Fig. \ref{fig:setup}, RCC consists of four sub-processes. {\em SignalListener} and {\em SignalEmitter}, interface with SwisTrack D-Bus Server and TPA. {\em TaskSelector} implements AFM guidelines for task selection . {\em DeviceController} moves a robot to a target task. Bluetooth radio link is used as a communication medium between a RCC and a corresponding E-puck robot. 
+%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and discussions}
 \label{sec:results}

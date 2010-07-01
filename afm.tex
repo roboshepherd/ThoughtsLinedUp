@@ -479,10 +479,53 @@ This algorithm acts upon the task-urgency data of each task and updates it based
 In this section we have presented our experimental results. We ran those experiments for about 40 minutes and averaged them over five iterations for both Series A and B.
 %%-------------------------------------------------
 \subsection*{Shop-floor work-load history}
-
+In our experiments we have defined shop-floor work-load in terms of task-urgencies. For example, Eq. \ref{eqn:task-urgency-prod-init} shows how we have calculated initial production work-load of our manufacturing shop-floor scenario. Fig. \ref{fig:raw-urgencies-SA} and Fig. \ref{fig:raw-urgencies-SB}  show the dynamic changes in task-urgencies for the single iteration of Series A and Series B experiments respectively. The fluctuations in these plots are resulted from the different levels of task-performance of our robots.
+\begin{figure}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4.5cm, angle=0]
+{images/PlotUrgencyLog-2010May10-115549.eps}
+%figure caption is below the figure
+\caption{\small Changes in task-urgencies in Series A experiments}
+\label{fig:raw-urgencies-SA} 
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4.5cm, angle=0]{images/global-8robots/PlotUrgencyLog-2010Apr30-095755.eps}
+\caption{\small Changes in task-urgencies in Series B experiments} 
+\label{fig:raw-urgencies-SB} 
+\end{minipage}
+\end{figure}
+In order to measure the task-related work-loads on our system we have summed up the changes in all task-urgencies over time. We call this as {shop-floor work-load history} and formalized as follows. Let $ \phi_{j, q}$ be the urgency of a task $j$ at $q^{th}$ step and $\phi_{j, q+1}$ be the task urgency of $(q+1)^{th}$ step. We can calculate the sum of changes in urgencies of all tasks at $(q+1)^{th}$ step:
+\begin{equation} 
+\small
+\Delta \Phi_{j, q+1} = \sum_{j=1}^{M} (\phi_{j, q+1} - \phi_{j, q})
+\label{eqn:Delta-Phi}
+\end{equation}
+From Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} shows the dynamic shop-floor workload for Series A and Series B experiments respectively. From these plots, we can see that initially the sum of changes of task urgencies (shop-floor workload) is going towards negative direction. This implies that tasks are being served by a high number of robots. 
+%%
+\begin{figure}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4.5cm, angle=0]
+{images/global-8robots/8robots2tasks-TaskUrgencyStat.eps}
+%figure caption is below the figure
+\caption{\small Shop-floor workload change history in Series A} 
+\label{fig:urgency-stat-SA} % Give a unique label
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4.5cm, angle=0]{images/TaskUrgencyStat.eps}
+\caption{\small Shop-floor workload change history in Series B} % measured in terms of task urgencies
+\label{fig:urgency-stat-SB} % Give a unique label
+\end{minipage}
+\end{figure}
+%%
 %%-------------------------------------------------
 \subsection*{Ratio of active workers}
-
+From both Fig. \ref{fig:worker-stat-SA} and Fig. \ref{fig:worker-stat-SB}, we can  see that in production stage, when work-load is high, many robots are active in tasks and this ratio varies according to the shop-floor work-load changes.
 %%-------------------------------------------------
 \subsection*{Shop-task performance}
 

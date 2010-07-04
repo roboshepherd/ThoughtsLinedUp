@@ -484,7 +484,7 @@ In our experiments we have defined shop-floor work-load in terms of task-urgenci
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[height=4.5cm, angle=0]
-{images/PlotUrgencyLog-2010May10-115549.eps}
+{images/global-8robots/PlotUrgencyLog-2010Apr30-095755.eps}
 %figure caption is below the figure
 \caption{\small Changes in task-urgencies in Series A experiments}
 \label{fig:raw-urgencies-SA} 
@@ -492,7 +492,7 @@ In our experiments we have defined shop-floor work-load in terms of task-urgenci
 \hspace{0.5cm}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.5cm, angle=0]{images/global-8robots/PlotUrgencyLog-2010Apr30-095755.eps}
+\includegraphics[height=4.5cm, angle=0]{images/PlotUrgencyLog-2010May10-115549.eps}
 \caption{\small Changes in task-urgencies in Series B experiments} 
 \label{fig:raw-urgencies-SB} 
 \end{minipage}
@@ -523,49 +523,216 @@ From Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} shows the
 \end{minipage}
 \end{figure}
 %%
-%%-------------------------------------------------
+%%----------------------------------------------------------------
 \subsection*{Ratio of active workers}
+%%
+\begin{figure}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4.5cm, angle=0]
+{images/global-8robots/Plasticity-8robots2tasks.eps}
+%figure caption is below the figure
+\caption{\small Self-organized allocation of robots in Series A}
+\label{fig:worker-stat-SA}
+\end{minipage}
+%
+\hspace{0.5cm}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4.5cm, angle=0]{images/WorkerRatio.eps}
+\caption{\small Self-organized allocation of robots in Series B }
+\label{fig:worker-stat-SB} % Give a unique label
+\end{minipage}
+\end{figure}
+%%
 From both Fig. \ref{fig:worker-stat-SA} and Fig. \ref{fig:worker-stat-SB}, we can  see that in production stage, when work-load is high, many robots are active in tasks and this ratio varies according to the shop-floor work-load changes.
-%%-------------------------------------------------
+%%-------------------------------------------------------------
 \subsection*{Shop-task performance}
-
+\begin{figure}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4cm, angle=0]{images/apcd-SA-SB.eps}
+\caption{APCD of Series A and Series B experiments.}
+\label{fig:apcd-SA-SB} 
+\end{minipage} 
+%%%
+\hspace{0.5cm}
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=4.2cm, angle=0]
+{images/apmw-SA-SB.eps}
+\caption{APMW of Series A and Series B experiments.}
+\label{fig:apmw-SA-SB} % Give a unique label
+\end{minipage}
+\end{figure}
+%%
+In our manufacturing shop-floor scenario, we have calculated the APCD and APMW for both Series A and Series B experiments. For Series A we have got  average production completion time 111 time-steps (555s) where sample size is (5 x 2) = 10 tasks, SD = 10 time-steps (50s). According to Eq. \ref{eqn:min-pmm}, our theoretical minimum production completion time is 50 time-steps (250s) assuming the non-stop task performance of all 8 robots with an initial task urgency of 0.5 for all 2 tasks and task urgency decrease rate $\Delta \Phi_{DEC }$ = 0.0025 per robot per time-step.  Hence, Eq. \ref{eqn:appd} gives us APCD, $\zeta$ = 1.22 which means that in Series A experiments, it took 1.22 times more time (305s) than the estimated minimum production completion time. For Series B, we have got average production completion time 165 time-steps (825s) where sample size is (5 x 4) = 20 tasks, SD = 72 time-steps (360s).  Hence, Eq. \ref{eqn:appd} gives us APCD, $\zeta$ = 2.3. Fig. \ref{fig:apcd-SA-SB} shows the APCD for both Series A and Series B experiments. \\
+%%
+For APMW, Series A experiments give us an average time length of 369 time-steps (1845s).  In this period we calculated APMW and it is 1 time-step with SD = 1 time-step (5s) and $\Delta \Phi_{INC}$ = 0.005 per task per time-step. This shows a very low APMW ($\chi$ = 0.000235) and a very high robustness of the system. For Series B experiments, from the average 315 time-steps (1575s) maintenance activity of our robots per experiment run, we have got APMW, $\chi$ = 0.012756 which corresponds to the pending work of 3 time-steps (15s) where SD = 13 time-steps (65s). This tells us the robust task performance of our robots which can return to an abandoned task within a minute or so. Fig. \ref{fig:apmw-SA-SB} plots the APMW for both Series A and Series B experiments. 
 %%-------------------------------------------------
 \subsection*{Task specializations}
-
+We have measured the task-specialization of the robots based-on their peak value of sensitization. This maximum value represents how long a robot has repeatedly been selecting a particular task. Since tasks are homogeneous we have considered the maxim sensitization value of a robot among all tasks during an experiment run. This value is then averaged for all robots using the following  equation. 
+%%
+\begin{equation}
+K^G_{avg} = \frac{1}{N}\sum_{i=1}^{N} \max_{j=1}^M\left ( k^i_{j, q} \right ) 
+\label{eqn:K-G}
+\end{equation}
+%%
+If a robot $r_i$ has the peak sensitization value $k^i_j$ on task $j$ ($j \in M$ tasks)  at $q^{th}$ time-step, Eq. \ref{eqn:K-G} calculates the average of the peak task-specialization values of all robots for a certain iteration of our experiments. We have also averaged the time-step values ($q$) taken to reach those peak values for all robots using the following equation.
+%%
+\begin{equation}
+Q^G_{avg}= \frac{1}{N}\sum_{i=1}^{N} q^i_{k=k_{max}}
+\label{eqn:Q-G}
+\end{equation}
+In Eq. \ref{eqn:Q-G}, $q^i_{k=k_{max}}$ represents the time-step of robot $r_i$  where its sensitization value $k$ reaches the peak $k_{max}$ as discussed above. By averaging this peak time-step values of all robots we can have an overall idea of how many task-execution cycles are spent to reach the maximum task-specialization value $K^G_{avg}$.
+%% S-A
+\begin{table}
+\centering
+\caption{Peak task-sensitization values of all robots in a Series A experiment.}
+\begin{tabular}{|c|c|c|}
+\hline Robot ID & Maximum k & At time-step (q) \\ 
+\hline 1 & 0.54 & 63\\
+\hline 2 & 0.46 & 63\\
+\hline 3 & 0.47 & 62\\
+\hline 4 & 0.32 & 13\\
+\hline 5 & 0.27 & 10\\
+\hline 6 & 0.20 & 9\\
+\hline 7 & 0.18 & 3\\
+\hline 8 & 0.15 & 2\\
+\hline 
+\end{tabular} 
+\label{table:K-G-SA}
+\end{table}
+%% S-B
+\begin{table}
+\centering
+\caption{Peak task-sensitization values of all robots in a Series B experiment.}
+\begin{tabular}{|c|c|c|}
+\hline Robot ID & Maximum k & At time-step (q) \\ 
+\hline 1 & 0.64 & 65\\
+\hline 5 & 0.28 & 13\\
+\hline 6 & 0.43 & 70\\
+\hline 9 & 0.68 & 65\\
+\hline 12 & 0.16 & 9\\
+\hline 13 & 0.31 & 18\\
+\hline 14 & 0.15 & 3\\
+\hline 15 & 0.19 & 3\\
+\hline 16 & 0.18 & 3\\
+\hline 17 & 0.16 & 5\\
+\hline 19 & 0.22 & 11\\
+\hline 22 & 0.18 & 19\\
+\hline 24 & 0.41 & 28\\
+\hline 31 & 0.14 & 3\\
+\hline 35 & 0.34 & 11\\
+\hline 
+\end{tabular} 
+\label{table:K-G-SB}
+\end{table}
+%%
+Table \ref{table:K-G-SA} and Table \ref{table:K-G-SB} show the peak sensitization values of Series A and Series B experiments respectively.  Based on Eq. \ref{eqn:K-G} and Eq. \ref{eqn:Q-G}, we have got the peak task-sensitization $K^G_{avg} 
+$ values: 0.40 (SD=0.08)  and 0.30 (SD=0.03), and their respective time-step $Q^G_{avg}$ values: 38 (SD=13) and 18 (SD=5).  They are shown in Fig. \ref{fig:K-G-SA-SB} and Fig. \ref{fig:Q-G-SA-SB}. Here we can see that the robots in Series A had higher chances of task-specialization than that of Series B experiments.
+%%
+\begin{figure}
+%\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=7cm, angle=0]{images/K-G-SA-SB.eps}
+\caption{ Overall task-specialization of robot groups.}
+\label{fig:K-G-SA-SB} 
+%\end{minipage} 
+%%%
+\hspace{0.5cm}
+%\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=7cm, angle=0]
+{images/Q-G-SA-SB.eps}
+\caption{Time-steps to reach the peak values of task-specialization}
+\label{fig:Q-G-SA-SB} 
+%\end{minipage}
+\end{figure}
+%% ------ Single robot----
+\begin{figure}
+\centering
+\includegraphics[height=6cm, angle=0]{images/TaskSpecialization-task3-10may-1.eps}
+\caption{Task specialization on Task3 for a Series B experiment.}
+\label{fig:k-single-task-SB} 
+\end{figure}
+%%
+Fig. \ref{fig:k-single-task-SB} shows us the task specialization of five robots on Task3 in a particular run of Series B experiment. This shows us how some of the robots can specialize (learn) and de-specialize (forget) tasks over time.
 %%-------------------------------------------------
 \subsection*{Robot motions}
-
-%%-------------------------------------------------
+We have aggregated the changes in translation motion of all robots over time. Let $u_{i,q}$ and $u_{i,q+1}$ be the translations of a robot $i$ in two consecutive steps. If the difference between these two translations be $\delta u_{i}$, we can find the sum of changes of translations of all robots in $(q+1)^{th}$ step using the following equation.
+\begin{equation}
+\small 
+\Delta U_{q+1} = \sum_{i=1}^{N} \delta u_{i, q+1} 
+\label{eqn:Delta-Tr}
+\end{equation}
+%%
+\begin{figure*}
+%\begin{minipage}[t]{0.5\linewidth}
+\centering
+\includegraphics[height=8cm]{images/global-8robots/8robots-DeltaTranslationStat.eps}
+\caption{\small Sum of the translations of robots in Series A experiments}
+\label{fig:translation-stat-SA} % Give a unique label
+%\end{minipage}
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.5\linewidth}
+\centering
+\includegraphics[height=8cm]{images/global/DeltaTranslationStat.eps}
+\caption{\small Sum of the translations of robots in Series B experiments}
+\label{fig:translation-stat-SB} % Give a unique label
+%\end{minipage}
+\end{figure*}
+%%
+The results from Series A and Series B experiments are plotted in Fig. \ref{fig:translation-stat-SA} and Fig. \ref{fig:translation-stat-SB}. In this plot we can see that robot translations also vary over varying task requirements of tasks.
+%%%-------------------------------------------------
 \subsection*{Communication load}
-
-%=============================================
-
-%=============================================
+%%% Communication load %%%
+\begin{figure}
+%\begin{minipage}[t]{0.5\linewidth}
+\centering
+\includegraphics[height=8cm]
+{images/global-8robots/8Robot-SignalingFreqStat.eps}
+\caption{\small Frequency of TaskInfo signalling in Series A experiments}
+\label{fig:signal-frequency-stat-SA} 
+%\end{minipage}
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.5\linewidth}
+\end{figure}
+%%
+\begin{figure}
+\centering
+\includegraphics[height=8cm]{images/Global-SignalingFreqStat.eps}
+\caption{\small Frequency of TaskInfo signalling in Series B experiments}
+\label{fig:signal-frequency-stat-SB} 
+%\end{minipage}
+\end{figure}
+%%
+Fig. \ref{fig:signal-frequency-stat-SA}  and Fig. \ref{fig:signal-frequency-stat-SB}  show the number of received TaskInfo signals by each robot in Series A and Series B experiments. Since the duration of each time-step is 50s long and TaskServer emits signal in every 2.5s, there is an average of 20 signals in each time-step.
+%===================================================================
 \section{Discussions}
 \label{afm:discuss}
 %%-------------------------------------------------
-\subsection*{Division of labour}
-%%
-\subsubsection*{Plasticity}
+From our experimental results, we have noted several aspects of self-regulated MRTA that exposes the power of AFM. Some of the main aspects are discussed here.    
 
+\subsection*{Self-regulated DOL1}
 %%
-\subsubsection*{Task-specialization}
-
+As we have pointed out that self-regulated DOL, as observed in biological and human social systems, needs to satisfy several important characteristics, e.g. plasticity, task-specialization. In addition to satisfying those basic qualities, AFM  demonstrates many other strengths that are elaborated below.\\
 %%
-\subsubsection*{Flexibility}
-
+\textbf{Plasticity: }
+Our self-regulated robots, driven by AFM, effectively handle the dynamic work-load in our manufacturing shop-floor scenario. They can dynamically support the need to work on currently demanding tasks, if there any. The variations of active worker ratio supports this claim. From the self-organized worker allocations of AFM, it is clear to us that although in larger system (Series B) the degree of variations of active-worker ratio can show us significantly unpredictable patterns or skews, the self-regulated rules drive the robots to respond to the dynamic needs. This means that AFM can sufficiently produce the plasticity of DOL in order to meets the dynamic work-load of the system.
 %%
-\subsubsection*{Concurrency}
-
+\textbf{Task-specialization}
+From the individual and group-level task-specialization we can see that 
 %%
-\subsubsection*{Robustness}
-
+\textbf{Flexibility}
+%%
+\textbf{Concurrency}
+%%
+\textbf{Robustness}
 %%-------------------------------------------------
 \subsection*{Shop-floor task performance}
-
 %%-------------------------------------------------
 \subsection*{Information flow}
-
 %%-------------------------------------------------
 \subsection*{Scaling-up}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

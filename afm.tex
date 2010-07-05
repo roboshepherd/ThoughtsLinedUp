@@ -630,7 +630,7 @@ In Eq. \ref{eqn:Q-G}, $q^i_{k=k_{max}}$ represents the time-step of robot $r_i$ 
 \end{table}
 %%
 Table \ref{table:K-G-SA} and Table \ref{table:K-G-SB} show the peak sensitization values of Series A and Series B experiments respectively.  Based on Eq. \ref{eqn:K-G} and Eq. \ref{eqn:Q-G}, we have got the peak task-sensitization $K^G_{avg} 
-$ values: 0.40 (SD=0.08)  and 0.30 (SD=0.03), and their respective time-step $Q^G_{avg}$ values: 38 (SD=13) and 18 (SD=5).  They are shown in Fig. \ref{fig:K-G-SA-SB} and Fig. \ref{fig:Q-G-SA-SB}. Here we can see that the robots in Series A had higher chances of task-specialization than that of Series B experiments.
+$ values: 0.40 (SD=0.08)  and 0.30 (SD=0.03), and their respective time-step $Q^G_{avg}$ values: 38 (SD=13) and 18 (SD=5) time-step.  They are shown in Fig. \ref{fig:K-G-SA-SB} and Fig. \ref{fig:Q-G-SA-SB}. Here we can see that the robots in Series A had higher chances of task-specialization than that of Series B experiments.
 %%
 \begin{figure}
 %\begin{minipage}[t]{0.48\linewidth}
@@ -712,30 +712,19 @@ Fig. \ref{fig:signal-frequency-stat-SA}  and Fig. \ref{fig:signal-frequency-stat
 \section{Discussions}
 \label{afm:discuss}
 %%-------------------------------------------------
-From our experimental results, we have noted several aspects of self-regulated MRTA that exposes the power of AFM. Some of the main aspects are discussed here.    
-
-\subsection*{Self-regulated DOL1}
+\textbf{Self-regulated DOL}. From our experimental results, we have noted several aspects of self-regulated MRTA that exposes the power of AFM. As we have pointed out that self-regulated DOL, as observed in biological and human social systems, needs to satisfy several important characteristics, e.g. plasticity, task-specialization. In addition to satisfying those basic qualities, AFM  demonstrates many other strengths. Our self-regulated robots, driven by AFM, effectively handle the dynamic work-load in our manufacturing shop-floor scenario. They can dynamically support the need to work on currently demanding tasks, if there any. The variations of active worker ratio supports this claim. From the self-organized worker allocations of AFM, it is clear to us that although in larger system (Series B) the degree of variations of active-worker ratio can show us significantly unpredictable patterns, nevertheless the self-regulated rules drive the robots to respond to the dynamic needs of the system. This means that AFM can sufficiently produce the plasticity of DOL in order to meets the dynamic work-load of the system.\\
 %%
-As we have pointed out that self-regulated DOL, as observed in biological and human social systems, needs to satisfy several important characteristics, e.g. plasticity, task-specialization. In addition to satisfying those basic qualities, AFM  demonstrates many other strengths that are elaborated below.\\
+\textbf{Learning and Forgetting}. From the individual and group-level task-specialization we can see that robots can maintain both task-specialization and flexibility. In a self-organized system, it is very common that only a few individuals specialize on tasks and others generally do not. From two samples we can see that in particular runs of Series A and Series B experiments, task-sensitization values of  only 2-3 robots reach above the group-level average score (0.4). Thus in both types of experiments, robots exhibit similar task-specialization behaviours. From task-sensitization we can also see that a limited number of robots are specialized in tasks. Thus most of the other robots are flexible in selecting any tasks as their level of specialization does not bind them to particular tasks.\\
 %%
-\textbf{Plasticity: }
-Our self-regulated robots, driven by AFM, effectively handle the dynamic work-load in our manufacturing shop-floor scenario. They can dynamically support the need to work on currently demanding tasks, if there any. The variations of active worker ratio supports this claim. From the self-organized worker allocations of AFM, it is clear to us that although in larger system (Series B) the degree of variations of active-worker ratio can show us significantly unpredictable patterns or skews, the self-regulated rules drive the robots to respond to the dynamic needs. This means that AFM can sufficiently produce the plasticity of DOL in order to meets the dynamic work-load of the system.
+\textbf{Concurrency and robustness}. As a consequence of fewer robots specializing in tasks, we can also see that robots can concurrently  consider different tasks without being biased to a particular task all the time. Our experiments also show us the robust DOL as in case of  both high and low work-loads present in the system. This is evident from the manufacturing shop-floor task performance during PMM and MOM. For example,  in case of Series B experiments APMW was 13 time-steps (65s) which corresponded  to pending work-load of 0.065 unit for a single robot. Thus before the work-load exceeded by about 13% of initial work-load, robots were able to respond to  a task.\\
 %%
-\textbf{Task-specialization}
-From the individual and group-level task-specialization we can see that 
+{Communication load.} In these experiments we used a centralized communication system (source of attractive field) that serves the robot with necessary task-perception information. Although our robot-controllers software RCC was also co-located in the same host-PC, they can be distributed to several PCs or robot's on-board PCs. Our centralized communication system has the advantage of minimising the communication load and the disadvantage of a single point of failure as well as single point of load. In the next chapter we present how the task perception can be decentralized by P2P communications among RCCs.\\
 %%
-\textbf{Flexibility}
-%%
-\textbf{Concurrency}
-%%
-\textbf{Robustness}
-%%-------------------------------------------------
-\subsection*{Shop-floor task performance}
-%%-------------------------------------------------
-\subsection*{Information flow}
-%%-------------------------------------------------
-\subsection*{Scaling-up}
+\textbf{Scaling-up}. We have observed the effect of scaling-up the robot team size. The system size of Series B is double of that of Series A in terms of robots, tasks and experiment arena. Keeping a fixed ratio of robot-to-task and task-to-arena we have intended to see the scaling effects in our experiments. Here we see both systems can show sufficient self-regulated DOL, task-performance of both systems varies. For example, the value of APCD in Series B is higher by 1.08. This means that performance  is decreased in Series B experiments despite having the resources in same proportion in both system. This occurs partly due to the greater stochastic effects found in task-allocation in a larger system, e.g. presence of more tasks produce higher stochastic behaviours in robot's task selection.\\
+%% 
+Similarly we can see that in larger system robots have less chances to specialize on tasks as the Series B experiments show us the overall average task-specialization of the group $K^G_{avg}$ is lower by 0.10 and it lasts for significantly less time (the difference of $Q^G_{avg}$  of both systems is 20 time-steps). Thus, in a large group, robots are more likely to switch among tasks more frequently and spend more energy (e.g. battery power) in doing so.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary and conclusion}
-\label{afm:conc}
-In this paper we have validated an inter-disciplinary generic model of self-regulated division of labour (DOL) or or multi-robot task allocation (MRTA) by incorporating it in our multi-robot system (MRS) that has emulated a virtual manufacturing shop-floor activities. A centralized communication system has been instantiated to realize this model. We have evaluated various aspects of this model, such as ability to meet dynamic task demands, individual task specializations, communication loads and flexibility in concurrent task completions. A set of metrics has been proposed to observe the DOL in this system. From our experimental results, we have found that AFM can meet the requirements of dynamic DOL by the virtue of its self-regulatory behaviours. Our centralised communication system broadcasts information to all the robots from a central server. This has the advantage of minimising the communication load and the disadvantage of a single point of failure. In the future, we will explore local peer-to-peer communication models in a MRS having about 40 E-puck robots.
+\section{Summary}
+\label{afm:summary}
+In this chapter, we have validated an inter-disciplinary generic model of self-regulated DOL by incorporating it in our MRS that has emulated a mock manufacturing shop-floor scenario. A centralized communication system has been instantiated to realize this model. We have evaluated various aspects of this model, such as ability to meet dynamic task demands, individual task specializations, communication loads and flexibility in concurrent task completions. A set of metrics has been proposed to observe the DOL in this system. From our experimental results, in fine we can say that AFM can meet the requirements of dynamic MRTA by the virtue of its self-regulatory principles.
+%% separate conclusion:

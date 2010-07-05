@@ -137,198 +137,65 @@ From the above discussions, we can see that our base implementation of RCC's tas
 %%
 In our base implementation TPS periodically broadcasts TaskInfo signals to all robots. But in this local version, TPS only emits TaskInfo signal when a robot is within a task's perception range, $r_{task}$ based-on the TaskNeighbour signal from SwisTrack. For this additional interface, we have extended D-Bus SignalListener to catch this additional D-Bus signal.  No major changes ared done in the other part of TPS implementation. The full Python implementation of TPS is available for download from this GitHub repository\footnote{http://github.com/roboshepherd/DitributedTaskServer}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results and discussions}
+\section{Results}
 \label{sec:results}
 %%
-In this section we have presented our experimental results. We ran those experiments for about 40 minutes and averaged them from three iterations. For comparison purposes, here we present some of the results of our baseline experiments in centralized communication mode. Details can be found in \cite{Sarker}.\\
+The results from Series C and Series D experiments are organized by following the organization of results in our previous chapter. The sample raw task-urgencies of Series C and Series D experiments are shown in Fig. \ref{fig:raw-urgencies-SC-SD}. In case of Series D, we can see that an unattended task, Task4, was not served by any robot for a long period and later it was picked up by some of the robots. 
 %%% raw urgencies
 \begin{figure}
 \centering
-\includegraphics[height=5cm]
-{images/local-500cm/PlotUrgencyLog-2010Feb15-171017.eps}
-%figure caption is below the figure
-\caption{\small Task urgencies observed at TaskServer in local mode $r_{comm}$=0.5m}
-\label{fig:raw-urgencies} % Give a unique label
+\subfloat[Series C]
+{\includegraphics[width=6cm, height=4cm]{images/local-500cm/PlotUrgencyLog-2010Feb15-171017.eps}}
+\subfloat[Series D]
+{\includegraphics[width=6cm, height=4cm]{images/local-1m/PlotUrgencyLog-2010Feb17-112141.eps}}
+\caption{\small Task-urgencies observed from (a) Series C and (b) Series D experiments}
+\label{fig:raw-urgencies-SC-SD} 
+\end{figure}
+%%
+%% – Workload
+\begin{figure}
+\centering
+\subfloat[Series C]
+{\includegraphics[width=6cm, height=4cm]{images/local-500cm/TaskUrgencyStat-SC.eps}}
+\subfloat[Series D]
+{\includegraphics[width=6cm, height=4cm]{images/local-1m/TaskUrgencyStat-SD.eps}}
+\caption{\small Shop-floor work-load history from (a) Series C and (b) Series D experiments}
+\label{fig:workload-SC-SD} 
 \end{figure}
 %%%
-Fig. \ref{fig:raw-urgencies} shows the dynamic changes in task urgencies.
-In order to describe our system's dynamic behaviour holistically we analyse the changes in task urgencies over time. Let $ \phi_{j, q}$ be the urgency of a task $j$ at $q^{th}$ step. In $(q+1)^{th}$ step, we can find the change of urgency of task $j$ :\\
-\begin{equation} 
-\small
-\delta \phi_{j, q+1} = ( \phi_{j, q+1} - \phi_{j, q}) 
-\end{equation}
-So we can calculate the sum of changes in urgencies of all tasks at $(q+1)^{th}$ step:
-\begin{equation} 
-\small
-\Delta \Phi_{j, q+1} = \sum_{j=1}^{M} \delta \phi_{j, q+1} 
-\label{eqn:Delta-Phi}
-\end{equation}
-Fig. \ref{fig:urgency-convergence} plots this sum of changes of task urgencies by a dashed line. If we consider the absolute change over a window of time $w$ in the following equation, we can describe the overall changes of our systems in both positive and negative directions.
+The dynamic shop floor work-load is shown in Fig. \ref{fig:workload-SC-SD}. These plots shows similar work-load as experienced in Series A and Series B experiments. Here, we can also see that initially the sum of changes of task urgencies are towards negative direction. This implies that tasks are being served by a high number of robots. When the task urgencies stabilize near zero the fluctuations in urgencies become minimum. Since robots chose tasks stochastically, there will always be a small changes in task urgencies.\\
 %
-\begin{equation}
-\small
-\Delta \Phi_{jw, q+1} = \sum_{j=0}^{w-1} \mid \Delta \Phi_{q+j} \mid
-\end{equation}
+% Plasticity
+\begin{figure}
+\centering
+\subfloat[Series C]
+{\includegraphics[width=6cm, height=4cm]{images/local-500cm/Local50cm-Plasticity-SC.eps}}
+\subfloat[Series D]
+{\includegraphics[width=6cm, height=4cm]{images/local-1m/Local1m-Plasticity-SD.eps}}
+\caption{\small Self-organized allocation of workers in (a) Series C and (b) Series D experiments}
+\label{fig:plasticity-SC-SD} 
+\end{figure}
 %
-In order to find convergence in MRTA we have calculated the sum of absolute changes in task urgencies over a window of 2 consecutive steps (100s). This is plotted in solid line in Fig. \ref{fig:urgency-convergence}. Note that we scale down the time steps of this plot by aggregating the values of 10 consecutive steps (50s) of Fig. \ref{fig:raw-urgencies} into a single step value.
-From Fig. \ref{fig:urgency-convergence} we can see that initially the sum of changes of task urgencies are towards negative direction. This implies that tasks are being served by a high number of robots. When the task urgencies stabilize near zero the fluctuations in urgencies become minimum. Since robots chose tasks stochastically, there will always be a small changes in task urgencies. A potential convergence point is located by considering the persistence existence of the value of $\Delta \Phi_{jw, q+1}$ below a threshold 0.1. Tn Fig. \ref{fig:urgency-convergence} this convergence happens near step 23 or after 1150s from the beginning of our experiments. This implies that from this point of time and onwards, changes of our system's behaviour remain under a small threshold value.\\
-Using this same criteria, we can find that in local communication experiment convergence happens after step 14 in case of $r_{comm}$=0.5m (Fig. \ref{fig:local50cm-convergence}) and after step 29 in case of $r_{comm}$=1m (Fig. \ref{fig:local1m-convergence}).\\ 
-%%%%
-%%%% Centralized expt
-\begin{figure*}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/global/TaskUrgencyConvergence-step2-th-p1}
-\caption{\small Convergence of task urgencies in centralized mode}
-\label{fig:urgency-convergence} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/global/DeltaTranslationStat.eps}
-\caption{\small Sum of translations of all robots in centralized  mode }
-\label{fig:translation-stat} % Give a unique label
-\end{minipage}
-\end{figure*}
+The active worker ratios of both Series C and Series D experiments are plotted in Fig. \ref{fig:plasticity-SC-SD}. Series C data shows us a large variation in this active worker ratios.
 %%
+%% Shop-Task performance
+The task-performance of our manufacturing shop-floor scenario under both Series C and Series D experiments are plotted in Fig. \ref{fig:apcd-SC-SD} and Fig. \ref{fig:apmw-SC-SD}. 
+\begin{figure}
+\centering
+\subfloat[APCD]
+{\includegraphics[width=6cm, height=4cm]{images/apcd-SC-SD.eps}}
+\subfloat[APMW]
+{\includegraphics[width=6cm, height=4cm]{images/apmw-SC-SD.eps}}
+\caption{\small task-performance of our shop-floor manufacturing scenario (a) APCD and (b) APMW} 
+\end{figure}
+For Series C we have got average production completion time 121 time-steps (605s) with SD = 36 time-steps (180s). For Series D,  average production completion time is 123 time-steps (615s) with SD = 40 time-steps (200s). According to Eq. \ref{eqn:min-pmm}, our theoretical minimum production completion time is 50 time-steps (250s) as discussed in Sec \ref{afm:results}.  The values of APCD are as follows. For Series C, $\zeta$ = 1.42 and for Series D, $\zeta$ = 1.46. For both series of experiments APCD values are very close.\\
 %%
-%%%%% Task Urgency Convergence/ Traslation local 50cm
-\begin{figure*}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]
-{images/local-500cm/Local50cm-TaskUrgencyConvergence.eps}
-%figure caption is below the figure
-\caption{\small Convergence of task urgencies in local mode $r_{comm}$=0.5m}
-\label{fig:local50cm-convergence} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]
-{images/local-500cm/DeltaTranslationStat.eps}
-%figure caption is below the figure
-\caption{\small Sum of translations of all robots in local mode $r_{comm}$=0.5m }
-\label{fig:local50cm-tr} % Give a unique label
-\end{minipage}
-\end{figure*}
-%%
-%%%%% Task Urgency Convergence/ Traslation local local 1m %%%
-\begin{figure*}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/local-1m/TaskUrgencyConvergence-1m.eps}
-\caption{\small Convergence of task urgencies in local mode $r_{comm}$=1m}
-\label{fig:local1m-convergence} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/local-1m/DeltaTranslationStat.eps}
-\caption{\small Sum of translations of all robots in local mode $r_{comm}$=1m }
-\label{fig:local1m-tr} % Give a unique label
-\end{minipage}
-\end{figure*}
-%%
-%%% Sensitization%%%
-\begin{figure*}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]
-{images/local-500cm/RobotSensitizationStat-Total-50steps.eps}
-%figure caption is below the figure
-\caption{\small Changes in sensitizations  in local mode $r_{comm}$=0.5m}
-\label{fig:local50cm-sensitization-stat} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/local-1m/RobotSensitizationStat-Total-50steps.eps}
-\caption{\small Changes in sensitizations  in local mode $r_{comm}$=1m}
-\label{fig:local1m-sz} % Give a unique label
-\end{minipage}
-\end{figure*}
-%%
-We have aggregated the changes in translation motion of all robots over time. Let $u_{i,q}$ and $u_{i,q+1}$ be the translations of a robot $i$ in two consecutive steps. If the difference between these two translations be $\delta u_{i}$, we can find the sum of changes of translations of all robots in $(q+1)^{th}$ step using the following equation.
-\begin{equation}
-\small 
-\Delta U_{q+1} = \sum_{i=1}^{N} \delta u_{i, q+1} 
-\label{eqn:Delta-Tr}
-\end{equation}
-The result from centralized communication experiment is plotted in Fig. \ref{fig:translation-stat}. In this plot we can see that robot translations also vary over varying task requirements of tasks. But it fails to show a consistence behaviour like previous plots. The robot translation results from local mode experiments are plotted in Fig. \ref{fig:local50cm-tr} and Fig. \ref{fig:local1m-tr}. The reduction of robot translation is significant in both local communication experiments.\\
-%
-%%% Sensitization
-Similar to Eq. \ref{eqn:Delta-Phi}, we can calculate the absolute sum of changes in sensitizations by all robots in the following equation.
-% 
-\begin{equation}
-\small 
-\Delta K_{j, q+1} = \sum_{j=1}^{M} \mid \Delta k_{j, q+1} \mid
-\label{eqn:Delta-K}
-\end{equation}
-This values of $\Delta K$ from local experiments are plotted in Fig.~\ref{fig:local50cm-sensitization-stat} and Fig.~\ref{fig:local1m-sz}. They show that the overall rate of learning and forgetting decrease over time. It is a consequence of the gradually increased task specializations of robots.\\
-%%%% Single robot- number of peers
-\begin{figure*}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/local-500cm/Robot12-16feb-1-LocalSignals.eps}
-\caption{\small Peer signals caught by Robot12 in local mode $r_{comm}$=0.5m}
-\label{fig:local50cm-single-robot-signal}% Give a unique label
-\end{minipage} 
-%%%
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/local-1m/Robot12-17feb-3-LocalSignals.eps}
-\caption{\small Peer signals caught by Robot12 in local mode $r_{comm}$=1m}
-\label{fig:local1m-single-robot-signal} % Give a unique label
-\end{minipage}
-\end{figure*}
-%%% Communication load %%%
-\begin{figure*}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]
-{images/local-500cm/Local-500cm-SignalingFreqStat.eps}
-\caption{\small Frequency of P2P signalling in local mode $r_{comm}$=0.5m}
-\label{fig:local50cm-signal-frequency-stat} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/local-1m/Local-1m-SignalingFreqStat.eps}
-\caption{\small Frequency of P2P signalling in local mode $r_{comm}$=1m}
-\label{fig:local1cm-signal-frequency-stat} % Give a unique label
-\end{minipage}
-\end{figure*}
-%
-%%
-As an example of P2P signal reception of a robot, Fig. \ref{fig:local50cm-single-robot-signal} and Fig. \ref{fig:local1m-single-robot-signal} show the number of received signals by Robot12 in two local experiments. It states the relative difference of peers over time in two local cases. The overall P2P task information signals of both of these local modes are plotted in Fig. \ref{fig:local50cm-signal-frequency-stat} and Fig. \ref{fig:local1cm-signal-frequency-stat}. Note that in centralized communication mode the task info signal frequency was kept 20 signals per time step \cite{Sarker}.\\ 
-%%%% Single- robot sensitization and translation
-\begin{figure*}
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-\includegraphics[height=5cm]{images/local-500cm/PlotRobot12-Sensitizations-2010Feb16-150432.eps}
-\caption{\small Task specialization of Robot12 in local mode $r_{comm}$=0.5m}
-\label{fig:single-robot-sensitizations} % Give a unique label
-\end{minipage} 
-%%%
-\begin{minipage}[t]{0.5\linewidth}
-\centering
-%\includegraphics[height=5cm]
-%{images/local-500cm/DeltaRobot12-PoseAtTS-2010Feb16-150432.eps}
-\caption{\small Changes in translation of Robot12 in local mode $r_{comm}$=0.5m}
-\label{fig:single-robot-translation} % Give a unique label
-\end{minipage}
-\end{figure*}
-%%%%
-As an example of task specialization of a robot we plotted sensitization of Robot12 in Fig. \ref{fig:single-robot-sensitizations}. It shows that this robot has specialized in Task1. The continuous learning of Task1 happens from step 23 to step 59 where it has learned this task completely. This behaviour was found common in all robots with varying level of sensitizations. Hence we get the linear decrease of $\Delta K$ in sensitization plots. However, the changes in motion of this robot plotted in Fig. \ref{fig:single-robot-translation} was not stable due to the fact that robots frequently avoid dynamic obstacles and select random-walking.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For APMW, Series C experiments give us an average time length of 359 time-steps (1795s). In this period we calculated APMW and it is 5 time-steps with SD = 17 time-steps and $\chi$ = 0.023420. For Series D experiments, from the average 357 time-steps (1575s) of maintenance activity of our robots per experiment run, we have got APMW, $\chi$ = 0.005359 which corresponds to the pending work of 2 time-steps (10s) where SD = 7 time-steps.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Related Works}
-\label{sec:bg}
-Krieger and Billeter presented MRTA in a team of 12 robots in ants' foraging scenario where a central server sent broadcast message containing energy level of the colony to all robots \cite{Krieger}. They also applied a form of indirect communication in order to share information about discovered food sources among robots. Although this P2P communication did not happen in real time, it improved the robustness of peer recruitment when compared with centralized communication only. Agassounon and Martinoli compared three task-allocation algorithms using simulations and reported that algorithm that used information sharing among local peers became robust in worker allocation \cite{Agassounon}. However, environment condition should be known {\em a priori} to optimize some parameters. By modulating the transmission power of local on-board wireless device of E-puck robots, Cianci {\em et al.} enabled them to communicate in different local radii \cite{Cianci}. In a self-organized decision making experiment, decision of 15 robots converged faster when local communication radius was relatively higher. Since the number of tasks was only two (left or right wall following), robots got global view of the system with increased communication radius. Thus they agreed quickly in one task.
+%\label{sec:bg}
+%Krieger and Billeter presented MRTA in a team of 12 robots in ants' foraging scenario where a central server sent broadcast message containing energy level of the colony to all robots \cite{Krieger}. They also applied a form of indirect communication in order to share information about discovered food sources among robots. Although this P2P communication did not happen in real time, it improved the robustness of peer recruitment when compared with centralized communication only. Agassounon and Martinoli compared three task-allocation algorithms using simulations and reported that algorithm that used information sharing among local peers became robust in worker allocation \cite{Agassounon}. However, environment condition should be known {\em a priori} to optimize some parameters. By modulating the transmission power of local on-board wireless device of E-puck robots, Cianci {\em et al.} enabled them to communicate in different local radii \cite{Cianci}. In a self-organized decision making experiment, decision of 15 robots converged faster when local communication radius was relatively higher. Since the number of tasks was only two (left or right wall following), robots got global view of the system with increased communication radius. Thus they agreed quickly in one task.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary and conclusion}
-\label{sec:conc}
-We presented a locality based dynamic P2P communication model that achieves similar or better self-regulated multi-robot task allocation (MRTA) than its centralized counterpart. Particularly the reduction in robot movement states that local model is preferable when we need to minimize robot energy usage. Our model assumes no prior knowledge of the environment and it also does not depend on the number of the robots. We presented an abstract algorithm that can be used with various P2P communication technologies. We reported our implementation of this algorithm   by using  D-Bus technology in Linux. Comparative results from local mode experiments shows us that robots relatively perform better when the radius of communication is such small that most of the robots only communicate with their closest peers. This is contrary to the findings from \cite{Rutishauser, Epuck} where increased amount of information help to get desired task-allocation quickly. In our case, more information exchange with larger communication radius or with centralized communication increased task switching among robots. In case of local information exchange, robots have more chances to select local tasks by the virtue of self-regulating principles. Thus in local communication mode our system converged better and significantly reduced robot motions.\\ 
-Our future work include performing more experiments with increased number of robots (up to 40) and tasks. Since our existing Bluetooth communication setup with one server fail to scale we are looking forward to distribute communication loads over a network cluster of tens of servers.
+\section{Summary}
+\label{loacl-comm:summary}
+We presented a locality based dynamic P2P communication model that achieves similar or better self-regulated multi-robot task allocation (MRTA) than its centralized counterpart. Particularly the reduction in robot movement states that local model is preferable when we need to minimize robot energy usage. Our model assumes no prior knowledge of the environment and it also does not depend on the number of the robots. We presented an abstract algorithm that can be used with various P2P communication technologies. We reported our implementation of this algorithm   by using  D-Bus technology in Linux. Comparative results from local mode experiments shows us that robots relatively perform better when the radius of communication is such small that most of the robots only communicate with their closest peers. This is contrary to the findings from \cite{Rutishauser, Epuck} where increased amount of information help to get desired task-allocation quickly. In our case, more information exchange with larger communication radius or with centralized communication increased task switching among robots. In case of local information exchange, robots have more chances to select local tasks by the virtue of self-regulating principles. Thus in local communication mode our system converged better and significantly reduced robot motions.

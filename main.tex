@@ -1,5 +1,5 @@
-\documentclass[a4paper,11pt]{report}
-%\documentclass[a4paper,11pt,draft]{report}
+%\documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,11pt,draft]{report}
 \usepackage{
   fancyhdr,lscape,rotating,float,longtable,subfig,
   epsfig,program,tabularx,graphicx,hyperref,url,multicol,
@@ -35,7 +35,7 @@
 
 \newcommand{\sdp}{\setlength{\baselineskip}{18truept}} %double spacing
 \newcommand{\dsp}{\setlength{\baselineskip}{24truept}}  %double spacing
-\newcommand{\ssp}{\setlength{\baselineskip}{13.6truept}} %single spacing
+\newcommand{\ssp}{\setlength{\baselineskip}{12truept}} %single spacing
 \newcommand{\al}{\mbox{$\alpha$\,--~}}
 \newcommand{\be}{\mbox{$\beta$\,--~}}
 \newcommand{\albe}{\mbox{$\alpha/\beta$}~}
@@ -74,49 +74,40 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
-%\renewcommand{\caption}[1]{\caption{\scriptsize #1}}
+\renewcommand{\caption}[1]{\caption{\scriptsize #1}}
 
 \lhead[\fancyplain{}{\sffamily\thepage}]{\fancyplain{}{\sffamily\small\rightmark}}
 \rhead[\fancyplain{}{\rightmark}]{\fancyplain{}{\sffamily\thepage}}
 \cfoot{}
-
-%\setcounter{secnumdepth}{10}
+%
+\setcounter{secnumdepth}{10}
 %\input epsf
-
 \begin{document}
-
 %
 % The titlepage is stored in the file 'title.tex' and includes
 % the title of the thesis
 %
 % Preface, contains general acknowledgements and comments
-
 \include{title}
-%\include{summary}
+\include{abstract}
 %\include{preface}
-
 %
 % Build the Table of Contents, Lists of Tables and Figures
 %
-
 %\newpage
 \tableofcontents
 \listoftables
 \listoffigures
-
 %
 % Revert to one and a half line spacing
 %
-
 \newpage
 \sdp
-
 %
 % Start Page numbering again at 1 and set Roman Numerals
 %
 % Each main chapter of the thesis is included here
 %
-
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \pagestyle{fancy}
@@ -127,15 +118,12 @@
 %%\include{scale-free-mrta}
 \include{local-comm-model}
 \include{conclusions}
-
-
 %
 % Begin the Appendices Section here, revert to single spaced text again
 %
 \appendix
 \ssp
 %\include{papers}
-
 %
 % Bibliography Section
 %
@@ -148,10 +136,4 @@
 %
 % All done, End the Document
 % 
-
-
-
 \end{document}
-
-
-

@@ -351,9 +351,10 @@ Similar to the SignalListener, SignalEmitter makes use of Python {\em sched} mod
 \subsubsection*{TaskSelector}
 TaskSelector works in the application layer of our multi-robot control architecture, HEAD. It plugs the AFM algorithms into RCC to select task based-on DataManger's event notifications , i.e. mRobotPoseAvailable and mTaskInfoAvailable and upon running task-allocation algorithm it updates  mSelectedTask (and mSelectedTaskAvailable) with selected task information.
 %% ALG
+\newline
 \textbf{Algorithm: Self-regulated task-allocation based on AFM}
-\begin{small}
 \begin{algorithmic}[1]
+\begin{small}
 \label{alg:task-selector}
 \State $\textbf{Input: } AllTaskInfo, RobotPose, TaskRecords, DeltaDistance$
 \State $\textbf{Output: } SelectedTaskID$
@@ -391,8 +392,8 @@ TaskSelector works in the application layer of our multi-robot control architect
 \State $ SelectedTaskID \gets TaskID $ 
 \EndIf
 \EndWhile
-\end{algorithmic}
 \end{small}
+\end{algorithmic}
 %%
 TaskSelector  allocates a robot with a shop-task or random-walk task from several inputs: as shown in Algorithm \ref{alg:task-selector}.Here  AllTaskInfo and RobotPose correspond to the mTaskInfo and mRobotPose of DataManager. TaskRecords is a dictionary type data structure that keep tracks of related calculations, e.g. stimulus, of all tasks. This is internally maintained by the TaskSelector process.  DeltaDistance is a very small constant number to avoid division by zero in calculating task stimuli, as mentioned in Eq. \ref{eqn:afm1}.\\
 %%
@@ -404,8 +405,8 @@ TaskSelector  allocates a robot with a shop-task or random-walk task from severa
 \textbf{Stage 3.} After converting each task's probability values into a linear range, we use a random-number generator that draws a random-number between 0 and the highest value of task-probability range, say 40 for the previous example. Then this random number is compared against the task probability range of each task. For example, if the random-number becomes 37, our task-probabiliy range checking selects task2 as 37 falls between 16 to 40. Under this probabilistic method, the task with larger probability range has a  higher chance to be selected, but low probability tasks are also got selected time-to-time.\\
 %%ALG
 \textbf{Algorithm: Robot's learning and forgetting of tasks based on AFM}
-\begin{small}
 \begin{algorithmic}[1]
+\begin{small}
 \label{alg:update-sz}
 \State $\textbf{Input: }  TaskRecords, LeranRate, ForgetRate, SelectedTaskID$
 \State $\textbf{Output: }$ Updated $TaskSensitisation \in TaskRecords$
@@ -418,8 +419,8 @@ TaskSelector  allocates a robot with a shop-task or random-walk task from severa
 \State $ TaskSensitization \gets $ \textbf{Min(}$0, (TaskSensitization - ForgetRate)$\textbf{)}
 \EndIf
 \EndFor
-\end{algorithmic}
 \end{small}
+\end{algorithmic}
 %%
 \textbf{Robot learning and forgetting algorithm:}\\
 Algorithm \ref{alg:update-sz} lists the pseudo-code for updating the robot's task-sensitization values. Along with previously mentioned TaskRecords, and  SelectedTaskID, it takes two other inputs: LeranRate ($\Delta k_{INC} $) and ForgetRate ($\Delta k_{INC} $) as outlined in Eq. {eqn:k-inc} and {eqn:k-dec} respectively.  In addition to that it also keep the value of task-sensitization between the fixed limit of 0 and 1.
@@ -455,8 +456,8 @@ In this state  DeviceController discovers itself neat the task and normally unti
 Similar to RCC,  TPS has two D-Bus communication components: SignalListener and SignalEmitter, and a data and event management component DataManager (Fig. \ref{fig:concrete-arch}). This instance of DataManager stores statistics about task performance of robots in a dictionary a type data structure (mTaskWorkers). This data structure is updated every time a RobotStatus signal is received from a RCC. It is a dictionary type data structure where ID of tasks are keys and ID of robots are the values of this dictionary. Based on this data structure, an application layer component, TaskInfoUpdater, updates the task-urgencies after every short time intervals. This update algorithm in presented in Algorithm \ref{alg:tps}.  Along with the static task-pose information, all task-urgencies are stored in the mTaskInfo data structure of  DataManager of TPS. This TPS's SignalEmitter waits for the update of mTaskInfo and after every certain intervals it emits this up-to-date TaskInfo signal.\\
 %% ALG
 \textbf{Algorithm: Task-urgency update rules  based on AFM}
-\begin{small}
 \begin{algorithmic}[1]
+\begin{small}
 \label{alg:tps}
 \State $\textbf{Input: } AllTaskInfo, AllTaskWorkers, ThresholdWorkers,$\\ \hspace*{1cm}$DeltaUrgencyINC, DeltaUrgencyDEC$
 \State $\textbf{Output: }$ Updated $TaskUrgencies \in AllTaskInfo$
@@ -469,8 +470,8 @@ Similar to RCC,  TPS has two D-Bus communication components: SignalListener and 
 \State $ TaskUrgency \gets $ \textbf{Min(}$0, (TaskUgerncy - $\\ \hspace*{5.3cm}$ TaskWorkers  \times DeltaUrgencyDEC)$\textbf{)}
 \EndIf
 \EndFor
-\end{algorithmic}
 \end{small}
+\end{algorithmic}
 %%
 This algorithm acts upon the task-urgency data of each task and updates it based on the active number of robots currently working on that task (Eq. \ref{eqn:delta-phi1} and \ref{eqn:delta-phi2}). Here AllTaskInfo and AllTaskWorkers  correspond to  mTaskInfo and mTaskWorkers of TPS DataManager respectively.  ThresholdWorkers are the minimum number of robots required to work on this task ($\mu$). DeltaTaskUrgencyINC and DeltaTaskUrgencyDEC are the task-urgency increase and decrease rate which correspond to the small increase and decrease of work-load in every-step. This algorithm also keeps the values of task-urgencies within 0 and 1 limit by using generic Min() and Max() functions. Source-code of a Python implementation of TPS is publicly accessible through GitHub repository\footnote{git://github.com/roboshepherd/CentralizedTaskServer.git,  \textit{hash:} 09187e28292d1cdc179c}.
 %%====================================================================

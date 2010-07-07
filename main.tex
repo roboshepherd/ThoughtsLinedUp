@@ -1,12 +1,12 @@
 %\documentclass[a4paper,11pt]{report}
 \documentclass[a4paper,11pt,draft]{report}
+\usepackage[justification=centering]{caption}
 \usepackage{
   fancyhdr,lscape,rotating,float,longtable,subfig,
   epsfig,program,tabularx,graphicx,hyperref,url,multicol,
   algorithmicx,algpseudocode ,times ,harvard,listings,threeparttable
 }
 \usepackage[Sonny]{fncychap}
-
 %% SETUP PDF OPTIONS FOR BOOKMARKS AND URLS
 		%%
 		%
@@ -74,13 +74,13 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 
-\renewcommand{\caption}[1]{\caption{\scriptsize #1}}
+%\renewcommand{\caption}[1]{\caption{\scriptsize #1}}
 
 \lhead[\fancyplain{}{\sffamily\thepage}]{\fancyplain{}{\sffamily\small\rightmark}}
 \rhead[\fancyplain{}{\rightmark}]{\fancyplain{}{\sffamily\thepage}}
 \cfoot{}
 %
-\setcounter{secnumdepth}{10}
+%\setcounter{secnumdepth}{10}
 %\input epsf
 \begin{document}
 %
@@ -88,9 +88,10 @@
 % the title of the thesis
 %
 % Preface, contains general acknowledgements and comments
+\pagenumbering{roman}
 \include{title}
+\setcounter{page}{3}
 \include{abstract}
-%\include{preface}
 %
 % Build the Table of Contents, Lists of Tables and Figures
 %
@@ -115,7 +116,6 @@
 \include{background}
 \include{expt-tools}
 \include{afm}
-%%\include{scale-free-mrta}
 \include{local-comm-model}
 \include{conclusions}
 %

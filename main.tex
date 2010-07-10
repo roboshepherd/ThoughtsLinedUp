@@ -1,6 +1,9 @@
-\documentclass[a4paper,11pt]{report}
-%\documentclass[a4paper,11pt,draft]{report}
+%\documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,11pt,draft]{report}
 \usepackage[justification=centering]{caption}
+\captionsetup{font=small,singlelinecheck=off}
+\usepackage[printonlyused]{acronym}
+\usepackage{nomencl}
 \usepackage{
   fancyhdr,lscape,rotating,float,longtable,subfig,
   epsfig,program,tabularx,graphicx,hyperref,url,multicol,
@@ -82,6 +85,8 @@
 %
 %\setcounter{secnumdepth}{10}
 %\input epsf
+\makenomenclature
+%
 \begin{document}
 %
 % The titlepage is stored in the file 'title.tex' and includes
@@ -90,7 +95,7 @@
 % Preface, contains general acknowledgements and comments
 \pagenumbering{roman}
 \include{title}
-\setcounter{page}{3}
+\setcounter{page}{4}
 \include{abstract}
 %
 % Build the Table of Contents, Lists of Tables and Figures
@@ -100,8 +105,9 @@
 \listoftables
 \listoffigures
 %
+\include{acronyms}
 % Revert to one and a half line spacing
-%
+\printnomenclature
 \newpage
 \sdp
 %

@@ -590,46 +590,52 @@ In Eq. \ref{eqn:Q-G}, $q^i_{k=k_{max}}$ represents the time-step of robot $r_i$ 
 \begin{table}
 \centering
 \caption{Peak task-sensitization values of all robots in a Series A experiment.}
-\begin{tabular}{|c|c|c|}
-\hline Robot ID & Maximum k & At time-step (q) \\ 
-\hline 1 & 0.54 & 63\\
-\hline 2 & 0.46 & 63\\
-\hline 3 & 0.47 & 62\\
-\hline 4 & 0.32 & 13\\
-\hline 5 & 0.27 & 10\\
-\hline 6 & 0.20 & 9\\
-\hline 7 & 0.18 & 3\\
-\hline 8 & 0.15 & 2\\
+% 30Apr expt.
+\begin{tabular}{|c|c|c|c|}
+\hline \textbf{Robot ID} & \textbf{Maximum k} & \textbf{At time-step (q)} & \textbf{Task} \\ 
+\hline 1 & 0.54 & 64 & Task1\\
+\hline 4 & 0.32 & 14 & ,,\\
+\hline 5 & 0.27 & 11 & ,,\\
+%%
+\hline 3 & 0.47 & 63 & Task2\\
+\hline 2 & 0.46 & 64 & ,,\\
+\hline 6 & 0.20 & 10 & ,,\\
+\hline 7 & 0.18 & 4 & ,,\\
+\hline 8 & 0.15 & 3 & ,,\\
 \hline 
 \end{tabular} 
 \label{table:K-G-SA}
 \end{table}
-%% S-B
+%% S - B
 \begin{table}
 \centering
 \caption{Peak task-sensitization values of all robots in a Series B experiment.}
-\begin{tabular}{|c|c|c|}
-\hline Robot ID & Maximum k & At time-step (q) \\ 
-\hline 1 & 0.64 & 65\\
-\hline 5 & 0.28 & 13\\
-\hline 6 & 0.43 & 70\\
-\hline 9 & 0.68 & 65\\
-\hline 12 & 0.16 & 9\\
-\hline 13 & 0.31 & 18\\
-\hline 14 & 0.15 & 3\\
-\hline 15 & 0.19 & 3\\
-\hline 16 & 0.18 & 3\\
-\hline 17 & 0.16 & 5\\
-\hline 19 & 0.22 & 11\\
-\hline 22 & 0.18 & 19\\
-\hline 24 & 0.41 & 28\\
-\hline 31 & 0.14 & 3\\
-\hline 35 & 0.34 & 11\\
+\begin{tabular}{|c|c|c|c|}
+% Apr 18 Feb-3 expt
+\hline \textbf{Robot ID} & \textbf{Maximum k} & \textbf{At time-step (q)} & \textbf{Task} \\
+\hline 24 & 0.41 & 29 & Task1\\
+\hline 13 & 0.31 & 19 & ,,\\
+\hline 16 & 0.18 & 4 & ,,\\
+%% 
+\hline 1 & 0.64 & 66 & Task2\\
+\hline 35 & 0.34 & 12 & ,,\\
+\hline 5 & 0.28 & 14 & ,,\\
+\hline 22 & 0.18 & 20 & ,,\\
+\hline 17 & 0.16 & 6 & ,,\\
+\hline 3 & 0.14 & 12 & ,,\\
+%%
+\hline 9 & 0.68 & 66 & Task3\\
+\hline 6 & 0.43 & 71 & ,,\\
+\hline 15 & 0.19 & 4 & ,,\\
+\hline 14 & 0.15 & 4 & ,,\\
+\hline 31 & 0.14 & 4 & ,,\\
+%%
+\hline 19 & 0.22 & 12 & Task4\\
+\hline 12 & 0.16 & 10 & ,,\\
 \hline 
 \end{tabular} 
 \label{table:K-G-SB}
 \end{table}
-%%
 Table \ref{table:K-G-SA} and Table \ref{table:K-G-SB} show the peak sensitization values of Series A and Series B experiments respectively.  Based on Eq. \ref{eqn:K-G} and Eq. \ref{eqn:Q-G}, we have got the peak task-sensitization $K^G_{avg} 
 $ values: 0.40 (SD=0.08)  and 0.30 (SD=0.03), and their respective time-step $Q^G_{avg}$ values: 38 (SD=13) and 18 (SD=5) time-step.  They are shown in Fig. \ref{fig:K-G-SA-SB} and Fig. \ref{fig:Q-G-SA-SB}. Here we can see that the robots in Series A had higher chances of task-specialization than that of Series B experiments.
 %%

@@ -8,7 +8,7 @@ Most of the researches on MRS are empirical in nature. In Sec. \ref{bg:mrs} we h
 %%
 \begin{figure}
 \centering
-\includegraphics[width=15cm,height=20cm,angle=0]
+\includegraphics[width=13cm,height=20cm,angle=0]
 {./dia-files/mrs-res-roadmap.eps}
 %figure caption is below the figure
 \caption{Stages of MRS research using real-robotic hardware}
@@ -63,10 +63,10 @@ section{Hardware}
 %% FIG: Bats navigation
 \begin{figure}[htp]
 \centering
-%\subfloat[E-puck robot]{\includegraphics[width=6cm, height=4cm]{}} 
+\subfloat[E-puck robot]{\includegraphics[width=6cm, height=4cm]{snaps/epuck-happy.eps}} 
 \hspace{0.25cm}
-%\subfloat[A binary-coded marker]{\includegraphics[width=6cm, height=4cm]{}}
-\caption{(a) The E-puck robot with SwisTrack marker on top, (b) A binary coded marker that can be tracked by an overhead camera  using SwisTrack software.}
+\subfloat[A binary-coded marker]{\includegraphics[width=6cm, height=4cm]{snaps/20-31412.eps}}
+\caption{(a) The E-puck robot with SwisTrack marker on top, (b) A binary coded marker that can be tracked by an overhead camera  using SwisTrack.}
 \label{fig:e-puck}
 \end{figure}
 %%
@@ -126,8 +126,8 @@ In order to set-up a multi-robot tracking system, we have selected a state-of-th
 \hspace{0.5cm}
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-%\includegraphics[width=6cm,height=4cm, angle=0]{}
-\caption{ A bluetooth hub that connects multiple Bluetooth adapters with Server PC.}
+\includegraphics[width=6cm,height=4cm, angle=0]{snaps/bt-usb-hub.eps}
+\caption{ A bluetooth hub that attaches multiple Bluetooth USB adapters with Server PC.}
 \label{fig:bt-hub} 
 \end{minipage}
 \end{figure}
@@ -160,17 +160,16 @@ From the beginning of our research, we met the above types of scenario. We got v
 %% FIG:  expt areana
 \begin{figure}
 \centering
-%\includegraphics[width=15cm,height=20cm,angle=0]
-%{./dia-files/mrs-res-roadmap.eps}
-\caption{Our experiment arena captured by Prosilica GigE4900C camera mounted on XX m high ceiling.}
+\includegraphics[width=12cm,height=20cm,angle=0]{./snaps/RILSnapshot1.eps}
+\caption{Our experiment arena captured by Prosilica GigE4900C camera mounted on 3m high ceiling.}
 \label{fig:expt-arena} % Give a unique label
 \end{figure}
 %%
 %%  FIG swistrack-screenshot
 \begin{figure}
 \centering
-%\includegraphics[width=15cm,height=20cm,angle=0]
-%{./dia-files/mrs-res-roadmap.eps}
+\includegraphics[width=13cm,height=20cm,angle=0]
+{./snaps/SwisTrackScreenshot.eps}
 \caption{SwisTrack tracking a team of 16 robots under Ubuntu Linux 9.10 OS.}
 \label{fig:swistrack-screenshot} 
 \end{figure}
@@ -180,9 +179,14 @@ With the improved version 4 released in February 2008, SwisTrack is now becoming
 %%  FIG swistrack-pipeline
 \begin{figure}
 \centering
-%\includegraphics[width=15cm,height=20cm,angle=0]
-%{./dia-files/mrs-res-roadmap.eps}
-\caption{SwisTrack image processing pipeline uses image capture, pre-process, blob-detection, tracking and other algorithms.}
+\subfloat[Conversion to grayscale]{\includegraphics[width=6cm, height=4cm]{./snaps/ST-gray.eps}} 
+\hspace{0.25cm}
+\subfloat[Conversion to binary image]{\includegraphics[width=6cm, height=4cm]{./snaps/ST-threshold.eps}}
+\hspace{0.25cm}
+\subfloat[Blob-detection]{\includegraphics[width=6cm, height=4cm]{./snaps/ST-blob.eps}} 
+\hspace{0.25cm}
+\subfloat[Bar-code reading]{\includegraphics[width=6cm, height=4cm]{./snaps/ST-barcode.eps}}
+\caption{SwisTrack image processing pipeline uses (a) grayscale conversion, (b) threshold the grayscale image, (c) blob detection and (d) circular bar-code reading algorithms.}
 \label{fig:swistrack-pipeline}
 \end{figure}
 %%

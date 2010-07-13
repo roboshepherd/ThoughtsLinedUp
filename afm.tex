@@ -60,10 +60,10 @@ In summary, looking at the network, we can see that each of the agents is connec
 {./images/dia-files/self-org-2.eps}
 %figure caption is below the figure
 \caption{\small Four generic rules establish the self-regulated DOL in social systems}
-\label{fig:mrs-comm-strategies} % Give a unique label
+\label{fig:afm-rules} % Give a unique label
 \end{figure}
 
-It is interesting to note that our proposed four generic rules has become the four major corners of the foundation of a self-organized system (Fig.  \ref{fig:self-org-2}). As discussed in Sec. \ref{bg:self-reg},  self-organized systems exhibit four distinct perspectives known as so-called ingredients or properties of self-organization. However, it is not clear how those properties can come into existence. Here, we describe the four underlying mechanisms that explains how self-organization can be realized in different social systems. From our understanding, we can explain it in the following ways.\\
+It is interesting to note that our proposed four generic rules has become the four major corners of the foundation of a self-organized system (Fig.  \ref{fig:afm-rules}). As discussed in Sec. \ref{bg:def:self-reg},  self-organized systems exhibit four distinct perspectives known as so-called ingredients or properties of self-organization. However, it is not clear how those properties can come into existence. Here, we describe the four underlying mechanisms that explains how self-organization can be realized in different social systems. From our understanding, we can explain it in the following ways.\\
 %% 
 Firstly, multiple interaction becomes meaningful when {\em continuous flow of information} occurs  by exchanging signals or cues among agents or their environment  that regulates their behaviours. This, in turn, contribute to the task-allocation  and task-switching in the social level.  In the biological and SI literature, multiple interactions are often described as an essential ingredient of self-organization. However, interactions without definite purposes may not contribute to the self-organization.\\
 %%
@@ -74,14 +74,14 @@ Thirdly, similar to positive feedback, we have proposed {\em forgetting} that co
 Finally, creating  artificial amplification of fluctuations or stochastic events is not a straight-forward issue. It throws  many open questions. Does a system designer intentionally impose irregularity in task-performance of agents ?  Is random movement  enough for simulating randomness in a system ?
 Since emergencies do not always pop-up on request, we provide the rule of {\em concurrency} that enables agents to  maintain even a small amount of probability of selecting a low-priority or less sensitized or distant task. This concurrency mechanism provides a high-degree of robustness in the system such that all tasks can be attended even if specialization of agents delays them in switching to some of the tasks.
 %% 
- \subsection{Interpretation of AFM  in an ant colony}
- The interpretation of AFM in an ant colony almost exactly follows the above generic interpretation. Moreover it also reveals a few additional characteristics of AFM. For example, at the individual level, information is processed differently by each individual, and is certainly not constant nor continuous. In addition, there can be lower and upper thresholds on the amount of info necessary for DOL to take place. The time scale at the individual level is very small compared to the system level's time scale.We can approximate the propagation of information at this macro time scale as the continuous flow of information.  In the model, emphasize is given to whether the information is used e.g. stimulation to perform a task, or unused e.g. \acf{RW}.\\
+ \subsection{Interpretation of AFM  in ant colony}
+ The interpretation of AFM in an ant colony almost exactly follows the above generic interpretation. Moreover it also reveals a few additional characteristics of AFM. For example, at the individual level, information is processed differently by each individual, and is certainly not constant nor continuous. In addition, there can be lower and upper thresholds on the amount of info necessary for DOL to take place. The time scale at the individual level is very small compared to the system level's time scale.We can approximate the propagation of information at this macro time scale as the continuous flow of information.  In the model, emphasize is given to whether the information is used e.g. stimulation to perform a task, or unused e.g. random walk.\\
 %%
 For ants we have assumed that division of labour is not genetically driven. Initially they are all equal. It is not fully understood how ants ``know'' or get information about tasks. But we know that they all interact directly and indirectly and perform tasks. The flow of information can take place in many different ways. As we have discussed in Sec. \ref{bg:bio-comm}, ants can get information through direct P2P, local or global broadcast or indirect pheromone communication. In any case, if an ant $i_{1}$ is closer to the source of information, i.e. task, than any other ant $i_{2}$, there will be larger probability that $i_{1}$ will get that information than $i_{2}$. If all ants are assumed to be initially equal it will be more likely that  $i_{1}$ will attend to that task. Thus each task can be  treated as an attractive source,  stimulating ants to go to it. Here the stimulus primarily depends on the distance.\\
 %%
  In case of sensitization or learning, an ant that has performed a task, it is assumed that it will be more likely that it will be attracted to do it again. Here there is no encoding of individual performance, the specialists are more attracted towards the task but do not perform  the task quicker than other ants. Thus the performance of colony increases as a result of sensitisation. Simultaneity (concurrence) of tasks over period of time of self-regulation can also be achieved through spatial dependence of strength of stimulus. Some ants will be favoured to get information from multiple sources than others. When an ant does not do a task for relatively long time it is less probable that it will do that task again. Thus, Flexibility in task switching is achieved through forgetting. A concrete interpretation of AFM in an ant colony, along with simulation results can be found in \cite{Arcaute+2008}.
 %%
-\subsection{Interpretation of AFM in a human society}
+\subsection{Interpretation of AFM in  human society}
 The interpretation of AFM  in a human society can be made using many different approaches. For example the following can be mapped to different nodes and characteristics of AFM in a human society.
 \begin{itemize}
 \item Source nodes (o) can be resources.
@@ -91,7 +91,7 @@ The interpretation of AFM  in a human society can be made using many different a
 \end{itemize}
 Similar to the above biological interpretation, we can see that in human society the division of labour can be also interpreted in terms of AFM. People can get information about certain tasks or resources from various sources. Those who are located near the source of information are more likely to attend it, e.g. through the access to Internet, some people can get information quicker than others. This can be treated as the distance to tasks or resources. The motivation of a person to use information can also be treated as the distance in the model. The background training, education or skill profile can be used to estimate the sensitization to do a task or use a resource. The urgency of a task can be inferred through some other estimates, e.g. the frequency of mentioning about a task or resource, by team members or peers, can indicate its relative urgency.
 %%------------------------------------------------------------------
-\subsection{Interpretation of AFM in a MRS}
+\subsection{Interpretation of AFM in multi-robot system}
 \label{afm:mrs-interpretation}
 The interpretation of AFM in a MRS also follows almost exactly as in generic interpretation. However, in order to make the interpretation more concrete, let us consider a manufacturing shop floor scenario, where $N$ number of autonomous mobile robots are required to attend $J$ number of shop tasks spread over a fixed area $A$. Let these tasks be represented by a set of small rectangular boxes resembling to manufacturing machines.\\
 %%
@@ -245,7 +245,7 @@ Thus, in order to observe the above properties of self-regulated MRTA , we have 
 \end{enumerate}
 %%
 \begin{table}
-\caption{Experimental parameters}
+\caption{Experimental parameters of Series A \& B experiments}
 \label{table:params}
 \begin{center}
 \begin{tabular}{|l|c|}
@@ -269,19 +269,15 @@ Table \ref{table:params} lists a set of essential parameters of our experiments.
 %%
 The initial values of task urgencies correspond to 100 units of production work-load without any maintenance work-load as outlined in Eq. \ref{eqn:task-urgency-prod-init}. We choose a limit of 0 and 1, where 0 means no urgency and 1 means maximum urgency. Same applies to sensitisation, where 0 means no sensitisation and 1 means maximum sensitisation. This also implies that if sensitization is 0, task has been forgotten completely. On the other hand, if sensitization is 1, the task has been learnt completely. We choose a default sensitization value of 0.1 
 for all tasks. The following relationships are maintained for selecting task-urgency and sensitization parameters.
-%\begin{small}
 \begin{equation}
-\small
 \Delta\phi_{INC} = \frac{\Delta\phi_{DEC} \times N}{2 \times M}
 \label{eqn:task-urgency}
 \end{equation}
 %
 \begin{equation}
-\small
 \Delta k_{DEC} = \frac{\Delta k_{INC}} {M - 1} 
 \label{eqn:sensitization}
 \end{equation}
-%\end{small}
 %
 Eq. \ref{eqn:task-urgency} establishes the fact that task urgency will increase at a higher rate than that of its decrease. As we do not like to keep a task left unattended for a long time we choose a higher rate of increase of task urgency. This difference is set on the basis of our assumption that at least half of the expected number of robots (ratio of number of robots to tasks) would be available to work on a task. So they would produce similar types of increase and decrease behaviours in task urgencies.
 Eq. \ref{eqn:sensitization} suggests that the learning will happen much faster than the forgetting. The difference in these two rates is based on the fact that faster leaning gives a robot more chances to select a task in next time-step and thus it becomes more specialized on it. %Task-Server updates task-info messages in the interval of $\Delta TS_u$=5s and robots stick on to a particular task for a maximum of $\Delta RT_{to}$=10s.
@@ -291,11 +287,11 @@ Eq. \ref{eqn:sensitization} suggests that the learning will happen much faster t
 %%
 \begin{figure}
 \centering
-\includegraphics[height=5cm, angle=0]
+\includegraphics[height=8cm, angle=0]
 {./images/RIL-Expt-Setup1.eps}
 %figure caption is below the figure
 \caption{Hardware and software setup}
-\label{fig:setup} % Give a unique label
+\label{fig:RIL-Expt-Setup1} % Give a unique label
 \end{figure}
 %%
 Ideally, AFM can be implementation as a complete distributed task-allocation system where each agent selects its own task based on its own external perception about task-urgencies (i.e. attractive fields),  distances from tasks and internal task-sensitisation records. Such an implementation requires powerful robots with sophisticated sensors (camera, laser etc.) and sufficient computation and communication  capabilities. In such cases, robots can keep  task-urgency information up-to-date  through suitable local communication  schemes with their peers who can monitor the tasks. By using suitable navigation and mapping modules, they can also accurately calculate the distances from tasks and navigate to tasks autonomously. Moreover, they also require necessary hardware to do the actual task, e.g. gripper for pick-up tasks.\\
@@ -311,12 +307,12 @@ Our centralized communication system  interfaces among SwisTrack, TPS and RCCs a
 %%
 \textbf{RobotPose:} SwisTrack emits this D-Bus signal and its payload contains individual robot's pose data: robot-pose x-coordinate,  y-coordinate and robot orientation (theta). The type of each data is \texttt{DBUS\_TYPE\_DOUBLE}(IEEE 754 double). We have extended SwisTrack  by adding a D-Bus signal emitter module which emits this signal in every image-processing cycle. The typical duration of each cycle varies from 1 to 2 seconds.  Swistrack extracts robot-pose from the image frame considering top-left corner of image as origin and it derives  theta from the relative position of the monochrome robot-marker from the image. SwisTrack's id-pose detection algorithms handles the complexities of finding the accurate robot-pose. RobotPose signal is sent to RCC using robot-id based separate D-Bus paths. e.g. /robot1, /robot2 etc.  But all RobotPose signals are emitted in same D-Bus interface "uk.ac.newport.ril.SwisTrack". In order to get pose data, each RCC filters this D-Bus signal using this interface and self-id based path.\\
 %% 
-\textbf{TaskInfo:} TPS emits this signal after a fixed time intervals. The payload of this message contains an array of all task's information. Each element of the array contains a task's: task-id, Time-stamp, pose x, pose y, task-urgency ($\phi$). Task-id data is integer type and  all others are double. Time-stamp in data ensures using up-to-date task information since RCCs receive TaskInfo from TPS asynchronously. If the tasks are dynamic their pose can be obtained from SwisTrack as well. In our current implementation, we have provided static pose data for all task as an argument to TPS module. So the dynamic part, i.e. the time-stamp and up-to-date task-urgency is determined by the task-information-updater module of TPS, according to Algorithm \ref{alg:taskinfo-update}. This D-Bus signal is sent in a common D-Bus interface, "uk.ac.newport.ril.TaskServer", under path, "/taskserver".  Each RCC receives this message by listening to this interface and path.\\
+\textbf{TaskInfo:} TPS emits this signal after a fixed time intervals. The payload of this message contains an array of all task's information. Each element of the array contains a task's: task-id, Time-stamp, pose x, pose y, task-urgency ($\phi$). Task-id data is integer type and  all others are double. Time-stamp in data ensures using up-to-date task information since RCCs receive TaskInfo from TPS asynchronously. If the tasks are dynamic their pose can be obtained from SwisTrack as well. In our current implementation, we have provided static pose data for all task as an argument to TPS module. So the dynamic part, i.e. the time-stamp and up-to-date task-urgency is determined by the task-information-updater module of TPS, according to Algorithm \ref{alg:task-selector}. This D-Bus signal is sent in a common D-Bus interface, "uk.ac.newport.ril.TaskServer", under path, "/taskserver".  Each RCC receives this message by listening to this interface and path.\\
 %%
 \textbf{RobotStatus:} Each RCC emits this D-Bus signal and the payload contains: individual robot's id and its currently executing task's id. This message is sent to a common D-Bus interface "uk.ac.newport.ril.Epuck" and path "/robot".  But TPS identifies the sender from the message pay-load, i.e. robot-id. A RCC emits this signal only when it starts working on a particular task. 
 %------------------------------------------------------------
-\subsection{Robot Controller Client (RCC)}
-As shown in Fig. \ref{fig:setup}, each e-puck robot is controlled by a corresponding RCC. A RCC sends commands to the robot's firmware using BTCom protocol  (Sec. \ref{expt-tools:btcom}).
+\subsection{Robot-controller client}
+As shown in Fig. \ref{fig:RIL-Expt-Setup1}, each e-puck robot is controlled by a corresponding RCC. A RCC sends commands to the robot's firmware using BTCom protocol  (Sec. \ref{expt-tools:btcom}).
 A RCC consists of several Python modules. Each module represents a sub-process under a main process that ties all of them together by using Python's Multiprocessing module. Below we have described the detail design and implementation of these Python modules. All code are publicly accessible through GitHub repository\footnote{git://@github.com/roboshepherd/EpuckCentralizedClient.git,    
 \textit{hash:}7e3af8902e64db3fa59e}.
 %%
@@ -451,7 +447,7 @@ In this state, robot takes step-by-step navigation approach to reach a task boun
 \textbf{AtTask: }
 In this state  DeviceController discovers itself neat the task and normally until task time-out happens ({\em Task pending}) it stays at this state.
 %-------------------------------------------------------------------
-\subsection{Task perception server (TPS)}
+\subsection{Task-perception server}
 %%
 Similar to RCC,  TPS has two D-Bus communication components: SignalListener and SignalEmitter, and a data and event management component DataManager (Fig. \ref{fig:concrete-arch}). This instance of DataManager stores statistics about task performance of robots in a dictionary a type data structure (mTaskWorkers). This data structure is updated every time a RobotStatus signal is received from a RCC. It is a dictionary type data structure where ID of tasks are keys and ID of robots are the values of this dictionary. Based on this data structure, an application layer component, TaskInfoUpdater, updates the task-urgencies after every short time intervals. This update algorithm in presented in Algorithm \ref{alg:tps}.  Along with the static task-pose information, all task-urgencies are stored in the mTaskInfo data structure of  DataManager of TPS. This TPS's SignalEmitter waits for the update of mTaskInfo and after every certain intervals it emits this up-to-date TaskInfo signal.\\
 %% ALG
@@ -500,7 +496,6 @@ In our experiments we have defined shop-floor work-load in terms of task-urgenci
 \end{figure}
 In order to measure the task-related work-loads on our system we have summed up the changes in all task-urgencies over time. We call this as {shop-floor work-load history} and formalized as follows. Let $ \phi_{j, q}$ be the urgency of a task $j$ at $q^{th}$ step and $\phi_{j, q+1}$ be the task urgency of $(q+1)^{th}$ step. We can calculate the sum of changes in urgencies of all tasks at $(q+1)^{th}$ step:
 \begin{equation} 
-\small
 \Delta \Phi_{j, q+1} = \sum_{j=1}^{M} (\phi_{j, q+1} - \phi_{j, q})
 \label{eqn:Delta-Phi}
 \end{equation}
@@ -669,7 +664,6 @@ Fig. \ref{fig:k-single-task-SB} shows us the task specialization of five robots 
 \subsection*{Robot motions}
 We have aggregated the changes in translation motion of all robots over time. Let $u_{i,q}$ and $u_{i,q+1}$ be the translations of a robot $i$ in two consecutive steps. If the difference between these two translations be $\delta u_{i}$, we can find the sum of changes of translations of all robots in $(q+1)^{th}$ step using the following equation.
 \begin{equation}
-\small 
 \Delta U_{q+1} = \sum_{i=1}^{N} \delta u_{i, q+1} 
 \label{eqn:Delta-Tr}
 \end{equation}

@@ -21,19 +21,19 @@ In order to find a suitable  range (or radius) of communication and sensing,  ro
 %%%%%%%%%%%%%%%%%%%%%
 %\section{Geometrical analysis}
 %%%%%%%%%%%%%%%%%%%%%
-\section{A locality-based peer-to-peer communication model (LPCM)}
+\section{A locality-based peer-to-peer communication model}
 \label{local-comm:model}
 \subsection{General characteristics}
 Our LPCM relies on the local P2P communications among robots. Robots can communicate to its nearby peers within a certain communication radius, $r_{comm}$. Here by $r_{comm}$, we assume that within this distance robots can both sense tasks and exchange communication signals reliably without any significant loss of information. A robot $R_1$ is a {\em peer} of robot $R_2$, if spatial distance between $R_1$ and $R_2$ is less than its $r_{comm}$.
 Similarly, when a robot comes within this $r_{comm}$ of a task, it can sense this the status of this task. Although the communication and sensing  range can be different based on robot capabilities, we have considered them same for simplicity of our implementation.\\
 %%
-As shown in Fig. \ref{fig:lcm}, local communication can also give robots similar task information as in centralized communication mode. It shows that it is not necessary for each robot to communicate with every other robot to get information on all tasks. Since robots can random walk and explore the environment we assume that for a reasonably high robot-to-space density, all task will be known to all robots after an initial exploration period. In order to update the urgency of a task, robots can estimate the number of robots working on a task in many ways: such as, by using their sensory perception (e.g., camera), by doing local P2P communication with others. In Fig. \ref{fig:lcm} we have shown that robots exchange both task information and self status signals to peers.\\
+Local communication can also give robots similar task information as in centralized communication mode. It shows that it is not necessary for each robot to communicate with every other robot to get information on all tasks. Since robots can random walk and explore the environment we assume that for a reasonably high robot-to-space density, all task will be known to all robots after an initial exploration period. In order to update the urgency of a task, robots can estimate the number of robots working on a task in many ways: such as, by using their sensory perception (e.g., camera), by doing local P2P communication with others.\\
 %%
-We characterize our communication model in terms of three fundamental issues: 1) message content ({\em what to communicate}) 2) communication frequency ({\em when to communicate}) and 3) target recipients ({\em with whom to communicate}) \cite{Gerkey}. In a typical MRS, message content can be categorized into two types: 1) state of each individual robot and 2) target task (goal) information \cite{Balch}. The latter can also be subdivided into two types: 1) an individual robot's target task information and 2) information of all available tasks found in the system.\\ 
+We characterize our communication model in terms of three fundamental issues: 1) message content ({\em what to communicate}) 2) communication frequency ({\em when to communicate}) and 3) target recipients ({\em with whom to communicate}) \cite{Gerkey+2001}. In a typical MRS, message content can be categorized into two types: 1) state of each individual robot and 2) target task (goal) information \cite{Balch2005}. The latter can also be subdivided into two types: 1) an individual robot's target task information and 2) information of all available tasks found in the system.\\ 
 %%
 Regarding the first issue, our communication model is open. Robots can communicate with their peers with any kind of message. Our model addresses the last two issues very specifically. Robots communicate only when they meet their peers within a certain communication radius ($r_{comm}$). Although in case of an environment where robots move relatively faster the peer relationships can also be changed dynamically. But this can be manipulated by setting the signal frequency and robot to space density to somewhat reasonably higher value.\\ 
 %%
-In terms of target recipients, our model differs from a traditional publish/subscribe communication (PSC) model by introducing the concept of dynamic subscription. In a traditional PSC model, subscription of messages happens prior to the actual message transmission. In that case prior knowledge about the subjects of a system is necessary. But in our model this is not necessary as long as all robots uses a common addressing convention for naming their incoming signal channels. In this way, when a robot meets with another robot it can infer the address of this peer robot's channel name by using a shared rule. A robot is thus always listening to its own channel for receiving messages from its potential peers or message publishers. On the other side, upon recognizing a peer a robot sends a message to this particular peer. So here neither it is necessary to create any custom subject namespace (e.g.,  as in \citeasnoun{Gerkey}) nor we need to hard-code information in each robot controller about the knowledge of their potential peers {\em a priori}. Subscription is done automatically based on their respective $r_{comm}$.
+In terms of target recipients, our model differs from a traditional publish/subscribe communication (PSC) model by introducing the concept of dynamic subscription. In a traditional PSC model, subscription of messages happens prior to the actual message transmission. In that case prior knowledge about the subjects of a system is necessary. But in our model this is not necessary as long as all robots uses a common addressing convention for naming their incoming signal channels. In this way, when a robot meets with another robot it can infer the address of this peer robot's channel name by using a shared rule. A robot is thus always listening to its own channel for receiving messages from its potential peers or message publishers. On the other side, upon recognizing a peer a robot sends a message to this particular peer. So here neither it is necessary to create any custom subject name-space  \cite{Gerkey+2001} nor we need to hard-code information in each robot controller about the knowledge of their potential peers {\em a priori}. Subscription is done automatically based on their respective $r_{comm}$.
 %
 %%----------------------------------------------------------------
 \subsection{Implementation algorithm}
@@ -78,16 +78,16 @@ From Algorithm 1, we see that a robot controller is initialized with its specifi
 Robot controller then executes the \textbf{UpdateTaskInfoDB()} that modified the robot's information about the corresponding task. In second step, robot senses its nearby peers located within $r_{comm}$ and add them in $RobotPeers$. The potential LocalTaskInfo signal reception from a  peer again triggers the \textbf{UpdateTaskInfoDB()} function. In the last step, robot emits its own task information as a LocalTaskInfo  signal to its peers. Finally it cleans up the current values of $RobotPeers$ for running a new cycle.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experiment Design}
+\section{Experiment design}
 \label{local-comm:expt-design}
 %
-Our local communication experiments follow the similar design of experimental parameters and observables of Series B experiments as outlined in Sec. \ref{afm:expt-design}. Table \ref{local-comm:expt-design} highlights the major parameters of these experiments. Here we can see that there are two new parameters in Series C and Series D experiments, i.e. communication and sensing ranges. For the sake of simplicity, both of these values are kept same in both series of experiments.\\
+Our local communication experiments follow the similar design of experimental parameters and observables of Series B experiments as outlined in Sec. \ref{afm:expt-design}. Table \ref{table:expt-design} highlights the major parameters of these experiments. Here we can see that there are two new parameters in Series C and Series D experiments, i.e. communication and sensing ranges. For the sake of simplicity, both of these values are kept same in both series of experiments.\\
 %% 
 Series D uses larger ranges that enables our robot to capture more task information at a time. That is similar to a working ``global sensing and global communication'' of information by the robots, since in a large group of robots, it is not practical that a robot communicate with all other robots. On the other hand, Series C uses the half of the values of Series D. This enables our robots to capture less information, that mimics a true LSLC strategy. The main motivation for using two different ranges is to find any significant difference in performance from these two types of experiments. Although these differences may not be significant in many times, they can reflect the rationale behind our selection of ranges without being purely arbitrary. 
 %%
 \begin{table}
-\caption{Two series of local communication experiments}
-\label{local-comm:expt-design}
+\caption{Experimental parameters of Series C \& D experiments}
+\label{table:expt-design}
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline Parameter & \hspace*{0.2cm} Series C $\mid$ Series D\\
@@ -185,14 +185,15 @@ The active worker ratios of both Series C and Series D experiments are plotted i
 %%
 %%-------------------------------------------------------------
 \subsection*{Shop-task performance}
-The task-performance of our manufacturing shop-floor scenario under both Series C and Series D experiments are plotted in Fig. \ref{fig:apcd-SC-SD} and Fig. \ref{fig:apmw-SC-SD}. 
+The task-performance of our manufacturing shop-floor scenario under both Series C and Series D experiments are plotted in Fig. \ref{fig:vms-SC-SD}. 
 \begin{figure}
 \centering
 \subfloat[APCD]
 {\includegraphics[width=6cm, height=4cm]{images/apcd-SC-SD.eps}}
 \subfloat[APMW]
 {\includegraphics[width=6cm, height=4cm]{images/apmw-SC-SD.eps}}
-\caption{\small task-performance of our shop-floor manufacturing scenario (a) APCD and (b) APMW} 
+\caption{\small Task-performance of our shop-floor manufacturing scenario (a) APCD and (b) APMW}
+\label{fig:vms-SC-SD} 
 \end{figure}
 For Series C we have got average production completion time 121 time-steps (605s) with SD = 36 time-steps (180s). For Series D,  average production completion time is 123 time-steps (615s) with SD = 40 time-steps (200s). According to Eq. \ref{eqn:min-pmm}, our theoretical minimum production completion time is 50 time-steps (250s) as discussed in Sec \ref{afm:results}.  The values of APCD are as follows. For Series C, $\zeta$ = 1.42 and for Series D, $\zeta$ = 1.46. For both series of experiments APCD values are very close.\\
 %%
@@ -266,7 +267,7 @@ For APMW, Series C experiments give us an average time length of 359 time-steps 
 \centering
 \includegraphics[height=7cm, angle=0]{images/K-G-SC-SD.eps}
 \caption{ Overall task-specialization of robot groups.}
-\label{fig:K-G-SA-SB} 
+\label{fig:K-G-SC-SD} 
 %\end{minipage} 
 %%%
 %\hspace{0.5cm}
@@ -275,7 +276,7 @@ For APMW, Series C experiments give us an average time length of 359 time-steps 
 \includegraphics[height=7cm, angle=0]
 {images/Q-G-SC-SD.eps}
 \caption{Time-steps to reach the peak values of task-specialization}
-\label{fig:Q-G-SA-SB} 
+\label{fig:Q-G-SC-SD} 
 %\end{minipage}
 \end{figure}
 %%
@@ -328,13 +329,13 @@ Besides, in terms of task-specialization, the overall task-specialization of gro
 \caption{Peak task-sensitization values of all robots in a Series D experiment.}
 \begin{tabular}{|c|c|c|}
 \hline \textbf{Series} & \textbf{Average translation (m)} & \textbf{SD} \\ 
-\hline A & 2.631 & 0.804 \\ 
-\hline B & 13.882 & 3.099 \\
-\hline C & 4.907 & 1.678 \\
-\hline D & 4.854 & 1.592 \\
+\hline A & 2.631 & 0.804\\ 
+\hline B & 13.882 & 3.099\\
+\hline C & 4.907 & 1.678\\
+\hline D & 4.854 & 1.592\\
 \hline
-\label{table:motion-cmp} 
 \end{tabular}
+\label{table:motion-cmp} 
 \end{center}
 \end{table}
 %%

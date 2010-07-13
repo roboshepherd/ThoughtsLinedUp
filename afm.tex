@@ -1,16 +1,18 @@
 \chapter{Validation of Attractive Field Model for Self-regulated MRTA}
 \label{afm}
+In this chapter we have discussed about the AFM \cite{Arcaute+2008} an interdisciplinary model of self-regulated DOL in social systems. The model has been developed under the EPSRC collaborative project ``Defying the rules – how self-organizing systems work''. Here,  we have studied three different social systems: ants, humans and robots in order to identify generic mechanisms that lead sustainability of social systems through self-regulation.
+
+The construction of AFM has been achieved through a series of collaborative interactions among our project partners\footnote{The partners of this project were from University of West of England, University of Hull, University of Wales, Newport and Imperial College London and they researched on ants, humans, robots and mathematical models respectively}. From the biological experiments of ants colonies {\em Temnothorax albipennis} we  inferred the bottom-up rules and roles of feedback in collective performance of ants brood-sorting and nest construction after emigration to a new site. We  also analysed the observational data from the self-organized infrastructural development of an {\em eco-village} by an open community of volunteers resided in Ireland. These studies helped us to formalize the generic rules into a concrete model  and to validate this model by deploying it in our robot controllers within the context of a manufacturing shop-floor scenario. In this chapter, we have described mainly the robotic validation of AFM, with a brief presentation on interpretations of AFM from different social perspectives.
 %%%%%%%%%%%%%%%%%%%%%
 \section{Motivations}
 \label{afm:motivations}
-In this chapter we have discussed about the AFM \cite{Arcaute+2008} an interdisciplinary model of self-regulated task-allocation or  DOL in social systems. The model has been developed under the EPSRC collaborative project ``Defying the rules – how self-organizing systems work''. Here,  we have studied three different social systems: ants, humans and robots in order to identify generic mechanisms that lead sustainability of social systems through self-regulation \footnote{The partners of this project were from University of West of England, University of Hull, University of Wales, Newport and Imperial College London and they researched on ants, humans, robots and mathematical models respectively}.
-%%
-\subsection*{A trans-disciplinary study}
-The idea of finding a generic model of DOL, by collaboratively  studying these social systems, has many fascinating advantages.\\
-Firstly, this interdisciplinary study makes it possible to develop a generic model of self-regulatory DOL by combining the strengths of different disciplines overcoming their individual shortcomings. For example, ant colonies are the ideal example for studying the self-regulatory social systems, however it is very difficult to pin-point the exact mechanism leading to a specific behaviour \cite{Arcaute+2008}. Artificial systems e.g.  MRS can be used to explore and verify biological hypotheses using totally controlled experiments. Similarly observational data from human social systems can be combined with the data from the biological experiments to enhance our understanding of social self-regulatory mechanisms.\\ 
-Secondly, synergy of different methods, experimental and observational data from disparate disciplines gives us the ability to construct a more abstract, yet powerful, model which may not be available through independent studies. The higher-level abstraction can be very helpful to increase the usefulness of this model since we can easily separate generic and the domain-specific components of the model. Generic part guides us to design a core-framework that can be used to create basic characteristics of a system, whereas domain-specific part can be implemented independent of other disciplines. For example,different social systems use different communication mechanisms, yet almost all of them share many common aspects in their self-regulatory behaviours (see Sec. \ref{bg:bio-comm} for an example). \\
-Thirdly,  the scope of application of our generic models has been extended in many folds by tackling the common challenges of different disciplines. For example, both human social organizations and multi-robot systems suffer from the scalability issue for large organization. The properties of local sensing and local communication with relatively incapable sensory organs/hardware are present in both ants and SRSs. Thus, the integration of solutions from three major disciplines gives us a highly flexible and extensible model of DOL.\\
-The construction of AFM has been achieved through a series of collaborative interactions among all project partners. From the biological experiments of ants colonies {\em Temnothorax albipennis} we  inferred the bottom-level rules and roles of feedback in collective performance of ants brood-sorting and nest construction after emigration to a new site. We  also analysed the observational data from the self-organized infrastructural development of an {\em eco-village} by an open community of volunteers resided in Ireland. These helped us to identify the generic rules of DOL in social systems. Later on, we  formalized these generic rules into AFM \cite{Arcaute+2008} and validated them by putting AFM into our robot controllers within the context of a virtual manufacturing shop-floor scenario.  In this chapter, we have described mainly the later part of our study, i.e. robotic validation of AFM, with a brief presentation on interpretations of AFM from different social perspectives.
+The idea of finding a generic model of DOL, by collaboratively  studying human, biological and artificial social systems, has many fascinating advantages. Below we have presented some of them.
+
+Firstly, this interdisciplinary study makes it possible to develop a generic model of self-regulatory DOL by combining the strengths of different disciplines overcoming their individual shortcomings. For example, ant colonies are the ideal example for studying the self-regulatory social systems. However, it is very difficult to pin-point the exact mechanism leading to a specific behaviour. Artificial systems e.g.  multi-robot system can be used to explore and verify biological hypotheses using totally controlled experiments. Similarly, observational data from human social systems can be combined with the data from the biological experiments to enhance our understanding of self-regulatory mechanisms in both of these social systems.
+ 
+Secondly, synergy of different methods, experimental and observational data from disparate disciplines, gives us the ability to construct a more abstract and powerful, model which may not be available through independent studies. The higher-level abstraction can be very helpful to find the usefulness of this model since we can easily differentiate between generic and domain-specific components of the model. Generic part guides us to design a core-framework that can be used to create basic characteristics of a system, whereas domain-specific part can be implemented independent of other disciplines. For example,different social systems use different communication mechanisms, yet almost all of them share many common aspects in their self-regulatory behaviours (Sec. \ref{bg:bio-comm}). 
+
+Thirdly,  the scope of application of our generic models has been extended in many folds by tackling the common challenges of different disciplines. For example, both human social organizations and multi-robot systems suffer from the scalability issue for large organization. The properties of local sensing and local communication with relatively incapable sensory organs/hardware are present in both ants and SRSs. Thus, the integration of solutions from three major disciplines gives us a highly flexible and extensible model of DOL.
 %=====================================================================
 \section{The Attractive Field Model (AFM)}
 \label{afm:model}
@@ -92,8 +94,8 @@ The interpretation of AFM  in a human society can be made using many different a
 Similar to the above biological interpretation, we can see that in human society the division of labour can be also interpreted in terms of AFM. People can get information about certain tasks or resources from various sources. Those who are located near the source of information are more likely to attend it, e.g. through the access to Internet, some people can get information quicker than others. This can be treated as the distance to tasks or resources. The motivation of a person to use information can also be treated as the distance in the model. The background training, education or skill profile can be used to estimate the sensitization to do a task or use a resource. The urgency of a task can be inferred through some other estimates, e.g. the frequency of mentioning about a task or resource, by team members or peers, can indicate its relative urgency.
 %%------------------------------------------------------------------
 \subsection{Interpretation of AFM in multi-robot system}
-\label{afm:mrs-interpretation}
-The interpretation of AFM in a MRS also follows almost exactly as in generic interpretation. However, in order to make the interpretation more concrete, let us consider a manufacturing shop floor scenario, where $N$ number of autonomous mobile robots are required to attend $J$ number of shop tasks spread over a fixed area $A$. Let these tasks be represented by a set of small rectangular boxes resembling to manufacturing machines.\\
+\label{afm:multi-robot system-interpretation}
+The interpretation of AFM in a multi-robot system also follows almost exactly as in generic interpretation. However, in order to make the interpretation more concrete, let us consider a manufacturing shop floor scenario, where $N$ number of autonomous mobile robots are required to attend $J$ number of shop tasks spread over a fixed area $A$. Let these tasks be represented by a set of small rectangular boxes resembling to manufacturing machines.\\
 %%
 Let $R$ be the set of robots ${r_1, r_2,...,r_n}$. Let a task $j$ has an associated task-urgency $\phi_j$ indicating its relative importance over time.
 If a robot attends a task $j$ in the $x^{th}$ time-step, the value of $\phi_j$ will decrease by an amount $\delta_{\phi_{INC}}$ in the $(x+1)^{th}$ time-step.
@@ -153,7 +155,7 @@ to keep the values between 0 and 1. Eq. \ref{eqn:afm2} suggests us how we can es
 %%--------------------------------------------------------------------
 \section{A manufacturing shop-floor scenario}
 \label{afm:vms}
-By extending our interpretation of AFM for MRS from Sec. \ref{afm:model}, we can set-up manufacturing shop-floor  scenario. Here, each task represents a manufacturing machine that is  capable of producing goods from raw materials, but they also require constant maintenance works for stable operations. Let $W_{j}$ be a finite number of material parts that can be loaded into a machine $j$ in the beginning of its production process and in each time-step, $\omega_{j}$ units of material parts can be processed  ($\omega_{j} \ll W_{j} $). So let $\Omega_{j}^{p}$ be the initial production workload of $j$ which is simply: $W_{j} / \omega_{j}$ unit. We assume that all machines are identical. In each time step, each machine always requires a minimum threshold number of robots, called hereafter as {\em minimum robots per machine ($\mu$)}, to meet its constant maintenance work-load, $\Omega_{j}^{m}$ unit. However, if $\mu$ or more robots are present in a machine for production purpose, we assume that, no extra robot is required to do its maintenance work separately. These robots, along with their production jobs, can do necessary maintenance works concurrently. For the sake of simplicity, here we consider $\mu$ = 1.\\
+By extending our interpretation of AFM for multi-robot system from Sec. \ref{afm:model}, we can set-up manufacturing shop-floor  scenario. Here, each task represents a manufacturing machine that is  capable of producing goods from raw materials, but they also require constant maintenance works for stable operations. Let $W_{j}$ be a finite number of material parts that can be loaded into a machine $j$ in the beginning of its production process and in each time-step, $\omega_{j}$ units of material parts can be processed  ($\omega_{j} \ll W_{j} $). So let $\Omega_{j}^{p}$ be the initial production workload of $j$ which is simply: $W_{j} / \omega_{j}$ unit. We assume that all machines are identical. In each time step, each machine always requires a minimum threshold number of robots, called hereafter as {\em minimum robots per machine ($\mu$)}, to meet its constant maintenance work-load, $\Omega_{j}^{m}$ unit. However, if $\mu$ or more robots are present in a machine for production purpose, we assume that, no extra robot is required to do its maintenance work separately. These robots, along with their production jobs, can do necessary maintenance works concurrently. For the sake of simplicity, here we consider $\mu$ = 1.\\
 %%
 Now let us fit the above production and maintenance work-loads and task performance of robots into a unit task-urgency scale. Let us divide our manufacturing operation into two subsequent stages: 1) \acfi{PMM}, and 2) \acfi{MOM}. Initially a machine starts working in PMM and does production and maintenance works concurrently. When there is no production work left, it then enters into MOM. Fig. \ref{fig:vsp} illustrates this scenario for a single machine.
 Under both modes, let $\alpha_{j}$ be the amount of workload occurs in a unit time-step if no robot serves a task and it corresponds to a fixed task-urgency $\Delta \phi_{INC}$. On the other hand, let us assume that in each time-step, a robot, $i$, can decrease a constant workload $\beta_{i}$ by doing some maintenance work along with doing any available production work. This  corresponds to a negative task urgency: $- \Delta \phi_{DEC}$. 
@@ -422,14 +424,15 @@ TaskSelector  allocates a robot with a shop-task or random-walk task from severa
 Algorithm \ref{alg:update-sz} lists the pseudo-code for updating the robot's task-sensitization values. Along with previously mentioned TaskRecords, and  SelectedTaskID, it takes two other inputs: LeranRate ($\Delta k_{INC} $) and ForgetRate ($\Delta k_{INC} $) as outlined in Eq. {eqn:k-inc} and {eqn:k-dec} respectively.  In addition to that it also keep the value of task-sensitization between the fixed limit of 0 and 1.
 %%
 \subsubsection*{DeviceController:}
-\begin{figure}
+\label{afm:impl:dc}
+\begin{sidewaysfigure}
 \centering
-\includegraphics[width=12cm,height=5cm, angle=0]
+\includegraphics[width=18cm,height=11cm]
 {./dia-files/rcc-device-controller-state.eps}
 %figure caption is below the figure
-\caption{\small State diagram of DeviceController module}
+\caption{State diagram of DeviceController module}
 \label{fig:dc-states} % Give a unique label
-\end{figure}
+\end{sidewaysfigure}
 The final code that moves a robot to desired task location or make random-walk resides in DeviceController module. This is also a separate sub-process of our Python Multiprocessing based mother process. It waits for the DataManager's mRobotPoseAvailable and mSelectedTaskAvailable events. When TaskSelector sets  mSelectedTaskAvailable event, DeviceController sub-process checks the Bluetooth link-connectivity with physical robot. In case of successful task start-up it sets mSelectedTaskStarted event that, in turn, triggers SignalEmitter to emit a D-Bus signal publishing the robot's currently engaged task. The full state switching policies of DeviceController is illustared in Fig. \ref{fig:dc-states}. Externally we can observe two distinct physical state of a robot: it is either idle or in motion (separtated by dotten line). These two physical states are mapped into several logical steps:\\
 %%
 \textbf{DeviceUnavailable: }
@@ -478,21 +481,21 @@ In this section we have presented our experimental results. We ran those experim
 \subsection*{Shop-floor work-load history}
 In our experiments we have defined shop-floor work-load in terms of task-urgencies. For example, Eq. \ref{eqn:task-urgency-prod-init} shows how we have calculated initial production work-load of our manufacturing shop-floor scenario. Fig. \ref{fig:raw-urgencies-SA} and Fig. \ref{fig:raw-urgencies-SB}  show the dynamic changes in task-urgencies for the single iteration of Series A and Series B experiments respectively. The fluctuations in these plots are resulted from the different levels of task-performance of our robots.
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.5cm, angle=0]
+\includegraphics[height=8cm, angle=0]
 {images/global-8robots/PlotUrgencyLog-2010Apr30-095755.eps}
 %figure caption is below the figure
 \caption{\small Changes in task-urgencies in Series A experiments}
 \label{fig:raw-urgencies-SA} 
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
+%\end{minipage}
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.5cm, angle=0]{images/PlotUrgencyLog-2010May10-115549.eps}
+\includegraphics[height=8cm, angle=0]{images/PlotUrgencyLog-2010May10-115549.eps}
 \caption{\small Changes in task-urgencies in Series B experiments} 
 \label{fig:raw-urgencies-SB} 
-\end{minipage}
+%\end{minipage}
 \end{figure}
 In order to measure the task-related work-loads on our system we have summed up the changes in all task-urgencies over time. We call this as {shop-floor work-load history} and formalized as follows. Let $ \phi_{j, q}$ be the urgency of a task $j$ at $q^{th}$ step and $\phi_{j, q+1}$ be the task urgency of $(q+1)^{th}$ step. We can calculate the sum of changes in urgencies of all tasks at $(q+1)^{th}$ step:
 \begin{equation} 
@@ -502,64 +505,64 @@ In order to measure the task-related work-loads on our system we have summed up 
 From Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} shows the dynamic shop-floor workload for Series A and Series B experiments respectively. From these plots, we can see that initially the sum of changes of task urgencies (shop-floor workload) is going towards negative direction. This implies that tasks are being served by a high number of robots. 
 %%
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.5cm, angle=0]
+\includegraphics[height=8cm, angle=0]
 {images/global-8robots/8robots2tasks-TaskUrgencyStat.eps}
 %figure caption is below the figure
 \caption{\small Shop-floor workload change history in Series A} 
 \label{fig:urgency-stat-SA} % Give a unique label
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
+%\end{minipage}
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.5cm, angle=0]{images/TaskUrgencyStat.eps}
+\includegraphics[height=8cm, angle=0]{images/TaskUrgencyStat.eps}
 \caption{\small Shop-floor workload change history in Series B} % measured in terms of task urgencies
 \label{fig:urgency-stat-SB} % Give a unique label
-\end{minipage}
+%\end{minipage}
 \end{figure}
 %%
 %%----------------------------------------------------------------
 \subsection*{Ratio of active workers}
 %%
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.5cm, angle=0]
+\includegraphics[height=8cm, angle=0]
 {images/global-8robots/Plasticity-8robots2tasks.eps}
 %figure caption is below the figure
 \caption{\small Self-organized allocation of robots in Series A}
 \label{fig:worker-stat-SA}
-\end{minipage}
+%\end{minipage}
 %
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.5cm, angle=0]{images/WorkerRatio.eps}
+\includegraphics[height=8cm, angle=0]{images/WorkerRatio.eps}
 \caption{\small Self-organized allocation of robots in Series B }
 \label{fig:worker-stat-SB} % Give a unique label
-\end{minipage}
+%\end{minipage}
 \end{figure}
 %%
 From both Fig. \ref{fig:worker-stat-SA} and Fig. \ref{fig:worker-stat-SB}, we can  see that in production stage, when work-load is high, many robots are active in tasks and this ratio varies according to the shop-floor work-load changes.
 %%-------------------------------------------------------------
 \subsection*{Shop-task performance}
 \begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4cm, angle=0]{images/apcd-SA-SB.eps}
+\includegraphics[height=7cm, angle=0]{images/apcd-SA-SB.eps}
 \caption{APCD of Series A and Series B experiments.}
 \label{fig:apcd-SA-SB} 
-\end{minipage} 
+%\end{minipage} 
 %%%
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=4.2cm, angle=0]
+\includegraphics[height=7cm, angle=0]
 {images/apmw-SA-SB.eps}
 \caption{APMW of Series A and Series B experiments.}
 \label{fig:apmw-SA-SB} % Give a unique label
-\end{minipage}
+%\end{minipage}
 \end{figure}
 %%
 In our manufacturing shop-floor scenario, we have calculated the APCD and APMW for both Series A and Series B experiments. For Series A we have got  average production completion time 111 time-steps (555s) where sample size is (5 x 2) = 10 tasks, SD = 10 time-steps (50s). According to Eq. \ref{eqn:min-pmm}, our theoretical minimum production completion time is 50 time-steps (250s) assuming the non-stop task performance of all 8 robots with an initial task urgency of 0.5 for all 2 tasks and task urgency decrease rate $\Delta \Phi_{DEC }$ = 0.0025 per robot per time-step.  Hence, Eq. \ref{eqn:appd} gives us APCD, $\zeta$ = 1.22 which means that in Series A experiments, it took 1.22 times more time (305s) than the estimated minimum production completion time. For Series B, we have got average production completion time 165 time-steps (825s) where sample size is (5 x 4) = 20 tasks, SD = 72 time-steps (360s).  Hence, Eq. \ref{eqn:appd} gives us APCD, $\zeta$ = 2.3. Fig. \ref{fig:apcd-SA-SB} shows the APCD for both Series A and Series B experiments. \\
@@ -642,7 +645,7 @@ $ values: 0.40 (SD=0.08)  and 0.30 (SD=0.03), and their respective time-step $Q^
 \label{fig:K-G-SA-SB} 
 %\end{minipage} 
 %%%
-\hspace{0.5cm}
+%\hspace{0.5cm}
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[height=7cm, angle=0]
@@ -727,5 +730,4 @@ Similarly we can see that in larger system robots have less chances to specializ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{afm:summary}
-In this chapter, we have validated an inter-disciplinary generic model of self-regulated DOL by incorporating it in our MRS that has emulated a mock manufacturing shop-floor scenario. A centralized communication system has been instantiated to realize this model. We have evaluated various aspects of this model, such as ability to meet dynamic task demands, individual task specializations, communication loads and flexibility in concurrent task completions. A set of metrics has been proposed to observe the DOL in this system. From our experimental results, in fine we can say that AFM can meet the requirements of dynamic MRTA by the virtue of its self-regulatory principles.
-%% separate conclusion:
+In this chapter, we have validated an inter-disciplinary generic model of self-regulated DOL by incorporating it in our multi-robot system that has emulated a mock manufacturing shop-floor scenario. A centralized communication system has been instantiated to realize this model. We have evaluated various aspects of this model, such as ability to meet dynamic task demands, individual task specializations, communication loads and flexibility in concurrent task completions. A set of metrics has been proposed to observe the DOL in this system. From our experimental results, in fine we can say that AFM can meet the requirements of dynamic MRTA by the virtue of its self-regulatory principles.

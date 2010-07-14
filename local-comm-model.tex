@@ -1,13 +1,13 @@
 \chapter{Local Communication for Self-regulated MRTA}
 \label{local-comm}
-As outlined in Sec. \ref{intro:comm}, inspired by the LSLC strategy found in a kind of social wasps, {\em polybia}, we have intended to carry out a second set of MRTA experiments.  Here we have expected that LSLC strategy can give us a necessary system-wide continuous flow of information for achieving the self-regulated DOL by AFM. In this chapter, we have discussed how we have designed our local P2P communication  model (LPCM) for MRS, based-on biological local communication strategies. We have presented our implementation algorithms.  In order to fit LPCM into our MRS implementation, as explained in Chapter \ref{afm}, we have added  certain functionalities to our previous implementation. In this chapter, we have discussed those additional features. Finally, we have compared the results from both GSNC and LSLC strategies in achieving self-regulated MRTA. 
+As outlined in Sec. \ref{intro:comm}, inspired by the LSLC strategy found in a kind of social wasps, {\em polybia}, we have carried out a second set of MRTA experiments. In this chapter, we have discussed our local P2P communication  model (LPCM) based-on biological local communication strategies. We have also presented our LPCM implementation algorithm.  In order to fit LPCM into our previous implementation of multi-robot system, as explained in Chapter \ref{afm}, we have added  certain functionalities. In this chapter, we have discussed those additional features. Finally, we have compared the results from both GSNC and LSLC based experiments in achieving self-regulated MRTA. 
 %%%%%%%%%%%%%%%%%%%%%
 \section{Motivations}
-From our understanding of different kinds of communication strategies of biological social systems (Sec. \ref{bg:bio-comm}), this is obvious that an effective LSLC strategy can greatly enhance the self-regulated MRTA.  In fact, most swarm robotic researchers now acknowledge that LSLC is the one of the most critical components of a SRS, as global behaviours emerges from local interactions among the individuals and their environment. But how can we design and implement a LSLC scheme among robots ?\\
-%%
-In this study, we have used the concepts of pheromone active-space of ants to realize our simple LSLC scheme. As discussed in Sec. \ref{bg:bio-comm}, ants use various chemical pheromones with different active spaces (or communication ranges) to communicate different messages with their group members. Ants sitting near the source of this pheromone sense and respond quicker than others who wander in far distance. Thus both communication and sensing occurs within a small communication range\footnote{Although, generally communication and sensing are two different issues, however within the context of our self-regulated DOL, we have broadly viewed sensing as the part of communication process, either implicitly via environment, or explicitly via local peers.}. We have used this concept of communication range or locality in our LPCM.\\
-%%
-In order to find a suitable  range (or radius) of communication and sensing,  robotic researchers proposed various models that we have briefly discussed in Sec. \ref{bg:mrs-comm:key-issues}. Some researchers have stated that this range can be set at design time based on the capabilities of robots. Some other researchers have argued that they can be dynamically varied over time depending on the  cost of communication and sensing, e.g. density of peers, ambient noise in the communication channels, or even by aiming for maximizing information spread. In this study, we have followed the former approach as we have assumed that typically robots will not have the precise hardware to dynamically vary their communication and sensing ranges. We have left this issue of selecting best communication range as a topic of future research.
+From our understanding of different kinds of communication strategies of biological social systems (Sec. \ref{bg:bio-comm}), this is obvious that an effective LSLC strategy can greatly enhance the self-regulated MRTA.  In fact, most  researchers in the field of swarm robotics now acknowledge that LSLC is the one of the most critical components of a swarm robotic system, as global behaviours emerges from local interactions among the individuals and their environment. But how can we find a suitable LSLC scheme fot robots?
+
+In this study, we have used the concepts of pheromone active-space of ants to realize our simple LSLC scheme. As discussed in Sec. \ref{bg:bio-comm}, ants use various chemical pheromones with different active spaces (or communication ranges) to communicate different messages with their group members. Ants sitting near the source of this pheromone sense and respond quicker than others who wander in far distances. Thus both communication and sensing occurs within a small communication range\footnote{Although, generally communication and sensing are two different issues, however within the context of our self-regulated DOL, we have broadly viewed sensing as the part of communication process, either implicitly via environment, or explicitly via local peers.}. We have used this concept of communication range or locality in our LPCM.
+
+In order to find a suitable  range (or radius) of communication and sensing,  many researchers proposed various models that we have briefly discussed in Sec. \ref{bg:mrs-comm:key-issues}. Some researchers have stated that this range can be set at design time based on the capabilities of robots. Some other researchers have argued that they can be dynamically varied over time depending on the  cost of communication and sensing, e.g. density of peers, ambient noise in the communication channels, or even by aiming for maximizing information spread. In this study, we have followed the former approach as we have assumed that typically robots will not have the precise hardware to dynamically vary their communication and sensing ranges. We have left this issue of selecting the best communication range as a topic of future research.
 %%%%%%%%%%%%%%%%%%%%%
 %% FIG: COMM-THESIS
 %\begin{figure}
@@ -21,30 +21,34 @@ In order to find a suitable  range (or radius) of communication and sensing,  ro
 %%%%%%%%%%%%%%%%%%%%%
 %\section{Geometrical analysis}
 %%%%%%%%%%%%%%%%%%%%%
-\section{A locality-based peer-to-peer communication model}
+\section{A locality-based P2P communication model}
 \label{local-comm:model}
 \subsection{General characteristics}
-Our LPCM relies on the local P2P communications among robots. Robots can communicate to its nearby peers within a certain communication radius, $r_{comm}$. Here by $r_{comm}$, we assume that within this distance robots can both sense tasks and exchange communication signals reliably without any significant loss of information. A robot $R_1$ is a {\em peer} of robot $R_2$, if spatial distance between $R_1$ and $R_2$ is less than its $r_{comm}$.
-Similarly, when a robot comes within this $r_{comm}$ of a task, it can sense this the status of this task. Although the communication and sensing  range can be different based on robot capabilities, we have considered them same for simplicity of our implementation.\\
+Our LPCM relies on the local P2P communications among robots. we have assumed that robots can communicate to its nearby peers within a certain communication radius, $r_{comm}$ and they can sense tasks within another radius $r_{task}$. They exchange communication signals reliably without any significant loss of information. A robot $R_1$ is a {\em peer} of robot $R_2$, if spatial distance between $R_1$ and $R_2$ is less than this $r_{comm}$.
+Similarly, when a robot comes within this $r_{task}$ of a task, it can sense the status of this task. Although the communication and sensing  range can be different based on robot capabilities, we have considered them same for the simplicity of our implementation.
+
+Local communication can also give robots similar task information as in centralized communication. In this case, it is not necessary for each robot to communicate with every other robot to get information on all tasks. Since robots can random walk and explore the environment we assume that for a reasonably high robot-to-space density, all task will be known to all robots after an initial exploration period. In order to update the urgency of a task, robots can estimate the number of robots working on a task in two ways:  by either using their sensory perception (e.g., camera) or  doing local P2P communication with others.
+
+We characterize our communication model in terms of three fundamental issues of communication \cite{Gerkey+2001}. 
+\begin{enumerate}
+\item Message content: {\em what to communicate?}
+\item Communication frequency: {\em when to communicate?}
+\item Target message recipients: {\em with whom to communicate?}
+\end{enumerate}
 %%
-Local communication can also give robots similar task information as in centralized communication mode. It shows that it is not necessary for each robot to communicate with every other robot to get information on all tasks. Since robots can random walk and explore the environment we assume that for a reasonably high robot-to-space density, all task will be known to all robots after an initial exploration period. In order to update the urgency of a task, robots can estimate the number of robots working on a task in many ways: such as, by using their sensory perception (e.g., camera), by doing local P2P communication with others.\\
-%%
-We characterize our communication model in terms of three fundamental issues: 1) message content ({\em what to communicate}) 2) communication frequency ({\em when to communicate}) and 3) target recipients ({\em with whom to communicate}) \cite{Gerkey+2001}. In a typical MRS, message content can be categorized into two types: 1) state of each individual robot and 2) target task (goal) information \cite{Balch2005}. The latter can also be subdivided into two types: 1) an individual robot's target task information and 2) information of all available tasks found in the system.\\ 
-%%
-Regarding the first issue, our communication model is open. Robots can communicate with their peers with any kind of message. Our model addresses the last two issues very specifically. Robots communicate only when they meet their peers within a certain communication radius ($r_{comm}$). Although in case of an environment where robots move relatively faster the peer relationships can also be changed dynamically. But this can be manipulated by setting the signal frequency and robot to space density to somewhat reasonably higher value.\\ 
-%%
-In terms of target recipients, our model differs from a traditional publish/subscribe communication (PSC) model by introducing the concept of dynamic subscription. In a traditional PSC model, subscription of messages happens prior to the actual message transmission. In that case prior knowledge about the subjects of a system is necessary. But in our model this is not necessary as long as all robots uses a common addressing convention for naming their incoming signal channels. In this way, when a robot meets with another robot it can infer the address of this peer robot's channel name by using a shared rule. A robot is thus always listening to its own channel for receiving messages from its potential peers or message publishers. On the other side, upon recognizing a peer a robot sends a message to this particular peer. So here neither it is necessary to create any custom subject name-space  \cite{Gerkey+2001} nor we need to hard-code information in each robot controller about the knowledge of their potential peers {\em a priori}. Subscription is done automatically based on their respective $r_{comm}$.
+In a typical multi-robot system, message content can be categorized into two types: state of each individual robot and target task (goal) information \cite{Balch2005}. The latter can also be subdivided into two types: 1) an individual robot's target task information and 2) information of all available tasks found in the system.
+
+Regarding the first issue, our communication model is open. Robots can communicate with their peers with any kind of message. Our model addresses the last two issues very specifically. Robots communicate only when they meet their peers within a certain communication radius ($r_{comm}$). Although in case of an environment where robots move relatively faster the peer relationships can also be changed dynamically. But this can be manipulated by setting the signal frequency and robot to space density to somewhat reasonably higher value.
+
+In terms of target recipients, our model differs from a traditional publish/subscribe communication model by introducing the concept of dynamic subscription. In a traditional publish/subscribe communication model, subscription of messages happens prior to the actual message transmission. In that case prior knowledge about the subjects of a system is necessary. But in our model this is not necessary as long as all robots uses a common addressing convention for naming their incoming signal channels. In this way, when a robot meets with another robot it can infer the address of this peer robot's channel name by using a shared rule. A robot is thus always listening to its own channel for receiving messages from its potential peers or message publishers. On the other side, upon recognizing a peer, a robot sends a message to this particular peer. So here neither it is necessary to create any custom subject name-space  \cite{Gerkey+2001} nor we need to hard-code information in each robot controller about the knowledge of their potential peers {\em a priori}. Subscription is done automatically based on their respective $r_{comm}$.
 %
 %%----------------------------------------------------------------
 \subsection{Implementation algorithm}
-Within the context of our self-regulated MRTA experiments under AFM,  here we have formalized these aspects of LPCM into an implementation algorithm. It has three major aspects: 
-\begin{enumerate}
-\item local sensing of peers and tasks,
-\item listening to the task-information peer signals and 
-\item emitting local task-information signals to peers. Here we present a typical implementation.
-\end{enumerate}
-%%
-\textbf{\small Algorithm 1: Locality based P2P Communication Model}
+
+\textbf{\small Algorithm 5.1: Locality based P2P Communication Model}
+\vspace{-3mm}
+\newline
+\HRule
 \begin{algorithmic}[1]
 \label{alg:lpcm}
 \State $\textbf{Input: } RobotID, r_{comm}, r_{task}, TaskInfoDB, RobotPose,$\\ \hspace*{1cm}$ListeningBuffer, EmissionBuffer$
@@ -55,35 +59,42 @@ Within the context of our self-regulated MRTA experiments under AFM,  here we ha
 \State $ TaskInfo \gets (TaskPose, TaskUrgency) $ 
 \State $TaskInfoDB \gets$ \textbf{UpdateTaskInfoDB(}$TaskInfo$\textbf{)}
 % P2P Interaction, listen signal
-\State \COMMENT {Listening of LocalTaskInfo signal(s) from peers}
+\State \COMMENT {Listening \textit{\textit{LocalTaskInfo}} signal(s) from peers}
 \State $ RobotPeers \gets $ Identify/get a list of peers within $r_{comm}$
 \ForAll {peer $\in RobotPeers$}
-\If {(caught a LocalTaskInfo signal from nearby peer)}
-\State $ListeningBuffer \gets $ LocalTaskInfo of peer
+\If {(caught a \textit{\textit{LocalTaskInfo}} signal from nearby peer)}
+\State $ListeningBuffer \gets $ \textit{\textit{LocalTaskInfo}} of peer
 \State $TaskInfoDB \gets$ \textbf{UpdateTaskInfoDB(}$ListeningBuffer$\textbf{)}
 \EndIf
 \EndFor
 %%
-\State \COMMENT {Emitting of own LocalTaskInfo signal to peers}
+\State \COMMENT {Emitting own \textit{\textit{LocalTaskInfo}} signal to peers}
 \State $ EmissionBuffer \gets TaskInfoDB$
 \ForAll {peer $\in RobotPeers$}
 \State \textbf{EmitLocalTaskInfoSignal(}peer, $EmissionBuffer$ \textbf{) }
 \EndFor
 \State $RobotPeers \gets 0$
 \end{algorithmic}
+%\vspace{-3mm} 
+%\HRule\\
+Within the context of our self-regulated MRTA experiments under AFM,  we have formalized the following three aspects of LPCM into an implementation algorithm. 
+\begin{enumerate}
+\item Local sensing of peers and tasks.
+\item Listening to the task-information peer signals.
+\item Emitting local task-information signals to peers.
+\end{enumerate}
 %%
+From Algorithm 5.1, we see that a robot controller is initialized with its specific $RobotID$ and default values of $r_{comm}$ and $r_{task}$ that correspond to the robot's communication and sensing range respectively. We have assumed that these values are same for all robots and for all tasks. Initially a robot has no information about tasks, i.e. {$TaskInfoDB$} is empty. It has neither received nor transmitted any information yet, i.e. corresponding data buffers, $ListeningBuffer$ and $EmissionBuffer$, are also empty. Upon sensing a task, robot determines the task's pose and urgency of that task (according AFM rules described in Sec. \ref{afm:mrs-interpretation}). This is not strictly necessary as this information can also be available from alternate sources, e.g. via communicating with a TPS which is discussed later.
 
-From Algorithm 1, we see that a robot controller is initialized with its specific $RobotID$ and default values of $r_{comm}$ and $r_{task}$ that correspond to the robot's communication and sensing range respectively. We have assumed that these values are same for all robots and for all tasks. Initially a robot has no information about tasks, i.e. {$TaskInfoDB$} is empty. It has neither received nor transmitted any information yet, i.e. corresponding data buffers, $ListeningBuffer$ and $EmissionBuffer$, are empty. Upon sensing a task, robot determines the task's pose and urgency of that task (according AFM rules described in Sec. \ref{afm:mrs-interpretation}). This is not strictly necessary as this information can also be available from alternate sources, e.g. via communicating with a TPS.\\
-%%
-Robot controller then executes the \textbf{UpdateTaskInfoDB()} that modified the robot's information about the corresponding task. In second step, robot senses its nearby peers located within $r_{comm}$ and add them in $RobotPeers$. The potential LocalTaskInfo signal reception from a  peer again triggers the \textbf{UpdateTaskInfoDB()} function. In the last step, robot emits its own task information as a LocalTaskInfo  signal to its peers. Finally it cleans up the current values of $RobotPeers$ for running a new cycle.
+Robot controller then executes the \textbf{UpdateTaskInfoDB()} that modified the robot's information about the corresponding task. In second step, robot senses its nearby peers located within $r_{comm}$ and add them in $RobotPeers$. The potential textit{LocalTaskInfo} signal reception from a  peer again triggers the \textbf{UpdateTaskInfoDB()} function. In the last step, robot emits its own task information as a \textit{LocalTaskInfo} signal to its peers. Finally it cleans up the current values of $RobotPeers$ for running a new cycle.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experiment design}
 \label{local-comm:expt-design}
 %
-Our local communication experiments follow the similar design of experimental parameters and observables of Series B experiments as outlined in Sec. \ref{afm:expt-design}. Table \ref{table:expt-design} highlights the major parameters of these experiments. Here we can see that there are two new parameters in Series C and Series D experiments, i.e. communication and sensing ranges. For the sake of simplicity, both of these values are kept same in both series of experiments.\\
+Our local communication experiments follow the similar design of experimental parameters and observables of Series B experiments as outlined in Sec. \ref{afm:expt-design}. Table \ref{table:expt-design} highlights the major parameters of these experiments. Here, we can see that there are two new parameters in Series C and Series D experiments, i.e. communication and sensing ranges. For the sake of simplicity, both of these values are kept same in both series of experiments.\\
 %% 
-Series D uses larger ranges that enables our robot to capture more task information at a time. That is similar to a working ``global sensing and global communication'' of information by the robots, since in a large group of robots, it is not practical that a robot communicate with all other robots. On the other hand, Series C uses the half of the values of Series D. This enables our robots to capture less information, that mimics a true LSLC strategy. The main motivation for using two different ranges is to find any significant difference in performance from these two types of experiments. Although these differences may not be significant in many times, they can reflect the rationale behind our selection of ranges without being purely arbitrary. 
+Series D uses larger ranges that enables our robot to capture more task information at a time. That is similar to  ``global sensing and global communication'' of information by the robots, since in a large group of robots, it is not practical that a robot communicates with all other robots. On the other hand, Series C uses the half of the range values of Series D. This enables our robots to capture less information, that mimics a true LSLC strategy. The main motivation for using two different ranges is to find any significant difference in performance from these two types of experiments.
 %%
 \begin{table}
 \caption{Experimental parameters of Series C \& D experiments}
@@ -116,68 +127,74 @@ Series D uses larger ranges that enables our robot to capture more task informat
 \label{sec:impl}
 \begin{figure}
 \centering
-\includegraphics[width=9cm, angle=0]
+\includegraphics[width=\textwidth, angle=0]
 {./dia-files/RIL-Expt-Setup2.eps}
 %figure caption is below the figure
 \caption{\small Hardware and software setup under local communication experiments.}
 \label{fig:local-setup} 
 \end{figure}
-On top  of the base implementation of our MRS, we have extended our MRS so that we can fit our LPCM into it. The additional communication interfaces and changes in RCC in TPS implementation are mentioned here. The details  of our MRS implementation can be found in Sec. \ref{afm:impl}. 
+On top  of the base implementation of our multi-robot system, we have extended our multi-robot system so that we can fit LPCM into it. The additional communication interfaces and changes in RCC and TPS implementation are mentioned here. The details  of our multi-robot system implementation can be found in Sec. \ref{afm:impl}. 
 %%%
 \subsection*{Additional communication interfaces under LPCM}
-We have added three new D-Bus signal interfaces in this version of our MRS. They are briefly discussed below.\\
-\textbf{RobotPeers: }This signal is emitted by SwisTrack to each robot's signal path in a common ``ac.uk.newport.ril.SwisTrack'' interface. The payload of this signal contains the list of IDs of peers of each robot within it's $r_{comm}$.  These peer-IDs are extracted by analysing the captured image frame.  This signal is caught by RCCs and used in emitting the LocalTaskInfo signal (discussed below).\\
-\textbf{TaskNeighbohood: }This signal is emitted by SwisTrack for TPS and the payload of this signal contains the list of IDs of robots that are co-located within a task's perception range, $r_{task}$. TPS catches one signal per task and based-on the robot IDs, it emits the TaskInfo signal to those robot's RCC path (as discussed in Sec. \ref{afm:impl}).\\ 
-\textbf{LocalTaskInfo: }This signal is emitted by RCCs to their peers that are co-located within the same communication range $r_{comm}$. The payload of this signal contains the known task information of a  RCC. This task-information can be gathered either through task-perception (via TaskInfo signal received from TPS) or via communications i.e. through LocalTaskInfo signals from its peers.
+We have added three new D-Bus signal interfaces in this version of our implementation. They are briefly discussed below.\\
+\textbf{\texttt{RobotPeers}: }This signal is emitted by SwisTrack to each robot's signal path in a common \texttt{ac.uk.newport.ril.SwisTrack} interface. The payload of this signal contains the list of IDs of peers of each robot within it's $r_{comm}$.  These peer-IDs are extracted by analysing the captured image frame.  This signal is caught by RCCs and used in emitting the \texttt{LocalTaskInfo} signal (discussed below).\\
+\textbf{\texttt{TaskNeighbohood}: }This signal is emitted by SwisTrack for TPS and the payload of this signal contains the list of IDs of robots that are co-located within a task's perception range, $r_{task}$. TPS catches one signal per task and based-on the robot IDs, it emits the \texttt{TaskInfo} signal to those robot's RCC path (as discussed in Sec. \ref{afm:impl}).\\ 
+\textbf{\texttt{LocalTaskInfo}: }This signal is emitted by RCCs to their peers that are co-located within the same communication range $r_{comm}$. The payload of this signal contains the known task information of a  RCC. This task-information can be gathered either through task-perception (via \texttt{TaskInfo} signal received from TPS) or via communications i.e. through \texttt{LocalTaskInfo} signals from its peers.
 %%
 \subsection*{Modifications in RCC and TPS}
-As shown in Fig. \ref{fig:local-setup}, RCCs disseminate task information to each other by \textit{LocalTaskInfo} D-Bus signal. The contents of task information are physical locations of tasks and their urgencies. However as our robots are incapable of sensing task directly. So it relies on TPS for a task-perception signal, TaskInfo, that contains the actual task location and urgency. When a robot $r_i$ comes within $r_{task}$ of a task $j$, SwisTrack reports it to TPS (by {\em TaskNeighbors} signal) and TPS then gives it current task information to $r_i$ by {\em TaskInfo} signal. As we have discussed, TPS catches feedback signals from robots via \textit{RobotStatus} signal. This can be used to inform TPS about a robot's current task id, its device status and so on. TPS uses this information to update relevant part of task information such as, task-urgency. This up-to-date information is encoded in next TaskInfo signal.\\
+As shown in Fig. \ref{fig:local-setup}, RCCs disseminate task information to each other by\\ \texttt{LocalTaskInfo} D-Bus signal. The contents of task information are physical locations of tasks and their urgencies. However as our robots are incapable of sensing task directly. So it relies on TPS for a task-perception signal, \texttt{TaskInfo}, that contains the actual task location and urgency. When a robot $r_i$ comes within $r_{task}$ of a task $j$, SwisTrack reports it to TPS (by \texttt{TaskNeighbors} signal) and TPS then gives it current task information to $r_i$ by  \texttt{TaskInfo} signal. As we have discussed, TPS catches feedback signals from robots via \texttt{RobotStatus} signal. This can be used to inform TPS about a robot's current task id, its device status and so on. TPS uses this information to update relevant part of task information such as, task-urgency. This up-to-date information is encoded in next \texttt{TaskInfo} signal.
+
+From the above discussions, we can see that our base implementation of RCC's task-allocation (i.e. \texttt{TaskSelector}) is almost unchanged in this local implementation. The only thing we need to extend is the D-Bus signal reception and emission interfaces that catches the above signals and put the signal payload in \texttt{DataManager}. For the sake of simplicity, we have merges the perceived \texttt{Task-}\\ \texttt{Info} with communicated \texttt{LocalTaskInfo} into one so that \texttt{TaskAllocator} always gets all available task information. We have not made any major change in other modules of RCC, i.e. \texttt{DeviceController}. The full Python implementation of this RCC is available for download from the GitHub repository\footnote{http://github.com/roboshepherd/EpuckDistributedClient }.\\ 
 %%
-From the above discussions, we can see that our base implementation of RCC's task-allocation (i.e. TaskSelector) is almost unchanged in this local implementation. The only thing we need to extend is the D-Bus signal reception and emission interfaces that catches the above signals and put the signal payload in DataManager. For the sake of simplicity, we have merges the perceived TaskInfo with communicated LocalTaskInfo into one so that TaskAllocator always gets all available task information. We have not made any major change in other modules of RCC, i.e. DeviceController. The full Python implementation of this RCC is available for download from the author's GitHub repository\footnote{http://github.com/roboshepherd/EpuckDistributedClient }.\\ 
-%%
-In our base implementation TPS periodically broadcasts TaskInfo signals to all robots. But in this local version, TPS only emits TaskInfo signal when a robot is within a task's perception range, $r_{task}$ based-on the TaskNeighbour signal from SwisTrack. For this additional interface, we have extended D-Bus SignalListener to catch this additional D-Bus signal.  No major changes ared done in the other part of TPS implementation. The full Python implementation of TPS is available for download from this GitHub repository\footnote{http://github.com/roboshepherd/DitributedTaskServer}.
+In our base implementation TPS periodically broadcasts \texttt{TaskInfo }signals to all robots. But in this local version, TPS only emits \texttt{TaskInfo} signal when a robot is within a task's perception range, $r_{task}$ based-on the \texttt{TaskNeighbour} signal from SwisTrack. For this additional interface, we have extended D-Bus \texttt{SignalListener} to catch this additional D-Bus signal.  No major changes are done in the other parts of TPS implementation. The full Python implementation of TPS is available for download from the GitHub repository\footnote{http://github.com/roboshepherd/DitributedTaskServer}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 \label{sec:results}
 %%
-Below the results from Series C and Series D experiments are organized by following the organization of results in our previous chapter.
+Below the results from Series C and Series D experiments are organized by following the organization of results in Chapter \ref{afm}.
 %-----------------------------------------------------------------
 \subsection*{Shop-floor work-load history}
-The sample raw task-urgencies of Series C and Series D experiments are shown in Fig. \ref{fig:raw-urgencies-SC-SD}. In case of Series D, we can see that an unattended task, Task4, was not served by any robot for a long period and later it was picked up by some of the robots. 
+The sample raw task-urgencies of Series C and Series D experiments are shown in Fig. \ref{fig:raw-urgencies-SC-SD}. In case of Series D, we can see that an unattended task, \textit{Task4}, was not served by any robot for a long period and later it was picked up by some of the robots. 
 %%% raw urgencies
 \begin{figure}
 \centering
+\hspace*{0.5cm}
 \subfloat[Series C]
-{\includegraphics[width=6cm, height=4cm]{images/local-500cm/PlotUrgencyLog-2010Feb15-171017.eps}}
+{\includegraphics[height=8cm]{images/local-500cm/PlotUrgencyLog-2010Feb15-171017.eps}}
+\newline
 \subfloat[Series D]
-{\includegraphics[width=6cm, height=4cm]{images/local-1m/PlotUrgencyLog-2010Feb17-112141.eps}}
-\caption{\small Task-urgencies observed from (a) Series C and (b) Series D experiments}
+{\includegraphics[height=8cm]{images/local-1m/PlotUrgencyLog-2010Feb17-112141.eps}}
+\caption{\small Task-urgencies observed in (a) Series C and (b) Series D experiments}
 \label{fig:raw-urgencies-SC-SD} 
 \end{figure}
 %%
 %% – Workload
 \begin{figure}
 \centering
+\hspace*{0.5cm}
 \subfloat[Series C]
-{\includegraphics[width=6cm, height=4cm]{images/local-500cm/TaskUrgencyStat-SC.eps}}
+{\includegraphics[height=8cm]{images/local-500cm/TaskUrgencyStat-SC.eps}}
+\newline
 \subfloat[Series D]
-{\includegraphics[width=6cm, height=4cm]{images/local-1m/TaskUrgencyStat-SD.eps}}
-\caption{\small Shop-floor work-load history from (a) Series C and (b) Series D experiments}
+{\includegraphics[height=8cm]{images/local-1m/TaskUrgencyStat-SD.eps}}
+\caption{\small Shop-floor work-load history (a) Series C and (b) Series D experiments}
 \label{fig:workload-SC-SD} 
 \end{figure}
 %%%
-The dynamic shop floor work-load is shown in Fig. \ref{fig:workload-SC-SD}. These plots shows similar work-load as experienced in Series A and Series B experiments. Here, we can also see that initially the sum of changes of task urgencies are towards negative direction. This implies that tasks are being served by a high number of robots. When the task urgencies stabilize near zero the fluctuations in urgencies become minimum. Since robots chose tasks stochastically, there will always be a small changes in task urgencies.\\
+The dynamic shop floor work-load is shown in Fig. \ref{fig:workload-SC-SD}. These plots shows similar work-load as experienced in Series A and Series B experiments. Here, we can also see that initially the sum of changes of task urgencies are towards negative direction. This implies that tasks are being served by a high number of robots. When the task urgencies stabilize near zero the fluctuations in urgencies become minimum. Since robots chose tasks stochastically, there will always be a small changes in task urgencies.
 %
 %%----------------------------------------------------------------
 \subsection*{Ratio of active workers}
 % Plasticity
 \begin{figure}
 \centering
+\hspace*{0.5cm}
 \subfloat[Series C]
-{\includegraphics[width=6cm, height=4cm]{images/local-500cm/Local50cm-Plasticity-SC.eps}}
+{\includegraphics[height=8cm]{images/local-500cm/Local50cm-Plasticity-SC.eps}}
+\newline
 \subfloat[Series D]
-{\includegraphics[width=6cm, height=4cm]{images/local-1m/Local1m-Plasticity-SD.eps}}
-\caption{\small Self-organized allocation of workers in (a) Series C and (b) Series D experiments}
+{\includegraphics[height=8cm]{images/local-1m/Local1m-Plasticity-SD.eps}}
+\caption{\small Self-organized allocation of workers in (a) Series C and (b) Series D}
 \label{fig:plasticity-SC-SD} 
 \end{figure}
 %
@@ -188,16 +205,18 @@ The active worker ratios of both Series C and Series D experiments are plotted i
 The task-performance of our manufacturing shop-floor scenario under both Series C and Series D experiments are plotted in Fig. \ref{fig:vms-SC-SD}. 
 \begin{figure}
 \centering
+\hspace*{0.5cm}
 \subfloat[APCD]
-{\includegraphics[width=6cm, height=4cm]{images/apcd-SC-SD.eps}}
+{\includegraphics[height=8cm]{images/apcd-SC-SD.eps}}
+\newline
 \subfloat[APMW]
-{\includegraphics[width=6cm, height=4cm]{images/apmw-SC-SD.eps}}
+{\includegraphics[height=8cm]{images/apmw-SC-SD.eps}}
 \caption{\small Task-performance of our shop-floor manufacturing scenario (a) APCD and (b) APMW}
 \label{fig:vms-SC-SD} 
 \end{figure}
 For Series C we have got average production completion time 121 time-steps (605s) with SD = 36 time-steps (180s). For Series D,  average production completion time is 123 time-steps (615s) with SD = 40 time-steps (200s). According to Eq. \ref{eqn:min-pmm}, our theoretical minimum production completion time is 50 time-steps (250s) as discussed in Sec \ref{afm:results}.  The values of APCD are as follows. For Series C, $\zeta$ = 1.42 and for Series D, $\zeta$ = 1.46. For both series of experiments APCD values are very close.\\
 %%
-For APMW, Series C experiments give us an average time length of 359 time-steps (1795s). In this period we calculated APMW and it is 5 time-steps with SD = 17 time-steps and $\chi$ = 0.023420. For Series D experiments, from the average 357 time-steps (1575s) of maintenance activity of our robots per experiment run, we have got APMW, $\chi$ = 0.005359 which corresponds to the pending work of 2 time-steps (10s) where SD = 7 time-steps.\\
+For APMW, Series C experiments give us an average time length of 359 time-steps (1795s). In this period we calculated APMW and it is 5 time-steps with SD = 17 time-steps and $\chi$ = 0.023420. For Series D experiments, from the average 357 time-steps (1575s) of maintenance activity of our robots per experiment run, we have got APMW, $\chi$ = 0.005359 which corresponds to the pending work of 2 time-steps (10s) where SD = 7 time-steps.
 %%-------------------------------------------------
 \subsection*{Task specializations}
 %% Task-sepecialization
@@ -265,15 +284,14 @@ For APMW, Series C experiments give us an average time length of 359 time-steps 
 \begin{figure}
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=7cm, angle=0]{images/K-G-SC-SD.eps}
+\includegraphics[height=8cm, angle=0]{images/K-G-SC-SD.eps}
 \caption{ Overall task-specialization of robot groups.}
 \label{fig:K-G-SC-SD} 
 %\end{minipage} 
-%%%
 %\hspace{0.5cm}
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=7cm, angle=0]
+\includegraphics[height=8cm, angle=0]
 {images/Q-G-SC-SD.eps}
 \caption{Time-steps to reach the peak values of task-specialization}
 \label{fig:Q-G-SC-SD} 
@@ -287,11 +305,14 @@ $ values: 0.39 (SD=0.17) and 0.27 (SD=0.10), and their respective time-step $Q^G
 %%%%% Traslation local 
 \begin{figure}
 \centering
-\subfloat[Series C]{\includegraphics[width=6cm, height=4.5cm]
+\hspace*{0.5cm}
+\subfloat[Series C]{\includegraphics[height=7.5cm]
 {images/local-500cm/DeltaTranslationStat.eps}}
 %figure caption is below the figure
-\subfloat[Series D]{\includegraphics[width=7cm, height=5cm]{images/local-1m/DeltaTranslationStat.eps}}
-\caption{\small Sum of translations of all robots in l in (a) Series C and Series D experiments }
+\newline
+\centering
+\subfloat[Series D]{\includegraphics[height=8.5cm]{images/local-1m/DeltaTranslationStat.eps}}
+\caption{\small Sum of translations of all robots (a) Series C and Series D experiments }
 \label{fig:translation-SC-SD} 
 \end{figure}
 %%
@@ -301,9 +322,12 @@ We have aggregated the changes in translation motion of all robots over time fol
 %%% Communication load %%%
 \begin{figure}
 \centering
-\subfloat[Series C]{\includegraphics[height=5cm]
+\hspace*{0.5cm}
+\subfloat[Series C]{\includegraphics[height=8cm]
 {images/local-500cm/Local-500cm-SignalingFreqStat.eps}}
-\subfloat[Series D]{\includegraphics[height=5cm]{images/local-1m/Local-1m-SignalingFreqStat.eps}}
+\newline
+\centering
+\subfloat[Series D]{\includegraphics[height=8cm]{images/local-1m/Local-1m-SignalingFreqStat.eps}}
 \caption{\small Frequency of overall LocaltaskInfo (P2P) signalling in (a) Series C and (b) Series D experiments}
 \label{fig:local-signal-frequency-stat} % Give a unique label
 \end{figure}
@@ -311,8 +335,10 @@ We have aggregated the changes in translation motion of all robots over time fol
 %%%% Single robot- number of peers
 \begin{figure}
 \centering
-\subfloat[Series C]{\includegraphics[height=5cm]{images/local-500cm/Robot12-16feb-1-LocalSignals.eps}}
-\subfloat[Series D]{\includegraphics[height=5cm]{images/local-1m/Robot12-17feb-3-LocalSignals.eps}}
+\hspace*{0.5cm}
+\subfloat[Series C]{\includegraphics[height=8cm]{images/local-500cm/Robot12-16feb-1-LocalSignals.eps}}
+\newline
+\subfloat[Series D]{\includegraphics[height=8cm]{images/local-1m/Robot12-17feb-3-LocalSignals.eps}}
 \caption{\small LoaclTaskInfo (P2P) signals caught by Robot12 in (a) Series C and (b) Series D experiment}
 \label{fig:local-single-robot-signal} 
 \end{figure}
@@ -320,10 +346,10 @@ As an example of P2P signal reception of a robot,  Fig. \ref{fig:local-single-ro
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussions}
 \label{local-comm:discuss}
-Results from Series C and Series D experiments show us some similarities and differences with Series A and Series B experiments. Both Series C and Series D experiments show similar APCD values: 1.42 and 1.46 respectively, which are significantly less than Series B experiment result (APCD = 2.3) and are close to Series A experiment result (APCD = 1.22). This means that for large group, task-performance  is efficient under LSLC strategy (Series C and Series D) comparing with their GSNC counterpart (Series B). \\
-%%
-Besides, in terms of task-specialization, the overall task-specialization of group in Series C ($K^G_{avg}$ = 0.4) is  closer to that of Series A experiments ($K^G_{avg}$ = 0.39) and interestingly, the value of  Series D ($K^G_{avg}$ = 0.27) is  much closer to that of Series B experiments ($K^G_{avg}$ = 0.30). This indicates us that task-specialization in large group under LSLC strategy shows higher performance than their GSNC counter part. Besides task-specialization happens much faster under LSLC strategy as we can see that the average time to reach peak sensitization values  of the group,  $Q^G_{avg}$ in Series C is lower than that of Series A values by 25 time-steps.\\ 
-%%
+Results from Series C and Series D experiments show us many similarities and differences with respect to the results of Series A and Series B experiments. Both Series C and Series D experiments show similar APCD values: 1.42 and 1.46 respectively, which are significantly less than Series B experiment result (APCD = 2.3) and are close to Series A experiment result (APCD = 1.22). This means that for large group, task-performance  is efficient under LSLC strategy (Series C and Series D) comparing with their GSNC counterpart (Series B).
+
+Besides, in terms of task-specialization, the overall task-specialization of group in Series C ($K^G_{avg}$ = 0.4) is  closer to that of Series A experiments ($K^G_{avg}$ = 0.39) and interestingly, the value of  Series D ($K^G_{avg}$ = 0.27) is  much closer to that of Series B experiments ($K^G_{avg}$ = 0.30). So task-specialization in large group under LSLC strategy shows higher performance than their GSNC counter part. Besides task-specialization happens much faster under LSLC strategy as we can see that the average time to reach peak sensitization values  of the group,  $Q^G_{avg}$ in Series C is lower than that of Series A values by 25 time-steps.
+
 \begin{table}
 \begin{center}
 \caption{Peak task-sensitization values of all robots in a Series D experiment.}
@@ -339,13 +365,13 @@ Besides, in terms of task-specialization, the overall task-specialization of gro
 \end{center}
 \end{table}
 %%
-From the robot motion profiles found in all four series of experiments, we have found that under LSLC strategy, robot translations have been reduced significantly. Table \ref{table:motion-cmp} summarizes the average translations done by robots in all four series of experiments. From this table we can see than Series C and Series D show about 2.8 times less translation than that in Series B experiments. The translation of 16 robots in Series C and Series D experiments are approximately double (1.89 times) than that of Series A experiments with 8 robots.  Thus the energy-efficiency under LSLC strategy seems to be higher  than that under GSNC strategy.\\
-%%
-From the above results we can see that in large group robots perform better under LSLC strategy. The local sensing of tasks prevents them to attend a far-reaching task which may be more common under global sensing strategy. However, as we have seen in Fig. \ref{fig:raw-urgencies-SC-SD}
+From the robot motion profiles found in all four series of experiments, we have found that under LSLC strategy, robot translations have been reduced significantly. Table \ref{table:motion-cmp} summarizes the average translations done by robots in all four series of experiments. From this table we can see than Series C and Series D show about 2.8 times less translation than that in Series B experiments. The translation of 16 robots in Series C and Series D experiments are approximately double (1.89 times) than that of Series A experiments with 8 robots.  Thus the energy-efficiency under LSLC strategy seems to be higher  than that under GSNC strategy.
+
+From the above results we can see that large group robots achieve better MRTA under LSLC strategy. The local sensing of tasks prevents them to attend a far-reaching task which may be more common under global sensing strategy. However, as we have seen in Fig. \ref{fig:raw-urgencies-SC-SD}
 some tasks can be left unattended for a long period of time due to the failure to discover it by any robot. For that reason we see that the values of APMW is slightly higher under LSLC strategy. But this trade-off is worth as LSLC strategy provides superior self-regulated MRTA in terms of task-performance, task-specialization and energy-efficiency.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{loacl-comm:summary}
-In this chapter, we have presented a locality based dynamic P2P communication model in order to follow the LSLC strategy for achieving self-regulated MRTA. We have seen that our implementation of LSLC achieves similar or better self-regulated MRTA than its centralized counterpart. Particularly the reduction in robot movement states that local model is preferable when we need to minimize robot energy usage. Our model assumes no prior knowledge of the environment and it also does not depend on the number of the robots. We presented an abstract algorithm that can be used with various P2P communication technologies. We reported our implementation of this algorithm by using our multi-robot control architecture, HEAD.\\
+In this chapter, we have presented a locality based dynamic P2P communication model that follows the LSLC strategy for achieving self-regulated MRTA. We have seen that our implementation of local strategy achieves similar or better self-regulated MRTA than its centralized counterpart. Particularly, the reduction in robot movement states that local model is preferable when we need to minimize robot energy usage. Our model assumes no prior knowledge of the environment and it also does not depend on the number of the robots. We presented an abstract algorithm that can be used with various P2P communication technologies. We reported our implementation of this algorithm by using our multi-robot control architecture, HEAD.\\
 %% 
-Comparative results from our experiments shows us that robots relatively perform better under LSLC strategy when the radius of communication is relatively small. More information exchange with larger communication radius, or with GSNC strategy, reduces the degree of task-specialization of robots. By limiting the local information exchange, robots have more chances to select local tasks and specialize on them, by the virtue of their self-regulating principles. Thus under LSLC strategy with smaller information exchange range, robots exhibited better and efficient self-regulated MRTA.
+Comparative results from our experiments shows us that robots relatively perform better under LSLC strategy when the radius of communication is relatively small. More information exchange with larger communication radius, or with GSNC strategy, reduces the degree of task-specialization of robots. By limiting the local information exchange, robots have more chances to select local tasks and specialize on them, by the virtue of their self-regulating principles. Thus under LSLC strategy with smaller information exchange range, robots exhibit better and efficient self-regulated MRTA.

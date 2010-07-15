@@ -42,64 +42,65 @@
 \contentsline {figure}{\numberline {2.22}{\ignorespaces Productivity of social wasps shown as a function of group size, reproduced from \citeasnoun {Jeanne1999}.}}{32}{figure.2.22}
 \contentsline {figure}{\numberline {2.23}{\ignorespaces The Nerd-Herd. From \citeasnoun {Mataric1994}}}{32}{figure.2.23}
 \contentsline {figure}{\numberline {2.24}{\ignorespaces A group of 10 box pushing robots. From \citeasnoun {Kube1997} }}{32}{figure.2.24}
-\contentsline {figure}{\numberline {2.25}{\ignorespaces Example of multi-robot system working at a disaster site (a) British Petroleum's oil rig sinks in the Gulf of Mexico after explosion.\newline From http:///news.bbc.co.uk, reported on 22/04/2010. (b) IRobot's Seaglider fleet that was surveying oil spill in the Gulf of Mexico at depths of up to 1,000 meters. From http:///www.irobot.com, reported on 25/05/2010.}}{34}{figure.2.25}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A disaster site: buring oil rig}}}{34}{subfigure.25.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {An array of Seaglider underwater robots}}}{34}{subfigure.25.2}
+\contentsline {figure}{\numberline {2.25}{\ignorespaces Example of multi-robot system working at a disaster site (a) British Petroleum's oil rig sinks in the Gulf of Mexico after explosion.\newline From http:///news.bbc.co.uk, reported on 22/04/2010. (b) IRobot's Seaglider fleet that was surveying oil spill in the Gulf of Mexico at depths of up to 1,000 meters. From http:///www.irobot.com, reported on 25/05/2010.}}{33}{figure.2.25}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A disaster site: buring oil rig}}}{33}{subfigure.25.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {An array of Seaglider underwater robots}}}{33}{subfigure.25.2}
 \contentsline {figure}{\numberline {2.26}{\ignorespaces Example of multi-robot system at sports and rescue (a) Robot dogs playing at Robocup soccer. \newline From http:///news.bbc.co.uk, reported on 11/05/2005. (b)Rugbot robot team was competing at Osaka's Robocup rescue league from \citeasnoun {Birk+2006}.}}{34}{figure.2.26}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Robot teams at Robocup soccer}}}{34}{subfigure.26.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Robot team at Robocup rescue}}}{34}{subfigure.26.2}
-\contentsline {figure}{\numberline {2.27}{\ignorespaces Hundreds of Centibots robots worked at indoor search, navigation and mapping tasks. From \citeasnoun {Ortiz+2005}. }}{35}{figure.2.27}
-\contentsline {figure}{\numberline {2.28}{\ignorespaces Pioneer robots operating at outdoor uncertain environment of Georgia Tech. Mobile Robot Lab. From http://news.cnet.com, reported on 05/04/2010.}}{35}{figure.2.28}
-\contentsline {figure}{\numberline {2.29}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Categorization of types of interactions in multi-robot system, reproduced from \citeasnoun {Parker2008}.}}{39}{figure.2.29}
+\contentsline {figure}{\numberline {2.27}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Categorization of types of interactions in multi-robot system, reproduced from \citeasnoun {Parker2008}.}}{38}{figure.2.27}
+\contentsline {figure}{\numberline {2.28}{\ignorespaces Hundreds of Centibots robots worked at indoor search, navigation and mapping tasks. From \citeasnoun {Ortiz+2005}. }}{40}{figure.2.28}
+\contentsline {figure}{\numberline {2.29}{\ignorespaces Pioneer robots operating at outdoor uncertain environment of Georgia Tech. Mobile Robot Lab. From http://news.cnet.com, reported on 05/04/2010.}}{40}{figure.2.29}
 \contentsline {figure}{\numberline {2.30}{\ignorespaces A typical hybrid robot control architecture, adopted from \citeasnoun {Mataric2007}.}}{43}{figure.2.30}
-\contentsline {figure}{\numberline {2.31}{\ignorespaces ALLIANCE architecture. From \citeasnoun {Parker1998}.}}{45}{figure.2.31}
-\contentsline {figure}{\numberline {2.32}{\ignorespaces Finite state machine for foraging task, reproduced from \citeasnoun {Arkin1998}.}}{45}{figure.2.32}
-\contentsline {figure}{\numberline {2.33}{\ignorespaces (a) A Swarmbot and the Swarms (b) Swarmbots detecting boundary using distributed algorithms, from \citeasnoun {Mclurkin+2009}.}}{48}{figure.2.33}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Swarmbot}}}{48}{subfigure.33.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Robots detecting boundary}}}{48}{subfigure.33.2}
-\contentsline {figure}{\numberline {2.34}{\ignorespaces A group of Swarmbots are crossing rough terrain, from \citeasnoun {Mondada+2004}.}}{51}{figure.2.34}
-\contentsline {figure}{\numberline {2.35}{\ignorespaces A Swarmbot of 18 s-bots pulls a child to a safe location from \citeasnoun {Mondada+2004}.}}{51}{figure.2.35}
-\contentsline {figure}{\numberline {2.36}{\ignorespaces Reynold's simulated flocking of boids \citeasnoun {Reynolds1987}. (a) Separation: steer to avoid crowding local flockmates, (b) Alignment: steer towards the average heading of local flockmates and (c) Cohesion: steer to move toward the average position of local flock-mates. \newline From http://www.red3d.com/cwr/boids/, last seen on 01/06/2010.}}{52}{figure.2.36}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Separation}}}{52}{subfigure.36.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Alignment}}}{52}{subfigure.36.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Cohesion}}}{52}{subfigure.36.3}
-\contentsline {figure}{\numberline {2.37}{\ignorespaces (a) Real flocks of birds, from http://www.travelblog.org, and (b) simulated flock of birds, from http://www.red3d.com/cwr/boids, last seen on 01/06/2010.}}{52}{figure.2.37}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A flock of birds}}}{52}{subfigure.37.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Simulated boids}}}{52}{subfigure.37.2}
-\contentsline {figure}{\numberline {2.38}{\ignorespaces (a) Stick-pulling experiments by a group of Khephera robots equipped with gripper turrets and (b) Probabilistic finite state machie (PFSM) of robot controllers. From \citeasnoun {Agassounon+2004}.}}{54}{figure.2.38}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Robots pulling sticks}}}{54}{subfigure.38.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Probabilistic FSM}}}{54}{subfigure.38.2}
-\contentsline {figure}{\numberline {2.39}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Classification of MRTA}}{57}{figure.2.39}
-\contentsline {figure}{\numberline {2.40}{\ignorespaces Motivational behaviour in ALLIANCE. From \citeasnoun {Parker1998}.}}{57}{figure.2.40}
-\contentsline {figure}{\numberline {2.41}{\ignorespaces Three major axes of complexities in MRTA}}{62}{figure.2.41}
-\contentsline {figure}{\numberline {2.42}{\ignorespaces A team of s-bots communicating by light signals.\newline From http://lis.epfl.ch, last seen on 01/06/2010.}}{68}{figure.2.42}
-\contentsline {figure}{\numberline {2.43}{\ignorespaces A fleet of robots relying on camera (vision) for search operation. From http://www.cs.utk.edu, last seen on 01/06/2010.}}{68}{figure.2.43}
-\contentsline {figure}{\numberline {2.44}{\ignorespaces (a) A fleet of mobile ``lighting" robots moving on a large table, such that the swarm of robots form a distributed table light and (b) Distributed odour source localization by Khephera robot equipped with volatile organic compound sensor and an anemometer (wind sensor). From http://http://disal.epfl.ch, last seen 01/06/2010.}}{69}{figure.2.44}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces { E-puck robots with table-lamps}}}{69}{subfigure.44.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Sniffing Khepera III}}}{69}{subfigure.44.2}
-\contentsline {figure}{\numberline {2.45}{\ignorespaces Three aspects of communication in multi-robot system}}{70}{figure.2.45}
-\contentsline {figure}{\numberline {2.46}{\ignorespaces A multi-robot material handling system from Kiva systems Inc. From http://www.kivasystems.com/, last seen on 06/06/2010.}}{77}{figure.2.46}
+\contentsline {figure}{\numberline {2.31}{\ignorespaces ALLIANCE architecture. From \citeasnoun {Parker1998}.}}{44}{figure.2.31}
+\contentsline {figure}{\numberline {2.32}{\ignorespaces Finite state machine for foraging task, reproduced from \citeasnoun {Arkin1998}.}}{44}{figure.2.32}
+\contentsline {figure}{\numberline {2.33}{\ignorespaces (a) A Swarmbot and the Swarms (b) Swarmbots detecting boundary using distributed algorithms, from \citeasnoun {Mclurkin+2009}.}}{47}{figure.2.33}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Swarmbot}}}{47}{subfigure.33.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Robots detecting boundary}}}{47}{subfigure.33.2}
+\contentsline {figure}{\numberline {2.34}{\ignorespaces A group of Swarmbots (a) crossing a rough terrain (b) pulling a child to a safe location, from \citeasnoun {Mondada+2004}.}}{50}{figure.2.34}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Swarmbots at exploration}}}{50}{subfigure.34.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Swarmbots at mock rescue}}}{50}{subfigure.34.2}
+\contentsline {figure}{\numberline {2.35}{\ignorespaces Reynold's simulated flocking of boids \citeasnoun {Reynolds1987}. (a) Separation: steer to avoid crowding local flockmates, (b) Alignment: steer towards the average heading of local flockmates and (c) Cohesion: steer to move toward the average position of local flock-mates. \newline From http://www.red3d.com/cwr/boids/, last seen on 01/06/2010.}}{51}{figure.2.35}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Separation}}}{51}{subfigure.35.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Alignment}}}{51}{subfigure.35.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Cohesion}}}{51}{subfigure.35.3}
+\contentsline {figure}{\numberline {2.36}{\ignorespaces (a) Real flocks of birds, from http://www.travelblog.org, and (b) simulated flock of birds, from http://www.red3d.com/cwr/boids, last seen on 01/06/2010.}}{51}{figure.2.36}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {A flock of birds}}}{51}{subfigure.36.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Simulated boids}}}{51}{subfigure.36.2}
+\contentsline {figure}{\numberline {2.37}{\ignorespaces (a) Stick-pulling experiments by a group of Khephera robots equipped with gripper turrets and (b) Probabilistic finite state machie (PFSM) of robot controllers. From \citeasnoun {Agassounon+2004}.}}{53}{figure.2.37}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Robots pulling sticks}}}{53}{subfigure.37.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Probabilistic FSM}}}{53}{subfigure.37.2}
+\contentsline {figure}{\numberline {2.38}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Classification of MRTA}}{56}{figure.2.38}
+\contentsline {figure}{\numberline {2.39}{\ignorespaces Motivational behaviour in ALLIANCE. From \citeasnoun {Parker1998}.}}{56}{figure.2.39}
+\contentsline {figure}{\numberline {2.40}{\ignorespaces Three major axes of complexities in MRTA}}{62}{figure.2.40}
+\contentsline {figure}{\numberline {2.41}{\ignorespaces A team of s-bots communicating by light signals.\newline From http://lis.epfl.ch, last seen on 01/06/2010.}}{67}{figure.2.41}
+\contentsline {figure}{\numberline {2.42}{\ignorespaces A fleet of robots relying on camera (vision) for search operation. From http://www.cs.utk.edu, last seen on 01/06/2010.}}{67}{figure.2.42}
+\contentsline {figure}{\numberline {2.43}{\ignorespaces (a) A fleet of mobile ``lighting" robots moving on a large table, such that the swarm of robots form a distributed table light and (b) Distributed odour source localization by Khephera robot equipped with volatile organic compound sensor and an anemometer (wind sensor). From http://http://disal.epfl.ch, last seen\nobreakspace {}01/06/2010.}}{68}{figure.2.43}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces { E-puck robots with table-lamps}}}{68}{subfigure.43.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Sniffing Khepera III}}}{68}{subfigure.43.2}
+\contentsline {figure}{\numberline {2.44}{\ignorespaces Three aspects of communication in multi-robot system}}{69}{figure.2.44}
+\contentsline {figure}{\numberline {2.45}{\ignorespaces A multi-robot material handling system from Kiva systems Inc. From http://www.kivasystems.com/, last seen on 06/06/2010.}}{76}{figure.2.45}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) The e-puck robot with SwisTrack marker on top, (b) A binary coded marker that can be tracked by an overhead camera using SwisTrack.}}{85}{figure.3.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {E-puck robot}}}{85}{subfigure.1.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A binary-coded marker}}}{85}{subfigure.1.2}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces A GigE4900C camera.}}{88}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces A bluetooth hub that attaches multiple Bluetooth USB adapters with Server PC.}}{88}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces SwisTrack tracking a team of 16 robots under Ubuntu Linux 9.10 OS.}}{91}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Our experiment arena captured by (a) a GigE4900C camera mounted on 3m high ceiling (b) an ordinary camcorder.}}{92}{figure.3.5}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{92}{subfigure.5.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{92}{subfigure.5.2}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces SwisTrack image processing pipeline uses (a) conversion to grayscale image, (b) threshold the grayscale image to get binary image, (c) blob detection and (d) circular bar-code reading algorithms.}}{93}{figure.3.6}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Conversion to grayscale}}}{93}{subfigure.6.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Conversion to binary image}}}{93}{subfigure.6.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Blob-detection}}}{93}{subfigure.6.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Bar-code reading}}}{93}{subfigure.6.4}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces A typical view of D-Bus message bus system. }}{98}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces A typical structure of a D-Bus signal message.}}{99}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces (a) Classical three-layer hybrid robot control architecture after \citeasnoun {Gat1997} (b) Our abstract multi-robot control architecture adopted from hybrid architecture.}}{107}{figure.3.9}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Three layers}}}{107}{subfigure.9.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Abstract model of HEAD}}}{107}{subfigure.9.2}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces General outline of {\em HEAD}. A RCC application has been split into two parts: one runs locally in server PC and another runs remotely, e.g., in an embedded PC.}}{109}{figure.3.10}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) The e-puck robot with SwisTrack marker on top, (b) A binary coded marker that can be tracked by an overhead camera using SwisTrack.}}{84}{figure.3.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {E-puck robot}}}{84}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {A binary-coded marker}}}{84}{subfigure.1.2}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces A GigE4900C camera.}}{87}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces A bluetooth hub that attaches multiple Bluetooth USB adapters with Server PC.}}{87}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces SwisTrack tracking a team of 16 robots under Ubuntu Linux 9.10 OS.}}{90}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Our experiment arena captured by (a) a GigE4900C camera mounted on 3m high ceiling (b) an ordinary camcorder.}}{91}{figure.3.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{91}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{91}{subfigure.5.2}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces SwisTrack image processing pipeline uses (a) conversion to grayscale image, (b) threshold the grayscale image to get binary image, (c) blob detection and (d) circular bar-code reading algorithms.}}{92}{figure.3.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Conversion to grayscale}}}{92}{subfigure.6.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Conversion to binary image}}}{92}{subfigure.6.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Blob-detection}}}{92}{subfigure.6.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Bar-code reading}}}{92}{subfigure.6.4}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces A typical view of D-Bus message bus system. }}{97}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces A typical structure of a D-Bus signal message.}}{98}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces (a) Classical three-layer hybrid robot control architecture after \citeasnoun {Gat1997} (b) Our abstract multi-robot control architecture adopted from hybrid architecture.}}{106}{figure.3.9}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Three layers}}}{106}{subfigure.9.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Abstract model of HEAD}}}{106}{subfigure.9.2}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces General outline of {\em HEAD}. A RCC application has been split into two parts: one runs locally in server PC and another runs remotely, e.g., in an embedded PC.}}{108}{figure.3.10}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces The attractive filed model (AFM)}}{115}{figure.4.1}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Four generic rules establish the self-regulated DOL in social systems}}{117}{figure.4.2}
@@ -144,7 +145,7 @@
 \contentsline {figure}{\numberline {5.9}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Frequency of overall LocaltaskInfo (P2P) signalling in (a) Series C and (b) Series D experiments}}{172}{figure.5.9}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Series C}}}{172}{subfigure.9.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Series D}}}{172}{subfigure.9.2}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip LoaclTaskInfo (P2P) signals caught by Robot12 in (a) Series C and (b) Series D experiment}}{173}{figure.5.10}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \texttt {LoaclTaskInfo} (P2P) signals caught by Robot12 in (a) Series C and (b) Series D experiment}}{173}{figure.5.10}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Series C}}}{173}{subfigure.10.1}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Series D}}}{173}{subfigure.10.2}
 \addvspace {10\p@ }

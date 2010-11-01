@@ -1,6 +1,6 @@
-\documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,11pt,draft]{report}
+%\documentclass[a4paper,11pt]{report}
 \usepackage[bookmarks=true,bookmarksnumbered=true,hypertexnames=false,breaklinks=true,linkbordercolor={},pdfborder={0 0 112.0}]{hyperref}
-%\documentclass[a4paper,11pt,draft]{report}
 %\usepackage[latin1]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -9,10 +9,13 @@
 \usepackage[justification=centering,font=small,singlelinecheck=off]{caption}
 \usepackage{acronym,rotating} %[printonlyused]
 %\usepackage{nomencl}
+\usepackage{tocbibind}
+\usepackage{appendix}
+\usepackage{harvard} %,harvard
 \usepackage{
   fancyhdr,lscape,rotating,float,longtable,subfig,
   epsfig,program,tabularx,graphicx,hyperref,url,multicol,
-  algorithmicx,algpseudocode ,times ,harvard,listings,threeparttable
+  algorithmicx,algpseudocode ,times,listings,threeparttable,
 }
 \usepackage[Sonny]{fncychap}
 \citationmode{abbr}
@@ -86,6 +89,8 @@
 %\setcounter{secnumdepth}{10}
 %\input epsf
 %\makenomenclature
+\renewcommand{\bibname}{List of References}
+\renewcommand{\harvardand}{and}
 %
 \begin{document}
 %
@@ -119,6 +124,7 @@
 \pagenumbering{arabic}
 \pagestyle{fancy}
 \include{introduction}
+\include{general-background}
 \include{background}
 \include{expt-tools}
 \include{afm}
@@ -129,13 +135,15 @@
 %
 \appendix
 \ssp
+\include{appendix}
 %\include{papers}
 %
 % Bibliography Section
 %
 \sdp
 %\bibliographystyle{jphysicsB}
-\bibliographystyle{agsm}
+%\bibliographystyle{agsm}
+\bibliographystyle{dcu}
 %\bibdata{bib1}
 %\bibliography{bibliography}
 \bibliography{bib1}

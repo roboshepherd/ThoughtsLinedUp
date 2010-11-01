@@ -35,99 +35,6 @@ By ``doing a task'' our robots usually perform two functions: 1) navigate to a f
 %%
 \textbf{System set-up and organization}. We have closely followed the swarm robotic principles for controlling the group. Although we do not impose any necessity for local communication and interaction. The details of our control architecture has been described in Sec. \ref{expt-tools:arch}. Since our robots can not localize themselves by their own hardware we provided them their instant position and orientation ({\em pose}) data information from a multi-robot tracking system. Sec. \ref{expt-tools:swistrack} describes about our tracking system. This system also helps us in recording and logging individual robot's task performance and communication patterns. We use Bluetooth communication link, built-in with our e-puck robots, for host PC to robot communication. Robot can also communicate with each-other physically over Bluetooth. However, we do not use that mode of communication. Instead, inter-robot communication is done virtually in host PC's D-Bus IPC channel. This has been illustrated in Sec. \ref{expt-tools:dbus}.
 %==============================================================
-\section{Hardware}
-\subsection{E-puck robots}
-%% FIG: Bats navigation
-\begin{figure}[htp]
-\centering
-\subfloat[E-puck robot]{\includegraphics[width=4cm, height=4cm]{snaps/epuck-happy.eps}} 
-\hspace{0.5cm}
-\subfloat[A binary-coded marker]{\includegraphics[width=4cm, height=4cm]{snaps/20-31412.eps}}
-\caption{(a) The e-puck robot with SwisTrack marker on top, (b) A binary coded marker that can be tracked by an overhead camera  using SwisTrack.}
-\label{fig:e-puck}
-\end{figure}
-%%
-We use e-puck\footnote{www.e-puck.org} robots developed by Swiss Federal Institute of Technology at Lausanne (EPFL) and now produced by Cyberbotics\footnote{http://www.cyberbotics.com} and some other companies. The upside of using e-puck is: it is equipped with most common sensing hardware, relatively simple in design, low cost, desktop-sized and offered under open hardware/software licensing terms. So any further modification in hardware/software is not limited to any proprietary restriction. However, the downside of using e-puck robot is: it's processor is based on dsPIC micro-controller (lack of standard programming tool-chains), limited amount of memory (lack of on-board camera image processing option) and default communication module is based-on Bluetooth (limited bandwidth and manual link configuration).
-
-e-puck can be programmed through C language and this program can be uploaded from PC to robot through wire: $I^{2}C$ and RS232 channel or, through  wireless: Bluetooth communication channel. This can be tedious and time-consuming if one needs to change the robot controller frequently. However, we intend to keep the robot's functionalities very simple and limited to two main tasks: avoiding obstacles and navigating from one place to another. Thus the default hardware of e-puck seems enough for our experiments.
-\begin{table}
-\caption{E-puck robot hardware}
-\label{table:epuck}
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline \textbf{Feature} & \textbf{Description}\\
-\hline Diameter & About 7 cm\\
-\hline Motion & Max. 15 cm/s speed (with 2 stepper motors)\\
-\hline Battery power & about 3 hours (5Wh LiION rechargeable battery)\\
-\hline Processor & 16 bits micro-controller with DSP core,\\ & Microchip dsPIC 30F6014A at 60MHz (about 15 MIPS)\\
-\hline Memory & RAM: 8 KB; FLASH: 144 KB \\
-\hline IR sensors & 8 IR sensors measuring ambient light and \\ & proximity of obstacles in a range of 4 cm\\
-\hline LEDs & 8 red LEDs on a ring and 1 green LED in the body \\
-\hline Camera & Colour camera (max. resolution of 640x480) \\
-\hline Sound & 3 omni-directional microphones and\\ & on-board speaker capable of playing WAV or tone sounds\\
-\hline Communication & Bluetooth wireless (for robot-PC \& robot-robot link)\\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-Table \ref{table:epuck} lists the interesting hardware information about an e-puck robot. The 7 cm diameter desktop-sized robot is easy to handle. It's speed and power autonomy is also reasonable compared with similar miniature robots such as Khepera and its peers \cite{Mondada+2009}. The IR sensors provide an excellent capabilities for obstacle avoidance task. We do not make use of the tiny camera of e-puck. The combination of sound and LEDs can be very effective to detect low-battery power or any other interesting event. By default, e-puck is shipped with a basic firmware that is capable of demonstrating a set of it's basic functionalities. Using the supplied Bluetooth serial communication protocol,  {\em BTCom} protocol, it is possible to establish serial communication link between host PC and robot firmware at a maximum possible speed of 115 kbps. From any  text-based modem control and terminal emulation program, e.g. Minicom\footnote{http://alioth.debian.org/projects/minicom/}, one can remotely send BTCom commands to e-puck robot, e.g., set the speed of the motors, turn on/off LEDs and read the sensor values, e.g., read the IR values or capture image of the camera etc.
-%------------------------------------
-\subsection{Overhead camera}
-\begin{table}
-\caption{Features of Prosilica GigE Camera GE4900C}
-\label{table:ge4900c}
-\begin{center}
-\begin{tabular}{|l||l|}
-\hline \textbf{Feature} & \textbf{Description}\\
-\hline Type & CCD Progressive\\
-\hline CCD Sensor & 35mm Kodak KAI-16000\\
-\hline Size (L x W x H) & 66x66x110 (in mm)\\
-\hline Resolution & 16 Megapixels (4872x3248)\\ 
-\hline Frame rate & Max. 3 frames per second at full resolution\\
-\hline Interface & Gigabit Ethernet (cable length up to 100 meters)\\
-\hline Image output & Bayer 8 and 16 bit\\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-In order to set-up a multi-robot tracking system, we have selected a state-of-the-art GE4900C colour camera (Fig. \ref{fig:gige-camera}) from Prosilica\footnote{http://www.prosilica.com}. The Prosilica GE-Series camera, are very compact, high-performance machine vision cameras with Gigabit Ethernet interface.  Table \ref{table:ge4900c} lists its main features. This GigE camera is built with \acf{CCD} technology that converts light into electric charge and process it into electronic signals. Unlike in a complementary metal oxide semiconductor sensor, CCD provides a very sophisticated image capturing mechanism that gives high uniformity in image pixels. The 4872x3247 resolution enables us to track a relatively large area e.g., 4m x 3m. In this case, 1 pixel dot in image roughly can represent approximately 1mm x 1mm area. Although the frame rate may seem low initially, but this small frame-rate gives optimum image processing performance with large image sizes, e.g. 16 MB/frame. Prosilica offers both Windows and Linux \acf{SDK} for image capture and other necessary operations. Using this SDK and OpenCV computer vision library\footnote{http://opencv.willowgarage.com/}, we have converted default Bayer8 format image into RGB format image and used that with our tracking software.
-%%
-\begin{figure}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=6cm, height=4cm, angle=0]
-{./photos/GigE4900C.eps}
-\caption{A GigE4900C camera.}
-\label{fig:gige-camera} 
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=5cm,height=4cm, angle=0]{snaps/bt-usb-hub.eps}
-\caption{A bluetooth hub that attaches multiple Bluetooth USB adapters with Server PC.}
-\label{fig:bt-hub} 
-\end{minipage}
-\end{figure}
-%%--------------------------------------------------------------
-\subsection{Server PC configuration}
-We use Dell  Precision T5400 server-grade PC with the following main technical specifications:
-\begin{table}
-\caption{Server PC Configuration}
-\label{table:server-pc}
-\begin{center}
-\begin{tabular}{|l||l|}
-\hline Processor & Quad-Core Intel Xeon Processor up to 3.33GHz\\ 
-& (1333MHz FSB, 64-bit, 2X 6MB L2 cache)\\
-\hline RAM & 32GB (4GB ECC DIMMS x 8 slots)\\
-\hline Graphics Card & NVIDIA Quadro FX 570 (Memory: 256MB)\\
-\hline Hard-disk &  SATA 3.0Gb/s 7200RPM  2 x 250 GB\\
-\hline OS & Ubuntu Linux 9.10 64bit\\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-This high performance PC has supported us implementing our algorithms without having any fear of running out of resources e.g. CPU or memory.  The maximum supported RAM of a 32 bit PC architecture is limited to 2 GB. But since we have used 32GB RAM in our Server PC, we have selected a 64-bit OS, Ubuntu Linux 9.10 (amd64)\footnote{http://www.ubuntu.com/}.  As an open-source Linux OS,  Ubuntu offers excellent reliability, performance and community support. In order to enable Bluetooth communication in our host PC, we have added 8 USB-Bluetooth adapters (Belkin F8T017) through a suitable USB-Bluetooth hub (Fig. \ref{fig:bt-hub}). 
 %%%%%%%%%%%%%%%%%%%%%
 \section{Enabling software tools and frameworks}
 \subsection{SwisTrack: a multi-robot tracking system}
@@ -309,7 +216,7 @@ On the other hand, processes are independent process-of-control and they are iso
  
 Almost all modern computer OSes and {\em high-level} programming languages, e.g. C/C++, Java etc. offer multi-threading support. However implementation of multi-threading programming involves lots of low-level thread management activities. In this respect {\em very high-level} programming languages e.g. Python, Ruby etc. offer more efficient and elegant solutions for dealing with multi-threaded programs. Along with this multi-threading issue, various other factors influence us to use Python for coding our high level robotic programs. For example, Python programs are  usually optimized through {\em byte-codes} (like Java programs), and then they are {\em interpreted} by various Python interpreters. Unlike dealing with compiling issues in most of the high-level programming languages, Python allows programmers to focus on their  algorithms more quickly and integrate their systems more effectively.  We have found Python's interactive program development process more productive and flexible than non-interactive programming approach found in some other languages.
 
-Starting from from version 2.6, Python offers an integration of thread-based programming with process-based programming through it Multiprocessing module \footnote{http://docs.python.org/library/multiprocessing.html}. Traditionally, Python offers threads that are real, OS/Kernel level POSIX {\em pthreads}.  But, older Python programs can have only a single thread to be executing within the interpreter at once. This restriction is enforced by the so-called \acfi{GIL}. This is a lock which must be
+Starting from from version 2.6, Python offers an integration of thread-based programming with process-based programming through it Multiprocessing module\footnote{http://docs.python.org/library/multiprocessing.html}. Traditionally, Python offers threads that are real, OS/Kernel level POSIX {\em pthreads}.  But, older Python programs can have only a single thread to be executing within the interpreter at once. This restriction is enforced by the so-called \acfi{GIL}. This is a lock which must be
  acquired for a thread to enter the interpreter's space.
  This limits only one thread to  be executing within the Python interpreter at once.  This is enforced  in order to keep interpreter maintenance easier.
  
@@ -432,3 +339,5 @@ g_main_loop_run(loop);
 \end{lstlisting} 
 %%
 In the above listing \texttt{dbus\_signal\_callback} function contains the specific application code that determines what to do with the received signal (which is not shown here). \texttt{ dbus\_connection\_add\_filter} function can take error handing function as its last argument (or can be NULL as shown here). D-Bus signal match rules are specified in D-Bus specification \cite{Pennington+2010}. In both of the above cases, i.e. signal listening and receiving, in order to add more signals we just need to repeat step 3  as many times as we need. A basic implementation of both of signal emission and listening processes in Python language can be found in this here\footnote{http://dbus.freedesktop.org/doc/dbus-python/doc/tutorial.html}. In Chapter \ref{afm} Chapter \ref{local-comm}, we have discussed these Pythonic way of D-Bus signal handing within the context of our MRTA applications.
+%====================================================
+\section{Summary}

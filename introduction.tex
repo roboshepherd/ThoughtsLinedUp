@@ -1,6 +1,6 @@
 \chapter{Introduction}
 \label{intro}
-\section{Issues in multi-robot task allocation (MRTA)}
+\section{Issues in multi-robot task allocation}
 \label{intro:mrta}
 Researchers in the field of robotics generally agree that multiple robots can perform complex and distributed tasks more conveniently. Multi-robot systems can provide improved performance, fault-tolerance and robustness in those tasks through parallelism and redundancy \cite{Arkin1998,Parker+2006}. In last two decades, multi-robot system has been considered for many challenging applications. For example, multi-robot systems can be used in: large space monitoring tasks, e.g underwater environment monitoring \cite{Eriksen+2001}, dangerous tasks e.g., robotic de-mining \cite{Dunbar+2002}, tasks that scale-up or scale-down over time, e.g. factory automation \cite{Wurman+2008}, and so forth.
 
@@ -14,7 +14,7 @@ Researchers from multi-robot and multi-agent systems, operations research and ot
 
 Early research on predefined task-allocation was dominated by intentional coordination \cite{Parker2008}, use of dynamic role assignment \cite{Chaimowicz2002} and market-based bidding approach \cite{Dias+2006}. Under these approaches, robots use direct task-allocation method, often to communicate with group members for negotiating on tasks. These approaches are intuitive, comparatively straight forward to design and implement and can be analysed formally. However, these approaches typically works well only when the number of robots are small ($\leq 10$) \cite{Lerman+2006}.
 
-On the other hand, self-organized task-allocation approach relies on the emergent group behaviours, such as emergent cooperation \citeaffixed{Kube+1993}{e.g.}, adaptation rules \citeaffixed{Liu+2007}{e.g.} etc. They are more robust and scalable to large team sizes. However, most of the robotic researchers found that self-organized task-allocation approach is difficult to design, to analyse (formally) and to implement in real robots. The solutions from these systems are also sub-optimal. It is also difficult to predict exact behaviours of robots and overall system performance.
+On the other hand, self-organized task-allocation approach relies on the emergent group behaviours, such as emergent cooperation \cite{Kube+1993}, adaptation rules \cite{Liu+2007}. They are more robust and scalable to large team sizes. However, most of the robotic researchers found that self-organized task-allocation approach is difficult to design, to analyse (formally) and to implement in real robots. The solutions from these systems are also sub-optimal. It is also difficult to predict exact behaviours of robots and overall system performance.
 
 Within the context of the Engineering and Physical Sciences Research Council (EPSRC) project, ``Defying the Rules: How Self-regulatory Systems Work'', we have proposed to solve the above mentioned self-regulated DOL problem in an alternate way \cite{Arcaute+2008}. Our approach is inspired from the studies of emergence of task-allocation in both biological and human social systems. These studies show that a large number of species grow, evolve and generally continue functioning well by the virtue of their individual self-regulatory DOL systems.
 
@@ -38,7 +38,7 @@ The second question put AFM under a big challenge. Traditionally, researchers in
 The outcome of our research can be applied to solve generic task-allocation problem in numerous multi-agent systems. Generally AFM can be used as a generic framework for DOL in various social systems and particularly, our results are relevant to the design of MRTA solution of large multi-robot systems in order to perform real industrial tasks. As an example, our technique contributes to making multi-robot systems more useful for automated material handling tasks in warehouses or in manufacturing industries which face all the existing challenges of traditional centralized and sequential manufacturing processes e.g. changing the manufacturing plant layouts on-the-fly, adapting for high variation in product styles/quantities, and dynamic allocation of active manufacturing resources e.g., robots and \acfp{AGV} \cite{Shen+2006}.
 % 
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{Communication \& sensing strategies for MRTA}
+\section{Communication \& sensing strategies for task-allocation}
 \label{intro:comm}
 In biological social systems, communications among the group members, as well as sensing the task-in-progress, are two key components of self-organized DOL. In robotics, existing self-organized task-allocation methods rely heavily upon local sensing and local communication of individuals for achieving self-organized task-allocation. However, AFM differs significantly in this point by avoiding the strong dependence on the local communications and interactions found in many existing approaches to MRTA. AFM requires a system-wide continuous flow of information about tasks, agent states etc. but this can be achieved by using both centralized and decentralized communication modes under explicit and implicit communication strategies. Chapter \ref{bg} reviews these communication modes and strategies with necessary details.
 

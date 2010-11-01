@@ -146,7 +146,7 @@ Eq. \ref{eqn:afm1} states that the stimuli of a robot $r_i$ to a particular task
 \caption{A manufacturing shop-floor production and maintenance cycle}
 \label{fig:vsp}  % Give a unique label
 \end{figure}
-%%--------------------------------------------------------------------
+%%=================================================================
 \section{A manufacturing shop-floor scenario}
 \label{afm:vms}
 By extending our interpretation of AFM in multi-robot system, we can set-up manufacturing shop-floor  scenario. Here, each task represents a manufacturing machine that is  capable of producing goods from raw materials, but they also require constant maintenance works for stable operations. Let $W_{j}$ be a finite number of material parts that can be loaded into a machine $j$ in the beginning of its production process and in each time-step, $\omega_{j}$ units of material parts can be processed  ($\omega_{j} \ll W_{j} $). So let $\Omega_{j}^{p}$ be the initial production workload of $j$ which is simply: $W_{j} / \omega_{j}$ unit.
@@ -233,7 +233,7 @@ We have designed a set of  manufacturing shop-floor scenario experiments for val
 %%
 \textbf{Scalability:} In order to see the effects of scaling on MRTA, we have designed two series of experiments. {\em Series A} corresponds to a small group where we have used 8 robots, 2 tasks under an arena of 2 $m^2$. We have doubled these numbers in {Series B}, i.e. 16 robots, 4 tasks under an arena of 4 $m^2$. This proportional design can give us a valuable insight about the effects of scaling on self-regulated MRTA. All of the above metrics of Set A and Set B can be compared to find those scalability effects.
 
-Thus, in order to observe the above properties of self-regulated MRTA , we have designed our experiments to record the following  observables in each time-step.
+Thus, in order to observe the above properties of self-regulated MRTA, we have designed our experiments to record the following  observables in each time-step.
 \begin{enumerate}
 \item Task-urgency of each task ($\phi$).
 \item Number of robots engaged in each task.
@@ -523,7 +523,7 @@ In order to measure the task-related work-loads on our system we have summed up 
 \Delta \Phi_{j, q+1} = \sum_{j=1}^{M} (\phi_{j, q+1} - \phi_{j, q})
 \label{eqn:Delta-Phi}
 \end{equation}
-From Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} shows the dynamic shop-floor workload for Series A and Series B experiments respectively. From these plots, we can see that initially the sum of changes of task urgencies (shop-floor workload) is going towards negative direction. This implies that tasks are being served by a high number of robots. 
+From Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} show the dynamic shop-floor workload for Series A and Series B experiments respectively. From these plots, we can see that initially the sum of changes of task urgencies (shop-floor workload) is going towards negative direction. This implies that tasks are being served by a high number of robots. 
 %%
 \begin{figure}
 %\begin{minipage}[t]{0.48\linewidth}

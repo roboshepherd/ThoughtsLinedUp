@@ -1,4 +1,4 @@
-\chapter{Experimental Tools \& Technologies}
+\chapter{Experimental Tools and Technologies}
 \label{expt-tools}
 %%%%%%%%%%%%%%%%%%%%%
 \section{General methodological issues}
@@ -279,3 +279,4 @@ In order to integrate both native and external components with HEAD. Two separat
 Any external component that intend to act as a sensing (actuating) element of HEAD need to implement a SignalEmitter (SignalListener). For example,  SwisTrack is extended with D-Bus signal emitting code (aka SignalEmitter) so that it can emit robot pose messages to individual robots D-Bus path under a common interface.  This emitted signal is then caught by SignalListener of individual robot's RCC. Thus the tight-coupling between SwisTrack and RCC has been removed. During run-time SwisTrack can flexibly track variable number of robots and broadcast their corresponding pose messages without any re-compilation of code. Moreover, in worse cases, if SwisTrack or RCC crashes it does not affect any other component at run-time.
 %====================================================
 \section{Summary}
+In this chapter the major methodological issues of multi-robot research have been discussed. The design of multi-robot system used in this study has been outlined here. The heterogeneous tools and technologies have been employed to set-up the necessary infrastructure for multi-robot experiments. A flexible multi-robot control architecture HEAD has been proposed and illustrated. The integration of various software components has been tackled in this architecture using the state-of-the-art D-Bus interprocess communication technology. The following chapters MRTA experiments have been implemented using this architecture. 

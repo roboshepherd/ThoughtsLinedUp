@@ -497,7 +497,7 @@ This algorithm acts upon the task-urgency data of each task and updates it based
 %%====================================================================
 \section{Results}
 \label{afm:results}
-In this section experimental results  have been presented. Those experiments were up and running for about 40 minutes and average was taken from five iterations for both Series A and B.
+In this section experimental results  have been presented. Those experiments were up and running for about 40 minutes and average was taken from five iterations for both Series A and B. 
 %%-------------------------------------------------
 \subsection*{Shop-floor work-load history}
 In these experiments, shop-floor work-load is defined  in terms of task urgencies. For example, Eq. \ref{eqn:task-urgency-prod-init} shows how initial production work-load of the manufacturing shop-floor scenario can be calculated. Fig. \ref{fig:raw-urgencies-SA} and Fig. \ref{fig:raw-urgencies-SB}  show the dynamic changes in task-urgencies for the single iteration of Series A and Series B experiments respectively. The fluctuations in these plots are resulted from the different levels of task-performance of e-puck robots.
@@ -751,6 +751,8 @@ From task-sensitization one can also see that a limited number of robots are spe
 \textbf{Scaling-up}. The system size of Series B is double than that of Series A in terms of robots, tasks and experiment arena.  A fixed ratio of robot-to-task and task-to-arena has been kept in order to see the scaling effects in different experiments. Here both systems has showed sufficient self-regulated DOL, but task-performance of both systems varies significantly. For example, the value of APCD in Series B is higher by 1.08. This means that performance  is decreased in Series B experiments despite having the resources in same proportion in both systems. This occurs partly due to the greater stochastic effects found in task-allocation in a larger system, e.g. presence of more tasks produce higher stochastic behaviours in robot's task selection.
 
 Similarly it is seen that in larger system robots have less chances to specialize on tasks, as the Series B experiments show  that the overall average task-specialization of the group $K^G_{avg}$ is lower by 0.10 and it lasts for significantly less time (the difference of $Q^G_{avg}$  of both systems is 20 time-steps). Thus, in a large group, robots are more likely to switch among tasks more frequently and this produces more translation motions which cost more energy (e.g. battery power) in task-performance.
+
+\textbf{Selection of limited trials of experiments}. The justification for choosing five trials of experiments goes as follows.  Real-robotic experiments face the actual challenge of real-world implementation unlike software simulation. Thus, what can not be discovered in hundreds of simulation runs, can naturally appear in a single or a few runs of a real-robotic experiments. Thus a set of five trials have been chosen that represent a realistic target for a single-man implementation of a fairly large multi-robot system. This choice is made after an insightful literature survey on the existing real-robotic systems. This decision has been influenced by some recent researches in the filed of swarm robotic systems, such as \citeasnoun{Pugh+2009}, \citeasnoun{Rutishauser+2009} and \cite{Agassounon+2004}. 
 \vspace*{1cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}

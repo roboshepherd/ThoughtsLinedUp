@@ -4,19 +4,10 @@
 \chapter{Hardware Specifications}
 \section{E-puck robots}
 %% 
-\begin{figure}[htp]
-\centering
-\subfloat[E-puck robot]{\includegraphics[width=4cm, height=4cm]{snaps/epuck-happy.eps}} 
-\hspace{0.5cm}
-\subfloat[A binary-coded marker]{\includegraphics[width=4cm, height=4cm]{snaps/20-31412.eps}}
-\caption{(a) The e-puck robot with SwisTrack marker on top, (b) A binary coded marker that can be tracked by an overhead camera  using SwisTrack.}
-\label{fig:e-puck}
-\end{figure}
-%%
 E-puck\footnote{www.e-puck.org} robots has been developed at Swiss Federal Institute of Technology at Lausanne (EPFL) and now produced by Cyberbotics\footnote{http://www.cyberbotics.com} and some other companies. The upside of using e-puck is: it is equipped with most common sensing hardware, relatively simple in design, low cost, desktop-sized and offered under open hardware/software licensing terms. So any further modification in hardware/software is not limited to any proprietary restriction. However, the downside of using e-puck robot is: its processor is based on dsPIC micro-controller (lack of standard programming tool-chains), limited amount of memory (lack of on-board camera image processing option) and default communication module is based-on Bluetooth (limited bandwidth and manual link configuration).
 
 E-puck can be programmed through C language and this program can be uploaded from PC to robot through wire: $I^{2}C$ and RS232 channel or, through  wireless: Bluetooth communication channel. This can be tedious and time-consuming if one needs to change the robot controller frequently. However, here  the robot's functionalities have been kept very simple and limited to two main tasks: avoiding obstacles and navigating from one place to another. Thus the default hardware of e-puck seems enough for the experiments.
-\begin{table}
+\begin{table}[H]
 \caption{E-puck robot hardware}
 \label{table:epuck}
 \begin{center}
@@ -40,7 +31,7 @@ E-puck can be programmed through C language and this program can be uploaded fro
 Table \ref{table:epuck} lists the interesting hardware information about an e-puck robot. The 7 cm diameter desktop-sized robot is easy to handle. Its speed and power autonomy is also reasonable compared with similar miniature robots such as Khepera and its peers. The IR sensors provide an excellent capabilities for obstacle avoidance task. The combination of sound and LEDs can be very effective to detect low-battery power or any other interesting event. By default, e-puck is shipped with a basic firmware that is capable of demonstrating a set of its basic functionalities. Using the supplied Bluetooth serial communication protocol,  {\em BTCom} protocol, it is possible to establish serial communication link between host PC and robot firmware at a maximum possible speed of 115 kbps. From any  text-based modem control and terminal emulation program, e.g. Minicom\footnote{http://alioth.debian.org/projects/minicom/}, one can remotely send BTCom commands to e-puck robot, e.g., set the speed of the motors, turn on/off LEDs and read the sensor values, e.g., read the IR values or capture image of the camera etc.
 %------------------------------------
 \section{Overhead camera}
-\begin{table}
+\begin{table}[H]
 \caption{Features of Prosilica GigE Camera GE4900C}
 \label{table:ge4900c}
 \begin{center}
@@ -57,9 +48,7 @@ Table \ref{table:epuck} lists the interesting hardware information about an e-pu
 \end{tabular}
 \end{center}
 \end{table}
-In order to set-up a multi-robot tracking system, a state-of-the-art GE4900C colour camera (Fig. \ref{fig:gige-camera})  have been selected from Prosilica\footnote{http://www.prosilica.com}. The Prosilica GE-Series camera, are very compact, high-performance machine vision cameras with Gigabit Ethernet interface.  Table \ref{table:ge4900c} lists its main features. This GigE camera is built with \acf{CCD} technology that converts light into electric charge and process it into electronic signals. Unlike in a complementary metal oxide semiconductor sensor, CCD provides a very sophisticated image capturing mechanism that gives high uniformity in image pixels. The 4872x3247 resolution enables to track a relatively large area e.g., 4m x 3m. In this case, 1 pixel dot in image roughly can represent approximately 1mm x 1mm area. Although the frame rate may seem low initially, but this small frame-rate gives optimum image processing performance with large image sizes, e.g. 16 MB/frame. Prosilica offers both Windows and Linux \acf{SDK} for image capture and other necessary operations. Using this SDK and OpenCV computer vision library\footnote{http://opencv.willowgarage.com/},  default Bayer8 format image has been converted into RGB format image and used that with the tracking software.
-%%
-\begin{figure}
+\begin{figure}[H]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
@@ -75,10 +64,13 @@ In order to set-up a multi-robot tracking system, a state-of-the-art GE4900C col
 \label{fig:bt-hub} 
 \end{minipage}
 \end{figure}
+In order to set-up a multi-robot tracking system, a state-of-the-art GE4900C colour camera (Fig. \ref{fig:gige-camera})  have been selected from Prosilica\footnote{http://www.prosilica.com}. The Prosilica GE-Series camera, are very compact, high-performance machine vision cameras with Gigabit Ethernet interface.  Table \ref{table:ge4900c} lists its main features. This GigE camera is built with \acf{CCD} technology that converts light into electric charge and process it into electronic signals. Unlike in a complementary metal oxide semiconductor sensor, CCD provides a very sophisticated image capturing mechanism that gives high uniformity in image pixels. The 4872x3247 resolution enables to track a relatively large area e.g., 4m x 3m. In this case, 1 pixel dot in image roughly can represent approximately 1mm x 1mm area. Although the frame rate may seem low initially, but this small frame-rate gives optimum image processing performance with large image sizes, e.g. 16 MB/frame. Prosilica offers both Windows and Linux \acf{SDK} for image capture and other necessary operations. Using this SDK and OpenCV computer vision library\footnote{http://opencv.willowgarage.com/},  default Bayer8 format image has been converted into RGB format image and used that with the tracking software.
+%%
+
 %%--------------------------------------------------------------
 \section{Server PC configuration}
 Dell  Precision T5400 server-grade PC has been chosen with the following main technical specifications:
-\begin{table}
+\begin{table}[H]
 \caption{Server PC Configuration}
 \label{table:server-pc}
 \begin{center}

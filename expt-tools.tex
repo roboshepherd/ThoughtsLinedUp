@@ -46,7 +46,7 @@ Another line of solution can be borrowing certain open-source tracking code from
 From the beginning of this research,  the above types of problems  have been found.  Several commercial motion capture solution providers (including, Vicon\footnote{http://www.vicon.com}) offered very high price quotes. Some well-known and some not-so-well-known open-source object tracking systems were tested which including ARTag\footnote{http://www.artag.net}, ARToolKitPlus\footnote{http://studierstube.icg.tu-graz.ac.at/handheld\_ar/artoolkitplus.php}. A custom version of Open-CV algorithms was developed for tracking colour blobs based on a GNOME application Cynbe's vison-app\footnote{http://muq.org/~cynbe/vision-apps}. 
 
 However, those algorithms failed to scale well due to the fluctuations in lighting conditions, lack of proper integration of all related components and some other issues. Finally, SwisTrack \cite{Lochmatter+2008} has been chosen. This is a state-of-the-art open-source multi-agent tracking platform developed at EPFL, Switzerland. Thanks to the hard working developers and generous sponsors of EPFL who have offered this excellent tool to the scientific research community and empowered many researchers to track multi-agents or  multi-robots out-of-the-box.
-
+%%
 %%  FIG swistrack-screenshot
 \begin{sidewaysfigure}
 \centering
@@ -55,8 +55,15 @@ However, those algorithms failed to scale well due to the fluctuations in lighti
 \caption{SwisTrack tracking a team of 16 robots under Ubuntu Linux 9.10 OS.}
 \label{fig:swistrack-screenshot} 
 \end{sidewaysfigure}
+%%
+With the improved version 4 released in February 2008, SwisTrack is now becoming one of the {\em de-facto} standard tool for multi-robot tracking. Being open-source, flexible, modular and customizable, Swistrack provides a clean development and deployment path for tracking marked or marker-less objects in real-time. SwisTrack is written in C++ using common C/C++ programming libraries and frameworks. The component-based modular development style is very powerful for developing a custom algorithm and wrap it in a custom component. The GUI provides a rich user interface with a clean separation between algorithmic code and parameters used in those algorithms Fig. \ref{fig:swistrack-screenshot}).
+
+In Sec. \ref{expt-tools:dbus} it is shown that how one can append custom communication components in the image processing pipeline (Fig. \ref{fig:swistrack-pipeline}). This pipeline can be compared with Unix command processing where output of one command becomes the input of another subsequent command and many commands form a chain or pipeline. Here in SwisTrack, at first an image capturing component grab camera image using USB, IEEE1394/Firewire, GigE or other supported interfaces. Then subsequent SwisTrack components work on this image and do various processing e.g., background subtractions, colour conversions, blob-detection, tracking etc. These components follow standard computer-vision algorithms and can be used without any code modification. But if necessary they can also be modified or optimized though changing source code and/or tuning parameters on-the-fly in SwisTrack GUI.
+
+As shown in Fig. \ref{fig:swistrack-screenshot}, this GUI can take parameters in real-time and update images. Final output from images, e.g., object position, orientation, trajectory etc. can be sent over standard communication interfaces, e.g. TCP/IP, NMEA etc. SwisTrack has a lot of other features, such as multi-camera tracking, remote-control of SwisTrack over TCP/IP etc. which are documented in SwisTrack Wiki-book documentation.\footnote{http://en.wikibooks.org/wiki/Swistrack}.
+
 %% FIG:  expt areana
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{1cm}
 %\includegraphics[width=10cm,height=7.5cm,angle=0]
@@ -72,11 +79,21 @@ However, those algorithms failed to scale well due to the fluctuations in lighti
 \label{fig:expt-arena} % Give a unique label
 \end{figure}
 %%
-With the improved version 4 released in February 2008, SwisTrack is now becoming one of the {\em de-facto} standard tool for multi-robot tracking. Being open-source, flexible, modular and customizable, Swistrack provides a clean development and deployment path for tracking marked or marker-less objects in real-time. SwisTrack is written in C++ using common C/C++ programming libraries and frameworks. The component-based modular development style is very powerful for developing a custom algorithm and wrap it in a custom component. The GUI provides a rich user interface with a clean separation between algorithmic code and parameters used in those algorithms Fig. \ref{fig:swistrack-screenshot}).
+\begin{figure}[H]
+\centering
+\subfloat[E-puck robot]{\includegraphics[width=4cm, height=4cm]{snaps/epuck-happy.eps}} 
+\hspace{0.5cm}
+\subfloat[A binary-coded marker]{\includegraphics[width=4cm, height=4cm]{snaps/20-31412.eps}}
+\caption{(a) The e-puck robot with SwisTrack marker on top, (b) A binary coded marker that can be tracked by an overhead camera  using SwisTrack.}
+\label{fig:e-puck}
+\end{figure}
+%%
+As shown in Fig. \ref{fig:expt-arena}, SwisTrack has been setup with  Prosilica GigE camera GE4900C and configured it for tracking e-puck robots with their on-top markers (Fig. \ref{fig:e-puck}). These markers are binary-coded numbers (aka {\em circular bar-codes}) that have certain binary bits or chip-lengths.  Twenty bits chip-lengths is used. In order to uniquely identify the position and orientation of these markers, these binary numbers are encoded with a fixed hamming distance, i.e. differences in bits of any two binary numbers. A fixed hamming distance of 6 bits is selected. As shown in Fig. \ref{fig:e-puck}, these markers are 8cm diameter and clearly identified and tracked by SwisTarck from a camera image resolution of 4872x3248. 
 
+SwisTrack has no component for grabbing Prosilica GigE camera frames.  So  a Prosilica GigE input component is developed using Prosilica SDK and OpenCV library. The version of SwisTrack (May 2008) has worked pretty well except a few minor things, such as real-time configuration changing was very unstable due to a large camera image size (16MB/frame). In order to avoid that  necessary configurations is put in SwisTrack project files that is loaded by SwisTrack in the beginning of an experiment run.
 %%
 %%  FIG swistrack-pipeline
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[Conversion to grayscale]{\includegraphics[width=6cm, height=4cm]{./snaps/ST-gray.eps}} 
 \hspace{0.25cm}
@@ -89,13 +106,6 @@ With the improved version 4 released in February 2008, SwisTrack is now becoming
 \label{fig:swistrack-pipeline}
 \end{figure}
 %%
-In Sec. \ref{expt-tools:dbus} it is shown that how one can append custom communication components in the image processing pipeline (Fig. \ref{fig:swistrack-pipeline}). This pipeline can be compared with Unix command processing where output of one command becomes the input of another subsequent command and many commands form a chain or pipeline. Here in SwisTrack, at first an image capturing component grab camera image using USB, IEEE1394/Firewire, GigE or other supported interfaces. Then subsequent SwisTrack components work on this image and do various processing e.g., background subtractions, colour conversions, blob-detection, tracking etc. These components follow standard computer-vision algorithms and can be used without any code modification. But if necessary they can also be modified or optimized though changing source code and/or tuning parameters on-the-fly in SwisTrack GUI.
-
-As shown in Fig. \ref{fig:swistrack-screenshot}, this GUI can take parameters in real-time and update images. Final output from images, e.g., object position, orientation, trajectory etc. can be sent over standard communication interfaces, e.g. TCP/IP, NMEA etc. SwisTrack has a lot of other features, such as multi-camera tracking, remote-control of SwisTrack over TCP/IP etc. which are documented in SwisTrack Wiki-book documentation.\footnote{http://en.wikibooks.org/wiki/Swistrack}.
-
-SwisTrack has been setup with  Prosilica GigE camera GE4900C and configured it for tracking e-puck robots with their on-top markers (Fig. \ref{fig:e-puck}). These markers are binary-coded numbers (aka {\em circular bar-codes}) that have certain binary bits or chip-lengths.  Twenty bits chip-lengths is used. In order to uniquely identify the position and orientation of these markers, these binary numbers are encoded with a fixed hamming distance, i.e. differences in bits of any two binary numbers. A fixed hamming distance of 6 bits is selected. As shown in Fig. \ref{fig:e-puck}, these markers are 8cm diameter and clearly identified and tracked by SwisTarck from a camera image resolution of 4872x3248. 
-
-SwisTrack has no component for grabbing Prosilica GigE camera frames.  So  a Prosilica GigE input component is developed using Prosilica SDK and OpenCV library. The version of SwisTrack (May 2008) has worked pretty well except a few minor things, such as real-time configuration changing was very unstable due to a large camera image size (16MB/frame). In order to avoid that  necessary configurations is put in SwisTrack project files that is loaded by SwisTrack in the beginning of an experiment run.
 
 Fig. \ref{fig:swistrack-pipeline} shows the components that  have been used throughout AFM experiments. Along with the standard blob detection and circular bar-code reading components,  custom D-Bus server communication component is used that send pose information to D-Bus \acf{IPC} channels (Sec. \ref{expt-tools:dbus}). These components require a little tuning of few parameters, e.g. blob size, blob counts etc. They can be done once and saved in component configuration files for loading them in next runs. 
 
@@ -123,20 +133,20 @@ Traditional IPCs lack the important requirements of IPC among several heterogene
 \end{itemize}
 %
 In this dissertation, a scalable and distributed multi-robot control architecture is presented. This is built upon D-Bus IPC and works asynchronously in real-time. By using only the signalling interfaces, SwisTrack can be integrated with a multi-robot control framework. All software components are loosely coupled and unlike traditional IPCs, one does not depend on another for setting up and shutting down IPC infrastructure. For example, in case of SHM one software component explicitly needs to set-up and clean-up SHM spaces. In case of D-Bus any software component can join and leave in the information sharing process at any time. Each component implements its own fall-back strategy if desired information from another component is unavailable at any time. Based on a thin C API, D-Bus also provides many binding in common programming languages. In this work,  {\em dbus-python}, a Python binding for D-Bus,  is used that provides a very clean and efficient IPC mechanism.
-%%
+%%------
 \subsubsection*{D-Bus Overview}
-D-Bus was designed from scratch to replace CORBA and Desktop Communication Protocol to fulfil the needs of a modern Linux system. D-Bus can perform basic application IPC as well as it can facilitate sending events, or signals, through the system, allowing different components in the system to communicate. D-Bus is unique from other IPCs in several ways: e.g. 1) the basic unit of IPC in D-Bus is a message, not a byte stream, 2) D-Bus is bus-based and 3) It has separate system-wide and user/session-wide bus \cite{Love2005}. The simplest form of D-Bus communication is process to process. However, it provides a daemon, known as the {\em message bus daemon}, that routes messages between processes on a specific bus. In this fashion, a bus topology is formed (Fig. \ref{fig:dbus-daemon}). Applications can send to or listen for various events on the bus.
-
-D-Bus specification \cite{Pennington+2010} provides full details of D-Bus message protocols, message and data types, implementation guidelines etc. Here  some relevant parts of this specification have been discussed. Fig. \ref{fig:dbus-daemon} an example of DBus system structure.
-%
-\begin{figure}
+%%
+\begin{figure}[H]
 \begin{center}
 \includegraphics[width=7cm,height=3.0cm]{./dia-files/dbus-daemon} 
 \caption{A typical view of D-Bus message bus system. } 
 \label{fig:dbus-daemon}
 \end{center}
 \end{figure}
-%
+D-Bus was designed from scratch to replace CORBA and Desktop Communication Protocol to fulfil the needs of a modern Linux system. D-Bus can perform basic application IPC as well as it can facilitate sending events, or signals, through the system, allowing different components in the system to communicate. D-Bus is unique from other IPCs in several ways: e.g. 1) the basic unit of IPC in D-Bus is a message, not a byte stream, 2) D-Bus is bus-based and 3) It has separate system-wide and user/session-wide bus \cite{Love2005}. The simplest form of D-Bus communication is process to process. However, it provides a daemon, known as the {\em message bus daemon}, that routes messages between processes on a specific bus. In this fashion, a bus topology is formed (Fig. \ref{fig:dbus-daemon}). Applications can send to or listen for various events on the bus.
+
+D-Bus specification \cite{Pennington+2010} provides full details of D-Bus message protocols, message and data types, implementation guidelines etc. Here  some relevant parts of this specification have been discussed. Fig. \ref{fig:dbus-daemon} an example of DBus system structure.
+
 Here a few basic D-Bus terminologies have been introduced from D-Bus literature.
 \begin{enumerate}
 \item \textbf{D-Bus Connection: }
@@ -151,6 +161,13 @@ This is the interface on a given Object to talk with, e.g. org.freedesktop.DBus.
 \item \textbf{D-Bus Method Call: }
 This is a type of DBus message that used to invoke a method on a remote Object.
 %
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=5cm,height=4cm]{./dia-files/dbus-signal-protocol} 
+\caption{A typical structure of a D-Bus signal message.} 
+\label{fig:dbus-signal-protocol}
+\end{center}
+\end{figure}
 \item \textbf{D-Bus Signal: }
 This is a type of DBus message to make a signal emission. Signal messages must have three header fields: D-Bus path and interface and {\em memeber} (exact signal name) giving the fully-qualified name of the signal. Fig. \ref{fig:dbus-signal-protocol}  shows the design of a robot-status signal that can be emitted over a specified interface and path with a data payload of an integer and a string containing the current status of a robot.
 %
@@ -158,13 +175,6 @@ This is a type of DBus message to make a signal emission. Signal messages must h
 This is the structure that holds the error code which occurs by calling a DBus method.
 \end{enumerate}
 %%
-\begin{figure}
-\begin{center}
-\includegraphics[width=5cm,height=4cm]{./dia-files/dbus-signal-protocol} 
-\caption{A typical structure of a D-Bus signal message.} 
-\label{fig:dbus-signal-protocol}
-\end{center}
-\end{figure}
 %%%%%%%%%%%%%%%%%%
 \subsubsection*{Strategies for Application Integration}
 Under D-Bus, there are two basic mechanisms for applications to interact with each other: 1) by calling a remote Object of target application and 2) by emitting a signal for interested applications. To perform a method call on a D-Bus Object, a method call message must be sent to that Object. It will do some processing and return either a method return message or an error message. Signals are different in that they cannot return anything: there is neither a "signal return" message, nor any other type of error message\footnote{http://www.ibm.com/developerworks/linux/library/l-dbus.html}. Thus on D-Bus everything can be done asynchronously without the need of polling.
@@ -237,10 +247,7 @@ In this Section,  this question is answered by presenting a multi-robot control 
 %%%%%%%%%%%%%%%%%%
 \subsection{Hybrid event-driven architecture on D-Bus}
 As discussed in Sec. \ref{bg:mrs:overview}, robotic researchers have spent a lot of efforts for finding suitable robot control architecture. Since last few decades, robot control architectures has been evolving from deliberative to reactive and hybrid (combination of deliberative and reactive), behaviour-based and to some other forms. It has been well established that hybrid control can bring together the best aspects of both reactive and deliberative control by combining the real-time low-level device control and high-level deliberative action control. Only reactive (or deliberative) control approach is not enough for enabling robots to do complex tasks in a dynamic environments \cite{Gat1997}.
-
-As shown in Fig. \ref{fig:3-layer-arch}(a), hybrid control is usually achieved by a three-layer architecture composed of deliberator, sequencer and controller. {\em Controller} usually works under real-time reactive feedback control loops to do simple tasks by producing primitive robot behaviours, e.g. obstacle avoidance, wall following etc. {\em Deliberator} performs time-consuming computations, e.g. running exponential search or computer vision algorithm processing. In order to achieve specific task goals, the middle component, {\em sequencer}, typically integrates both deliberator and controller maintaining consistent, robust and timely robot behaviours.
-%%%
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[Three layers]{\includegraphics[width=2.5cm,height=1.8cm]{./dia-files/three-layer-arch}} 
 \hspace{0.25cm}
@@ -250,6 +257,9 @@ As shown in Fig. \ref{fig:3-layer-arch}(a), hybrid control is usually achieved b
 \label{fig:3-layer-arch}
 \end{figure}
 %%
+
+As shown in Fig. \ref{fig:3-layer-arch}(a), hybrid control is usually achieved by a three-layer architecture composed of deliberator, sequencer and controller. {\em Controller} usually works under real-time reactive feedback control loops to do simple tasks by producing primitive robot behaviours, e.g. obstacle avoidance, wall following etc. {\em Deliberator} performs time-consuming computations, e.g. running exponential search or computer vision algorithm processing. In order to achieve specific task goals, the middle component, {\em sequencer}, typically integrates both deliberator and controller maintaining consistent, robust and timely robot behaviours.
+%%%
 \subsubsection*{Three layers of HEAD}
 In this study, the multi-robot control architecture HEAD is organized into three layers as shown in Fig. \ref{fig:3-layer-arch}(b). Although HEAD has been designed by adopting the principles of hybrid architecture it has many distinct features that are absent or overlooked in a classical hybrid architecture. 
 

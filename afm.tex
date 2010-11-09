@@ -32,14 +32,16 @@ At the individual level, information is processed differently by each individual
 
 \textbf{Rule 4: Forgetting.} Self-regulatory social systems include forgetting, e.g. the ability of the agents to diminish information over time, if not used. The system determines the amount of information being released, and this changes over time. For example, specialists might have to attend an emergency situation and switch tasks that contributes to the forgetting of old task experiences. This is considered as crucial to allow flexibility in the system.
 %%
-\begin{figure}
+Having this general framework of self-regulatory social systems, one can now formalize AFM that will describe the properties of individual  agents and the system as a whole. In terms of networks, the model is a bipartite network, i.e. there are two different types of nodes. One set of nodes describes the sources of the attractive fields and the other set describes the agents. Links only exist between different types of nodes and they encode the flow of information so that, even if there is no direct link between two agents, their interaction is taken into account in the information flow. This is an instance of {\em weak} interaction. The strength of the field primarily depends upon the distance between the task and the agent. This relationship is represented using weighted links. Besides, there is a permanent field that represents the {\em no-task} or  option for ignoring information. 
+\begin{figure}[H]
 \centering
 \includegraphics[height=7cm, angle=0]{./images/AFM-Diag2.eps}
 %figure caption is below the figur
 \caption{The attractive field model (AFM)}
 \label{fig:afm} % Give a unique label
 \end{figure}
-Having this general framework of self-regulatory social systems, one can now formalize AFM that will describe the properties of individual  agents and the system as a whole. In terms of networks, the model is a bipartite network, i.e. there are two different types of nodes. One set of nodes describes the sources of the attractive fields and the other set describes the agents. Links only exist between different types of nodes and they encode the flow of information so that, even if there is no direct link between two agents, their interaction is taken into account in the information flow. This is an instance of {\em weak} interaction. The strength of the field primarily depends upon the distance between the task and the agent. This relationship is represented using weighted links. Besides, there is a permanent field that represents the {\em no-task} or  option for ignoring information. The model can be mapped to a network as shown in Fig. \ref{fig:afm}. The correspondence is given below:
+
+The model can be mapped to a network as shown in Fig. \ref{fig:afm}. The correspondence is given below:
 \begin{enumerate}
 \item Source nodes (o) are tasks that can be divided between a number of agents.
 \item Agent nodes (x) can be ants, human,  robots etc.
@@ -52,7 +54,7 @@ In summary, looking at the network, one can see that each of the agents is conne
 %%--------------------------------------------------------------------
 \subsection{Relationship of AFM with self-organization}
 \label{afm:so}
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=9cm, angle=0]
 {./images/dia-files/self-org-2.eps}
@@ -138,7 +140,16 @@ P_{j}^{i} = \frac{S_{j}^{i}}{\sum_{j=0}^{J} S_{j}^{i}} \hspace*{0.25cm}where,\hs
 
 Eq. \ref{eqn:afm1} states that the stimuli of a robot $r_i$ to a particular task $j$, $S^{i}_{j}$ depends on $r_i$'s spatial distance to $j$ ($d_{ij}$), level of sensitization to $j$ ($k_{j}^{i}$), and perceived urgency of that task ($\phi _{j}$). In  Eq. \ref{eqn:afm1},  a very small constant value $\delta$ is used to avoid division by zero, in the case when a robot has reached to a task. Since $S^{i}_{j}$ is a probability function, it is chosen as a $tanh$ in order to keep the values between 0 and 1. Eq. \ref{eqn:afm2} suggests how  one can estimate the stimuli of random walk or no-task option. This stimuli of random walk depends on the sum of stimulus of $J$ real tasks. Here, random-walk is also considered as a task. Thus the total number of tasks become $J+1$. The probability of selecting each task has been determined by a probabilistic method outlined in Eq. \ref{eqn:afm3} which states that the probability of choosing a task $j$ by robot $r_i$ is directly proportional to its calculated stimuli $ S^i_j$. Finally, let $T_a$ be the allocated time to accomplish a task. If a robot can enter inside the task boundary within $T_a$ time it waits there until $T_a$ elapsed. Otherwise it will select a different task.
 %%
-\begin{figure}
+%%=================================================================
+\section{A manufacturing shop-floor scenario}
+\label{afm:vms}
+By extending the interpretation of AFM in multi-robot system, one can set-up manufacturing shop-floor  scenario. Here, each task represents a manufacturing machine that is  capable of producing goods from raw materials, but they also require constant maintenance works for stable operations. Let $W_{j}$ be a finite number of material parts that can be loaded into a machine $j$ in the beginning of its production process and in each time-step, $\omega_{j}$ units of material parts can be processed  ($\omega_{j} \ll W_{j} $). So let $\Omega_{j}^{p}$ be the initial production workload of $j$ which is simply: $W_{j} / \omega_{j}$ unit.
+
+It is assumed that all machines are identical. In each time step, each machine always requires a minimum threshold number of robots, called hereafter as {\em minimum robots per machine ($\mu$)}, to meet its constant maintenance work-load, $\Omega_{j}^{m}$ unit. However, if $\mu$ or more robots are present in a machine for production purpose, it is assumed that, no extra robot is required to do its maintenance work separately. These robots, along with their production jobs, can do necessary maintenance works concurrently. For the sake of simplicity, the value of $\mu$ can be assumed as 1.
+
+Now the above production and maintenance work-loads and task performance of robots need to converted into a unit task-urgency scale. The manufacturing operation can be divided into two subsequent stages: 1) \acfi{PMM}, and 2) \acfi{MOM}. Initially a machine starts working in PMM and does production and maintenance works concurrently. When there is no production work left, then it  enters into MOM. 
+%%
+\begin{figure}[H]
 \centering
 \includegraphics[width=12cm, angle=0]
 {./images/VSP.eps}
@@ -146,16 +157,8 @@ Eq. \ref{eqn:afm1} states that the stimuli of a robot $r_i$ to a particular task
 \caption{A manufacturing shop-floor production and maintenance cycle}
 \label{fig:vsp}  % Give a unique label
 \end{figure}
-%%=================================================================
-\section{A manufacturing shop-floor scenario}
-\label{afm:vms}
-By extending the interpretation of AFM in multi-robot system, one can set-up manufacturing shop-floor  scenario. Here, each task represents a manufacturing machine that is  capable of producing goods from raw materials, but they also require constant maintenance works for stable operations. Let $W_{j}$ be a finite number of material parts that can be loaded into a machine $j$ in the beginning of its production process and in each time-step, $\omega_{j}$ units of material parts can be processed  ($\omega_{j} \ll W_{j} $). So let $\Omega_{j}^{p}$ be the initial production workload of $j$ which is simply: $W_{j} / \omega_{j}$ unit.
 
-It is assumed that all machines are identical. In each time step, each machine always requires a minimum threshold number of robots, called hereafter as {\em minimum robots per machine ($\mu$)}, to meet its constant maintenance work-load, $\Omega_{j}^{m}$ unit. However, if $\mu$ or more robots are present in a machine for production purpose, it is assumed that, no extra robot is required to do its maintenance work separately. These robots, along with their production jobs, can do necessary maintenance works concurrently. For the sake of simplicity, here it is assumed that $\mu$ = 1.
-
-Now the above production and maintenance work-loads and task performance of robots need to converted into a unit task-urgency scale. The manufacturing operation can be divided into two subsequent stages: 1) \acfi{PMM}, and 2) \acfi{MOM}. Initially a machine starts working in PMM and does production and maintenance works concurrently. When there is no production work left, then it  enters into MOM. Fig. \ref{fig:vsp} illustrates this scenario for a single machine.
-
-Under both modes, let $\alpha_{j}$ be the amount of workload occurs in a unit time-step if no robot serves a task and it corresponds to a fixed task-urgency $\Delta \phi_{INC}$. On the other hand, it is assumed that in each time-step, a robot, $i$, can decrease a constant workload $\beta_{i}$ by doing some maintenance work along with doing any available production work. This  corresponds to a negative task urgency: $- \Delta \phi_{DEC}$. So, at the beginning of production process, task-urgency, occurred in a machine due to its production work-loads, can be encoded by Eq. \ref{eqn:task-urgency-prod-init}.
+Fig. \ref{fig:vsp} illustrates this scenario for a single machine. Under both modes, let $\alpha_{j}$ be the amount of workload occurs in a unit time-step if no robot serves a task and it corresponds to a fixed task-urgency $\Delta \phi_{INC}$. On the other hand, it is assumed that in each time-step, a robot, $i$, can decrease a constant workload $\beta_{i}$ by doing some maintenance work along with doing any available production work. This  corresponds to a negative task urgency: $- \Delta \phi_{DEC}$. So, at the beginning of production process, task-urgency, occurred in a machine due to its production work-loads, can be encoded by Eq. \ref{eqn:task-urgency-prod-init}.
 \begin{equation}
 %\small
 \Phi_{j, INIT}^{PMM} = \Omega_{j}^{p} \times \Delta \phi_{INC} + \phi_{j}^{m0}
@@ -262,12 +265,6 @@ Thus, in order to observe the above properties of self-regulated MRTA, the follo
 \end{center}
 \end{table}
 %-------------------------------------------------------------------- 
-\begin{figure}
-\centering
-\includegraphics[height=7cm, angle=0]{./images/CentralizedComm.eps}
-\caption{\small A centralized communication scheme} % for implementing AFM}
-\label{fig:ccm} % Give a unique label
-\end{figure}
 \subsection{Parameters}
 Table \ref{table:params} lists a set of essential parameters of the experiments. A relatively complex environment has been set-up, i.e., a high number of robots and tasks in a large area. The diameter of the marker of e-puck robot is 0.08m. So, if 4 robots are put in an area of one square meter, this will give a robot-occupied-space to free-space ratio of about 1:49 per square meter. This ratio is reasonable in order to allow the robots to move at a speed of 5 cm/sec without much interference to each other. 
 
@@ -289,18 +286,16 @@ Eq. \ref{eqn:sensitization} suggests that the learning will happen much faster t
 \section{Implementation}
 \label{afm:impl}
 %%
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth, angle=0]
-{./dia-files/RIL-Expt-Setup1.eps}
-%figure caption is below the figure
-\caption{Hardware and software setup for series A \& B experiments}
-\label{fig:RIL-Expt-Setup1} % Give a unique label
-\end{figure}
-%%
 Ideally, AFM can be implemented as a complete distributed task-allocation system where each agent selects its own task based on its own external perception about task-urgencies (i.e. attractive fields),  distances from tasks and internal task-sensitisation records. Such an implementation requires powerful robots with sophisticated sensors (camera, laser etc.) and sufficient computation and communication  capabilities. In that case, robots can keep  task-urgency information up-to-date  through suitable local communication  schemes with their peers who can monitor the tasks. By using suitable navigation and mapping modules, they can also accurately calculate the distances from tasks and navigate to tasks autonomously. Moreover, they also require necessary hardware to do the actual task, e.g. gripper for pick-up tasks.
 
 However, in this study has been undertaken to find the suitable communication schemes that can effectively spread the attractive fields (task-urgencies) among robots. So the complexities of a full-fledged implementation have been simplified by using a centralized communication system  that effectively makes up the limitations of e-puck robots.  For example, these robots are not  capable of sensing a task to estimate its urgencies, instead a centralized {\em task-perception server (TPS)} broadcast task information, e.g. task-urgencies, locations etc. to robots in certain time intervals. Within this interval, if some robots work on a task, they independently send their status, i.e. which task they are currently doing. From this status message,  TPS can re-calculate the task-urgencies and send them in next broadcast. 
+%%
+\begin{figure}[H]
+\centering
+\includegraphics[height=7cm, angle=0]{./images/CentralizedComm.eps}
+\caption{\small A centralized communication scheme} % for implementing AFM}
+\label{fig:ccm} % Give a unique label
+\end{figure}
 
 Fig. \ref{fig:ccm} shows how three robots are attracted to two different tasks and their communications with TPS. Here although the robots are selecting task independently based-on the strength of their attractive fields to different tasks, they are depended on the TPS for task-information.
 
@@ -309,6 +304,15 @@ This centralized communication system can be converted into a decentralized one 
 In this implementation, instead of doing any real work with powerful robots,  a mock manufacturing shop-floor scenario has been emulated that requires the robot only to travel among tasks. As discussed in Sec. \ref{expt-tools:btcom}, e-puck robots do not have on-board CPU, they need a host PC to  control them using BTCom communication protocol. Thus the host-PC  runs one RCC for each physical robot. These RCCs also rely upon SwisTrack multi-robot tracking system for updating their real-time pose. So although AFM based MRTA solution is distributed by design,  a centralized approach has been used to implement it due to the limitations of e-puck robots and the convenience of implementation. Below the actual implementations of these components is described, such as D-Bus communication interfaces and detail implementations of TPS and RCC.
 %%---------------------------------------------------------------
 \subsection{D-Bus communication interfaces}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth, angle=0]
+{./dia-files/RIL-Expt-Setup1.eps}
+%figure caption is below the figure
+\caption{Hardware and software setup for series A \& B experiments}
+\label{fig:RIL-Expt-Setup1} % Give a unique label
+\end{figure}
+%%
 A centralized communication system  interfaces among SwisTrack, TPS and RCC as shown in Fig. \ref{fig:RIL-Expt-Setup1}. The communication protocol is based on D-Bus IPC. As discussed in Sec. \ref{expt-tools:dbus}, each message is a D-Bus signal (similar to Fig. \ref{fig:dbus-signal-protocol}). The characteristics of these messages are discussed below.\\
 %%
 \textbf{\texttt{RobotPose}:} SwisTrack emits this D-Bus signal and its payload contains individual robot's pose data: robot-pose x-coordinate,  y-coordinate and robot orientation (theta). The type of each data is \texttt{DBUS\_TYPE\_DOUBLE} (IEEE 754 double). In this study SwisTrack  has been extended by adding a D-Bus signal emitter module which emits this signal in every image-processing cycle. The typical duration of each cycle varies from 1 to 2 seconds.  Swistrack extracts robot-pose from the image frame considering top-left corner of image as origin and it derives  theta from the relative position of the monochrome robot-marker from the image. SwisTrack's id-pose detection algorithms handles the complexities of finding the accurate robot-pose. \texttt{RobotPose} signal is sent to RCC using robot-id based separate D-Bus paths. e.g. \texttt{/robot1}, \texttt{/robot2} etc.  But all \texttt{RobotPose} signals are emitted in same D-Bus interface \texttt{uk.ac.newport.ril.SwisTrack}. In order to get pose data, each RCC filters this D-Bus signal using this interface and self-id based path.\\
@@ -500,8 +504,9 @@ This algorithm acts upon the task-urgency data of each task and updates it based
 In this section experimental results  have been presented. Those experiments were up and running for about 40 minutes and average was taken from five iterations for both Series A and B. 
 %%-------------------------------------------------
 \subsection*{Shop-floor work-load history}
-In these experiments, shop-floor work-load is defined  in terms of task urgencies. For example, Eq. \ref{eqn:task-urgency-prod-init} shows how initial production work-load of the manufacturing shop-floor scenario can be calculated. Fig. \ref{fig:raw-urgencies-SA} and Fig. \ref{fig:raw-urgencies-SB}  show the dynamic changes in task-urgencies for the single iteration of Series A and Series B experiments respectively. The fluctuations in these plots are resulted from the different levels of task-performance of e-puck robots.
-\begin{figure}
+In these experiments, shop-floor work-load is defined  in terms of task urgencies. For example, Eq. \ref{eqn:task-urgency-prod-init} shows how initial production work-load of the manufacturing shop-floor scenario can be calculated.
+%%
+\begin{figure}[H]
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[height=8cm, angle=0]
@@ -518,14 +523,16 @@ In these experiments, shop-floor work-load is defined  in terms of task urgencie
 \label{fig:raw-urgencies-SB} 
 %\end{minipage}
 \end{figure}
+
+Fig. \ref{fig:raw-urgencies-SA} and Fig. \ref{fig:raw-urgencies-SB}  show the dynamic changes in task-urgencies for the single iteration of Series A and Series B experiments respectively. The fluctuations in these plots are resulted from the different levels of task-performance of e-puck robots.
+
 In order to measure the task-related work-loads on the system   the changes in all task-urgencies are summed up over time.  This called as {\em shop-floor work-load history} and formalized as follows. Let $ \phi_{j, q}$ be the urgency of a task $j$ at $q^{th}$ step and $\phi_{j, q+1}$ be the task urgency of $(q+1)^{th}$ step. The sum of changes in urgencies of all $M$ tasks  can be calculated at $(q+1)^{th}$ step:
 \begin{equation} 
 \Delta \Phi_{j, q+1} = \sum_{j=1}^{M} (\phi_{j, q+1} - \phi_{j, q})
 \label{eqn:Delta-Phi}
 \end{equation}
-Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} show the dynamic shop-floor workload for Series A and Series B experiments respectively. From these plots, it can be seen that initially the sum of changes of task urgencies (shop-floor workload) is going towards negative direction. This implies that tasks are being served by a high number of robots. 
 %%
-\begin{figure}
+\begin{figure}[H]
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[height=8cm, angle=0]
@@ -543,10 +550,11 @@ Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} show the dynam
 %\end{minipage}
 \end{figure}
 %%
+Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} show the dynamic shop-floor workload for Series A and Series B experiments respectively. From these plots, it can be seen that initially the sum of changes of task urgencies (shop-floor workload) is going towards negative direction. This implies that tasks are being served by a high number of robots.
 %%----------------------------------------------------------------
 \subsection*{Ratio of active workers}
 %%
-\begin{figure}
+\begin{figure}[H]
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[height=8cm, angle=0]
@@ -568,7 +576,9 @@ Fig. \ref{fig:urgency-stat-SA} and Fig. \ref{fig:urgency-stat-SB} show the dynam
 From both Fig. \ref{fig:worker-stat-SA} and Fig. \ref{fig:worker-stat-SB}, one can  see that in production stage, when work-load is high, many robots are active in tasks. Here active workers ratio is the ratio of those robots that work on tasks to the total number of robots $N$ of a particular experiment.   Here one can see that this ratio varies according to the shop-floor work-load changes.
 %%-------------------------------------------------------------
 \subsection*{Shop-task performance}
-\begin{figure}
+In the manufacturing shop-floor scenario, the APCD\\ and APMW for both Series A and Series B experiments have been calculated. For Series An average production completion time is found at 111 time-step (555s) where sample size is (5 x 2) = 10 tasks, SD = 10 time-steps (50s). According to Eq. \ref{eqn:min-pmm}, the theoretical minimum production completion time is 50 time-steps (250s) assuming the non-stop task performance of all 8 robots with an initial task urgency of 0.5 for all 2 tasks and task urgency decrease rate $\Delta \Phi_{DEC }$ = 0.0025 per robot per time-step.  Hence, Eq. \ref{eqn:appd} gives APCD, $\zeta$ = 1.22 which means that in Series A experiments, it took 1.22 times more time (305s) than the estimated minimum production completion time (250s). For Series B, average production completion time is 165 time-steps (825s) where sample size is (5 x 4) = 20 tasks, SD = 72 time-steps (360s).  Hence, Eq. \ref{eqn:appd} gives APCD, $\zeta$ = 2.3.
+%% 
+\begin{figure}[H]
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[height=7cm, angle=0]{images/apcd-SA-SB.eps}
@@ -586,7 +596,7 @@ From both Fig. \ref{fig:worker-stat-SA} and Fig. \ref{fig:worker-stat-SB}, one c
 %\end{minipage}
 \end{figure}
 %%
-In the manufacturing shop-floor scenario, the APCD\\ and APMW for both Series A and Series B experiments have been calculated. For Series An average production completion time is found at 111 time-step (555s) where sample size is (5 x 2) = 10 tasks, SD = 10 time-steps (50s). According to Eq. \ref{eqn:min-pmm}, the theoretical minimum production completion time is 50 time-steps (250s) assuming the non-stop task performance of all 8 robots with an initial task urgency of 0.5 for all 2 tasks and task urgency decrease rate $\Delta \Phi_{DEC }$ = 0.0025 per robot per time-step.  Hence, Eq. \ref{eqn:appd} gives APCD, $\zeta$ = 1.22 which means that in Series A experiments, it took 1.22 times more time (305s) than the estimated minimum production completion time (250s). For Series B, average production completion time is 165 time-steps (825s) where sample size is (5 x 4) = 20 tasks, SD = 72 time-steps (360s).  Hence, Eq. \ref{eqn:appd} gives APCD, $\zeta$ = 2.3. Fig. \ref{fig:apcd-SA-SB} shows the APCD for both Series A and Series B experiments. \\
+Fig. \ref{fig:apcd-SA-SB} shows the APCD for both Series A and Series B experiments. \\
 %%
 For APMW, Series A experiments give an average time length of 369 time-steps (1845s).  In this period APMW is calculated and it corresponds to 1 time-step with SD = 1 time-step (5s) and $\Delta \Phi_{INC}$ = 0.005 per task per time-step. This shows a very low APMW ($\chi$ = 0.000235) and a very high robustness of the system. For Series B experiments, from the average 315 time-steps (1575s) maintenance activity of robots per experiment run,  APMW has become $\chi$ = 0.012756 which corresponds to the pending work of 3 time-steps (15s) where SD = 13 time-steps (65s). This tells the robust task performance of e-puck robots which can return to an abandoned task within a minute or so. Fig. \ref{fig:apmw-SA-SB} plots the APMW for both Series A and Series B experiments. 
 %%-------------------------------------------------
@@ -606,7 +616,7 @@ Q^G_{avg}= \frac{1}{N}\sum_{i=1}^{N} q^i_{k=k_{max}}
 \end{equation}
 In Eq. \ref{eqn:Q-G}, $q^i_{k=k_{max}}$ represents the time-step of robot $r_i$  where its sensitization value $k$ reaches the peak $k_{max}$ as discussed above. By averaging this peak time-step values of all robots one can have an overall idea of how many task-execution cycles are spent to reach the maximum task-specialization value $K^G_{avg}$.
 %% S-A
-\begin{table}
+\begin{table}[H]
 \centering
 \caption{Peak task-sensitization values of robots in a Series A experiment.}
 % 30Apr expt.
@@ -626,7 +636,7 @@ In Eq. \ref{eqn:Q-G}, $q^i_{k=k_{max}}$ represents the time-step of robot $r_i$ 
 \label{table:K-G-SA}
 \end{table}
 %% S - B
-\begin{table}
+\begin{table}[H]
 \centering
 \caption{Peak task-sensitization values of robots in a Series B experiment.}
 \begin{tabular}{|c|c|c|c|}
@@ -655,9 +665,9 @@ In Eq. \ref{eqn:Q-G}, $q^i_{k=k_{max}}$ represents the time-step of robot $r_i$ 
 \end{tabular} 
 \label{table:K-G-SB}
 \end{table}
-Table \ref{table:K-G-SA} and Table \ref{table:K-G-SB} show sample peak sensitization values of Series A and Series B experiments respectively.  Based on Eq. \ref{eqn:K-G} and Eq. \ref{eqn:Q-G},  the peak task-sensitization $K^G_{avg}$ values are found as 0.40 (SD=0.08)  and 0.30 (SD=0.03), and their respective time-step $Q^G_{avg}$ values: 38 (SD=13) and 18 (SD=5) time-step.  They are shown in Fig. \ref{fig:K-G-SA-SB} and Fig. \ref{fig:Q-G-SA-SB}. Here one can see that the robots in Series A had higher chances of task-specialization than that of Series B experiments.
+Table \ref{table:K-G-SA} and Table \ref{table:K-G-SB} show sample peak sensitization values of Series A and Series B experiments respectively.  Based on Eq. \ref{eqn:K-G} and Eq. \ref{eqn:Q-G},  the peak task-sensitization $K^G_{avg}$ values are found as 0.40 (SD=0.08)  and 0.30 (SD=0.03), and their respective time-step $Q^G_{avg}$ values: 38 (SD=13) and 18 (SD=5) time-step. 
 %%
-\begin{figure}
+\begin{figure}[H]
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[height=7cm, angle=0]{images/K-G-SA-SB.eps}
@@ -674,8 +684,11 @@ Table \ref{table:K-G-SA} and Table \ref{table:K-G-SB} show sample peak sensitiza
 \label{fig:Q-G-SA-SB} 
 %\end{minipage}
 \end{figure}
+
+They are shown in Fig. \ref{fig:K-G-SA-SB} and Fig. \ref{fig:Q-G-SA-SB}. Here one can see that the robots in Series A had higher chances of task-specialization than that of Series B experiments.
+
 %% ------ Single robot----
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth, angle=0]{images/TaskSpecialization-task3-10may-1.eps}
 \caption{Task specialization on Task3 for a Series B experiment.}
@@ -690,28 +703,27 @@ The changes in translation motion of all robots  have been aggregated over time.
 \Delta U_{q+1} = \sum_{i=1}^{N} \delta u_{i, q+1} 
 \label{eqn:Delta-Tr}
 \end{equation}
-%%
-\begin{figure*}
+%%%%
+\begin{figure*}[H]
 %\begin{minipage}[t]{0.5\linewidth}
 \centering
-\includegraphics[height=8cm]{images/global-8robots/8robots-DeltaTranslationStat.eps}
+\includegraphics[height=7cm]{images/global-8robots/8robots-DeltaTranslationStat.eps}
 \caption{\small Sum of the translations of robots in Series A experiments}
 \label{fig:translation-stat-SA} % Give a unique label
 %\end{minipage}
 %\hspace{0.5cm}
 %\begin{minipage}[t]{0.5\linewidth}
 \centering
-\includegraphics[height=8cm]{images/global/DeltaTranslationStat.eps}
+\includegraphics[height=7cm]{images/global/DeltaTranslationStat.eps}
 \caption{\small Sum of the translations of robots in Series B experiments}
 \label{fig:translation-stat-SB} % Give a unique label
 %\end{minipage}
 \end{figure*}
-%%
 The results from Series A and Series B experiments are plotted in Fig. \ref{fig:translation-stat-SA} and Fig. \ref{fig:translation-stat-SB}. In this plot one can see that robot translations also vary over varying task requirements of tasks.
 %%%-------------------------------------------------
 \subsection*{Communication load}
 %%% Communication load %%%
-\begin{figure}
+\begin{figure}[H]
 %\begin{minipage}[t]{0.5\linewidth}
 \centering
 \includegraphics[height=8cm]
@@ -723,7 +735,7 @@ The results from Series A and Series B experiments are plotted in Fig. \ref{fig:
 %\begin{minipage}[t]{0.5\linewidth}
 \end{figure}
 %%
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[height=8cm]{images/Global-SignalingFreqStat.eps}
 \caption{\small Frequency of \texttt{TaskInfo} signalling in Series B experiments}

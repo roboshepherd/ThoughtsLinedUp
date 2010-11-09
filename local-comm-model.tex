@@ -10,7 +10,7 @@ In this study, the concepts of pheromone active-space of ants  have been used to
 In order to find a suitable  range (or radius) of communication and sensing,  many researchers proposed various models that is briefly discussed in Sec. \ref{bg:mrs-comm:key-issues}. Some researchers have stated that this range can be set at design time based on the capabilities of robots. Some other researchers have argued that they can be dynamically varied over time depending on the  cost of communication and sensing, e.g. density of peers, ambient noise in the communication channels, or even by aiming for maximizing information spread. In this study,  the former approach have been followed as it is assumed that typically robots will not have the precise hardware to dynamically vary their communication and sensing ranges. The issue of selecting the best communication range  has been left as a topic of future research.
 %%%%%%%%%%%%%%%%%%%%%
 %% FIG: COMM-THESIS
-%\begin{figure}
+%\begin{figure}[H]
 %\centering
 %\includegraphics[width=9cm, angle=0]
 %{./dia-files/robot-comm-strategies.eps}
@@ -92,11 +92,7 @@ Robot controller then executes the \textbf{UpdateTaskInfoDB()} that modified the
 \section{Experiment design}
 \label{local-comm:expt-design}
 %
-The local communication experiments follow a similar design of experimental parameters and observables of Series B experiments as outlined in Sec. \ref{afm:expt-design}. Table \ref{table:expt-design} highlights  major parameters of these experiments. Here, one can see that there are two new parameters in Series C and Series D experiments, i.e. communication and sensing ranges. For the sake of simplicity, both of these values are kept same in both series of experiments.\\
-%% 
-Series D uses larger communication range that enables robots to capture more task information at a time. That is similar to  ``global sensing and global communication'' of information by the robots, since in a large group of robots, it is not practical that a robot communicates with all other robots. On the other hand, Series C uses the half of the range values of Series D. This enables e-puck robots to capture less information, that mimics a true LSLC strategy. The main motivation for using two different ranges is to find any significant difference in performance from these two types of experiments.
-%%
-\begin{table}
+\begin{table}[H]
 \caption{Experimental parameters of Series C \& D experiments}
 \label{table:expt-design}
 \begin{center}
@@ -122,10 +118,14 @@ Series D uses larger communication range that enables robots to capture more tas
 \end{center}
 \end{table}
 %
+The local communication experiments follow a similar design of experimental parameters and observables of Series B experiments as outlined in Sec. \ref{afm:expt-design}. Table \ref{table:expt-design} highlights  major parameters of these experiments. Here, one can see that there are two new parameters in Series C and Series D experiments, i.e. communication and sensing ranges. For the sake of simplicity, both of these values are kept same in both series of experiments.\\
+%% 
+Series D uses larger communication range that enables robots to capture more task information at a time. That is similar to  ``global sensing and global communication'' of information by the robots, since in a large group of robots, it is not practical that a robot communicates with all other robots. On the other hand, Series C uses the half of the range values of Series D. This enables e-puck robots to capture less information, that mimics a true LSLC strategy. The main motivation for using two different ranges is to find any significant difference in performance from these two types of experiments.
+%
 %%========================================================================
 \section{Implementation}
 \label{sec:impl}
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth, angle=0]
 {./dia-files/RIL-Expt-Setup2.eps}
@@ -133,7 +133,7 @@ Series D uses larger communication range that enables robots to capture more tas
 \caption{\small Hardware and software setup under local communication experiments.}
 \label{fig:local-setup} 
 \end{figure}
-On top  of the base implementation of a multi-robot system,   LPCM has been fitted into an extension of it. The additional communication interfaces and changes in RCC and TPS implementation are mentioned here. The details  of the multi-robot system implementation can be found in Sec. \ref{afm:impl}. 
+As outlined in Fig. \ref{fig:local-setup}, on top  of the base implementation of a multi-robot system,   LPCM has been fitted into an extension of it. The additional communication interfaces and changes in RCC and TPS implementation are mentioned here. The details  of the multi-robot system implementation can be found in Sec. \ref{afm:impl}. 
 %%%
 \subsection*{Additional communication interfaces under LPCM}
  three new D-Bus signal interfaces  have been added in this version of implementation. They are briefly discussed below.\\
@@ -154,9 +154,8 @@ In the base implementation TPS periodically broadcasts \texttt{TaskInfo }signals
 Below the results from Series C and Series D experiments are organized by following the organization of results in Chapter \ref{afm}.
 %-----------------------------------------------------------------
 \subsection*{Shop-floor work-load history}
-The sample raw task-urgencies of Series C and Series D experiments are shown in Fig. \ref{fig:raw-urgencies-SC-SD}. In case of Series D, one can see that an unattended task, \textit{Task4}, was not served by any robot for a long period and later it was picked up by some of the robots. 
 %%% raw urgencies
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]
@@ -167,9 +166,11 @@ The sample raw task-urgencies of Series C and Series D experiments are shown in 
 \caption{\small Task-urgencies observed in (a) Series C and (b) Series D experiments}
 \label{fig:raw-urgencies-SC-SD} 
 \end{figure}
-%%
+
+The sample raw task-urgencies of Series C and Series D experiments are shown in Fig. \ref{fig:raw-urgencies-SC-SD}. In case of Series D, one can see that an unattended task, \textit{Task4}, was not served by any robot for a long period and later it was picked up by some of the robots. 
+
 %% – Workload
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]
@@ -186,7 +187,7 @@ The dynamic shop floor work-load is shown in Fig. \ref{fig:workload-SC-SD}. Thes
 %%----------------------------------------------------------------
 \subsection*{Ratio of active workers}
 % Plasticity
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]
@@ -202,26 +203,25 @@ The active worker ratios of both Series C and Series D experiments are plotted i
 %%
 %%-------------------------------------------------------------
 \subsection*{Shop-task performance}
-The task-performance of the manufacturing shop-floor scenario under both Series C and Series D experiments are plotted in Fig. \ref{fig:vms-SC-SD}. 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{0.5cm}
 \subfloat[APCD]
-{\includegraphics[height=8cm]{images/apcd-SC-SD.eps}}
+{\includegraphics[height=7cm]{images/apcd-SC-SD.eps}}
 \newline
 \subfloat[APMW]
-{\includegraphics[height=8cm]{images/apmw-SC-SD.eps}}
+{\includegraphics[height=7cm]{images/apmw-SC-SD.eps}}
 \caption{\small Task-performance of the shop-floor manufacturing scenario (a) APCD and (b) APMW}
 \label{fig:vms-SC-SD} 
 \end{figure}
-For Series C  average production completion time is found as 121 time-steps (605s) with SD = 36 time-steps (180s). For Series D,  average production completion time is 123 time-steps (615s) with SD = 40 time-steps (200s). According to Eq. \ref{eqn:min-pmm}, the theoretical minimum production completion time is 50 time-steps (250s) as discussed in Sec \ref{afm:results}.  The values of APCD are as follows. For Series C, $\zeta$ = 1.42 and for Series D, $\zeta$ = 1.46. For both series of experiments APCD values are very close.\\
-%%
+The task-performance of the manufacturing shop-floor scenario under both Series C and Series D experiments are plotted in Fig. \ref{fig:vms-SC-SD}. For Series C  average production completion time is found as 121 time-steps (605s) with SD = 36 time-steps (180s). For Series D,  average production completion time is 123 time-steps (615s) with SD = 40 time-steps (200s). According to Eq. \ref{eqn:min-pmm}, the theoretical minimum production completion time is 50 time-steps (250s) as discussed in Sec \ref{afm:results}.  The values of APCD are as follows. For Series C, $\zeta$ = 1.42 and for Series D, $\zeta$ = 1.46. For both series of experiments APCD values are very close.
+
 For APMW, Series C experiments give an average time length of 359 time-steps (1795s). In this period  calculated APMW is 5 time-steps with SD = 17 time-steps and $\chi$ = 0.023420. For Series D experiments, from the average 357 time-steps (1575s) of maintenance activity of e-puck robots per experiment run, APMW, $\chi$ is 0.005359 which corresponds to the pending work of 2 time-steps (10s) where SD = 7 time-steps.
 %%-------------------------------------------------
 \subsection*{Task specializations}
 %% Task-sepecialization
 % Series C raw data
-\begin{table}
+\begin{table}[H]
 \centering
 \caption{Peak task-sensitization values of robots in a Series C experiment.}
 % 16Feb-1 expt
@@ -250,8 +250,28 @@ For APMW, Series C experiments give an average time length of 359 time-steps (17
 \end{tabular} 
 \label{table:K-Q-SC}
 \end{table}
+Table \ref{table:K-Q-SC} and Table \ref{table:K-Q-SD} show two sets of sample peak sensitization values of Series C and Series D experiments respectively. Based on Eq. \ref{eqn:K-G} and Eq. \ref{eqn:Q-G}, the peak task-sensitization $K^G_{avg} 
+$ values are 0.39 (SD=0.17) and 0.27 (SD=0.10), and their respective time-step $Q^G_{avg}$ values: 13 (SD=7) and 11 (SD=5) time-step. 
+\begin{figure}[H]
+%\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=8cm, angle=0]{images/K-G-SC-SD.eps}
+\caption{ Overall task-specialization of robot groups.}
+\label{fig:K-G-SC-SD} 
+%\end{minipage} 
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[height=8cm, angle=0]
+{images/Q-G-SC-SD.eps}
+\caption{Time-steps to reach the peak values of task-specialization}
+\label{fig:Q-G-SC-SD} 
+%\end{minipage}
+\end{figure}
+
+They are shown in Fig. \ref{fig:K-G-SC-SD} and Fig. \ref{fig:Q-G-SC-SD}. Here one can see that the robots in Series C exhibited higher task-specialization than that of Series D experiments.
 %% Series D
-\begin{table}
+\begin{table}[H]
 \centering
 \caption{Peak task-sensitization values of robots in a Series D experiment.}
 %% 17 feb-1 expt
@@ -281,29 +301,10 @@ For APMW, Series C experiments give an average time length of 359 time-steps (17
 \label{table:K-Q-SD} 
 \end{table}
 %%
-\begin{figure}
-%\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=8cm, angle=0]{images/K-G-SC-SD.eps}
-\caption{ Overall task-specialization of robot groups.}
-\label{fig:K-G-SC-SD} 
-%\end{minipage} 
-%\hspace{0.5cm}
-%\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[height=8cm, angle=0]
-{images/Q-G-SC-SD.eps}
-\caption{Time-steps to reach the peak values of task-specialization}
-\label{fig:Q-G-SC-SD} 
-%\end{minipage}
-\end{figure}
-%%
-Table \ref{table:K-Q-SC} and Table \ref{table:K-Q-SD} show two sets of sample peak sensitization values of Series C and Series D experiments respectively. Based on Eq. \ref{eqn:K-G} and Eq. \ref{eqn:Q-G}, the peak task-sensitization $K^G_{avg} 
-$ values are 0.39 (SD=0.17) and 0.27 (SD=0.10), and their respective time-step $Q^G_{avg}$ values: 13 (SD=7) and 11 (SD=5) time-step. They are shown in Fig. \ref{fig:K-G-SC-SD} and Fig. \ref{fig:Q-G-SC-SD}. Here one can see that the robots in Series C exhibited higher task-specialization than that of Series D experiments.
 %%-------------------------------------------------
 \subsection*{Robot motions}
 %%%%% Traslation local 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]{\includegraphics[height=7.5cm]
@@ -320,7 +321,7 @@ The changes in translation motion of all robots have been aggregated over time f
 %%-------------------------------------------------
 \subsection*{Communication load}
 %%% Communication load %%%
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]{\includegraphics[height=8cm]
@@ -333,7 +334,7 @@ The changes in translation motion of all robots have been aggregated over time f
 \end{figure}
 %
 %%%% Single robot- number of peers
-\begin{figure}
+\begin{figure}[H]
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]{\includegraphics[height=8cm]{images/local-500cm/Robot12-16feb-1-LocalSignals.eps}}
@@ -347,7 +348,7 @@ As an example of P2P signal reception of a robot,  Fig. \ref{fig:local-single-ro
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparison of centralized and local communication experiments}
 \label{local-comm:discuss}
-\begin{table}
+\begin{table}[H]
 %\begin{scriptsize}
 \begin{center}
 \caption{Shop-floor production and maintenance task performance}
@@ -365,10 +366,10 @@ As an example of P2P signal reception of a robot,  Fig. \ref{fig:local-single-ro
 \end{table}
 Results from Series C and Series D experiments show many similarities and differences with respect to the results of Series A and Series B experiments. As shown in Table \ref{table:vsp-cmp}  both Series C and Series D experiments show similar APCD values: 1.42 and 1.46 respectively, which are significantly less than Series B experiment result (APCD = 2.3) and are close to Series A experiment result (APCD = 1.22). This means that for large group, task-performance  is efficient under LSLC strategy (Series C and Series D) comparing with their GSNC counterpart (Series B).
 %%
-\begin{table}
+\begin{table}[H]
 %\begin{scriptsize}
 \begin{center}
-\caption{\small Task-specialization values of the robots}
+\caption{Task-specialization values of the robots}
 \begin{tabular}{|p{0.7in}|p{0.7in}|m{0.7in}|c|m{0.7in}|}
 \hline Experiment \protect\newline Series & $ K^G_{avg}$ (SD) & \textit{ p-value} \protect\newline 1-tailed t-test (confidence)  & $ Q^G_{avg}$ (SD) & \textit{ p-value} \protect\newline 1-tailed t-test \protect\newline (confidence) \\ 
 \hline A & 0.40 (0.08)& 0.0 & 38 (13) & 0.001 (99.8\%)\\ 
@@ -383,7 +384,7 @@ Results from Series C and Series D experiments show many similarities and differ
 \end{table}
 Besides, in terms of task-specialization as shown in Table \ref{table:k-cmp}, the overall task-specialization of group in Series C ($K^G_{avg}$ = 0.4) is  closer to that of Series A experiments ($K^G_{avg}$ = 0.39) and interestingly, the value of  Series D ($K^G_{avg}$ = 0.27) is  much closer to that of Series B experiments ($K^G_{avg}$ = 0.30). So task-specialization in large group under LSLC strategy shows higher performance than their GSNC counter part. Besides task-specialization happens much faster under LSLC strategy as it can be seen that the average time to reach peak sensitization values  of the group,  $Q^G_{avg}$ in Series C is lower than that of Series A values by 25 time-steps.
 
-\begin{table}
+\begin{table}[H]
 %\begin{small}
 \begin{center}
 \caption{Sum of translations of robots in our experiments.}

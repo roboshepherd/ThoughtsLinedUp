@@ -7,7 +7,7 @@
 \subsection{MRS research paradigms}
 \label{bg:mrs:paradigms}
 %%% Earliest multi-robot system
-\begin{figure}
+\begin{figure}[H]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
@@ -28,10 +28,8 @@ Historically the concept of multi-robot system comes almost after the introducti
 
 At the same time, \citeasnoun{Braitenberg1984} described a set of experiments where increasingly complex vehicles could be built from simple mechanical and electrical components. Around the same time and with similar principles, \citeasnoun{Reynolds1987} developed a distributed behavioural model for a bird in a flock that assumed that a flock is simply the result of the interactions among the individual birds (see Sec.  \ref{bg:mrs:srs}). 
 
-Early researches on multi-robot systems also include the concept of cellular robotic system \cite{Fukuda+1987,Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}. Fig. \ref{fig:mataric-nerd-herd} and \ref{fig:kube-box-pushing} present the two earliest multi-robot systems in foraging and box-pushing task domains, developed by two pioneers in this filed, \citeasnoun{Mataric1994} and \citeasnoun{Kube1997} respectively.
-
 % FIG: Multi-robot in emergency
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[A disaster site: buring oil rig]{\includegraphics[width=6cm, height=4cm]{./photos/burning-oil-rig-explosion-fire-photo11.eps}} 
 \hspace{0.25cm}
@@ -40,8 +38,11 @@ Early researches on multi-robot systems also include the concept of cellular rob
 (b) IRobot's Seaglider fleet that was surveying oil spill in the Gulf of Mexico at depths of up to 1,000 meters. From http:///www.irobot.com, reported on 25/05/2010.}
 \label{fig:bp-oil-disaster}
 \end{figure}
+
+Early researches on multi-robot systems also include the concept of cellular robotic system \cite{Fukuda+1987,Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}. Fig. \ref{fig:mataric-nerd-herd} and \ref{fig:kube-box-pushing} present the two earliest multi-robot systems in foraging and box-pushing task domains, developed by two pioneers in this filed, \citeasnoun{Mataric1994} and \citeasnoun{Kube1997} respectively.
+
 %% FIG: Robocup
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[Robot teams at Robocup soccer]{\includegraphics[width=6cm, height=4cm]{./photos/robocup_bbc_41132545_robotbody2.eps}} 
 \hspace{0.25cm}
@@ -94,7 +95,7 @@ The taxonomy of \citeasnoun{Gerkey+2004} defines three axes of possible tasks an
 \subsubsection*{Taxonomy of interaction in multi-robot teams} 
 In addition to the above two classes of taxonomies, here \possessivecite{Parker2008} notion of {\em interaction} in a robot team has been described in four levels: 1) collective, 2) cooperative 3) collaborative and 4) coordinative. 
 %% Fig interaction
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=9cm, angle=0]
 {./images/ch2/parker-interaction-classification.eps}
@@ -125,7 +126,7 @@ Beyond this four most common types of interactions another kind of interaction c
 In this dissertation, the taxonomy of \citeasnoun{Dudek+2002} has been used for specifying a multi-robot system (Sec. \ref{expt-tools:mrs-design}). The taxonomy of \citeasnoun{Parker2008} is used to analyse the dependence of multi-robot system on various levels of interactions in Sec. \ref{bg:mrta}. 
 %%
 % FIG: Multi-robot indoor and outdoor operations
-\begin{figure}
+\begin{figure}[H]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
@@ -146,10 +147,10 @@ In this dissertation, the taxonomy of \citeasnoun{Dudek+2002} has been used for 
 \label{bg:mrs:mrs}
 %%
 %Challenges of multi-robot system
-Multi-robot systems not only share the problem of controlling a single robot but also amplify the problem to several orders of magnitude. Below a few major challenges of any multi-robot system are listed:
+Multi-robot systems not only share the problem of controlling a single robot but also amplify the problem to several orders of magnitude, for example in case of hundreds of Centibots robots as shown in Fig. \ref{fig:centibots-indoor}. Below a few major challenges of any multi-robot system are listed:
 \begin{itemize}
 \item \textbf{Increased uncertainty about environment:}
-When multiple robots work in a partially observable world, the environmental view becomes severely restricted due to both in terms of noisy sensor readings and frequent obstacle detections. Thus, in multi-robot system, the uncertainty about the environment increased in many folds.
+When multiple robots work in a partially observable world, the environmental view becomes severely restricted due to both in terms of noisy sensor readings and frequent obstacle detections. Thus, in multi-robot system, the uncertainty about the environment increased in many folds (an example is shown in Fig. \ref{fig:pioneers-outdoor}).
 %
 \item \textbf{Increased dynamic changes of the environment:}
 Since many robots work in a shared environment, the dynamic movements and physical interferences among the robots become more frequent. So robots are required to change their course of action more frequently.
@@ -180,23 +181,32 @@ Whatever be the principle characteristics of a multi-robot system, e.g., homogen
 %-----------------------------
 \subsection*{Architecture and control}
 \label{bg:mrs:arch}
+%%
+In multi-robot system, two high-level control strategies are very common: 1) centralized and 2) decentralized or distributed. Under a specific control strategy, traditionally three basic system architectures are widely adopted: deliberative, reactive and hybrid \cite{Arkin1998}. Deliberative systems based on central planning are well suited for the centralized control approach. The single controller makes a plan from its {\em sense-plan-act} loop by gathering the sensory information and each robot performs its part.
+%% FIG: foraging fsa
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=6cm,height=5cm]{./dia-files/foraging-fsa.eps} % The printed column width is 8.4 cm.
+\caption{Finite state machine for foraging task, reproduced from \protect\citeasnoun{Arkin1998}.} 
+\label{fig:foraging-fsa}
+\end{center}
+\end{figure}
+
+Reactive systems are widely used in distributed control where each robot executes its own controller maintaining a tight coupling between the system's sensors and actuators, usually through a set of well-designed behaviours. A finite state machine describing the behaviours of foraging tasks is shown in Fig. \ref{fig:foraging-fsa}. Here, various group behaviour emerges from the interactions of individuals that communicate and cooperate when needed. 
 %% FIG: three layer arch
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
 \includegraphics[width=5cm,height=6cm]{./images/ch2/three-layered.eps} % The printed column width is 8.4 cm.
 \caption{A typical hybrid robot control architecture, adopted from \protect\citeasnoun{Mataric2007}.} 
 \label{fig:three-layer-arch}
 \end{center}
 \end{figure}
-%%
-In multi-robot system, two high-level control strategies are very common: 1) centralized and 2) decentralized or distributed. Under a specific control strategy, traditionally three basic system architectures are widely adopted: deliberative, reactive and hybrid \cite{Arkin1998}. Deliberative systems based on central planning are well suited for the centralized control approach. The single controller makes a plan from its {\em sense-plan-act} loop by gathering the sensory information and each robot performs its part.
 
-Reactive systems are widely used in distributed control where each robot executes its own controller maintaining a tight coupling between the system's sensors and actuators, usually through a set of well-designed behaviours. Here, various group behaviour emerges from the interactions of individuals that communicate and cooperate when needed. 
-
-Hybrid systems are usually the mixture of the two above approaches; where each robot can run its own hybrid controller with the help of a plan with necessary information from all other robots. Behaviour-based control architecture can also be considered as a separate category of distributed control architecture, where each robot behaves according to a behaviour-based controller and can learn, adapt and contribute to improve and optimize the group-level behaviour  \cite{Mataric2007}.
+As shown in Fig. \ref{fig:three-layer-arch}, hybrid systems are usually the mixture of the two above approaches; where each robot can run its own hybrid controller with the help of a plan with necessary information from all other robots. Behaviour-based control architecture can also be considered as a separate category of distributed control architecture, where each robot behaves according to a behaviour-based controller and can learn, adapt and contribute to improve and optimize the group-level behaviour  \cite{Mataric2007}.
 %%
+Although most of the multi-robot system control architectures share some common characteristics (such as distributed and behaviour-based control strategy) based on their difference of underlying design principles  they have been put into three groups:
 %% FIG: ALLIANCE
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=12cm, angle=0]
 {./images/ch2/parker-alliance-arch.eps}
@@ -204,16 +214,6 @@ Hybrid systems are usually the mixture of the two above approaches; where each r
 \caption{ALLIANCE architecture. From \protect\citeasnoun{Parker1998}.}
 \label{fig:parker-alliance-arch} % Give a unique label
 \end{figure}
-%% FIG: foraging fsa
-\begin{figure}
-\begin{center}
-\includegraphics[width=6cm,height=5cm]{./dia-files/foraging-fsa.eps} % The printed column width is 8.4 cm.
-\caption{Finite state machine for foraging task, reproduced from \protect\citeasnoun{Arkin1998}.} 
-\label{fig:foraging-fsa}
-\end{center}
-\end{figure}
-%%
-Although most of the multi-robot system control architectures share some common characteristics (such as distributed and behaviour-based control strategy) based on their difference of underlying design principles  they have been put into three groups:
 \begin{enumerate}
 \item \textbf{Behaviour-based classical architectures: }
 The ALLIANCE architecture \cite{Parker1998} is one of the earliest behaviour-based fully distributed architectures (Fig. \ref{fig:parker-alliance-arch}). This architecture has used the mathematically modelled behaviour sets and motivational system. The primary mechanism for task selection of a robot is to activate the motivational behaviour partly based on the estimates of other robots behaviour. This architecture was designed for heterogeneous teams of robots performing loosely coupled tasks with fault-tolerance and co-operative control strategy. Broadcast of local eligibility  \cite{Werger2001} is another behaviour-based architecture that uses port-attributed behaviour technique through broadcast communication method. It was demonstrated to perform coordinated tasks, such as multi-target observation tasks. Similar to the above two architectures, many other researchers proposed and implemented many variants of behaviour-based architectures. Some of them used the classic three layer (plan-sequence-execute) approach, \cite{Simmons+2002} used a {\em layered architecture}.
@@ -237,17 +237,6 @@ Several learning techniques are available in robotics domain, such as reinforcem
 Mobile robot systems highly rely on precise localization for performing their autonomous activities in indoor or outdoor. Localization is the determination of exact pose (position and orientation) with respect to some relative or absolute coordinate system. This can be done by using proprioceptive sensors that monitor motion of a robot or exteroceptive sensors that provide information of world representation, such as  global positioning system (GPS) or indoor navigation system. Many other methods are also available, such as landmark recognition, cooperative positioning and other visual methods \cite{Arkin+2002}.
 
 Localization issue of multi-robot system also invites researchers to examine specific areas like exploration and map generation. In exploration problem, robots need to minimize the time needed to explore the given area. Many researchers use various kinds of exploration algorithms for solving this NP-hard problem, such as line-of-sight constrained exploration algorithm , collaborative multi-robot exploration \cite{Burgard+2000}. In mapping problem, mostly inaccurate localization information from teams of robots are accumulated and combined to generate a map by various techniques, such as probabilistic approaches \cite{Thurn+2000}.
-% FIG: Multi-robot indoor and outdoor operations
-\begin{figure}
-\centering
-\subfloat[Swarmbot]{\includegraphics[width=6cm, height=4cm]{./photos/jamesMcLurkin_SwarmbotAndSwarm.eps}} 
-\hspace{0.25cm}
-\subfloat[Robots detecting boundary]{\includegraphics[width=6cm, height=4cm]{./photos/james_fig-BoundaryDetection-Robots.eps}}
-\caption{ (a) A Swarmbot and the Swarms 
- (b) Swarmbots detecting boundary using distributed algorithms, from \protect\citeasnoun{Mclurkin+2009}.}
-\label{fig:swarmbot-boundary-detection}
-\end{figure}
-%%
 %%
 \subsection*{Example research areas of multi-robot system}
 \label{bg:mrs:eg}
@@ -277,12 +266,23 @@ In order to distinguish swarm robotics from other branches of robotics such as c
 ``Swarm robotics is the study of how large number of relatively simple physically embodied agents can be designed such that a desired collective behaviour emerges from the local interactions among agents and between the agents and the environment.'' 
 \end{quote}
 \sdp
+\begin{figure}[H]
+\centering
+\subfloat[Swarmbot]{\includegraphics[width=6cm, height=4cm]{./photos/jamesMcLurkin_SwarmbotAndSwarm.eps}} 
+\hspace{0.25cm}
+\subfloat[Robots detecting boundary]{\includegraphics[width=6cm, height=4cm]{./photos/james_fig-BoundaryDetection-Robots.eps}}
+\caption{ (a) A Swarmbot and the Swarms 
+ (b) Swarmbots detecting boundary using distributed algorithms, from \protect\citeasnoun{Mclurkin+2009}.}
+\label{fig:swarmbot-boundary-detection}
+\end{figure}
+%%
+
 And the notable criteria of swarm robotics research are listed as follows.
 \begin{enumerate}
 \item \textbf{Autonomous robots: }
 that exclude the sensor networks and may include metamorphic robotic system without having no centralized planning and control element.
 \item \textbf{Large number of robots: }
-usually $\geq$ 10 robots, or at least having provision for scalability if the group size is below this number.
+usually $\geq$ 10 robots, or at least having provision for scalability if the group size is below this number. As shown in Fig. \ref{fig:swarmbot-boundary-detection}, using hundreds of robots to form a swarm robotic team is not rare now a days.
 \item \textbf{Mostly homogeneous groups of robots: }
 that typically exclude the multi-robot soccer teams having heterogeneous robots.
 \item\textbf{ Relatively incapable of inefficient robots: }
@@ -290,9 +290,11 @@ so that the task complexity enforces either cooperation among robots or increase
 \item \textbf{Robots with local sensing and communication capabilities: } 
 that does not use global coordination channel to coordinate among themselves, rather enforces distributed coordination.
 \end{enumerate}
-%%%
+%%
+\subsubsection*{Classification and application of swarm robotic system}
+swarm robotic system can broadly be classified into two distinct classes. The first class consists of simple and relatively inexpensive mobile robots that are fully autonomous and can work in isolation. For example, e-puck robots \cite{Cianci+2004} fall under this class. Other class of robots include self-reconfigurable \cite{Fukuda+1987} and self-assembling robots which can be built by coupling several identical units together, e.g. a robotic snake. In this dissertation, only the former class of robots has been considered. 
 % FIG: Swarmbots demo
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[Swarmbots at exploration]{
 \includegraphics[width=6cm, height=4cm, angle=0]
@@ -304,10 +306,15 @@ that does not use global coordination channel to coordinate among themselves, ra
 \label{fig:swarmbots} % Give a unique label
 \end{figure}
 %%
-\subsubsection*{Classification and application of swarm robotic system}
-swarm robotic system can broadly be classified into two distinct classes. The first class consists of simple and relatively inexpensive mobile robots that are fully autonomous and can work in isolation. For example, e-puck robots \cite{Cianci+2004} fall under this class. Other class of robots include self-reconfigurable \cite{Fukuda+1987} and self-assembling robots which can be built by coupling several identical units together, e.g. a robotic snake. In this dissertation, only the former class of robots has been considered. Fig. \ref{fig:swarmbots} (a) shows amazing abilities of Swarmbots which are crossing a rough terrain. Fig \ref{fig:swarmbots} (b) shows another interesting demonstrations of swarm robotic system that a team of 18 Swarmbots pulls a child to a safe place.
+
+Fig. \ref{fig:swarmbots} (a) shows amazing abilities of Swarmbots which are crossing a rough terrain. Fig \ref{fig:swarmbots} (b) shows another interesting demonstrations of swarm robotic system that a team of 18 Swarmbots pulls a child to a safe place.
+%%
+\subsubsection*{Modelling swarm robotic system}
+Modelling both the behaviour of an individual robot controller and the overall system-level collective behaviours have become interesting issues. This is due to the fact that, in this kind of system, collective behaviours, e.g. flocking or aggregation, can significantly be changed by just changing one or few parameters of individual robot controllers. Modelling swarm robotic system can give an early insight about a target system before its implementation and any time-consuming simulation or expensive real-experiment.
+
+Plenty of approaches are available for modelling swarm robotic system \cite{Gazi+2006}. Most common modelling approaches include: behaviour-based approach, probabilistic models, potential-function based approach, asynchronous swarm models, multi-agent based swarm models.
 %% FIG: BOIDS
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[Separation]{\includegraphics[width=3cm, height=2cm]{./photos/boid-separation.eps}} 
 \hspace{0.25cm}
@@ -317,22 +324,18 @@ swarm robotic system can broadly be classified into two distinct classes. The fi
 \caption{ Reynold's simulated flocking of boids from \protect\citeasnoun{Reynolds1987}. (a) Separation: steer to avoid crowding local flockmates, (b) Alignment: steer towards the average heading of local flockmates and (c) Cohesion: steer to move toward the average position of local flock-mates. \protect\newline  From http://www.red3d.com/cwr/boids/, last seen on 01/06/2010.}
 \label{fig:boid-rules}
 \end{figure}
-%%
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[A flock of birds]{\includegraphics[width=6cm, height=4cm]{./photos/bird-flocking.eps}} 
 \hspace{0.25cm}
 \subfloat[Simulated boids]{\includegraphics[width=6cm, height=4cm]{./photos/boid-flocking.eps}}
 \caption{ (a) Real flocks of birds, from http://www.travelblog.org, and (b) simulated flock of birds, from http://www.red3d.com/cwr/boids, last seen on 01/06/2010.}
 \label{fig:flocking-birds}
-\end{figure}
-%%
-\subsubsection*{Modelling swarm robotic system}
-Modelling both the behaviour of an individual robot controller and the overall system-level collective behaviours have become interesting issues. This is due to the fact that, in this kind of system, collective behaviours, e.g. flocking or aggregation, can significantly be changed by just changing one or few parameters of individual robot controllers. Modelling swarm robotic system can give an early insight about a target system before its implementation and any time-consuming simulation or expensive real-experiment.
+\end{figure}%%
 
-Plenty of approaches are available for modelling swarm robotic system \cite{Gazi+2006}. Most common modelling approaches include: behaviour-based approach, probabilistic models, potential-function based approach, asynchronous swarm models, multi-agent based swarm models. Behaviour-based approach can be found in the study of \citeasnoun{Reynolds1987} who has simulated the flocking behaviours of birds. Fig. \ref{fig:boid-rules} illustrates how three simple rules can produce a coordinated flocking motion (Fig. \ref{fig:flocking-birds}(b)). From biological observation of flocking birds  it is obvious that collective behaviours can be generated through local control and interaction rules. Similar to this study, many other researchers tried to apply behaviours based on local strategy for formation control \cite{Balch+1998}, aggregation \cite{Mataric1995}, sorting \cite{Melhuish+1998}, foraging \cite{Liu+2007}, cooperative transport \cite{Kube1997} etc.
+Behaviour-based approach can be found in the study of \citeasnoun{Reynolds1987} who has simulated the flocking behaviours of birds. Fig. \ref{fig:boid-rules} illustrates how three simple rules can produce a coordinated flocking motion (Fig. \ref{fig:flocking-birds}(b)). From biological observation of flocking birds  it is obvious that collective behaviours can be generated through local control and interaction rules. Similar to this study, many other researchers tried to apply behaviours based on local strategy for formation control \cite{Balch+1998}, aggregation \cite{Mataric1995}, sorting \cite{Melhuish+1998}, foraging \cite{Liu+2007}, cooperative transport \cite{Kube1997} etc.
 %%
-\begin{figure}
+\begin{figure}[H]
 \centering
 \subfloat[Robots pulling sticks]{\includegraphics[width=\textwidth]{./photos/AGASSONOUN_S_SV.eps}} 
 \hspace{0.5cm}\\
@@ -360,7 +363,7 @@ Since 90s, MRTA is a common research challenge that tries to define the preferre
 
 This classification has been adopted from \citeasnoun{Shen+2001}, but the sub-categories used here are different since \citename{Shen+2001} proposed the classification for multi-agent system alone that does not take the spatiality and embodiment of agents into account. Under each of the sub-categories of MRTA there are many inter-connected issues that need to be addressed by the system designer. In the following subsections,   these two major categories and their key issues with some example MRTA solutions have been discussed.
 %
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=12cm, angle=0]
 {./dia-files/ta-categories.eps}
@@ -372,7 +375,7 @@ This classification has been adopted from \citeasnoun{Shen+2001}, but the sub-ca
 \label{bg:mrta:predefined}
 In most of the traditional multi-robot system, task allocation is done using well-defined models of tasks and environments. Here it is assumed that the system designer has the precise knowledge about tasks, robot-capabilities etc. Many flavours of the type of task-allocation can be found in the literature. Below  a few well-acknowledged works have briefly been discussed.\\ 
 %% FIG: ALLIANCE motivational bh
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=10cm, angle=0]
 {./dia-files/alliance-motivational-bh.eps}
@@ -519,6 +522,8 @@ Although communication provides several benefits for team-work it is costly to p
  Since a multi-robot system can be comprised of robots of various computation and communication capabilities, these information contents can vary greatly based on their individual communication modules and channel capacities.
 %------------------------------------------
 \subsection{Communication modalities}
+%%
+Robotic researchers typically use robot's on-board wireless radio, infra-red (IR), vision and sound hardware modules for robot-robot and robot-host communication. The reduction in price of wireless radio hardware chips e.g. wifi (ad-hoc WLAN 802.11 network) or Bluetooth\footnote{www.bluetooth.com}makes it possible to use wireless radio communication widely. In-expensive IR communication module is also typically built into almost all mobile robots due to its low-cost and suitability for ambient light and obstacle detection. IR can also be used for low bandwidth communication in short-range, e.g. keen-recognition. Most robots can also produce basic sound waves and detect it with their built-in speakers and suitable configuration of on-board microphones. Although speech-recognition is not commonly found in mobile robots yet, detection of pre-recorded sound waves can be feasible.
 \begin{figure}[H]
 \begin{minipage}[t]{0.48\linewidth}
 \centering
@@ -535,6 +540,8 @@ Although communication provides several benefits for team-work it is costly to p
 \label{fig:robots-comm-camera} 
 \end{minipage}
 \end{figure}
+
+Most of the mobile robots come with a series of LEDs, and tiny camera that can emit light signals and detect it with camera. Fig. \ref{fig:robots-comm-light} shows the robot-robot communication through the red and green coloured LEDs. Many robots can also detect blobs of colours and can recognize peers of other objects through the use of  color-coded markers. Fig. \ref{fig:robots-comm-camera} shows a team of robots with colour-coded markers attached on it that can be detected by the on-board camera of other robots. 
 \begin{figure}[H]
 \centering
 \subfloat[ E-puck robots with table-lamps]{\includegraphics[width=6cm, height=4cm]{./photos/distributed_table_lamp_triangle.eps}} 
@@ -544,10 +551,8 @@ Although communication provides several benefits for team-work it is costly to p
 \label{fig:epfl-disal}
 \end{figure}
 %%
-%%
-Robotic researchers typically use robot's on-board wireless radio, infra-red (IR), vision and sound hardware modules for robot-robot and robot-host communication. The reduction in price of wireless radio hardware chips e.g. wifi (ad-hoc WLAN 802.11 network) or Bluetooth\footnote{www.bluetooth.com}makes it possible to use wireless radio communication widely. In-expensive IR communication module is also typically built into almost all mobile robots due to its low-cost and suitability for ambient light and obstacle detection. IR can also be used for low bandwidth communication in short-range, e.g. keen-recognition. Most robots can also produce basic sound waves and detect it with their built-in speakers and suitable configuration of on-board microphones. Although speech-recognition is not commonly found in mobile robots yet, detection of pre-recorded sound waves can be feasible.
 
-Most of the mobile robots come with a series of LEDs, and tiny camera that can emit light signals and detect it with camera. Fig. \ref{fig:robots-comm-light} shows the robot-robot communication through the red and green coloured LEDs. Many robots can also detect blobs of colours and can recognize peers of other objects through the use of  color-coded markers. Fig. \ref{fig:robots-comm-camera} shows a team of robots with colour-coded markers attached on it that can be detected by the on-board camera of other robots. Some other researchers also tried to establish communication among robots solely relying on vision \cite{Kuniyoshi1994}. Although a lot of researchers have been carried out to design robot skin and tactile communication system, the author of this thesis is unaware of any instance of tactile communication used in multi-robot team. In terms of chemical communication, \citeasnoun{Lochmatter+2007} showed  limited success in odour-source localization, a form of detecting chemical signals (Fig. \ref{fig:epfl-disal}).
+Some other researchers also tried to establish communication among robots solely relying on vision \cite{Kuniyoshi1994}. Although a lot of researchers have been carried out to design robot skin and tactile communication system, the author of this thesis is unaware of any instance of tactile communication used in multi-robot team. In terms of chemical communication, \citeasnoun{Lochmatter+2007} showed  limited success in odour-source localization, a form of detecting chemical signals (Fig. \ref{fig:epfl-disal}).
 %-----------------------------
 \subsection{Communication strategies}
 \begin{figure}

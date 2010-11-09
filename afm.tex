@@ -2,7 +2,7 @@
 \label{afm}
 In this chapter,  AFM \cite{Arcaute+2008} has been explained as an interdisciplinary model of self-regulated DOL in social systems. The model has been developed under the EPSRC collaborative project ``Defying the rules – how self-organizing systems work''. Here,  three different social systems: ants, humans and robots have been studied in order to identify generic mechanisms that lead sustainability of social systems through self-regulation.
 
-The construction of AFM has been achieved through a series of collaborative interactions among the EPSRC project partners\footnote{The partners of this project were from University of West of England, University of Hull, University of Wales, Newport and Imperial College London and they researched on ants, humans, robots and mathematical models respectively.}. From the biological experiments of ants colonies {\em Temnothorax albipennis} the bottom-up rules have been inferred by examining the roles of feedback in collective performance of ants brood-sorting and nest construction after emigration to a new site. The observational data has been analysed from the self-organized infrastructural development of an {\em eco-village} by an open community of volunteers resided in Ireland. These studies helped  to formalize the generic rules into a concrete model  and to validate this model by deploying it in robot controllers within the context of a manufacturing shop-floor scenario. In this chapter, the robotic validation of AFM has mainly been described with a brief presentation on interpretations of AFM from different social perspectives.
+The construction of AFM has been achieved through a series of collaborative interactions among the EPSRC project partners\footnote{The partners of this project were from University of West of England, University of Hull, University of Wales, Newport and Imperial College London and they researched on ants, humans, robots and mathematical models respectively.}. From the biological experiments of ants colonies {\em Temnothorax albipennis} the bottom-up rules have been inferred by examining the roles of feedback in collective performance of ants brood-sorting and nest construction after emigration to a new site. The observational data has been analysed from the self-organized infrastructural development of an {\em eco-village} by an open community of volunteers. These studies helped  to formalize the generic rules into a concrete model  and to validate this model by deploying it in robot controllers within the context of a manufacturing shop-floor scenario. In this chapter, the robotic validation of AFM has mainly been described with a brief presentation on interpretations of AFM from different social perspectives.
 %%%%%%%%%%%%%%%%%%%%%
 \section{Motivations}
 \label{afm:motivations}
@@ -20,37 +20,39 @@ The author of this thesis greatly acknowledge the contribution of the EPSRC proj
 %------------------------------
 \subsection{Generic framework}
 \label{afm:framework}
-Inspired from the DOL in ants, humans and robots,  the following four rules   have been proposed that are the potential ingredients to obtain self-regulation in any social system. In this dissertation, these rules are mentioned as the {\em generic rules of self-regulation}.
+Inspired from the DOL in ants, humans and robots,  the following necessary and sufficient set of four requirements have been proposed for self-regulation in social systems.
 
-\textbf{Rule 1: Continuous flow of information.} Self-regulatory social systems establish the continuous minimum flow of information over the period of time when self-regulation can be defined. This should help to maintain at least two states of an agent: 1) receiving information about task(s) and 2) ignoring information or doing no task. The up-to-date information should reflect  the changes of the system i.e. it encodes the necessary feedback for the agents. Thus, this property will act as the basis of the state switching of agents, between these two minimum states or, among multiple states e.g. in case of multiple tasks or many sub-states of a single task.
+\textbf{Requirement 1: Concurrence} The simultaneous presence of several options is necessary in order to meaningfully say that the system has organised into a recognisable structure.   In task-allocation terms the minimum requirement is a single task as well as the option of not performing any task.
 
-At the individual level, information is processed differently by each individual, and is certainly neither constant nor continuous. In addition, there can be lower and upper thresholds on the amount of information necessary for DOL to take place. The time scale at the individual level is very small compared to the system level's time scale. The propagation of information at this macro time scale can be approximated as the continuous flow of information.  In the model, emphasize is given to whether the information is used e.g. stimulation to perform a task, or unused e.g. random walk.
+\textbf{Requirement 2: Continuous flow of information} Self-organised social systems establish a flow of information over the period of time when self-organisation can be defined.  The task information provides the basis on which the agents self-organise by enabling them to perceive tasks and receive feedback on system performance.
 
-\textbf{Rule 2: Sensitization}. Self-regulatory social systems allow the differentiation in the use of  (or access to) information, e.g. through sensitization or learning of some tasks. This differentiation is regulated by the characteristics of the system, e.g. the ability of the agents to learn tasks that are repeatedly performed.
+\textbf{Requirement 3: Sensitization} The system must have a way of representing the structure produced by self-organisation, in terms of MRTA, which tasks the robots are allocated.  One of the simplest ways of representing this information is an individual preference parameter for each task-robot combination.  A system where each robot has different levels of preference or {\em sensitivity} to the available tasks, can be said to have to embody a distinct organisation through differentiation.
 
-\textbf{Rule 3: Concurrence.} Self-regulatory social systems include concurrent access to information from different spatial positions with certain preferences. This preference is not fixed and can change with the dynamics of the system. 
-
-\textbf{Rule 4: Forgetting.} Self-regulatory social systems include forgetting, e.g. the ability of the agents to diminish information over time, if not used. The system determines the amount of information being released, and this changes over time. For example, specialists might have to attend an emergency situation and switch tasks that contributes to the forgetting of old task experiences. This is considered as crucial to allow flexibility in the system.
+\textbf{Requirement 4: Forgetting} When a system self-organises by repeated increases in individual sensitisation levels, it is also necessary, in order to avoid saturation, to have a mechanism by which the sensitisation levels are reduced or {\em forgotten}.  In addition to avoiding the situation where a structure produced by self-organisation is eroded by an eventual increase of sensitisation values to a given maximum, forgetting also allows flexibility in the system, in that the structure can change as certain tasks become important and other tasks become less so.  This effect can be achieved by mechanisms such as a slow general decay of sensitisation values or explicit negative feedback.
 %%
-Having this general framework of self-regulatory social systems, one can now formalize AFM that will describe the properties of individual  agents and the system as a whole. In terms of networks, the model is a bipartite network, i.e. there are two different types of nodes. One set of nodes describes the sources of the attractive fields and the other set describes the agents. Links only exist between different types of nodes and they encode the flow of information so that, even if there is no direct link between two agents, their interaction is taken into account in the information flow. This is an instance of {\em weak} interaction. The strength of the field primarily depends upon the distance between the task and the agent. This relationship is represented using weighted links. Besides, there is a permanent field that represents the {\em no-task} or  option for ignoring information. 
+Building on the requirements for self-organised social systems, AFM formalises these requirements in terms of the relationships between properties of individual agents and of the system as a whole \cite{Arcaute+2008}.  AFM is a bipartite network, i.e. there are two different types of nodes.  One set of nodes describes the sources of the attractive fields, the tasks, and the other set describes the agents.  Edges only exist between different types of nodes and they encode the strength of the attractive field as perceived by the agent.  There are no edges between agent nodes.  All communication is considered part of the attractive fields.  There is also a permanent field representing the {\em no-task} option of not working in any of the available tasks.
 \begin{figure}[H]
 \centering
-\includegraphics[height=7cm, angle=0]{./images/AFM-Diag2.eps}
+\includegraphics[height=7cm, angle=0]{./dia-files/AFM-Diag3.eps}
 %figure caption is below the figur
 \caption{The attractive field model (AFM)}
 \label{fig:afm} % Give a unique label
 \end{figure}
 
-The model can be mapped to a network as shown in Fig. \ref{fig:afm}. The correspondence is given below:
+This option is modelled as a random walk.  The model is presented graphically in Fig. \ref{fig:afm}.  The elements depicted are:
 \begin{enumerate}
-\item Source nodes (o) are tasks that can be divided between a number of agents.
-\item Agent nodes (x) can be ants, human,  robots etc.
-\item The attractive fields correspond to stimuli to perform a task, and these are given by the black solid lines.
-\item When an agent performs a task, the link becomes different, and this is denoted in the figure by a dashed line. Agents linked to a source by a red line are the agents currently doing that task. 
-\item The field of ignoring the information (w) corresponds to the stimulus to random walk, i.e. the no-task option, and this is denoted by the dotted lines in the graph. 
-\item Each of the links is weighted. The value of this weight describes the strength of the stimulus that the agent experiences. In a spatial representation of the model, it is easy to see that the strength of the field depends on the physical distance of the agent to the source. Moreover, the strength can be increased through sensitisation of the agent via experience (learning). This distance is not depicted in the network, it is represented through the weights of the links. In the figure of the network (Fig. \ref{fig:afm}), the nodes have arbitrary places. Note that even though the distance is physical in this case, the distance in the model applied to other systems, needs not to be physical. It can represent the accessibility to the information, the time the information takes to reach the receiver, etc. 
+\item Source nodes (o) are tasks to be allocated to agents
+\item Agent nodes (x) e.g., ants, humans, or robots
+\item Black solid edges represent the attractive fields and correspond to an agent's perceived stimuli from each task.
+\item Green edges represent the attractive field of the ever present no-task option, represented as a particular task (w).
+\item The red lines are not edges, but represent how each agent is allocated to a single task at any point in time.
 \end{enumerate}
-In summary, looking at the network, one can see that each of the agents is connected to each of the fields. This means that even if an agent is currently involved in a task, the probability that it stops doing it in order to pursue a different task, or to random walk, is always non-zero. The weighted links express the probability of an agent to be attracted to each of the fields.
+
+The edges of the AFM network are weighted and the value of this weight describes the strength of the stimulus as perceived by the agent.  In a spatial representation of the model, the strength of the field depends on the physical distance of the agent to the source.  In information-based models, the distance can represent an agent's level of understanding of that task.  The strength of a field is increased through the sensitisation of the agent through experience with performing the task.  This elements is not depicted explicitly in Figure~\ref{fig:afm} but is represented in the weights of the edges.  
+
+In Figure~\ref{fig:afm}), the nodes have arbitrary positions.  Even though the distance is physical in this case, it need not be.  When the model is applied to other domains, the distance can represent the accessibility of information or the time the information takes to reach the agent. 
+
+In summary, from the above diagram of the network, we can see that each of the agents is connected to each of the tasks. This means that even if an agent is currently involved in a task, the probability that it stops doing it in order to pursue a different task, or to random walk, is always non-zero.
 %%--------------------------------------------------------------------
 \subsection{Relationship of AFM with self-organization}
 \label{afm:so}
@@ -349,13 +351,13 @@ As discussed in Sec. \ref{expt-tools:python}, under a process-based design of IP
 Table \ref{table:data-mgr} lists the major data structures and corresponding event channels of \texttt{Data Manager}. Here \texttt{mRobotID}, an integer type data,  represents the e-puck robot's marker ID (converted to decimal number from the binary code) which uniquely identifies a robot from others. This is given as a command-line argument during RCC start-up. Python {\em dictionary} type data structure  have been used  for all other data structures that are managed by the Python Multiprocessing's {\em Manager()} object. Any other process e.g. \texttt{TaskSelector}, can access \texttt{DataManager}'s data and event channels locally  by taking a reference of \texttt{DataManager} object from the Multiprocessing's parent process. \texttt{DataManager} object also runs a tiny TCP/IP server process powered by the Multiprocessing's {\em RemoteManager()} interface. So, if necessary,  any other process e.g. \texttt{DeviceController}, can access all of the DataManger's data structures and event channels remotely by instantiating a proxy client  that connects to this embedded TCP/IP server of \texttt{DataManager} and  fetch data from it. In the following paragraphs, under the discussion of other RCC processes, the update process of rest of the data structures and event channels are explained.
 %%
 \subsubsection*{\texttt{SignalListener}}
-As mentioned in Sec. \ref{expt-tools:arch:integration}, two D-Bus communication modules in RCC: \texttt{SignalListener} and \texttt{SignalEmitter} have been employed that are responsible for listening and emitting D-Bus signals respectively. \texttt{SignalListener}, has subscribed to D-Bus session bus for listening  to D-Bus \texttt{RobotPose} and \texttt{TaskInfo} signals that are discussed above. \texttt{SignalListener} uses two call-back functions that handles both of these signal reception events. For example when SwisTrack emits \texttt{RobotPose} signal  the corresponding handler function becomes activated and receive this \texttt{RobotPose} siganl's payload data (i.e. x, y , theta). It then makes a copy of these data  to \texttt{DataManager}'s \texttt{mRobotPose} data structure and label them as dictionary key/value pairs, where x, y, theta etc. becomes the dictionary keys. In addition to copying the data, \texttt{SignalListener} also set the \texttt{DataMager}'s   \texttt{mRobotPoseAvailable} event to {\em \texttt{True}}. In consequence, those processes that are waiting for \texttt{mRobotPose} data, e.g. \texttt{TaskSelector}, finishes their waiting and try to access this newly arrived \texttt{mRobotPose} data. After reading to this data they marks this \texttt{mRobotPoseAvailable} event as  {\em \texttt{False}} so that this pose data can be treated as outdated and waiting processes can wait for new pose update. This strategy ensures the consistent and real-time data read/write by all subscribing processes.
+As mentioned in Sec. \ref{expt-tools:arch:integration}, two D-Bus communication modules in RCC:\\ \texttt{SignalListener} and \texttt{SignalEmitter} have been employed that are responsible for listening and emitting D-Bus signals respectively. \texttt{SignalListener}, has subscribed to D-Bus session bus for listening  to D-Bus \texttt{RobotPose} and \texttt{TaskInfo} signals that are discussed above. \texttt{SignalListener} uses two call-back functions that handles both of these signal reception events. For example when SwisTrack emits \texttt{RobotPose} signal  the corresponding handler function becomes activated and receive this \texttt{RobotPose} siganl's payload data (i.e. x, y , theta). It then makes a copy of these data  to \texttt{DataManager}'s \texttt{mRobotPose} data structure and label them as dictionary key/value pairs, where x, y, theta etc. becomes the dictionary keys. In addition to copying the data, \texttt{SignalListener} also set the \texttt{DataMager}'s   \texttt{mRobotPoseAvailable} event to {\em \texttt{True}}. In consequence, those processes that are waiting for \texttt{mRobotPose} data, e.g. \texttt{TaskSelector}, finishes their waiting and try to access this newly arrived \texttt{mRobotPose} data. After reading to this data they marks this \texttt{mRobotPoseAvailable} event as  {\em \texttt{False}} so that this pose data can be treated as outdated and waiting processes can wait for new pose update. This strategy ensures the consistent and real-time data read/write by all subscribing processes.
 %%
 \subsubsection*{\texttt{SignalEmitter}}
 Similar to the \texttt{SignalListener}, \texttt{SignalEmitter} makes use of Python\\ {\em sched} module that enables it to check periodically \texttt{mSelectedTaskStarted} event and emit a robot's task status containing signal, \texttt{RobotStatus}.  This is done by subscribing to the  \texttt{mSelectedTaskStarted} event channel. When a robot executes a task, this event channel becomes  activated by\\ \texttt{DeviceController} (discussed below).\\ At a very close time, \texttt{SignalEmitter} gets this event update and finishes waiting for this event. It then picks up the \texttt{mSelectedTask} data from \texttt{DataManager} and prepare the \texttt{RobotStatus} signal and emits it to the session bus. Upon a successful emission event, it clears \texttt{ mSelected TaskStarted} event so that only one \texttt{RobotStatus}  signal is emitted per task-cycle.
 %%
 \subsubsection*{\texttt{TaskSelector}}
-\texttt{TaskSelector} works in the application layer of multi-robot control architecture, HEAD. It plugs the AFM algorithms into RCC to select task based-on \texttt{DataManger}'s event notifications , i.e. \texttt{mRobotPoseAvailable} and\\ \texttt{mTaskInfoAvailable} and upon running task-allocation algorithm it updates  \texttt{mSelectedTask} (and \texttt{mSelectedTaskAvailable}) with selected task information.
+\texttt{TaskSelector} works in the application layer of multi-robot control architecture, HEAD. It plugs the AFM algorithms into RCC to select task based-on\\ \texttt{DataManger}'s event notifications , i.e. \texttt{mRobotPoseAvailable} and\\ \texttt{mTaskInfoAvailable} and upon running task-allocation algorithm it updates  \texttt{mSelectedTask} (and \texttt{mSelectedTaskAvailable}) with selected task information.
 
 \texttt{TaskSelector}  allocates a robot with a shop-task or random-walk task from several inputs: as shown in Algorithm 4.1. Here  \textit{AllTaskInfo} and \textit{RobotPose} correspond to the \texttt{mTaskInfo} and \texttt{mRobotPose} of \texttt{DataManager}. \textit{TaskRecords} is a dictionary type data structure that keep tracks of related calculations, e.g. stimulus, of all tasks. This is internally maintained by the \texttt{TaskSelector} process.  \textit{DeltaDistance} is a very small constant number to avoid division by zero in calculating task stimuli, as mentioned in Eq. \ref{eqn:afm1}.\\
 \textbf{Task-allocation algorithm:}\\
@@ -414,6 +416,15 @@ Similar to the \texttt{SignalListener}, \texttt{SignalEmitter} makes use of Pyth
 %% 
 \textbf{Stage 3.} After converting each task's probability values into a linear range,  a random-number generator is used that draws a random-number between 0 and the highest value of task-probability range, say 40 for the previous example. Then this random number is compared against the task probability range of each task. For the above example, if the random-number becomes 37, the task-probability range checking function selects \textit{Task2} since 37 falls between 16 to 40. Under this probabilistic method, the task with larger probability range has a  higher chance to be selected, but low probability tasks are also got selected time-to-time.
 %%
+\begin{sidewaysfigure}
+\centering
+\includegraphics[width=18cm,height=11cm]
+{./dia-files/rcc-device-controller-state.eps}
+%figure caption is below the figure
+\caption{State diagram of \texttt{DeviceController} module}
+\label{fig:dc-states} % Give a unique label
+\end{sidewaysfigure}
+%%
 \newline
 \textbf{Algorithm 4.2: Robot's learning and forgetting of tasks based on AFM}
 \vspace{-3mm}
@@ -443,14 +454,6 @@ Algorithm 4.2 lists the pseudo-code for updating the robot's task-sensitization 
 %%
 \subsubsection*{\texttt{DeviceController}:}
 \label{afm:impl:dc}
-\begin{sidewaysfigure}
-\centering
-\includegraphics[width=18cm,height=11cm]
-{./dia-files/rcc-device-controller-state.eps}
-%figure caption is below the figure
-\caption{State diagram of \texttt{DeviceController} module}
-\label{fig:dc-states} % Give a unique label
-\end{sidewaysfigure}
 The final code that moves a robot to desired task location or make random-walk resides in \texttt{DeviceController} module. This is also a separate sub-process of Python Multiprocessing based mother process. It waits for the \texttt{DataManager}'s \texttt{mRobotPoseAvailable} and \texttt{mSelectedTaskAvailable} events. When \texttt{TaskSelector} sets  \texttt{mSelectedTaskAvailable} event,\\ \texttt{DeviceController} sub-process checks the Bluetooth link-connectivity with physical robot. In case of successful task start-up it sets\\ \texttt{mSelectedTaskStarted} event that, in turn, triggers \texttt{SignalEmitter} to emit a D-Bus signal publishing the robot's currently engaged task. The full state switching policies of\\ \texttt{DeviceController} is illustrated in Fig. \ref{fig:dc-states}. Externally one can observe two distinct physical state of a robot: it is either idle or in motion (separated by dotted line). These two physical states are mapped into several logical steps:\\
 %%
 \textbf{DeviceUnavailable: }
@@ -704,7 +707,7 @@ The changes in translation motion of all robots  have been aggregated over time.
 \label{eqn:Delta-Tr}
 \end{equation}
 %%%%
-\begin{figure*}[H]
+\begin{figure}[H]
 %\begin{minipage}[t]{0.5\linewidth}
 \centering
 \includegraphics[height=7cm]{images/global-8robots/8robots-DeltaTranslationStat.eps}
@@ -713,12 +716,15 @@ The changes in translation motion of all robots  have been aggregated over time.
 %\end{minipage}
 %\hspace{0.5cm}
 %\begin{minipage}[t]{0.5\linewidth}
+\end{figure}
+%%
+\begin{figure}[H]
 \centering
 \includegraphics[height=7cm]{images/global/DeltaTranslationStat.eps}
 \caption{\small Sum of the translations of robots in Series B experiments}
 \label{fig:translation-stat-SB} % Give a unique label
 %\end{minipage}
-\end{figure*}
+\end{figure}
 The results from Series A and Series B experiments are plotted in Fig. \ref{fig:translation-stat-SA} and Fig. \ref{fig:translation-stat-SB}. In this plot one can see that robot translations also vary over varying task requirements of tasks.
 %%%-------------------------------------------------
 \subsection*{Communication load}
@@ -726,7 +732,7 @@ The results from Series A and Series B experiments are plotted in Fig. \ref{fig:
 \begin{figure}[H]
 %\begin{minipage}[t]{0.5\linewidth}
 \centering
-\includegraphics[height=8cm]
+\includegraphics[height=7cm]
 {images/global-8robots/8Robot-SignalingFreqStat.eps}
 \caption{\small Frequency of \texttt{TaskInfo} signalling in Series A experiments}
 \label{fig:signal-frequency-stat-SA} 
@@ -737,7 +743,7 @@ The results from Series A and Series B experiments are plotted in Fig. \ref{fig:
 %%
 \begin{figure}[H]
 \centering
-\includegraphics[height=8cm]{images/Global-SignalingFreqStat.eps}
+\includegraphics[height=7cm]{images/Global-SignalingFreqStat.eps}
 \caption{\small Frequency of \texttt{TaskInfo} signalling in Series B experiments}
 \label{fig:signal-frequency-stat-SB} 
 %\end{minipage}
@@ -748,7 +754,7 @@ Fig. \ref{fig:signal-frequency-stat-SA}  and Fig. \ref{fig:signal-frequency-stat
 \section{Discussions}
 \label{afm:discuss}
 %%-------------------------------------------------
-\textbf{Self-regulated DOL}. From the experimental results, several aspects of self-regulated DOL have been noted that exposes the power of AFM. As it is pointed out that this self-regulated DOL, as observed in biological and human social systems, needs to satisfy several important characteristics, e.g. plasticity, task-specialization. In addition to satisfying those basic qualities, AFM has demonstrated many other aspects. These self-regulated e-puck robots, driven by AFM, effectively handle the dynamic work-load of a manufacturing shop-floor. They can dynamically support the need to work on currently demanding tasks, if there any. The variations of active worker ratio supports this. 
+\textbf{Self-regulated DOL}. From the experimental results, several aspects of self regulated DOL have been noted that exposes the power of AFM. As it is pointed out that this self-regulated DOL, as observed in biological and human social systems, needs to satisfy several important characteristics, e.g. plasticity, task-specialization. In addition to satisfying those basic qualities, AFM has demonstrated many other aspects. These self-regulated e-puck robots, driven by AFM, effectively handle the dynamic work-load of a manufacturing shop-floor. They can dynamically support the need to work on currently demanding tasks, if there any. The variations of active worker ratio supports this. 
 
 From the self-organized worker allocations of AFM, it is clear that although in larger system (Series B) the degree of variations of active-worker ratio can show significantly unpredictable patterns, nevertheless the self-regulated rules drive the robots to respond to the dynamic needs of the system. This means that AFM can sufficiently produce the plasticity of DOL in order to meet the dynamic work-load of the system.
 
@@ -764,7 +770,7 @@ From task-sensitization one can also see that a limited number of robots are spe
 
 Similarly it is seen that in larger system robots have less chances to specialize on tasks, as the Series B experiments show  that the overall average task-specialization of the group $K^G_{avg}$ is lower by 0.10 and it lasts for significantly less time (the difference of $Q^G_{avg}$  of both systems is 20 time-steps). Thus, in a large group, robots are more likely to switch among tasks more frequently and this produces more translation motions which cost more energy (e.g. battery power) in task-performance.
 
-\textbf{Selection of limited trials of experiments}. The justification for choosing five trials of experiments goes as follows.  Real-robotic experiments face the actual challenge of real-world implementation unlike software simulation. Thus, what can not be discovered in hundreds of simulation runs, can naturally appear in a single or a few runs of a real-robotic experiments. Thus a set of five trials have been chosen that represent a realistic target for a single-man implementation of a fairly large multi-robot system. This choice is made after an insightful literature survey on the existing real-robotic systems. This decision has been influenced by some recent researches in the filed of swarm robotic systems, such as \citeasnoun{Pugh+2009}, \citeasnoun{Rutishauser+2009} and \cite{Agassounon+2004}. 
+\textbf{Selection of limited number of trials/experiments}. The justification for choosing five trials of experiments goes as follows.  Real-robotic experiments face the actual challenge of real-world implementation unlike software simulation. Thus, what can not be discovered in hundreds of simulation runs, can naturally appear in a single or a few runs of a real-robotic experiments. Thus a set of five trials have been chosen that represent a realistic target for a single-man implementation of a fairly large multi-robot system. This choice is made after an insightful literature survey on the existing real-robotic systems. This decision has been influenced by some recent researches in the filed of swarm robotic systems, such as \citeasnoun{Pugh+2009}, \citeasnoun{Rutishauser+2009} and \cite{Agassounon+2004}. 
 \vspace*{1cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}

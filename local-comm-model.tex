@@ -159,10 +159,10 @@ Below the results from Series C and Series D experiments are organized by follow
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]
-{\includegraphics[height=8cm]{images/local-500cm/PlotUrgencyLog-2010Feb15-171017.eps}}
+{\includegraphics[height=7cm]{images/local-500cm/PlotUrgencyLog-2010Feb15-171017.eps}}
 \newline
 \subfloat[Series D]
-{\includegraphics[height=8cm]{images/local-1m/PlotUrgencyLog-2010Feb17-112141.eps}}
+{\includegraphics[height=7cm]{images/local-1m/PlotUrgencyLog-2010Feb17-112141.eps}}
 \caption{\small Task-urgencies observed in (a) Series C and (b) Series D experiments}
 \label{fig:raw-urgencies-SC-SD} 
 \end{figure}
@@ -174,10 +174,10 @@ The sample raw task-urgencies of Series C and Series D experiments are shown in 
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]
-{\includegraphics[height=8cm]{images/local-500cm/TaskUrgencyStat-SC.eps}}
+{\includegraphics[height=7cm]{images/local-500cm/TaskUrgencyStat-SC.eps}}
 \newline
 \subfloat[Series D]
-{\includegraphics[height=8cm]{images/local-1m/TaskUrgencyStat-SD.eps}}
+{\includegraphics[height=7cm]{images/local-1m/TaskUrgencyStat-SD.eps}}
 \caption{\small Shop-floor work-load history (a) Series C and (b) Series D experiments}
 \label{fig:workload-SC-SD} 
 \end{figure}
@@ -191,10 +191,10 @@ The dynamic shop floor work-load is shown in Fig. \ref{fig:workload-SC-SD}. Thes
 \centering
 \hspace*{0.5cm}
 \subfloat[Series C]
-{\includegraphics[height=8cm]{images/local-500cm/Local50cm-Plasticity-SC.eps}}
+{\includegraphics[height=7cm]{images/local-500cm/Local50cm-Plasticity-SC.eps}}
 \newline
 \subfloat[Series D]
-{\includegraphics[height=8cm]{images/local-1m/Local1m-Plasticity-SD.eps}}
+{\includegraphics[height=7cm]{images/local-1m/Local1m-Plasticity-SD.eps}}
 \caption{\small Self-organized allocation of workers in (a) Series C and (b) Series D}
 \label{fig:plasticity-SC-SD} 
 \end{figure}
@@ -255,14 +255,14 @@ $ values are 0.39 (SD=0.17) and 0.27 (SD=0.10), and their respective time-step $
 \begin{figure}[H]
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=8cm, angle=0]{images/K-G-SC-SD.eps}
+\includegraphics[height=7cm, angle=0]{images/K-G-SC-SD.eps}
 \caption{ Overall task-specialization of robot groups.}
 \label{fig:K-G-SC-SD} 
 %\end{minipage} 
 %\hspace{0.5cm}
 %\begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[height=8cm, angle=0]
+\includegraphics[height=7cm, angle=0]
 {images/Q-G-SC-SD.eps}
 \caption{Time-steps to reach the peak values of task-specialization}
 \label{fig:Q-G-SC-SD} 
@@ -307,12 +307,12 @@ They are shown in Fig. \ref{fig:K-G-SC-SD} and Fig. \ref{fig:Q-G-SC-SD}. Here on
 \begin{figure}[H]
 \centering
 \hspace*{0.5cm}
-\subfloat[Series C]{\includegraphics[height=7.5cm]
+\subfloat[Series C]{\includegraphics[height=6.5cm]
 {images/local-500cm/DeltaTranslationStat.eps}}
 %figure caption is below the figure
 \newline
 \centering
-\subfloat[Series D]{\includegraphics[height=8.5cm]{images/local-1m/DeltaTranslationStat.eps}}
+\subfloat[Series D]{\includegraphics[height=7.5cm]{images/local-1m/DeltaTranslationStat.eps}}
 \caption{\small Sum of translations of all robots (a) Series C and Series D experiments }
 \label{fig:translation-SC-SD} 
 \end{figure}
@@ -320,31 +320,30 @@ They are shown in Fig. \ref{fig:K-G-SC-SD} and Fig. \ref{fig:Q-G-SC-SD}. Here on
 The changes in translation motion of all robots have been aggregated over time following Eq. \ref{eqn:Delta-Tr}. The robot translation results from both local mode experiments are plotted in Fig. \ref{fig:translation-SC-SD}. In this plot one can see that robot translations also vary over varying task requirements of tasks. 
 %%-------------------------------------------------
 \subsection*{Communication load}
-%%% Communication load %%%
-\begin{figure}[H]
-\centering
-\hspace*{0.5cm}
-\subfloat[Series C]{\includegraphics[height=8cm]
-{images/local-500cm/Local-500cm-SignalingFreqStat.eps}}
-\newline
-\centering
-\subfloat[Series D]{\includegraphics[height=8cm]{images/local-1m/Local-1m-SignalingFreqStat.eps}}
-\caption{\small Frequency of overall LocaltaskInfo (P2P) signalling in (a) Series C and (b) Series D experiments}
-\label{fig:local-signal-frequency-stat} % Give a unique label
-\end{figure}
-%
 %%%% Single robot- number of peers
 \begin{figure}[H]
 \centering
 \hspace*{0.5cm}
-\subfloat[Series C]{\includegraphics[height=8cm]{images/local-500cm/Robot12-16feb-1-LocalSignals.eps}}
+\subfloat[Series C]{\includegraphics[height=7cm]{images/local-500cm/Robot12-16feb-1-LocalSignals.eps}}
 \newline
-\subfloat[Series D]{\includegraphics[height=8cm]{images/local-1m/Robot12-17feb-3-LocalSignals.eps}}
+\subfloat[Series D]{\includegraphics[height=7cm]{images/local-1m/Robot12-17feb-3-LocalSignals.eps}}
 \caption{\small \texttt{LoaclTaskInfo} (P2P) signals caught by Robot12 in (a) Series C and (b) Series D experiment}
 \label{fig:local-single-robot-signal} 
 \end{figure}
-%%
-As an example of P2P signal reception of a robot,  Fig. \ref{fig:local-single-robot-signal} show the number of received signals by Robot12 in two local experiments. It states the relative difference of peers over time in two local cases. The overall P2P task information signals of both of these local modes are plotted in Fig. \ref{fig:local-signal-frequency-stat}. 
+As an example of P2P signal reception of a robot,  Fig. \ref{fig:local-single-robot-signal} show the number of received signals by Robot12 in two local experiments. It states the relative difference of peers over time in two local cases.
+%%% Overall Communication load %%%
+\begin{figure}[H]
+\centering
+\hspace*{0.5cm}
+\subfloat[Series C]{\includegraphics[height=7cm]
+{images/local-500cm/Local-500cm-SignalingFreqStat.eps}}
+\newline
+\centering
+\subfloat[Series D]{\includegraphics[height=7cm]{images/local-1m/Local-1m-SignalingFreqStat.eps}}
+\caption{\small Frequency of overall LocaltaskInfo (P2P) signalling in (a) Series C and (b) Series D experiments}
+\label{fig:local-signal-frequency-stat} % Give a unique label
+\end{figure}
+The overall P2P task information signals of both of these local modes are plotted in Fig. \ref{fig:local-signal-frequency-stat}. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparison of centralized and local communication experiments}
 \label{local-comm:discuss}

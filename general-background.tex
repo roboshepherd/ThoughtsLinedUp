@@ -262,7 +262,13 @@ Tactile communication is also widely observed in ants and other species typicall
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Signal active space and locality}
 %bio-comm-ants-active-space
-\begin{figure}
+The concept of active space (AS) is widely used to describe the propagation of signals by species. In a network environment of signal emitters and receivers, active space is defined as the area encompassed by the signal during the course of transmission \cite{Mcgregor2000}. In case of long-range signals, or even in case of short-range signals, this area include several individuals where their social grouping allows them to stay in cohesion. The concept of active space is described somewhat differently in the case of some social insects. In the case of ants, this active space is defined as a zone within which the concentration of pheromone (or any other behaviourally active chemical substance) is at or above threshold concentration \cite{Holldobler1990}. Mathematically this is denoted by a ratio:
+\begin{equation}
+AS = \frac{\textit{Amount of pheromone emitted (Q)}}{\textit{Threshold concentration at which the receiving ant responds (K)}}
+\end{equation}
+%%
+Here, Q is measured in number of molecules released in a burst or in per unit of time whereas K is measured in molecules per unit of volume. 
+\begin{figure}[H]
 \centering
 \includegraphics[width=12cm, angle=0]
 {./dia-files/bio-comm-ants-active-space.eps}
@@ -270,11 +276,7 @@ Tactile communication is also widely observed in ants and other species typicall
 \caption{Pheromone active space observed in ants, reproduced from \protect\citeasnoun{Holldobler1990}.}
 \label{fig:ants-active-space} % Give a unique label
 \end{figure}
-The concept of active space (AS) is widely used to describe the propagation of signals by species. In a network environment of signal emitters and receivers, active space is defined as the area encompassed by the signal during the course of transmission \cite{Mcgregor2000}. In case of long-range signals, or even in case of short-range signals, this area include several individuals where their social grouping allows them to stay in cohesion. The concept of active space is described somewhat differently in the case of some social insects. In the case of ants, this active space is defined as a zone within which the concentration of pheromone (or any other behaviourally active chemical substance) is at or above threshold concentration \cite{Holldobler1990}. Mathematically this is denoted by a ratio:
-\begin{equation}
-AS = \frac{\textit{Amount of pheromone emitted (Q)}}{\textit{Threshold concentration at which the receiving ant responds (K)}}
-\end{equation}
-Here, Q is measured in number of molecules released in a burst or in per unit of time whereas K is measured in molecules per unit of volume. 
+
 Fig. \ref{fig:ants-active-space} shows the use of active spaces of two species of ants: (a) {\em Atta texana} and (b) {\em Myrmicaria eumenoides}.  The former one uses two different concentrations of {\em 4-methyl-3-heptanone} to create attraction and alarm signals, whereas the latter one uses two different chemicals: {\em Beta-pinene} and {\em Limonene} to create similar kinds of signals, i.e. alerting and circling.
  
 The adjustment of this ratio enables individuals to gain a shorter fade-out time and permits signals to be more sharply pinpointed in time and space by the receivers. In order to transmit the location of the animal in the signal, the rate of information transfer can be increased by either lowering the rate of emission of Q or by increasing K, or both. For alarm and trail systems a lower value of this ratio is used. Thus, according to need, individuals regulate their active space by making it large or small, or by reaching their maximum radius quickly or slowly, or by enduring briefly or for a long period of time. For example, in case of alarm, recruitment and sexual communication signals where encoding the location of an individual is needed, the information in each signal increases as the logarithm of the square of distance over which the signal travels. From the precise study of pheromones it has been found that active space of alarm signal consists of a concentric pair of hemispheres (Fig. \ref{fig:ants-active-space}). As an ant enters the outer zone, she is attracted inward toward the point source; when she next crosses into the central hemisphere she becomes alarmed. It is also observed that ants can release pheromones with different active spaces.
@@ -338,7 +340,8 @@ In biological literature, the pheromone trail laying is one of the most discusse
 \subfloat[Two honey-bees]{\includegraphics[width=6cm, height=4cm]{./photos/honey-bee-p2p-hy23.eps}} 
 \hspace{0.25cm}
 \subfloat[Two ants ]{\includegraphics[width=6cm, height=4cm]{./photos/ants-p2p-hy14.eps}}
-\caption{Example of P2P tactile communication: (a) Honey-bees exchange nectar samples by close contact (b) ants also exchange food or information via tactile communication. \protect\newline  From http://www.harunyahya.com/ last seen 01/05/2010.}
+\caption{Example of P2P tactile communication: (a) Honey-bees exchange nectar samples by close contact (b) ants also exchange food or information via tactile communication. %\protect\newline  
+From http://www.harunyahya.com/ last seen 01/05/2010.}
 \label{fig:bees-ants-p2p-comm}
 \end{figure}
 
@@ -374,17 +377,18 @@ food sources & & evaporates and more ants join\\
 %%%%%%%%%%%%%%%%%
 Table \ref{table:bio-comm-task-urgency} presents the link between sensing the task and self-regulation of communication behaviours among ants and honey-bees. Here, it is seen that communication is modulated based on the perception of  task-urgency irrespective of the communication strategy of a particular species. Under indirect communication strategy of ants, i.e. pheromone trail-laying, it is seen that the principles of self-organization, e.g. positive and negative feedbacks take place due to the presence of different amounts of pheromone for different time periods. Initially, food source located at shorter distance gets relatively more ants  as the ants take less time to return to the nest. So, more pheromone deposits can be found in this path as a result of positive feedback process.  Thus, the density of pheromones or the strength of indirect communication link reinforces ants to follow this particular trail.
 
+Similarly, perception of task-urgency influences the P2P and broadcast communication strategies. {\em Leptothorax albipennis} ant take less time in assessing a relatively better nest site and quickly return home to recruit its nest-mates \cite{Pratt+2002}. Here, the quality of nest directly influences its intent to make more ``tandem-runs'' or to do tactile communication with nest-mates. The influences of the quality of  flower sources to honey-bee dance have already been discussed.  
 %%
 \begin{figure}[H]
 \centering
-\includegraphics[width=6cm, angle=-90]
+\includegraphics[width=5.5cm, angle=-90]
 {./images/ch2/honey-bee-dance-stat.eps}
 %figure caption is below the figure
 \caption{Self-regulation in honey-bee's dance communication behaviours, produced after the results of \protect\possessivecite{Von1967} honey-bee round-dance experiment performed on 24 August 1962.}
 \label{fig:honey-bee-dance-stat}  % Give a unique label
 \end{figure}
-%%
-Similarly, perception of task-urgency influences the P2P and broadcast communication strategies. {\em Leptothorax albipennis} ant take less time in assessing a relatively better nest site and quickly return home to recruit its nest-mates \cite{Pratt+2002}. Here, the quality of nest directly influences its intent to make more ``tandem-runs'' or to do tactile communication with nest-mates. The influences of the quality of  flower sources to honey-bee dance have already been discussed.  Fig. \ref{fig:honey-bee-dance-stat} shows this phenomena more vividly. It has been plotted using the data from the honey-bee round-dance experiments of \citeasnoun[p. 45]{Von1967}. In this plot, Y1 line refers to the concentration of sugar solution. This solution was kept in a bowl  to attract honey-bees and the amount of this solution was varied from $\frac{3}{16}$M to 2M (taken as 100\%). In this experiment, the variation of this control parameter influenced honey-bees' communication behaviours while producing an excellent self-regulated DOL.
+
+Fig. \ref{fig:honey-bee-dance-stat} shows this phenomena more vividly. It has been plotted using the data from the honey-bee round-dance experiments of \citeasnoun[p. 45]{Von1967}. In this plot, Y1 line refers to the concentration of sugar solution. This solution was kept in a bowl  to attract honey-bees and the amount of this solution was varied from $\frac{3}{16}$M to 2M (taken as 100\%). In this experiment, the variation of this control parameter influenced honey-bees' communication behaviours while producing an excellent self-regulated DOL.
 
 In Fig. \ref{fig:honey-bee-dance-stat} Y2 line represents the number of collector bees that return home. The total number of collectors was 55 (taken as 100\%). Y3 line plots the percent of collectors displaying round dances. It is seen that the fraction of dancing collectors is directly proportional to the concentration of sugar solution or the sensing of task-urgency. Similarly, the average duration of dance per bee  is plotted in Y4 line. The maximum dancing period was 23.8s (taken as 100\%). Finally, from Y5 line it is seen that the outcome of the round-dance communication as the number of newly recruited bees to the feeding place. The maximum number of recruited bees was 18 (taken as 100\%). So, from an overall observation, it can be seen that bees sense the concentration of food-source  as the task-urgency and they self-regulate their round-dance communication behaviour according to their perception of this task-urgency. Thus, this self-regulated dancing behaviour of honey-bees attracts an optimal number of inactive bees to work.
 

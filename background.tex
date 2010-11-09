@@ -6,6 +6,10 @@
 %%
 \subsection{MRS research paradigms}
 \label{bg:mrs:paradigms}
+Historically the concept of multi-robot system comes almost after the introduction of behaviour-based robotics paradigm \cite{Brooks1986}. In 1967, using the traditional sense-plan-act or hierarchical approach \cite{Murphy2000}, the first artificially intelligent robot, Shakey, was created at Stanford Research Institute. In late 80s, \citename{Brooks1986} influenced this entire field of mobile robotics by his layered behaviour-based robot-control approach that acted significantly differently than the hierarchical approach.  
+
+At the same time, \citeasnoun{Braitenberg1984} described a set of experiments where increasingly complex vehicles could be built from simple mechanical and electrical components. Around the same time and with similar principles, \citeasnoun{Reynolds1987} developed a distributed behavioural model for a bird in a flock that assumed that a flock is simply the result of the interactions among the individual birds (see Sec.  \ref{bg:mrs:srs}). Early researches on multi-robot systems also include the concept of cellular robotic system \cite{Fukuda+1987,Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}. 
+
 %%% Earliest multi-robot system
 \begin{figure}[H]
 \begin{minipage}[t]{0.48\linewidth}
@@ -24,22 +28,8 @@
 \end{minipage}
 \end{figure}
 %%
-Historically the concept of multi-robot system comes almost after the introduction of behaviour-based robotics paradigm \cite{Brooks1986}. In 1967, using the traditional sense-plan-act or hierarchical approach \cite{Murphy2000}, the first artificially intelligent robot, Shakey, was created at Stanford Research Institute. In late 80s, \citename{Brooks1986} influenced this entire field of mobile robotics by his layered behaviour-based robot-control approach that acted significantly differently than the hierarchical approach.  
 
-At the same time, \citeasnoun{Braitenberg1984} described a set of experiments where increasingly complex vehicles could be built from simple mechanical and electrical components. Around the same time and with similar principles, \citeasnoun{Reynolds1987} developed a distributed behavioural model for a bird in a flock that assumed that a flock is simply the result of the interactions among the individual birds (see Sec.  \ref{bg:mrs:srs}). 
-
-% FIG: Multi-robot in emergency
-\begin{figure}[H]
-\centering
-\subfloat[A disaster site: buring oil rig]{\includegraphics[width=6cm, height=4cm]{./photos/burning-oil-rig-explosion-fire-photo11.eps}} 
-\hspace{0.25cm}
-\subfloat[An array of Seaglider underwater robots]{\includegraphics[width=6cm, height=4cm]{./photos/seaglider.eps}}
-\caption{Example of multi-robot system working at a disaster site (a) British Petroleum's oil rig sinks in the Gulf of Mexico after explosion.\protect\newline From http:///news.bbc.co.uk, reported on 22/04/2010. 
-(b) IRobot's Seaglider fleet that was surveying oil spill in the Gulf of Mexico at depths of up to 1,000 meters. From http:///www.irobot.com, reported on 25/05/2010.}
-\label{fig:bp-oil-disaster}
-\end{figure}
-
-Early researches on multi-robot systems also include the concept of cellular robotic system \cite{Fukuda+1987,Beni1988} multi-robot motion planning \cite{Arai+1989,Premvuti+1990,Wang1989} and architectures for multi-robot cooperation \cite{Asama+1989}. Fig. \ref{fig:mataric-nerd-herd} and \ref{fig:kube-box-pushing} present the two earliest multi-robot systems in foraging and box-pushing task domains, developed by two pioneers in this filed, \citeasnoun{Mataric1994} and \citeasnoun{Kube1997} respectively.
+Fig. \ref{fig:mataric-nerd-herd} and \ref{fig:kube-box-pushing} present the two earliest multi-robot systems in foraging and box-pushing task domains, developed by two pioneers in this filed, \citeasnoun{Mataric1994} and \citeasnoun{Kube1997} respectively.
 
 %% FIG: Robocup
 \begin{figure}[H]
@@ -53,6 +43,16 @@ Early researches on multi-robot systems also include the concept of cellular rob
 \end{figure}
 %%
 From the beginning of the behaviour-based paradigm, the biological inspirations influenced many cooperative robotics researchers to examine the social characteristics of insects and animals and to apply them to design multi-robot systems \cite{Arkin1998}. The underlying basic idea is to use simple local control rules of various social species, such as ants, bees, birds etc., to the development of similar behaviours in robots. In multi-robot literature, there are many examples that demonstrate the ability of multi-robot teams to aggregate, flock, forage, follow trails etc. \cite{Bonabeau+1999}. The dynamics of ecosystem, such as cooperation, has also been applied in multi-robot systems that has presented the emergent cooperation among team members \cite{Mcfarland1994,Martinoli+1996}. 
+% FIG: Multi-robot in emergency
+\begin{figure}[H]
+\centering
+\subfloat[A disaster site: buring oil rig]{\includegraphics[width=6cm, height=4cm]{./photos/burning-oil-rig-explosion-fire-photo11.eps}} 
+\hspace{0.25cm}
+\subfloat[An array of Seaglider underwater robots]{\includegraphics[width=6cm, height=4cm]{./photos/seaglider.eps}}
+\caption{Example of multi-robot system working at a disaster site (a) British Petroleum's oil rig sinks in the Gulf of Mexico after explosion.\protect\newline From http:///news.bbc.co.uk, reported on 22/04/2010. 
+(b) IRobot's Seaglider fleet that was surveying oil spill in the Gulf of Mexico at depths of up to 1,000 meters. From http:///www.irobot.com, reported on 25/05/2010.}
+\label{fig:bp-oil-disaster}
+\end{figure}
 
 On the other hand, the study of competitive behaviours among animal and human societies has also been applied in multi-robot systems, such as in multi-robot soccer \cite{Asada+1999}. Fig. \ref{fig:bp-oil-disaster} and \ref{fig:robocup} show that multi-robot system can be used to develop a wide range of useful applications ranging from human disaster recovery to games and entertainment.
 
@@ -79,7 +79,7 @@ While earlier multi-robot system taxonomies, e.g. one proposed by \citeasnoun{Pr
 On the other hand, specialized taxonomies provide multi-robot system specification with respect to particular system features, e.g., the taxonomy of \citeasnoun{Balch2002} is only useful in a multi-robot system with reinforcement learning, the taxonomy of \citeasnoun{Gerkey+2004} gives the specification of tasks in a MRTA context. Other less common taxonomies e.g., one proposed by \citeasnoun{Farinelli+2004} or another proposed by \citeasnoun{Cao+1997} are centred around the coordination (weak, strong or none), communication (implicit, explicit or none), architecture (centralized or decentralized) etc. Here the major axes of leading taxonomies of multi-robot systems have been described.
 %%%
 \subsubsection*{Generalized taxonomy of multi-robot systems}
-The generalized taxonomy of \citeasnoun{Dudek+2002} provides seven main axes for multi-robot team specification.  They are  regrouped into the following three major areas.\\
+The generalized taxonomy of \citeasnoun{Dudek+2002} provides seven main axes for multi-robot team specification.  They are  regrouped into the following three areas.\\
 \textbf{1. Collective or group size, composition and reconfigurability: }  A multi-robot system can be formed by one, two, multiple or virtually infinite number of autonomous robots. Composition refers to the homogeneity of the group members. Robots can be identical in both form and function (hardware and software), homogeneous (consisting of same physical hardware) or physically heterogeneous. Collective reconfigurability refers to the rate at which robots can spatially re-position themselves. It can be completely static, coordinated or dynamically arranged.\\
 \textbf{2. Communication range, topology and bandwidth: } The maximum distance between two robots, required for effective communication, can be zero (i.e. they can not communicate directly) or infinite (i.e. all robots can communicate to any other robot) or in-between these two options. Communication topology determines the style of addressing target peers e.g., through broadcast messaging, individual addressing by name or address or, following tree-like hierarchy or redundant graphs. Communication bandwidth provides the measure of costs associated with communication. This can be no cost (i.e. infinite bandwidth) or high cost (i.e. limited or no bandwidth) or something in between these two extreme cases.\\
 \textbf{3. Processing abilities: } This refers to the software architectures that can be used for deploying controllers of robots. General models include finite state automata, a push-down automata, neural-networks or Turing machines. 
@@ -359,10 +359,8 @@ In this dissertation,  the swarm robotic system approach has been followed for d
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multi-robot task allocation}
 \label{bg:mrta}
-Since 90s, MRTA is a common research challenge that tries to define the preferred mapping of robots to tasks in order to optimize some objective functions \cite{Gerkey+2004}. Many control architectures   have been solely designed to address this task-allocation issue from different perspectives. Based-on the high-level design of those solutions, here  researches on MRTA have been classified into two major categories: i) predefined or intentional task-allocation and ii) bio-inspired self-organized task-allocation. Fig. \ref{fig:mrta-classification} illustrates the proposed classification. 
-
-This classification has been adopted from \citeasnoun{Shen+2001}, but the sub-categories used here are different since \citename{Shen+2001} proposed the classification for multi-agent system alone that does not take the spatiality and embodiment of agents into account. Under each of the sub-categories of MRTA there are many inter-connected issues that need to be addressed by the system designer. In the following subsections,   these two major categories and their key issues with some example MRTA solutions have been discussed.
-%
+Since 90s, MRTA is a common research challenge that tries to define the preferred mapping of robots to tasks in order to optimize some objective functions \cite{Gerkey+2004}. Many control architectures   have been solely designed to address this task-allocation issue from different perspectives. Based-on the high-level design of those solutions, here  researches on MRTA have been classified into two major categories: i) predefined or intentional task-allocation and ii) bio-inspired self-organized task-allocation. 
+%%
 \begin{figure}[H]
 \centering
 \includegraphics[width=12cm, angle=0]
@@ -370,6 +368,9 @@ This classification has been adopted from \citeasnoun{Shen+2001}, but the sub-ca
 \caption{\small Classification of MRTA}
 \label{fig:mrta-classification} % Give a unique label
 \end{figure}
+
+Fig. \ref{fig:mrta-classification} illustrates the proposed classification. This classification has been adopted from \citeasnoun{Shen+2001}, but the sub-categories used here are different since \citename{Shen+2001} proposed the classification for multi-agent system alone that does not take the spatiality and embodiment of agents into account. Under each of the sub-categories of MRTA there are many inter-connected issues that need to be addressed by the system designer. In the following subsections,   these two major categories and their key issues with some example MRTA solutions have been discussed.
+%
 %%---------------------------------------
 \subsection{Predefined task-allocation}
 \label{bg:mrta:predefined}
@@ -552,7 +553,8 @@ Most of the mobile robots come with a series of LEDs, and tiny camera that can e
 \end{figure}
 %%
 
-Some other researchers also tried to establish communication among robots solely relying on vision \cite{Kuniyoshi1994}. Although a lot of researchers have been carried out to design robot skin and tactile communication system, the author of this thesis is unaware of any instance of tactile communication used in multi-robot team. In terms of chemical communication, \citeasnoun{Lochmatter+2007} showed  limited success in odour-source localization, a form of detecting chemical signals (Fig. \ref{fig:epfl-disal}).
+Some other researchers also tried to establish communication among robots solely relying on vision \cite{Kuniyoshi1994}. %Although a lot of researchers have been carried out to design robot skin and tactile communication system, the author of this thesis is unaware of any instance of tactile communication used in multi-robot team. 
+In terms of chemical communication, \citeasnoun{Lochmatter+2007} showed  limited success in odour-source localization, a form of detecting chemical signals (Fig. \ref{fig:epfl-disal}).
 %-----------------------------
 \subsection{Communication strategies}
 \begin{figure}

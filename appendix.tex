@@ -4,9 +4,9 @@
 \chapter{Hardware Specifications}
 \section{E-puck robots}
 %% 
-E-puck\footnote{www.e-puck.org} robots has been developed at Swiss Federal Institute of Technology at Lausanne (EPFL) and now produced by Cyberbotics\footnote{http://www.cyberbotics.com} and some other companies. The upside of using e-puck is: it is equipped with most common sensing hardware, relatively simple in design, low cost, desktop-sized and offered under open hardware/software licensing terms. So any further modification in hardware/software is not limited to any proprietary restriction. However, the downside of using e-puck robot is: its processor is based on dsPIC micro-controller (lack of standard programming tool-chains), limited amount of memory (lack of on-board camera image processing option) and default communication module is based-on Bluetooth (limited bandwidth and manual link configuration).
+E-puck\footnote{www.e-puck.org} robots have been developed at Swiss Federal Institute of Technology at Lausanne (EPFL) and now produced by Cyberbotics\footnote{http://www.cyberbotics.com} and some other companies. The upside of using e-puck is: it is equipped with most common sensing hardware, relatively simple in design, low cost, desktop-sized and offered under open hardware/software licensing terms. So any further modification in hardware/software is not limited to any proprietary restriction. However, the downside of using e-puck robot is: its processor is based on dsPIC micro-controller (lack of standard programming tool-chains), limited amount of memory (lack of on-board camera image processing option) and default communication module is based-on Bluetooth (limited bandwidth and manual link configuration).
 
-E-puck can be programmed through C language and this program can be uploaded from PC to robot through wire: $I^{2}C$ and RS232 channel or, through  wireless: Bluetooth communication channel. This can be tedious and time-consuming if one needs to change the robot controller frequently. However, here  the robot's functionalities have been kept very simple and limited to two main tasks: avoiding obstacles and navigating from one place to another. Thus the default hardware of e-puck seems enough for the experiments.
+E-puck can be programmed through C language and this program can be uploaded from PC to robot through wire: $I^{2}C$ and RS232 channel or, through  wireless: Bluetooth communication channel. This can be tedious and time-consuming if one needs to change the robot controller frequently. However, here  the robot's functionalities have been kept very simple and limited to two main tasks: avoiding obstacles and navigating from one place to another. Thus the default hardware of e-puck seems enough for the experiments described in this thesis.
 \begin{table}[H]
 \caption{E-puck robot hardware}
 \label{table:epuck}
@@ -48,28 +48,37 @@ Table \ref{table:epuck} lists the interesting hardware information about an e-pu
 \end{tabular}
 \end{center}
 \end{table}
+%
 \begin{figure}[H]
-\begin{minipage}[t]{0.48\linewidth}
+%\begin{minipage}[t]{0.48\linewidth}
 \centering
 \includegraphics[width=6cm, height=4cm, angle=0]
 {./photos/GigE4900C.eps}
 \caption{A GigE4900C camera.}
 \label{fig:gige-camera} 
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[t]{0.48\linewidth}
-\centering
-\includegraphics[width=5cm,height=4cm, angle=0]{snaps/bt-usb-hub.eps}
-\caption{A bluetooth hub that attaches multiple Bluetooth USB adapters with Server PC.}
-\label{fig:bt-hub} 
-\end{minipage}
+%\end{minipage}
+%\hspace{0.5cm}
+%\begin{minipage}[t]{0.48\linewidth}
+%\centering
+%\includegraphics[width=5cm,height=4cm, angle=0]{snaps/bt-usb-hub.eps}
+%\caption{A bluetooth hub that attaches multiple Bluetooth USB adapters with Server PC.}
+%\label{fig:bt-hub} 
+%\end{minipage}
 \end{figure}
 In order to set-up a multi-robot tracking system, a state-of-the-art GE4900C colour camera (Fig. \ref{fig:gige-camera})  have been selected from Prosilica\footnote{http://www.prosilica.com}. The Prosilica GE-Series camera, are very compact, high-performance machine vision cameras with Gigabit Ethernet interface.  Table \ref{table:ge4900c} lists its main features. This GigE camera is built with \acf{CCD} technology that converts light into electric charge and process it into electronic signals. Unlike in a complementary metal oxide semiconductor sensor, CCD provides a very sophisticated image capturing mechanism that gives high uniformity in image pixels. The 4872x3247 resolution enables to track a relatively large area e.g., 4m x 3m. In this case, 1 pixel dot in image roughly can represent approximately 1mm x 1mm area. Although the frame rate may seem low initially, but this small frame-rate gives optimum image processing performance with large image sizes, e.g. 16 MB/frame. Prosilica offers both Windows and Linux \acf{SDK} for image capture and other necessary operations. Using this SDK and OpenCV computer vision library\footnote{http://opencv.willowgarage.com/},  default Bayer8 format image has been converted into RGB format image and used that with the tracking software.
 %%
 
 %%--------------------------------------------------------------
 \section{Server PC configuration}
-Dell  Precision T5400 server-grade PC has been chosen with the following main technical specifications:
+Dell  Precision T5400 server-grade PC has been chosen with the following main technical specifications.
+%%
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm,height=4cm, angle=0]{snaps/bt-usb-hub.eps}
+\caption{A bluetooth hub that attaches multiple Bluetooth USB adapters with Server PC.}
+\label{fig:bt-hub} 
+\end{figure}
+%%
 \begin{table}[H]
 \caption{Server PC Configuration}
 \label{table:server-pc}
@@ -89,8 +98,8 @@ This high performance PC has supported to implement task-allocation algorithms w
 %%
 \chapter{Programming D-Bus: Setting-up Signal Interfaces}
 \section{Steps for setting up signal emission}
-Expanding SignalEmitter and SignalListener for more D-Bus signals does not require to make almost no change in the IPC implementation code. The following steps provides some hints for 
-setting up a D-Bus signal emission process.
+The following steps provides some hints for 
+setting up a D-Bus signal emission process.\\
 \textbf{Step 1:} Connect to a D-Bus daemon. \\
 Sample C code:
 \lstset{language=C,basicstyle=\small}
@@ -149,4 +158,6 @@ Sample C Code:
 g_main_loop_run(loop);
 \end{lstlisting} 
 %%
-In the above listing \texttt{dbus\_signal\_callback} function contains the specific application code that determines what to do with the received signal (which is not shown here). \texttt{ dbus\_connection\_add\_filter} function can take error handing function as its last argument (or can be NULL as shown here). D-Bus signal match rules are specified in D-Bus specification \cite{Pennington+2010}. In both of the above cases, i.e. signal listening and receiving, in order to add more signals one just needs to repeat step 3  as many times as needed. A basic implementation of both of signal emission and listening processes in Python language can be found in this here\footnote{http://dbus.freedesktop.org/doc/dbus-python/doc/tutorial.html}.
+In the above listing \texttt{dbus\_signal\_callback} function contains the specific application code that determines what to do with the received signal (which is not shown here). \texttt{ dbus\_connection\_add\_filter} function can take error handing function as its last argument (or can be NULL as shown here). D-Bus signal match rules are specified in D-Bus specification \cite{Pennington+2010}. 
+
+In both of the above cases, i.e. signal listening and receiving, in order to add more signals one just needs to repeat step 3  as many times as needed. A basic implementation of both of signal emission and listening processes in Python language can be found in D-Bus website\footnote{http://dbus.freedesktop.org/doc/dbus-python/doc/tutorial.html}.
